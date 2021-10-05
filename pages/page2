@@ -1,0 +1,69 @@
+<div class="timer" data-second="34"></div>
+<div>Siamo a pagina 1</div>
+<script type="text/javascript">
+maketimer(document.getElementsByClassName("timer")[0])
+</script>
+<canvas id="chessboard"></canvas>
+<script type="text/javascript">
+drawChessboard(document.getElementById("chessboard"))
+piece_position={"A8": "King.svg"}
+drawPieces(document.getElementById("chessboard"),piece_position)
+
+var caselle_colorate = new Array();
+
+function handleMouseDown(e) {
+    e.preventDefault();
+    //var elem = document.getElementById("chessboard")
+    var elem = e.target
+    var rect = elem.getBoundingClientRect();
+    var squareSize = parseInt(elem.getAttribute("data-square-size"))
+    var boardTopX = parseInt(elem.getAttribute("data-boardtop-x"))
+    var boardTopY = parseInt(elem.getAttribute("data-boardtop-y"))
+    startX = parseInt(e.clientX - rect.left)+ boardTopX + 3;
+    startY = parseInt(e.clientY - rect.top) + boardTopY + 3;
+    var x = parseInt((startX-boardTopX*2)/squareSize)+1
+    var y = 8-parseInt((startY-boardTopY*2)/squareSize)
+    if(x<1){
+    	x = 1
+    }
+    if(x>8){
+    	x=8
+    }
+    if(y>8){
+    	y=8
+    }
+    if(y<1){
+    	y=1
+    }
+    var casella = String.fromCharCode(x+65-1)+y
+    console.log("COORDINATE: "+casella+" - ("+startX+" - " + rect.width + ") - ("+startY+" - " + rect.height+")")
+    if(caselle_colorate.includes(casella)){
+    	caselle_colorate.splice(caselle_colorate.indexOf(casella),1)
+    	paint(elem,casella,originalColor(casella))
+    	for(var i in piece_position){
+    		if(casella == i){
+    			drawPiece(elem,casella,piece_position[i])
+    		}
+    	}
+    }else{
+    	caselle_colorate.push(casella)
+    	paint(elem,casella,"#f82bac", squareSize-20)
+    	for(var i in piece_position){
+    		if(casella == i){
+    			drawPiece(elem,casella,piece_position[i])
+    		}
+    	}
+    }
+}
+
+var $canvas = $("#chessboard");
+var canvasOffset = $canvas.offset();
+var offsetX = canvasOffset.left;
+var offsetY = canvasOffset.top;
+var scrollX = $canvas.scrollLeft();
+var scrollY = $canvas.scrollTop();
+
+$("#chessboard").mousedown(function (e) {
+    handleMouseDown(e);
+});
+</script>

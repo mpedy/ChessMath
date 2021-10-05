@@ -1,0 +1,134 @@
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+	<style type="text/css">
+	*{
+		box-sizing: border-box;
+		margin: 0;
+		padding: 0;
+	}
+	body{
+		background: url('static/img/background.jpg') center center;
+	}
+	div#background{
+		background: rgba(0,0,0,0.5);
+		min-width: 100%;
+		min-height: 100%;
+		/*padding: 50px;*/
+		color: white;
+		font-size: 20px;
+		display: flex;
+		justify-content: center;
+	}
+	.b{
+		font-weight: bold;
+		margin: 10px 0;
+	}
+	</style>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script src="static/js/maketimer.js"></script>
+	<script src="static/js/drawchessboardnew.js"></script>
+	<script>
+	var page = 0;
+	var timeinv = setInterval(function(){$.ajax({url: "page", success: function(res_page){if(page != res_page["page"]){page = res_page["page"];$.ajax({url: "page_"+page, success: function(result){$("#div1").html(result)}})}}})},3000);
+	</script>
+</head>
+<body>
+	<div id="background">
+		<div id="div1" style="position: relative;text-align: center; width: 100%;">
+			<div class="b">Gioco 1</div>
+			<div>Indovinate chi è questo signore</div>
+			<img src="static/img/main-image.jpg" style="height: 100%"/>
+		</div>
+	</div>
+	<div style="display: none">
+		<img id="piece_Pawn" src="static/img/Pawn.svg"/>
+		<img id="piece_Pawn_B" src="static/img/Pawn_B.svg"/>
+		<img id="piece_Bishop" src="static/img/Bishop.svg"/>
+		<img id="piece_Bishop_B" src="static/img/Bishop_B.svg"/>
+		<img id="piece_Rook" src="static/img/Rook.svg"/>
+		<img id="piece_Rook_B" src="static/img/Rook_B.svg"/>
+		<img id="piece_King" src="static/img/King.svg"/>
+		<img id="piece_King_B" src="static/img/King_B.svg"/>
+		<img id="piece_Queen" src="static/img/Queen.svg"/>
+		<img id="piece_Queen_B" src="static/img/Queen_B.svg"/>
+		<img id="piece_Knight" src="static/img/Knight.svg"/>
+		<img id="piece_Knight_B" src="static/img/Knight_B.svg"/>
+	</div>
+	<script type="text/javascript">
+	var punti = 0;
+	var A1="A1"
+	var A2="A2"
+	var A3="A3"
+	var A4="A4"
+	var A5="A5"
+	var A6="A6"
+	var A7="A7"
+	var A8="A8"
+
+	var B1="B1"
+	var B2="B2"
+	var B3="B3"
+	var B4="B4"
+	var B5="B5"
+	var B6="B6"
+	var B7="B7"
+	var B8="B8"
+
+	var C1="C1"
+	var C2="C2"
+	var C3="C3"
+	var C4="C4"
+	var C5="C5"
+	var C6="C6"
+	var C7="C7"
+	var C8="C8"
+
+	var D1="D1"
+	var D2="D2"
+	var D3="D3"
+	var D4="D4"
+	var D5="D5"
+	var D6="D6"
+	var D7="D7"
+	var D8="D8"
+
+	var E1="E1"
+	var E2="E2"
+	var E3="E3"
+	var E4="E4"
+	var E5="E5"
+	var E6="E6"
+	var E7="E7"
+	var E8="E8"
+
+	var F1="F1"
+	var F2="F2"
+	var F3="F3"
+	var F4="F4"
+	var F5="F5"
+	var F6="F6"
+	var F7="F7"
+	var F8="F8"
+
+	var G1="G1"
+	var G2="G2"
+	var G3="G3"
+	var G4="G4"
+	var G5="G5"
+	var G6="G6"
+	var G7="G7"
+	var G8="G8"
+
+	var H1="H1"
+	var H2="H2"
+	var H3="H3"
+	var H4="H4"
+	var H5="H5"
+	var H6="H6"
+	var H7="H7"
+	var H8="H8"
+	</script>
+</body>
+</html>

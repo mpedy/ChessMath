@@ -1,0 +1,59 @@
+<div class="timer" data-second="12"></div>
+<div>Siamo a pagina 1</div>
+<script type="text/javascript">
+maketimer(document.getElementsByClassName("timer")[0])
+</script>
+<canvas id="chessboard" width="580px" height="580px" style="margin-top: 100px;"></canvas>
+<script type="text/javascript">
+drawChessboard(document.getElementById("chessboard"))
+drawPieces(document.getElementById("chessboard"),
+	{
+		"A2": "Pawn.svg",
+		"B2": "Pawn.svg",
+		"C2": "Pawn.svg",
+		"D2": "Pawn.svg",
+		"E2": "Pawn.svg",
+		"F2": "Pawn.svg",
+		"G2": "Pawn.svg",
+		"H2": "Pawn.svg",
+
+		"A1": "Rook.svg",
+		"B1": "Knight.svg",
+		"C1": "Bishop.svg",
+		"D1": "Queen.svg",
+		"E1": "King.svg",
+		"F1": "Bishop.svg",
+		"G1": "Knight.svg",
+		"H1": "Rook.svg",
+
+		"A2": "Pawn.svg",
+		"B2": "Pawn.svg",
+		"C2": "Pawn.svg",
+		"D2": "Pawn.svg",
+		"E2": "Pawn.svg",
+		"F2": "Pawn.svg",
+		"G2": "Pawn.svg",
+		"H2": "Pawn.svg",
+
+
+
+		"A7": "Pawn_B.svg",
+		"B7": "Pawn_B.svg",
+		"C7": "Pawn_B.svg",
+		"D7": "Pawn_B.svg",
+		"E7": "Pawn_B.svg",
+		"F7": "Pawn_B.svg",
+		"G7": "Pawn_B.svg",
+		"H7": "Pawn_B.svg",
+
+		"A8": "Rook_B.svg",
+		"B8": "Knight_B.svg",
+		"C8": "Bishop_B.svg",
+		"D8": "Queen_B.svg",
+		"E8": "King_B.svg",
+		"F8": "Bishop_B.svg",
+		"G8": "Knight_B.svg",
+		"H8": "Rook_B.svg",
+	}
+)
+</script>
