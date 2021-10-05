@@ -58,8 +58,8 @@ reset = function(){
 
 procedi = function(btn){
 	btn.disabled = true;
-	console.log(caselle_colorate)
-	console.log(caselle_corrette)
+	console.log(caselle_colorate);
+	console.log(caselle_corrette);
 	for(var i in caselle_colorate){
 		if(caselle_corrette.includes(caselle_colorate[i])){
 			punti+=1;
