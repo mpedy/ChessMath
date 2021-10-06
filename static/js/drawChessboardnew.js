@@ -1,12 +1,15 @@
 drawChessboard = function(elem){
     var w = window.innerWidth
+    w = Math.min(w,600)
     elem.style.background="black";
     elem.style.height=w+"px";
     elem.style.width=w+"px";
+    elem.style.margin="auto";
     elem.setAttribute("width",w)
     elem.setAttribute("height",w)
     elem.style.padding="20px";
     w = window.innerWidth-40;
+    w = Math.min(w,600-40)
     const squareSize = parseInt(w/8);
     var boardTopx = 20;
     var boardTopy = 20;
@@ -30,9 +33,29 @@ drawChessboard = function(elem){
             elem.appendChild(div)
         }
     }
+    $('<style>'+
+        'div#A8:before{content:"'+8+'"; position: absolute; top: '+(squareSize/2-5)+'px; left: -14px;font-size: 12px;}'+
+        'div#A7:before{content:"'+7+'"; position: absolute; top: '+(squareSize/2-5)+'px; left: -14px;font-size: 12px;}'+
+        'div#A6:before{content:"'+6+'"; position: absolute; top: '+(squareSize/2-5)+'px; left: -14px;font-size: 12px;}'+
+        'div#A5:before{content:"'+5+'"; position: absolute; top: '+(squareSize/2-5)+'px; left: -14px;font-size: 12px;}'+
+        'div#A4:before{content:"'+4+'"; position: absolute; top: '+(squareSize/2-5)+'px; left: -14px;font-size: 12px;}'+
+        'div#A3:before{content:"'+3+'"; position: absolute; top: '+(squareSize/2-5)+'px; left: -14px;font-size: 12px;}'+
+        'div#A2:before{content:"'+2+'"; position: absolute; top: '+(squareSize/2-5)+'px; left: -14px;font-size: 12px;}'+
+        'div#A1:before{content:"'+1+'"; position: absolute; top: '+(squareSize/2-5)+'px; left: -14px;font-size: 12px;}'+
+
+        'div#A1:after{content:"A"; position: absolute; top: 100%;font-size: 12px;margin:auto;}'+
+        'div#B1:after{content:"B"; position: absolute; top: 100%;font-size: 12px;margin:auto;}'+
+        'div#C1:after{content:"C"; position: absolute; top: 100%;font-size: 12px;margin:auto;}'+
+        'div#D1:after{content:"D"; position: absolute; top: 100%;font-size: 12px;margin:auto;}'+
+        'div#E1:after{content:"E"; position: absolute; top: 100%;font-size: 12px;margin:auto;}'+
+        'div#F1:after{content:"F"; position: absolute; top: 100%;font-size: 12px;margin:auto;}'+
+        'div#G1:after{content:"G"; position: absolute; top: 100%;font-size: 12px;margin:auto;}'+
+        'div#H1:after{content:"H"; position: absolute; top: 100%;font-size: 12px;margin:auto;}'+
+
+    '</style>').appendTo('head');
     boardTopy += elem.getClientRects()[0].top;
     boardTopx += elem.getClientRects()[0].left;
-    for(var i=1; i<9; i++){
+    /*for(var i=1; i<9; i++){
         var div = document.createElement("div");
         div.innerText=9-i;//                                                           5 per i 10px del font-size
         div.style="position: absolute; top: "+(boardTopy+squareSize/2+squareSize*(i-1)-5)+"px; left: "+boardTopx/2+"px; color: white; font-size: 10px";
@@ -41,7 +64,7 @@ drawChessboard = function(elem){
         div.innerText = String.fromCharCode(65+i-1)
         div.style="position: absolute; top: "+(w+boardTopy)+"px; left: "+(boardTopx+squareSize/2+squareSize*(i-1)-5)+"px; color: white; font-size: 10px";
         elem.appendChild(div)
-    }
+    }*/
 }
 
 
@@ -56,6 +79,11 @@ drawPieces = function(elem, lst){
         var image = new Image();
         image.src = "static/img/"+lst[i]
         image.style="width: 100%;z-index: 2; position: absolute; left: 0; top: 0;";
+        image.setAttribute("data-casella",casella)
+        image.setAttribute("data-type",lst[i].replaceAll(".svg",""))
         document.getElementById(casella).appendChild(image)
+        $(image).mousedown(function (e) {
+            handleMouseDown_image(e);
+        })
     }
 }

@@ -1,15 +1,16 @@
+var sec;
 maketimer = function(elem){
 	var timer = elem
 	var totsec = parseInt(timer.getAttribute("data-second"))
 	var height = timer.getAttribute("data-height") || "50px";
 	var width = timer.getAttribute("data-width") || "100%";
-	var sec = totsec
+	sec = totsec
 	var txt = document.createElement("span")
 	txt.innerText="Tempo rimanente: "+sec+" secondi"
-	txt.style="margin: 40px;"
+	txt.style="margin: 40px; font-size: 16px;"
 	timer.appendChild(txt)
 	var box = document.createElement("div")
-	box.style="width: 100%; height: "+height+"; background: black; position: relative;"
+	box.style="width: "+width+"; height: "+height+"; background: black; position: relative; margin: auto;"
 	var clessidra = document.createElement("div")
 	clessidra.style="width: 100%; height: 100%; background: white; position: absolute;"
 	box.appendChild(clessidra)
@@ -17,7 +18,7 @@ maketimer = function(elem){
 	timer.appendChild(box)
 	var t = setInterval(function(){
 		sec -=1;
-		if(sec == 0){
+		if(sec <= 0){
 			clearInterval(t);
 			clessidra.style.width="0px";
 			stopTimerFunction();

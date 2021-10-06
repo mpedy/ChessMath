@@ -3,6 +3,10 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 	<style type="text/css">
+	@font-face{
+		font-family: 'Digital';
+		src: url('static/fonts/digital-7.mono.ttf') format('truetype');
+	}
 	*{
 		box-sizing: border-box;
 		margin: 0;
@@ -31,15 +35,19 @@
 	<script src="static/js/drawchessboardnew.js"></script>
 	<script>
 	var page = 0;
-	var timeinv = setInterval(function(){$.ajax({url: "page", success: function(res_page){if(page != res_page["page"]){page = res_page["page"];$.ajax({url: "page_"+page, success: function(result){$("#div1").html(result)}})}}})},3000);
+	var timeinv = setInterval(function(){$.ajax({url: "page", success: function(res_page){if(page != res_page["page"]){page = res_page["page"];$.ajax({url: "page_"+page, success: function(result){$("#content_page").html(result)}})}}})},3000);
 	</script>
 </head>
 <body>
+	<div id="header" style="width: 100%; background: #aaaaaaff; display: inline-block; padding: 5px 10px;">
+		<div style="float: left" id="name">Pluto</div>
+		<div style="float: right; font-family: Digital; letter-spacing: 3px; color: yellow" id="points">1234567890</div>
+	</div>
 	<div id="background">
-		<div id="div1" style="position: relative;text-align: center; width: 100%;">
+		<div id="content_page" style="position: relative;text-align: center; width: 100%;">
 			<div class="b">Gioco 1</div>
 			<div>Indovinate chi è questo signore</div>
-			<img src="static/img/main-image.jpg" style="height: 100%"/>
+			<img src="static/img/main-image.jpg" style="width: 100%"/>
 		</div>
 	</div>
 	<div style="display: none">
