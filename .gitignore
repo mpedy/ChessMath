@@ -1,9 +1,7 @@
 
-env/bin/
 env/
-env/lib/python3.7/site-packages/__pycache__/
 *mp4
 *gif
 __pycache__/
 linux_env/
-
+linux-env/
