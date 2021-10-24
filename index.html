@@ -74,11 +74,10 @@
 		fetch("http://127.0.0.1:8000/setpage_"+p).then(res => res.text().then(txt=>console.log(txt)))
 	}
 	console.re.log("First init");
-	var log = console.log;
-	console.log = function(){
-		log(arguments)
-		console.re.log(arguments)
-	}
+	window.onerror = function(msg, url, linenumber) {
+		console.re.log("Error message: "+msg+"\nURL: "+url+"\nLine Number: "+linenumber)
+		return true;
+	};
 	var upt = function(){fetch("http://127.0.0.1:8000/updateQuest")}
 	var changepath = function(p){fetch("http://127.0.0.1:8000/setpath_"+p)}
 	var page = 0;
