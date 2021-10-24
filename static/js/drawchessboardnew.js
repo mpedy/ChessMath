@@ -1,3 +1,6 @@
+handleMouseDown_casella = function(){}
+handleMouseDown_image = function(){}
+
 drawChessboard = function(elem){
     var w = window.innerWidth
     w = Math.min(w,600)
