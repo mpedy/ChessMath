@@ -81,6 +81,7 @@
 			$.ajax(
 				{
 					url: "page",
+					async: false,
 					success: function(res_page){
 						console.log(res_page)
 						if(page != res_page["page"]){
@@ -88,6 +89,7 @@
 							$.ajax(
 								{
 									url: "page_"+page,
+									async: false,
 									success: function(result){
 										clearInterval(window.myt);
 										$("#content_page").html(result)
