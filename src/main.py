@@ -222,9 +222,9 @@ async def getquiz(request):
     print(percorso, page)
     localpath = allpages[percorso][int(page)]
     print(localpath)
-    quizid = int(localpath[localpath.index("quiz")+4:])
-    print("QUIZID: ",quizid)
     try:
+        quizid = int(localpath[localpath.index("quiz")+4:])
+        print("QUIZID: ",quizid)
         return MyQuiz[quizid-1].json()
     except Exception as e:
         print("Errore in getquiz: ",page, MyQuiz)
