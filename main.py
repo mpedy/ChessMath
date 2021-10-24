@@ -135,8 +135,6 @@ async def sinistra(request):
 
 async def gotoPage(request):
     global page
-    page = request.path_params['page']
-    print("PAGINA: ",page)
     try:
         #return HTMLResponse(open(pages[page]).read())
         return HTMLResponse(open(allpages[percorso][page]).read())
