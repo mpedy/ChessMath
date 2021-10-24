@@ -70,19 +70,32 @@
 	<script src="static/js/movePieces.js"></script>
 	<script src="//console.re/connector.js" data-channel="chessmath" id="consolerescript"></script>
 	<script>
-	var nxt = function(p){
-		fetch("http://127.0.0.1:8000/setpage_"+p).then(res => res.text().then(txt=>console.log(txt)))
+	var nxt = function(host, p){
+		fetch(host+"/setpage_"+p).then(res => res.text().then(txt=>console.log(txt)))
 	}
-	console.re.log("First init");
-	window.onerror = function(msg, url, linenumber) {
-		alert("Error message: "+msg+"\nURL: "+url+"\nLine Number: "+linenumber)
-		console.re.log("Error message: "+msg+"\nURL: "+url+"\nLine Number: "+linenumber)
-		return true;
-	};
-	var upt = function(){fetch("http://127.0.0.1:8000/updateQuest")}
-	var changepath = function(p){fetch("http://127.0.0.1:8000/setpath_"+p)}
+	var upt = function(host){fetch(host+"/updateQuest")}
+	var changepath = function(host,p){fetch(host+"/setpath_"+p)}
 	var page = 0;
-	var timeinv = setInterval(function(){$.ajax({url: "page", success: function(res_page){if(page != res_page["page"]){page = res_page["page"];$.ajax({url: "page_"+page, success: function(result){clearInterval(window.myt);$("#content_page").html(result)}})}}})},3000);
+	var timeinv = setInterval(
+		function(){
+			$.ajax(
+				{
+					url: "page",
+					success: function(res_page){
+						if(page != res_page["page"]){
+							page = res_page["page"];
+							$.ajax(
+								{
+									url: "page_"+page,
+									success: function(result){
+										clearInterval(window.myt);
+										$("#content_page").html(result)
+									}
+								})
+						}
+					}
+				})
+		},3000);
 	</script>
 </head>
 <body>

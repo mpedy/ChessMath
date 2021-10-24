@@ -148,6 +148,8 @@ async def returnPage(request):
 async def setPage(request):
     global page
     page = request.path_params['page']
+    code = request.path_params["cod"]
+    print("CODICE: ", code)
     return HTMLResponse("ok -> "+allpages[percorso][page])
 
 async def updateQuest(request):
@@ -251,7 +253,7 @@ routes=[
     Route("/left",sinistra),
     Route("/page_{page:int}",gotoPage),
     Route("/page", returnPage),
-    Route("/setpage_{page:int}",setPage),
+    Route("/setpage_{page:int}_{cod:int}",setPage),
     Route("/setpath_{path:int}",setPath),
     Route("/getquiz",getquiz),
     Route("/updateQuest",updateQuest),

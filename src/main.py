@@ -149,8 +149,17 @@ async def returnPage(request):
 
 async def setPage(request):
     global page
-    page = request.path_params['page']
-    return HTMLResponse("ok -> "+allpages[percorso][page])
+    code = request.path_params['code']
+    if code == 123111321:
+        new_page = request.path_params['page']
+        if new_page in range(0,len(allpages[percorso])):
+            page = new_page
+        arr = allpages[percorso]
+        l = len(arr)
+        res = [arr[page-1] if page-1 in range(0,l) else None, arr[page] if page in range(0,l) else None, arr[page+1] if page+1 in range(0,l) else None]
+        return JSONResponse({"status":"ok","prev":res[0],"current":res[1],"next":res[2]})
+    else:
+        return Response("Errore: codice non valido");
 
 async def updateQuest(request):
     global MyQuiz
@@ -253,7 +262,7 @@ routes=[
     Route("/left",sinistra),
     Route("/page_{page:int}",gotoPage),
     Route("/page", returnPage),
-    Route("/setpage_{page:int}",setPage),
+    Route("/setpage_{page:int}_{code:int}",setPage),
     Route("/setpath_{path:int}",setPath),
     Route("/getquiz",getquiz),
     Route("/updateQuest",updateQuest),
