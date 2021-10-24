@@ -16,10 +16,10 @@ maketimer = function(elem){
 	box.appendChild(clessidra)
 	box.style.border="2px solid white"
 	timer.appendChild(box)
-	var t = setInterval(function(){
+	window.myt = setInterval(function(){
 		sec -=1;
 		if(sec <= 0){
-			clearInterval(t);
+			clearInterval(window.myt);
 			clessidra.style.width="0px";
 			stopTimerFunction();
 		}else{

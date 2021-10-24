@@ -1,0 +1,182 @@
+<div id="chessboard"></div>
+<div>
+	<button id="reset" onclick="reset()" style="margin: 10px 20px; padding: 5px;">Reset</button>
+	<button style="padding: 5px;" id="gobtn" onclick="procedi(this)">Ehila</button>
+	<div class="timer" data-second="80" data-height="20px" data-width="80%"></div>
+	<script type="text/javascript">
+	maketimer(document.getElementsByClassName("timer")[0]);
+	stopTimerFunction = function(){
+		var dis = document.getElementById("gobtn").disabled;
+		document.getElementById("gobtn").disabled = true;
+		document.getElementById("reset").disabled = true;
+		handleMouseDown_casella = function(){}
+		if(!dis){
+			procedi(document.getElementById("gobtn"))
+		}
+	}
+	</script>
+</div>
+
+<script type="text/javascript">
+
+drawChessboard(document.getElementById("chessboard"))
+
+piece_position={
+	"D5": "Rook.svg",
+	"A1": "obstacle.svg",
+	"D6": "obstacle.svg",
+	"F4": "obstacle.svg",
+	"B7": "rock-golem.svg",
+	"C7": "rock-golem.svg",
+	"B6": "rock-golem-1.svg",
+	"C6": "rock-golem-1.svg"
+}
+
+drawPieces(document.getElementById("chessboard"),piece_position)
+
+var caselle_colorate = new Array();
+var caselle_corrette = [A5,B5,C5,E5,F5,G5,H5,D4,D3,D2,D1]
+
+handleMouseDown_casella = function(e){
+    var elem = e.currentTarget;
+    casella = elem.getAttribute("casella");
+    if(caselle_colorate.includes(casella)){
+    	caselle_colorate.splice(caselle_colorate.indexOf(casella),1);
+    	elem.removeChild(elem.children[elem.childElementCount-1]);
+    }else{
+    	caselle_colorate.push(casella);
+    	var div = document.createElement("div");
+    	div.style="background: red; border-radius: 50%; position: absolute; left: 10%; top: 10%; width: 80%; height: 80%; z-index: 1";
+    	elem.appendChild(div);
+    }
+}
+
+/*var moving_pieces = {
+	"Rook" : "D5"
+}
+var possible_moves = new Array();
+var obstacles = ["rock-golem-1", "rock-golem","obstacle"]
+handleMouseDown_image = function(e){
+	console.log(e.currentTarget);
+	var elem = e.currentTarget;
+	var casella = elem.getAttribute("data-casella");
+	var type = elem.getAttribute("data-type")
+	console.log("Casella e tipo: " + casella+"-"+type)
+	var can_move = false;
+	for(var i in moving_pieces){
+		if(i==type && moving_pieces[i]==casella){
+			can_move = true;
+			break;
+		}
+	}
+	console.log("Can Move? "+can_move)
+	if(can_move){
+		calculatePossibleMoves(casella, type);
+	}
+}*/
+
+calculatePossibleMoves = function(casella, type){
+	possible_moves = new Array();
+	switch(type){
+		case "Rook":{
+			var x = casella.charCodeAt(0)-65+1;
+			var y = parseInt(casella[1]);
+			console.log("Partenza: "+x+" - "+y)
+			for(var i=1; i<9; i++){//up
+				var newcasella = casella[0]+(y+i)
+				if(y+i<9 && ( $("#"+newcasella).children().length==0 || !obstacles.includes($("#"+newcasella).children()[0].getAttribute("data-type"))) ){
+					possible_moves.push(newcasella)
+				}
+				try{
+					if(y+i>=8 || obstacles.includes($("#"+newcasella).children()[0].getAttribute("data-type")) ){
+						break;
+					}
+				}catch{
+					continue;
+				}
+			}
+			for(var i=1; i<9; i++){//down
+				console.log("Down: "+(y-i));
+				var newcasella = casella[0]+(y-i)
+				if(y-i>0 && ( $("#"+newcasella).children().length==0 || !obstacles.includes($("#"+newcasella).children()[0].getAttribute("data-type"))) ){
+					possible_moves.push(newcasella)
+				}
+				try{
+					if(y-i<=1 || obstacles.includes($("#"+newcasella).children()[0].getAttribute("data-type")) ){
+						break;
+					}
+				}catch{
+					continue;
+				}
+			}
+			for(var i=1; i<9; i++){//dx
+				console.log("Dx: "+(x+i));
+				var newcasella = String.fromCharCode(65+x+i-1)+casella[1]
+				console.log("Newcasella: "+newcasella)
+				if(x+i<9 && (
+					$("#"+newcasella).children().length==0 || !obstacles.includes($("#"+newcasella).children()[0].getAttribute("data-type"))) ){
+					possible_moves.push(newcasella)
+				}
+				try{
+					if(x+i>=8 || obstacles.includes($("#"+newcasella).children()[0].getAttribute("data-type")) ){
+						break;
+					}
+				}catch{
+					continue;
+				}
+			}
+			for(var i=1; i<9; i++){//sx
+				console.log("Sx: "+(x-i));
+				var newcasella = String.fromCharCode(65+x-i-1)+casella[1]
+				console.log("Newcasella: "+newcasella)
+				if(x-i>0 && (
+					$("#"+newcasella).children().length==0 || !obstacles.includes($("#"+newcasella).children()[0].getAttribute("data-type"))) ){
+					possible_moves.push(newcasella)
+				}
+				try{
+					if(x-i<=1 || obstacles.includes($("#"+newcasella).children()[0].getAttribute("data-type")) ){
+						break;
+					}
+				}catch{
+					continue;
+				}
+			}
+
+		}
+		break;
+	}
+	console.log(possible_moves);
+	for(var i in possible_moves){
+		var elem = document.getElementById(possible_moves[i]);
+		caselle_colorate.push(possible_moves[i]);
+    	var div = document.createElement("div");
+    	div.style="background: blue; border-radius: 50%; position: absolute; left: 10%; top: 10%; width: 80%; height: 80%; z-index: 1";
+    	elem.appendChild(div);
+	}
+}
+
+
+reset = function(){
+	for(var i in caselle_colorate){
+		var elem = document.getElementById(caselle_colorate[i])
+		elem.removeChild(elem.children[elem.childElementCount-1]);
+	}
+	caselle_colorate = new Array();
+}
+
+procedi = function(btn){
+	btn.disabled = true;
+	console.log(caselle_colorate);
+	console.log(caselle_corrette);
+	for(var i in caselle_colorate){
+		if(caselle_corrette.includes(caselle_colorate[i])){
+			punti+=1;
+		}else{
+			punti-=1;
+		}
+	}
+	alert("Punti: "+punti)
+	sec = 0;
+}
+
+</script>

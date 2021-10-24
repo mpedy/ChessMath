@@ -7,3 +7,5 @@ env/lib/python3.7/site-packages/__pycache__/
 __pycache__/
 linux_env/
 
+
+.DS_Store

@@ -1,8 +1,9 @@
 <div id="chessboard"></div>
 <div>
+	<div style="background: black;">Caselle: <span id="number_of_moves">0</span></div>
 	<button id="reset" onclick="reset()" style="margin: 10px 20px; padding: 5px;">Reset</button>
 	<button style="padding: 5px;" id="gobtn" onclick="procedi(this)">Ehila</button>
-	<div class="timer" data-second="80" data-height="20px" data-width="80%"></div>
+	<div class="timer" data-second="180" data-height="20px" data-width="80%"></div>
 	<script type="text/javascript">
 	maketimer(document.getElementsByClassName("timer")[0]);
 	stopTimerFunction = function(){
@@ -37,41 +38,111 @@ drawPieces(document.getElementById("chessboard"),piece_position)
 var caselle_colorate = new Array();
 var caselle_corrette = [A5,B5,C5,E5,F5,G5,H5,D4,D3,D2,D1]
 
-handleMouseDown_casella = function(e){
-    var elem = e.currentTarget;
-    casella = elem.getAttribute("casella");
-    if(caselle_colorate.includes(casella)){
-    	caselle_colorate.splice(caselle_colorate.indexOf(casella),1);
-    	elem.removeChild(elem.children[elem.childElementCount-1]);
-    }else{
-    	caselle_colorate.push(casella);
-    	var div = document.createElement("div");
-    	div.style="background: red; border-radius: 50%; position: absolute; left: 10%; top: 10%; width: 80%; height: 80%; z-index: 1";
-    	elem.appendChild(div);
-    }
-}
+var enlighted = "";
 
 var moving_pieces = {
 	"Rook" : "D5"
 }
+var moving_piece = "";
 var possible_moves = new Array();
 var obstacles = ["rock-golem-1", "rock-golem","obstacle"]
+var end_position="A8";
+var number_of_moves = 0;
+var show_possible_moves = false;
+
+handleMouseDown_casella = function(e){
+    var elem = e.currentTarget;
+    console.log(elem)
+    casella = elem.getAttribute("casella");
+    if(possible_moves.includes(casella)){
+    	//possible_moves.splice(possible_moves.indexOf(casella),1);
+    	//elem.removeChild(elem.children[elem.childElementCount-1]);
+    	move(moving_piece, elem.id);
+    	moving_piece = "";
+    	possible_moves = new Array();
+    }else{
+    	console.log("non sposto" + moving_piece)
+    }
+}
+
+move = function(moving_piece, casella){
+	console.log("sposto "+moving_piece+ " in "+casella);
+	var piece = moving_piece.split(";")[0]
+	var from = moving_piece.split(";")[1]
+	var _to = casella;
+	var elem_from = document.getElementById(from);
+	enlighted=""
+	elem_from.removeChild(elem_from.children[elem_from.childElementCount-1])
+	elem_from.removeChild(elem_from.children[elem_from.childElementCount-1])
+	var elem_to = document.getElementById(_to);
+	var lst = new Object();
+	lst[_to] = piece+".svg";
+	reset();
+	drawPieces(document.getElementById("chessboard"),lst);
+	moving_pieces[piece] = _to;
+	//dist(from,_to);
+	//number_of_moves+=1;
+	number_of_moves+=dist(from,_to);
+	$("#number_of_moves").html(number_of_moves);
+	if(_to == end_position){
+		goal_reached()
+	}
+}
+
+dist = function(from, to){
+	var x1 = from[1]
+	var x2 = to[1]
+	var y1 = from.charCodeAt(0)-65+1
+	var y2 = to.charCodeAt(0)-65+1
+	var d = 0;
+	if(x1==x2){
+		d = Math.abs(y2-y1);
+		console.log("Distanza: "+(y2-y1))
+	}else{
+		d = Math.abs(x2-x1);
+		console.log("Distanza: "+(x2-x1))
+	}
+	return d;
+}
+
+enlight = function(casella){
+	console.log("Enlighting "+casella)
+	if(enlighted == casella){
+		return;
+	}
+	enlighted = casella;
+	var elem = document.getElementById(casella);
+	if( elem.childElementCount > 1){
+		elem.removeChild(elem.children[elem.childElementCount-1]);
+	}else{
+		var div = document.createElement("div");
+		div.style="width: 100%; height: 100%; background: yellow; z-index: 1;";
+		elem.appendChild(div);
+	}
+}
+enlight(end_position);
+
 handleMouseDown_image = function(e){
 	console.log(e.currentTarget);
 	var elem = e.currentTarget;
 	var casella = elem.getAttribute("data-casella");
 	var type = elem.getAttribute("data-type")
 	console.log("Casella e tipo: " + casella+"-"+type)
+	if(enlighted == casella){
+		return;
+	}
 	var can_move = false;
 	for(var i in moving_pieces){
 		if(i==type && moving_pieces[i]==casella){
 			can_move = true;
+			moving_piece = i+";"+moving_pieces[i];
 			break;
 		}
 	}
 	console.log("Can Move? "+can_move)
 	if(can_move){
 		calculatePossibleMoves(casella, type);
+		enlight(casella);
 	}
 }
 
@@ -146,12 +217,14 @@ calculatePossibleMoves = function(casella, type){
 		break;
 	}
 	console.log(possible_moves);
-	for(var i in possible_moves){
-		var elem = document.getElementById(possible_moves[i]);
-		caselle_colorate.push(possible_moves[i]);
-    	var div = document.createElement("div");
-    	div.style="background: blue; border-radius: 50%; position: absolute; left: 10%; top: 10%; width: 80%; height: 80%; z-index: 1";
-    	elem.appendChild(div);
+	if(show_possible_moves){
+		for(var i in possible_moves){
+			var elem = document.getElementById(possible_moves[i]);
+			caselle_colorate.push(possible_moves[i]);
+    		var div = document.createElement("div");
+    		div.style="background: blue; border-radius: 50%; position: absolute; left: 20%; top: 20%; width: 60%; height: 60%; z-index: 1";
+    		elem.appendChild(div);
+		}
 	}
 }
 
@@ -164,18 +237,46 @@ reset = function(){
 	caselle_colorate = new Array();
 }
 
+goal_reached = function(){
+	myconfirm("Vuoi riprovare?","Hai totalizzato "+(punti-number_of_moves)+" punti.","sì","no",
+		function() {
+        	$( this ).dialog( "close" );
+			$("#chessboard").html("")[0].style=""
+			drawChessboard(document.getElementById("chessboard"));
+			drawPieces(document.getElementById("chessboard"),piece_position);
+			moving_pieces = {
+				"Rook" : "D5"
+			}
+			enlight(end_position);
+			number_of_moves = 0;
+			$("#number_of_moves").html(number_of_moves);
+			$(this).remove();
+      	},function() {
+      		$(this).dialog("close");
+      		sec = 0;
+      		$(this).remove();
+      	}, false);
+	/*var yesno = */
+	/*if(yesno){
+		punti+=number_of_moves;
+		$("#chessboard").html("")[0].style=""
+		drawChessboard(document.getElementById("chessboard"));
+		drawPieces(document.getElementById("chessboard"),piece_position);
+		moving_pieces = {
+			"Rook" : "D5"
+		}
+		enlight(end_position);
+		number_of_moves = 0;
+		$("#number_of_moves").html(number_of_moves);
+	}else{
+		sec = 0;
+	}*/
+}
+
 procedi = function(btn){
 	btn.disabled = true;
-	console.log(caselle_colorate);
-	console.log(caselle_corrette);
-	for(var i in caselle_colorate){
-		if(caselle_corrette.includes(caselle_colorate[i])){
-			punti+=1;
-		}else{
-			punti-=1;
-		}
-	}
-	alert("Punti: "+punti)
+	punti-=number_of_moves;
+	myalert("Punti","Il tuo punteggio è "+punti+".");
 	sec = 0;
 }
 

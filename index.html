@@ -13,7 +13,8 @@
 		padding: 0;
 	}
 	body{
-		background: url('static/img/background.jpg') center center;
+		/*background: url('static/img/background.jpg') center center;*/
+		background-color: #33261D;
 	}
 	div#background{
 		background: rgba(0,0,0,0.5);
@@ -29,25 +30,64 @@
 		font-weight: bold;
 		margin: 10px 0;
 	}
+	.ui-dialog-titlebar{
+		background: #e4572e !important;
+	}
+	.ui-dialog{
+		background: #ff8e72 !important;
+	}
+	.ui-dialog-buttonset{
+		width: 100%;
+	}
+	.ui-dialog-buttonpane{
+		background: #ff8e72 !important;
+	}
+	button[type='button']{
+		background: #f08700;
+		color: white;
+		float: right;
+	}
+	button[type='button']:first-child{
+		float: left;
+	}
+	.no-close .ui-dialog-titlebar-close {display: none }
+	.risposta{
+		padding: 5px;
+		border-radius: 10px;
+		background: orange;
+		color: black;
+	}
+	.risposta.disabled{
+		background: darkgray;
+	}
 	</style>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 	<script src="static/js/maketimer.js"></script>
 	<script src="static/js/drawchessboardnew.js"></script>
+	<script src="static/js/myui.js"></script>
+	<script src="static/js/movePieces.js"></script>
 	<script>
+	var nxt = function(p){
+		fetch("http://127.0.0.1:8000/setpage_"+p).then(res => res.text().then(txt=>console.log(txt)))
+	}
+	var upt = function(){fetch("http://127.0.0.1:8000/updateQuest")}
+	var changepath = function(p){fetch("http://127.0.0.1:8000/setpath_"+p)}
 	var page = 0;
-	var timeinv = setInterval(function(){$.ajax({url: "page", success: function(res_page){if(page != res_page["page"]){page = res_page["page"];$.ajax({url: "page_"+page, success: function(result){$("#content_page").html(result)}})}}})},3000);
+	var timeinv = setInterval(function(){$.ajax({url: "page", success: function(res_page){if(page != res_page["page"]){page = res_page["page"];$.ajax({url: "page_"+page, success: function(result){clearInterval(window.myt);$("#content_page").html(result)}})}}})},3000);
 	</script>
 </head>
 <body>
-	<div id="header" style="width: 100%; background: #aaaaaaff; display: inline-block; padding: 5px 10px;">
-		<div style="float: left" id="name">Pluto</div>
-		<div style="float: right; font-family: Digital; letter-spacing: 3px; color: yellow" id="points">1234567890</div>
+	<div id="header" style="width: 100%; background: #33261D; display: inline-block; padding: 5px 10px;">
+		<div style="float: left; color: #E07A5F" id="name">Pluto</div>
+		<div style="float: right; font-family: Digital; letter-spacing: 3px; color: #E4572E" id="points">0</div>
 	</div>
 	<div id="background">
 		<div id="content_page" style="position: relative;text-align: center; width: 100%;">
-			<div class="b">Gioco 1</div>
-			<div>Indovinate chi è questo signore</div>
-			<img src="static/img/main-image.jpg" style="width: 100%"/>
+			<div style="height: 100%;">
+				<h1 style="margin-top: 40%">Ascolta l'animatore</h1>
+			</div>
 		</div>
 	</div>
 	<div style="display: none">

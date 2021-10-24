@@ -3,7 +3,7 @@
 <script type="text/javascript">
 maketimer(document.getElementsByClassName("timer")[0])
 </script>
-<canvas id="chessboard"></canvas>
+<div id="chessboard"></div>
 <script type="text/javascript">
 drawChessboard(document.getElementById("chessboard"))
 piece_position={"A8": "King.svg"}

@@ -1,0 +1,47 @@
+('domanda','Di quante caselle può al massimo spostarsi la torre?',3),
+('punteggio','100',3),
+('risposta','3',3),
+('risposta','5',3),
+('risposta','8',3),
+('corretta','8',3);
+
+
+
+
+quindi puoi scrivere:
+
+('domanda','Tua domanda da inventare?',4),
+('risposta','Risposta 1',4),
+('risposta','Risposta 2',4),
+('risposta','Risposta 3',4),
+('risposta','Risposta 4',4),
+('corretta','Risposta 1',4),
+('punteggio','120',4);
+
+Tutto deve essere incluso fra virgolette, eccetto il numerello ultimo della parentesi.
+Questo numero è il codice identificativo della domanda, in questo esempio abbiamo costruito la domanda numero 4: ricordati di andare in avanti in modo progressivo! Puoi partire direttamente dal numero 4 (incluso) e andare avanti per quanti quiz vogliamo creare. Questo perché 3 domande le ho già fatte, ma non so se ti possono piacere, le scrivo qui di seguito.
+Le risposte possibili al massimo possono essere 4, non di più.
+
+
+
+('domanda','Quanti lati ha un pentagono?',1),
+('risposta','Uno',1),
+('risposta','Tre',1),
+('risposta','Cinque',1),
+('risposta','Sette',1),
+('punteggio','80',1),
+('corretta','Cinque',1),
+
+('domanda','La somma degli angoli interni di un rettangolo è 270 gradi',2),
+('risposta','Vero',2),
+('risposta','Falso',2);
+('punteggio','100',2),
+('corretta','Falso',2),
+
+('domanda','Di quante caselle può al massimo spostarsi la torre?',3),
+('risposta','3',3),
+('risposta','5',3),
+('risposta','8',3),
+('risposta','11',3),
+('punteggio','100',3),
+('corretta','8',3);

@@ -1,0 +1,23 @@
+<div style="margin-top: 20px" id="chessboard"></div>
+<script type="text/javascript">
+
+drawChessboard(document.getElementById("chessboard"))
+
+piece_position={
+	D5: "Bishop.svg",
+}
+
+drawPieces(document.getElementById("chessboard"),piece_position)
+
+var cas = [A2,A8,B3,B7,C4,C6,E4,E6,F3,F7,G2,G8,H1]
+
+for(var i in cas){
+	var elem = $("#"+cas[i])[0]
+	var div = document.createElement("div");
+	div.style="background: red; border-radius: 50%; position: absolute; left: 10%; top: 10%; width: 80%; height: 80%; z-index: 1";
+	elem.appendChild(div);
+}
+handleMouseDown_casella = function(){}
+handleMouseDown_image = function(){}
+
+</script>

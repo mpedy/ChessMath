@@ -1,0 +1,60 @@
+<div id="quiz">
+	<span id="title"></span>
+	<span id="question"></span>
+	<img src="static/img/torre1.png"/>
+	<ul id="answers">
+	</ul>
+</div>
+<style>
+	
+</style>
+<script>
+var can_answer = true
+stopTimerFunction = function(pressed=false){
+	if(!pressed){
+		myalert("Tempo esaurito!","E' scaduto il tempo!");
+	}
+	can_answer = false
+	$(".risposta").toggleClass("disabled")
+}
+$.ajax({url: "getquiz", success: function(quiz){
+	//$("#title").html("<span>Domanda da "+quiz["punteggio"]+" punti</span><br></br>");
+	$("#title").html("<div class=\"timer\" data-second=\""+quiz['tempo']+"\" data-height=\"20px\" data-width=\"80%\"></div><br></br>")
+	maketimer($(".timer")[0])
+	$("#question").text(quiz["domanda"]);
+	var list = $("#answers").html("");
+	list.css({"columns":"2","-webkit-columns": "2", "-moz-columns": "2", "list-style":"none"});
+	for(var i =0; i<quiz["risposta"].length; i++){
+		var elem = document.createElement("li");
+		if(quiz["risposta"][i] == quiz["corretta"]){
+			elem.className = "corretta";
+		}
+		elem.style="padding: 10px";
+		elem.innerHTML = "<div class='risposta'>"+quiz["risposta"][i]+"</div>";
+		$(elem).click(function(){
+			if(can_answer==false){
+				return
+			}
+			if($(this).attr("class") != undefined && $(this).attr("class").indexOf("corretta")>=0){
+				//myalert("risposta corretta!","Hai risposto giusto!");
+				myconfirm("risposta esatta!", "Hai guadagnato "+quiz['punteggio']+" punti","Ok","Cancel",
+					function(){
+						$(this).dialog("close");
+						updatePoints(parseInt(quiz['punteggio']))
+					},
+					function(){
+						$(this).dialog("close");
+						$("#points").text(parseInt($("#points").text()) + parseInt(quiz['punteggio']))
+					})
+				clearInterval(window.myt);
+				stopTimerFunction(true);
+			}else{
+				myalert("risposta sbagliata!","Hai risposto sbagliato!");
+				clearInterval(window.myt);
+				stopTimerFunction(true);
+			}
+		})
+		list.append(elem);
+	}
+}});
+</script>
