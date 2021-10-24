@@ -68,9 +68,16 @@
 	<script src="static/js/drawchessboardnew.js"></script>
 	<script src="static/js/myui.js"></script>
 	<script src="static/js/movePieces.js"></script>
+	<script src="//console.re/connector.js" data-channel="chessmath" id="consolerescript"></script>
 	<script>
 	var nxt = function(p){
 		fetch("http://127.0.0.1:8000/setpage_"+p).then(res => res.text().then(txt=>console.log(txt)))
+	}
+	console.re.log("First init");
+	var log = console.log;
+	console.log = function(){
+		log(arguments)
+		console.re.log(arguments)
 	}
 	var upt = function(){fetch("http://127.0.0.1:8000/updateQuest")}
 	var changepath = function(p){fetch("http://127.0.0.1:8000/setpath_"+p)}
