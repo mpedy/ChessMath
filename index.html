@@ -82,6 +82,7 @@
 				{
 					url: "page",
 					success: function(res_page){
+						console.log(res_page)
 						if(page != res_page["page"]){
 							page = res_page["page"];
 							$.ajax(
