@@ -1,2 +1,1 @@
-web: uvicorn main:app --workers 4 --port=${PORT:-5000}
-
+web: uvicorn src.main:app --host=0.0.0.0 --port=${PORT:-5000}
