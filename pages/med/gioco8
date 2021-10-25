@@ -175,7 +175,8 @@ reset = function(){
 }
 
 goal_reached = function(){
-	myconfirm_2b("Vuoi riprovare?","Hai totalizzato "+(punti-number_of_moves)+" punti.","sì","no",
+	punti = getPoints();
+	myconfirm_2b("Obiettivo raggiunto","Hai percorso "+number_of_moves+" caselle. Vuoi riprovare?","sì","no",
 		function() {
         	$( this ).dialog( "close" );
 			$("#chessboard").html("")[0].style=""
@@ -215,6 +216,7 @@ goal_reached = function(){
 }
 
 procedi = function(){
+	punti = getPoints();
 	punti-=number_of_moves;
 	myalert("Punti","Il tuo punteggio è "+punti+".");
 	sec = 0;

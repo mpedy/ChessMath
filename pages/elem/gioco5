@@ -1,4 +1,4 @@
-<span id="title" style="padding: 10px">Segna tutte le caselle a distanza 1 dalla casella in cui si trova la torre</span>
+<span id="title" style="padding: 10px; display: block;">Segna tutte le caselle a distanza 1 dalla casella in cui si trova la torre</span>
 <div id="chessboard"></div>
 <div>
 	<div class="timer" data-second="60" data-height="20px" data-width="80%"></div>
@@ -65,7 +65,7 @@ procedi = function(btn){
 			points-=1;
 		}
 	}
-	myalert("","Hai totalizzato "+points+" punti.");
+	myalert("Corretto!","Hai guadagnato "+points+" punti.");
 	updatePoints(points);
 	punti = getPoints();
 	clearInterval(window.myt)

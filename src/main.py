@@ -50,16 +50,17 @@ allpages = {
         "pages/elem/img_gioco5",
         "pages/elem/gioco6",
         "pages/elem/img_gioco6",
+        LISTEN,## Alfiere
         "pages/elem/gioco7",
         "pages/elem/img_gioco7",
         "pages/elem/quiz9",
         LISTEN,
-        "pages/elem/quiz10",
+        "pages/elem/quiz10", ## da cambiare l'immagine!
         "pages/elem/quiz11",
         "pages/elem/quiz12",
         "pages/elem/quiz13",
         LISTEN,
-        "pages/elem/gioco8",
+        "pages/elem/gioco8", ## da cambiare i punti
         "pages/elem/gioco9",
         LISTEN,
         "pages/elem/quiz14",
@@ -85,7 +86,7 @@ allpages = {
         "pages/med/quiz5",
         "pages/med/quiz6",
         "pages/med/img_1",
-        "pages/med/gioco2",
+        "pages/med/gioco2", ##da sistemare tutte le dialog (popup, sia quiz sia giochi)
         "pages/med/gioco4",
         "pages/med/quiz7",
         LISTEN,
@@ -93,6 +94,7 @@ allpages = {
         "pages/med/img_gioco5",
         "pages/med/gioco6",
         "pages/med/img_gioco6",
+        LISTEN, ## Alfiere
         "pages/med/gioco7",
         "pages/med/img_gioco7",
         "pages/med/gioco8",
@@ -107,13 +109,10 @@ allpages = {
         "pages/med/gioco_spirit",
         "pages/med/img_spirit",
         "pages/med/quiz12",
-        "pages/med/gioco12b", # Casella da raggiungere con il cavallo
+        "pages/med/gioco12b",
+        "pages/med/gioco13b",
         LISTEN,
         "pages/med/quiz13",
-        "pages/med/gioco10",
-        "pages/med/img_gioco10",
-        "pages/med/gioco11",
-        "pages/med/img_gioco11",
         "pages/med/quiz14",
         LISTEN,
         "pages/med/quiz16",

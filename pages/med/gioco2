@@ -165,6 +165,7 @@ reset = function(){
 }
 
 goal_reached = function(){
+	punti = getPoints();
 	myconfirm_2b("Obiettivo raggiunto","Hai percorso "+number_of_moves+" caselle. Vuoi riprovare?","sì","no",
 		function() {
         	$( this ).dialog( "close" );
@@ -205,6 +206,7 @@ goal_reached = function(){
 }
 
 procedi = function(){
+	punti = getPoints();
 	punti-=number_of_moves;
 	myalert("Punti","Il tuo punteggio è "+punti+".");
 	sec = 0;

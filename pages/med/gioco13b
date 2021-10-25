@@ -1,7 +1,7 @@
-<div id="title" style="padding: 10px; display: block;">Muovi la torre verso il punto evidenziato percorrendo il minor numero di caselle possibile</div>
+<div id="title">Muovi il cavallo verso la casella evidenziata nel minor numero di mosse</div>
 <div id="chessboard"></div>
 <div>
-	<div style="background: black;">Caselle: <span id="number_of_moves">0</span></div>
+	<div style="background: black;">Mosse: <span id="number_of_moves">0</span></div>
 	<div class="timer" data-second="120" data-height="20px" data-width="80%"></div>
 	<script type="text/javascript">
 	maketimer(document.getElementsByClassName("timer")[0]);
@@ -18,7 +18,7 @@
 drawChessboard(document.getElementById("chessboard"))
 
 piece_position={
-	E2: "Rook.svg",
+	A2: "Knight.svg",
 }
 
 drawPieces(document.getElementById("chessboard"),piece_position)
@@ -28,14 +28,14 @@ var caselle_colorate = new Array();
 var enlighted = "";
 
 var moving_pieces = {
-	"Rook" : E2
+	"Knight" : A2
 }
 var moving_piece = "";
 var possible_moves = new Array();
 var obstacles = ["rock-golem-1", "rock-golem","obstacle"]
-var end_position="A8";
+var end_position=D6;
 var number_of_moves = 0;
-var show_possible_moves = true;
+var show_possible_moves = false;
 
 handleMouseDown_casella = function(e){
     var elem = e.currentTarget;
@@ -77,6 +77,7 @@ move = function(moving_piece, casella){
 }
 
 dist = function(from, to){
+	/*
 	var x1 = from[1]
 	var x2 = to[1]
 	var y1 = from.charCodeAt(0)-65+1
@@ -89,7 +90,8 @@ dist = function(from, to){
 		d = Math.abs(x2-x1);
 		console.log("Distanza: "+(x2-x1))
 	}
-	return d;
+	return d;*/
+	return 1;
 }
 
 enlight = function(casella, color="yellow"){
@@ -136,10 +138,11 @@ handleMouseDown_image = function(e){
 calculatePossibleMoves = function(casella, type){
 	possible_moves = new Array();
 	switch(type){
-		case "Rook":{
+		case "Knight":{
 			var x = casella.charCodeAt(0)-65+1;
 			var y = parseInt(casella[1]);
-			possible_moves = moveRook(casella, x ,y);
+			console.log("Partenza: "+x+" - "+y)
+			possible_moves = moveKnight(casella, x ,y);
 		}
 		break;
 	}
@@ -165,6 +168,7 @@ reset = function(){
 }
 
 goal_reached = function(){
+	punti = getPoints();
 	myconfirm_2b("Obiettivo raggiunto","Hai percorso "+number_of_moves+" caselle. Vuoi riprovare?","sì","no",
 		function() {
         	$( this ).dialog( "close" );
@@ -172,7 +176,7 @@ goal_reached = function(){
 			drawChessboard(document.getElementById("chessboard"));
 			drawPieces(document.getElementById("chessboard"),piece_position);
 			moving_pieces = {
-				"Rook" : E2
+				"Knight" : A2
 			}
 			enlight(end_position);
 			number_of_moves = 0;
@@ -183,11 +187,25 @@ goal_reached = function(){
       		clearInterval(window.myt);
       		sec = 0;
       		$(this).remove();
-      		punti = getPoints();
       		punti-=number_of_moves;
       		myalert("Punti","Il tuo punteggio è di "+punti+" punti!");
       		updatePoints(-number_of_moves);
       	}, false);
+	/*var yesno = */
+	/*if(yesno){
+		punti+=number_of_moves;
+		$("#chessboard").html("")[0].style=""
+		drawChessboard(document.getElementById("chessboard"));
+		drawPieces(document.getElementById("chessboard"),piece_position);
+		moving_pieces = {
+			"Rook" : "D5"
+		}
+		enlight(end_position);
+		number_of_moves = 0;
+		$("#number_of_moves").html(number_of_moves);
+	}else{
+		sec = 0;
+	}*/
 }
 
 procedi = function(){

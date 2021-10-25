@@ -1,7 +1,6 @@
 <div id="quiz">
 	<span id="title"></span>
 	<span id="question"></span>
-	<br></br>
 	<img src="static/img/torre2.png"/>
 	<ul id="answers">
 	</ul>
@@ -20,7 +19,7 @@ stopTimerFunction = function(pressed=false){
 }
 $.ajax({url: "getquiz", success: function(quiz){
 	//$("#title").html("<span>Domanda da "+quiz["punteggio"]+" punti</span><br></br>");
-	$("#title").html("<div class=\"timer\" data-second=\""+quiz['tempo']+"\" data-height=\"20px\" data-width=\"80%\"></div><br></br>")
+	$("#title").html("<div class=\"timer\" data-second=\""+quiz['tempo']+"\" data-height=\"20px\" data-width=\"80%\"></div>")
 	maketimer($(".timer")[0])
 	$("#question").text(quiz["domanda"]);
 	var list = $("#answers").html("");
@@ -38,10 +37,10 @@ $.ajax({url: "getquiz", success: function(quiz){
 			}
 			if($(this).attr("class") != undefined && $(this).attr("class").indexOf("corretta")>=0){
 				//myalert("risposta corretta!","Hai risposto giusto!");
-				myconfirm("risposta esatta!", "Hai guadagnato "+quiz['punteggio']+" punti","Ok","Cancel",
+				myconfirm("risposta esatta!", "Hai guadagnato "+(parseInt(quiz['punteggio'])+sec)+" punti","Ok","Cancel",
 					function(){
 						$(this).dialog("close");
-						$("#points").text(parseInt($("#points").text()) + parseInt(quiz['punteggio']))
+						updatePoints(parseInt(quiz['punteggio'])+sec)
 					},
 					function(){
 						$(this).dialog("close");

@@ -60,6 +60,11 @@
 	.risposta.disabled{
 		background: darkgray;
 	}
+
+	span#question {
+    	padding: 20px 15px;
+    	display: block;
+	}
 	</style>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 	<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
@@ -70,8 +75,18 @@
 	<script src="static/js/movePieces.js"></script>
 	<script src="//console.re/connector.js" data-channel="chessmath" id="consolerescript"></script>
 	<script>
+	/*
+	* DA SCOMMENTARE
+	window.onbeforeunload = function() { return "Your work will be lost."; };
+		document.addEventListener("beforeunload",function(e){
+			alert("Stai uscendo dal gioco! Perderai tutti i dati non salvati");
+		});
+	**/
+	/**
+	* DA COMMENTARE!!
+	**/
 	var nxt = function(host, p){
-		fetch(host+"/setpage_"+p).then(res => res.text().then(txt=>console.log(txt)))
+		fetch(host+"/setpage_"+p+"_123111321").then(res => res.text().then(txt=>console.log(txt)))
 	}
 	var upt = function(host){fetch(host+"/updateQuest")}
 	var changepath = function(host,p){fetch(host+"/setpath_"+p)}
