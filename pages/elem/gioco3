@@ -193,6 +193,7 @@ goal_reached = function(){
       		clearInterval(window.myt);
       		sec = 0;
       		$(this).remove();
+      		punti = getPoints();
       		punti-=number_of_moves;
       		myalert("Punti","Il tuo punteggio è di "+punti+" punti!");
       		updatePoints(-number_of_moves);
@@ -215,6 +216,7 @@ goal_reached = function(){
 }
 
 procedi = function(){
+	punti = getPoints();
 	punti-=number_of_moves;
 	myalert("Punti","Il tuo punteggio è "+punti+".");
 	sec = 0;

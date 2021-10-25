@@ -58,3 +58,7 @@ myalert = function(title, text){
 updatePoints = function(punti){
 	$("#points").text(parseInt($("#points").text()) + punti)
 }
+
+getPoints = function(punti){
+	return parseInt($("#points").text());
+}
