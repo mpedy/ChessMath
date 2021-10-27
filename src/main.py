@@ -33,7 +33,9 @@ allpages = {
         "pages/elem/quiz2",
         LISTEN,
         "pages/elem/quiz3",
-        LISTEN,
+        "pages/elem/scacchiera_vuota",
+        "pages/elem/battaglia_navale",
+        "pages/ascolta_torre",
         "pages/elem/gioco1",
         "pages/elem/img_gioco1",
         "pages/elem/quiz4",
@@ -50,17 +52,17 @@ allpages = {
         "pages/elem/img_gioco5",
         "pages/elem/gioco6",
         "pages/elem/img_gioco6",
-        LISTEN,## Alfiere
+        "pages/ascolta_alfiere",## Alfiere
         "pages/elem/gioco7",
         "pages/elem/img_gioco7",
         "pages/elem/quiz9",
         LISTEN,
-        "pages/elem/quiz10", ## da cambiare l'immagine!
+        "pages/elem/quiz10",
         "pages/elem/quiz11",
         "pages/elem/quiz12",
         "pages/elem/quiz13",
         LISTEN,
-        "pages/elem/gioco8", ## da cambiare i punti
+        "pages/elem/gioco8",
         "pages/elem/gioco9",
         LISTEN,
         "pages/elem/quiz14",
@@ -78,7 +80,7 @@ allpages = {
         "pages/med/quiz1",
         LISTEN,
         "pages/med/quiz2",
-        LISTEN,
+        "pages/ascolta_torre",
         "pages/med/gioco1",
         "pages/med/img_gioco1",
         "pages/med/quiz3",
@@ -94,7 +96,7 @@ allpages = {
         "pages/med/img_gioco5",
         "pages/med/gioco6",
         "pages/med/img_gioco6",
-        LISTEN, ## Alfiere
+        "pages/ascolta_alfiere", ## Alfiere
         "pages/med/gioco7",
         "pages/med/img_gioco7",
         "pages/med/gioco8",
@@ -104,7 +106,7 @@ allpages = {
         "pages/med/quiz11",
         "pages/med/gioco11b",
         "pages/med/img_gioco11b",
-        LISTEN,# CAVALLO
+        "pages/ascolta_cavallo",# CAVALLO
         "pages/med/img_cavallo",
         "pages/med/gioco_spirit",
         "pages/med/img_spirit",
@@ -123,7 +125,10 @@ allpages = {
 
 MyQuiz = []
 
-async def prova(request):
+async def welcome(request):
+    return HTMLResponse(open('pages/welcome',"r").read())
+
+async def mainRoute(request):
     return HTMLResponse(open('index.html',"r").read())
 
 async def destra(request):
@@ -256,7 +261,8 @@ async def startup_task():
 
 
 routes=[
-    Route("/", prova),
+    Route("/", welcome),
+    Route("/game",mainRoute),
     Route("/right",destra),
     Route("/left",sinistra),
     Route("/page_{page:int}",gotoPage),

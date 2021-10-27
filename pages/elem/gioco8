@@ -45,7 +45,7 @@ var possible_moves = new Array();
 var obstacles = ["rock-golem-1", "rock-golem","obstacle"]
 var end_position=H7;
 var number_of_moves = 0;
-var show_possible_moves = false;
+var show_possible_moves = true;
 
 handleMouseDown_casella = function(e){
     var elem = e.currentTarget;
@@ -176,7 +176,7 @@ reset = function(){
 
 goal_reached = function(){
 	punti = getPoints();
-	myconfirm_2b("Vuoi riprovare?","Hai totalizzato "+(punti-number_of_moves)+" punti.","sì","no",
+	myconfirm_2b("Obiettivo raggiunto","Hai percorso "+number_of_moves+" caselle. Vuoi riprovare?","sì","no",
 		function() {
         	$( this ).dialog( "close" );
 			$("#chessboard").html("")[0].style=""

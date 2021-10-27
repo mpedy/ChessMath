@@ -1,0 +1,7 @@
+<div style="padding: 20px 10px; display: block;">
+	La Scacchiera
+</div>
+<div id="chessboard"></div>
+<script>
+drawChessboard(document.getElementById("chessboard"));
+</script>

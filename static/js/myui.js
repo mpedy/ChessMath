@@ -1,6 +1,7 @@
 myconfirm = function(title, text, yes_btn, no_btn, f1, f2, closable=true){
 	var div = document.createElement("div");
 	div.setAttribute("title", title);
+	div.id = "mydialog_opened"
 	div.innerHTML="<span>"+text+"</span>";
 	document.body.appendChild(div);
 	$(div).dialog({
@@ -22,6 +23,7 @@ myconfirm = function(title, text, yes_btn, no_btn, f1, f2, closable=true){
 myconfirm_2b = function(title, text, yes_btn, no_btn, f1, f2, closable=true){
 	var div = document.createElement("div");
 	div.setAttribute("title", title);
+	div.id = "mydialog_opened"
 	div.innerHTML="<span>"+text+"</span>";
 	document.body.appendChild(div);
 	$(div).dialog({
@@ -43,6 +45,7 @@ myconfirm_2b = function(title, text, yes_btn, no_btn, f1, f2, closable=true){
 myalert = function(title, text){
 	var div = document.createElement("div");
 	div.setAttribute("title", title);
+	div.id = "mydialog_opened"
 	div.innerHTML="<span>"+text+"</span>";
 	document.body.appendChild(div);
 	$(div).dialog({
@@ -59,6 +62,6 @@ updatePoints = function(punti){
 	$("#points").text(parseInt($("#points").text()) + punti)
 }
 
-getPoints = function(punti){
+getPoints = function(){
 	return parseInt($("#points").text());
 }

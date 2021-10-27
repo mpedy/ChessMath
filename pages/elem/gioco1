@@ -65,7 +65,7 @@ procedi = function(btn){
 			points-=1;
 		}
 	}
-	myalert("Corretto!","Hai guadaganto "+points+" punti.");
+	myalert("Risultato","Hai guadaganto "+points+" punti.");
 	updatePoints(points);
 	punti = getPoints();
 	clearInterval(window.myt);

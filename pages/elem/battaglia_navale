@@ -1,4 +1,4 @@
-<span id="title" style="padding: 10px; display: block;">Segna tutte le caselle che può raggiungere l'alfiere con una sola mossa</span>
+<span id="title" style="padding: 10px; display: block;">Seleziona le caselle A3, E8, F4, B5</span>
 <div id="chessboard"></div>
 <div>
 	<div class="timer" data-second="60" data-height="20px" data-width="80%"></div>
@@ -24,14 +24,8 @@
 
 drawChessboard(document.getElementById("chessboard"))
 
-piece_position={
-	D5: "Bishop.svg",
-}
-
-drawPieces(document.getElementById("chessboard"),piece_position)
-
 var caselle_colorate = new Array();
-var caselle_corrette = [A2,A8,B3,B7,C4,C6,E4,E6,F3,F7,G2,G8,H1]
+var caselle_corrette = [A3, E8, F4, B5]
 
 handleMouseDown_casella = function(e){
     var elem = e.currentTarget;
@@ -65,10 +59,10 @@ procedi = function(btn){
 			points-=1;
 		}
 	}
-	myalert("Risultato","Hai guadaganto "+points+" punti.");
+	myalert("Risultato","Hai guadagnato "+points+" punti.");
 	updatePoints(points);
 	punti = getPoints();
-	clearInterval(window.myt);
+	clearInterval(window.myt)
 	sec = 0;
 	document.getElementById("gobtn").disabled = true;
 	document.getElementById("reset").disabled = true;

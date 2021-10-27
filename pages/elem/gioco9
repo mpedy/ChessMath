@@ -18,16 +18,14 @@
 drawChessboard(document.getElementById("chessboard"))
 
 piece_position={
-	A2: "Bishop.svg",
+	A4: "Bishop.svg",
+	A2: "obstacle.svg",
+	D8: "obstacle.svg",
+	D6: "obstacle.svg",
 	D4: "obstacle.svg",
-	E5: "obstacle.svg",
-	F6: "obstacle.svg",
-	G7: "obstacle.svg",
-	H3: "obstacle.svg",
-	B7: "obstacle.svg",
-	A8: "obstacle.svg",
-	C6: "obstacle.svg",
-	G3: "obstacle.svg"
+	D2: "obstacle.svg",
+	F5: "obstacle.svg",
+	F7: "obstacle.svg",
 }
 
 drawPieces(document.getElementById("chessboard"),piece_position)
@@ -38,7 +36,7 @@ var caselle_corrette = [A5,B5,C5,E5,F5,G5,H5,D4,D3,D2,D1]
 var enlighted = "";
 
 var moving_pieces = {
-	"Bishop" : A2
+	"Bishop" : A4
 }
 var moving_piece = "";
 var possible_moves = new Array();
@@ -176,14 +174,14 @@ reset = function(){
 
 goal_reached = function(){
 	punti = getPoints();
-	myconfirm_2b("Vuoi riprovare?","Hai totalizzato "+(punti-number_of_moves)+" punti.","sì","no",
+	myconfirm_2b("Obiettivo raggiunto","Hai percorso "+number_of_moves+" caselle. Vuoi riprovare?","sì","no",
 		function() {
         	$( this ).dialog( "close" );
 			$("#chessboard").html("")[0].style=""
 			drawChessboard(document.getElementById("chessboard"));
 			drawPieces(document.getElementById("chessboard"),piece_position);
 			moving_pieces = {
-				"Bishop" : A2
+				"Bishop" : A4
 			}
 			enlight(end_position);
 			number_of_moves = 0;

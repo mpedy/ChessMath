@@ -85,11 +85,11 @@
 	/**
 	* DA COMMENTARE!!
 	**/
-	var nxt = function(host, p){
-		fetch(host+"/setpage_"+p+"_123111321").then(res => res.text().then(txt=>console.log(txt)))
+	var nxt = function(p){
+		fetch(window.location.origin+"/setpage_"+p+"_123111321").then(res => res.text().then(txt=>console.log(txt)))
 	}
-	var upt = function(host){fetch(host+"/updateQuest")}
-	var changepath = function(host,p){fetch(host+"/setpath_"+p)}
+	var upt = function(){fetch(window.location.origin+"/updateQuest")}
+	var changepath = function(p){fetch(window.location.origin+"/setpath_"+p)}
 	var page = 0;
 	var timeinv = setInterval(
 		function(){
@@ -98,7 +98,6 @@
 					url: "page",
 					async: false,
 					success: function(res_page){
-						console.log(res_page)
 						if(page != res_page["page"]){
 							page = res_page["page"];
 							$.ajax(
@@ -107,6 +106,7 @@
 									async: false,
 									success: function(result){
 										clearInterval(window.myt);
+										$("#mydialog_opened").dialog("close").remove();
 										$("#content_page").html(result)
 									}
 								})
