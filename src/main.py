@@ -2,9 +2,14 @@ from starlette.applications import Starlette
 from starlette.responses import JSONResponse, HTMLResponse, Response
 from starlette.routing import Mount, Route
 from starlette.staticfiles import StaticFiles
+from starlette.templating import Jinja2Templates
 
 import psycopg2
 from Quiz import Quiz
+
+from random import seed, random
+from datetime import datetime
+import hashlib
 
 page = 0
 
@@ -125,24 +130,21 @@ allpages = {
 
 MyQuiz = []
 
+templates = Jinja2Templates(directory="pages")
+
 async def welcome(request):
     return HTMLResponse(open('pages/welcome',"r").read())
 
 async def mainRoute(request):
-    return HTMLResponse(open('index.html',"r").read())
-
-async def destra(request):
-    return HTMLResponse("""<div class="b">Gioco 2</div><div>E questo?</div><img src="static/second-image.jpg" style="height: 100%"/>""")
-
-async def sinistra(request):
-    return HTMLResponse("""<div class="b">Gioco 1</div><div>Indovinate chi è questo signore</div><img src="static/main-image.jpg" style="height: 100%"/>""")
+    uuid = request.path_params["uuid"]
+    if uuid == "Animatore":
+        return templates.TemplateResponse('index.html', {"request":request, "nome": "Animatore"})
+    return templates.TemplateResponse('index.html', {"request":request, "nome": UUID_NAME[uuid]})
 
 async def gotoPage(request):
     global page
     page = request.path_params['page']
-    print("PAGINA: ",page)
     try:
-        #return HTMLResponse(open(pages[page]).read())
         return HTMLResponse(open(allpages[percorso][page]).read())
     except Exception as e:
         return HTMLResponse(f"""<div> Errore: {e} """)
@@ -259,18 +261,84 @@ async def startup_task():
     cursor.close()
     conn.close()
 
+codice = int(random()*100000%990+1)
+
+async def settacodice(request):
+    global codice;
+    print("Settando il codice: prima = ",codice)
+    codice = request.path_params["codice"]
+    print("Codice nuovo: ",codice)
+    return Response("ok")
+
+async def verificacodice(request):
+    cod = request.path_params["codice"]
+    print("Verificando il codice ",cod)
+    if cod == codice:
+        print("Il codice è valido")
+        return Response("ok")
+    else:
+        print("Il codice non è valido")
+        return Response("ko",status_code=401)
+
+async def getanimpage(request):
+    global codice;
+    seed(datetime.now())
+    codice = int(random()*100000%990+1)
+    return templates.TemplateResponse("anim", {"request": request, "codice": codice})
+
+async def getcodice(request):
+    global codice
+    return Response(str(codice))
+
+allNames = []
+UUID_NAME = {}
+
+async def addNome(request):
+    nome_toadd = request.path_params["nome"]
+    k = 0
+    nm = ""
+    try:
+        idx = allNames.index(nome_toadd)
+        if idx >=0:
+            k = 1
+            while idx >=0:
+                idx = allNames.index(nome_toadd+"-"+str(k))
+                k+=1
+    except Exception as e:
+        nm = nome_toadd
+        if k > 0:
+            nm+="-"+str(k)
+        allNames.append(nm)
+    m = hashlib.sha512()
+    m.update(nm.encode())
+    uuid = m.hexdigest()
+    UUID_NAME[uuid] = nm
+    return Response(uuid)
+
+async def reset(request):
+    global UUID_NAME
+    global allNames
+    UUID_NAME = {}
+    allNames = []
+    return Response("ok")
+
+
 
 routes=[
     Route("/", welcome),
-    Route("/game",mainRoute),
-    Route("/right",destra),
-    Route("/left",sinistra),
+    Route("/game_{uuid:str}",mainRoute),
     Route("/page_{page:int}",gotoPage),
     Route("/page", returnPage),
     Route("/setpage_{page:int}_{code:int}",setPage),
     Route("/setpath_{path:int}",setPath),
     Route("/getquiz",getquiz),
     Route("/updateQuest",updateQuest),
+    Route("/verificacodice_{codice:int}", verificacodice),
+    Route("/settacodice_{codice:int}", settacodice),
+    Route("/getcodice", getcodice),
+    Route("/inseriscinome_{nome:str}", addNome),
+    Route("/anim", getanimpage),
+    Route("/reset", reset),
     Mount('/static', app=StaticFiles(directory='static', packages=['bootstrap4']), name="static"),
 ]
 

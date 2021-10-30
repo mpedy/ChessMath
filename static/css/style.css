@@ -1,6 +1,6 @@
 @font-face{
 	font-family: 'Digital';
-	src: url('static/fonts/digital-7.mono.ttf') format('truetype');
+	src: url('../fonts/digital-7.mono.ttf') format('truetype');
 }
 *{
 	box-sizing: border-box;
@@ -20,6 +20,7 @@ div#background{
 	font-size: 20px;
 	display: flex;
 	justify-content: center;
+	padding-top: 40px;
 }
 .b{
 	font-weight: bold;

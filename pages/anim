@@ -1,0 +1,84 @@
+<html>
+<head>
+	<style>
+	*{
+		margin: 0;
+		padding: 0;
+		box-sizing: border-box;
+	}
+	body{
+		background: rgba(15,15,15,0.7);
+	}
+	</style>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+	<script type="text/javascript">
+	var url = window.location.origin
+	var page = 0;
+	var nxt = function(p){
+		if(p<0){
+			return
+		}
+		fetch(url+"/setpage_"+p+"_"+(123111321)).then(res => res.json()).then(
+			function(txt){
+				var current =  txt["current"] == null ? "" : txt["current"].substr(txt["current"].lastIndexOf("/")+1);
+				var prev = txt["prev"] == null ? "" : txt["prev"].substr(txt["prev"].lastIndexOf("/")+1);
+				var next = txt["next"] == null ? "" : txt["next"].substr(txt["next"].lastIndexOf("/")+1);
+				$("#step").text(current)
+				$("#before_step").text(prev)
+				$("#next_step").text(next)
+			})
+	}
+	nxt(0);
+	var upt = function(){fetch(url+"/updateQuest")}
+	var changepath = function(p){fetch(url+"/setpath_"+p)}
+	var getpage = function(){fetch(url+"/page").then(res => res.json()).then(res=> console.log(res["page"]))}
+	setLevel = function(a){
+		changepath(a.value)
+	}
+	newGame = function(){
+		fetch(url+"/reset").then(window.location.reload());
+	}
+	updateCode = function(){
+		fetch(url+"/getcodice").then(res => res.text()).then(res => $("#codice").text(res))
+	}
+	</script>
+</head>
+<body>
+	<div style="float: left; width: 50%;">
+		<iframe style="width: 320px; height: 640px; display: block; margin: auto;/*-ms-zoom: 0.75;-moz-transform: scale(0.75);-moz-transform-origin: top center;-o-transform: scale(0.75);-o-transform-origin: top center;-webkit-transform: scale(0.75);-webkit-transform-origin: top center;*/"></iframe>
+		<script type="text/javascript">
+			document.getElementsByTagName("iframe")[0].src = url+"/game_Animatore";
+		</script>
+	</div>
+	<div style="float: right; width: 50%; height: 100%; margin-top: 15%">
+		<div>
+			<div style="display: flex; justify-content: center; align-items: center; margin-bottom: 30px;">
+				<button style="margin: auto; display: block; padding: 16px; border-radius: 10px;" onclick="newGame()">Nuova partita</button>
+				<button style="margin: auto; display: block; padding: 16px; border-radius: 10px;" onclick="updateCode()">Aggiorna Codice</button>
+				<div style="margin: auto; display: block; margin-top: 20px;">
+					<span style="color: white; margin-right: 10px;">Codice:</span><button style="margin: auto; padding: 16px; border-radius: 10px; font-size: 18px;" id="codice">{{ codice }}</button>
+				</div>
+			</div>
+			<div style="display: flex; justify-content: center; align-items: center; margin-bottom: 30px;">
+				<select style="padding: 10px; border-radius: 10px; font-size: 22px;" onchange="setLevel(this)">
+					<option value=1>Livello A - Elementari</option>
+					<option value=2>Livello B - Medie</option>
+				</select>
+			</div>
+			<div style="display: flex; justify-content: center; align-items: center;">
+				<button style="border-radius: 10px; flex-grow: 1; margin: 0px 20px; padding: 10px;background: lightblue;" onclick="page--; nxt(page);">Torna indietro</button>
+				<button style="border-radius: 10px; flex-grow: 1; margin: 0px 20px; padding: 10px;background: red; display: none;">STOP!</button>
+				<button style="border-radius: 10px; flex-grow: 1; margin: 0px 20px; padding: 10px;background: lightgreen;" onclick="page++; nxt(page);">Vai avanti</button>
+			</div>
+			<div style="display: flex; color: white; margin: auto; justify-content: center; width: 600px;align-items: center; margin-top: 30px;">
+				<span style="padding: 10px; background: white;color: black; border-radius: 10px;">Step attuale:</span>
+				<span style="flex-grow: 1; text-align: center; margin: 0px 12px;" id="before_step"></span>
+				<h2 style="flex-grow: 1; text-align: center; font-size: 40px; margin: 0px 20px;" id="step">STOP</h2>
+				<span style="flex-grow: 1; text-align: center;margin: 0px 12px;" id="next_step"></span>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

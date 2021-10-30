@@ -6,61 +6,30 @@
 	<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
 	<link rel="stylesheet" href="static/css/style.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
-	<script src="static/js/maketimer.js"></script>
-	<script src="static/js/drawchessboardnew.js"></script>
 	<script src="static/js/myui.js"></script>
 	<script src="static/js/movePieces.js"></script>
 	<script>
-	/*
-	* DA SCOMMENTARE
-	*/window.onbeforeunload = function() { return "Your work will be lost."; };
-		document.addEventListener("beforeunload",function(e){
-			alert("Stai uscendo dal gioco! Perderai tutti i dati non salvati");
-		});
-	/**/
-	/**
-	* DA COMMENTARE!!
-	**/
-	var nxt = function(p){
-		fetch(window.location.origin+"/setpage_"+p+"_123111321").then(res => res.text().then(txt=>console.log(txt)))
+	var prova = {{ prova }}
+	sendCodice = function(){
+		var code = $("#codice").text();
+		var nome = $("#nome").text();
 	}
-	var upt = function(){fetch(window.location.origin+"/updateQuest")}
-	var changepath = function(p){fetch(window.location.origin+"/setpath_"+p)}
-	var page = 0;
-	var timeinv = setInterval(
-		function(){
-			$.ajax(
-				{
-					url: "page",
-					async: false,
-					success: function(res_page){
-						if(page != res_page["page"]){
-							page = res_page["page"];
-							$.ajax(
-								{
-									url: "page_"+page,
-									async: false,
-									success: function(result){
-										clearInterval(window.myt);
-										$("#mydialog_opened").dialog("close").remove();
-										$("#content_page").html(result)
-									}
-								})
-						}
-					}
-				})
-		},3000);
 	</script>
 </head>
 <body>
 	<div id="header" style="width: 100%; background: #33261D; display: inline-block; padding: 5px 10px;">
-		<div style="float: left; color: #E07A5F" id="name">Pluto</div>
+		<div style="float: left; color: #E07A5F" id="name"></div>
 		<div style="float: right; font-family: Digital; letter-spacing: 3px; color: #E4572E" id="points">0</div>
 	</div>
 	<div id="background">
 		<div id="content_page" style="position: relative;text-align: center; width: 100%;">
 			<div style="height: 100%;">
-				<h1 style="margin-top: 40%">Ascolta l'animatore</h1>
+				<h1 style="margin-top: 40%">Benvenuto in ChessMath!</h1>
+				<span>Inserisci il codice del Laboratorio</span>
+				<input id="codice"></input>
+				<span>Inserisci il tuo nome</span>
+				<input id="nome"></input>
+				<button onclick="sendCodice()">Clicca qui per iniziare a giocare!</button>
 			</div>
 		</div>
 	</div>

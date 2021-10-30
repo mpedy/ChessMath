@@ -13,7 +13,8 @@
 	<script>
 	/*
 	* DA SCOMMENTARE
-	*/window.onbeforeunload = function() { return "Your work will be lost."; };
+	*/
+	window.onbeforeunload = function() { return "Your work will be lost."; };
 		document.addEventListener("beforeunload",function(e){
 			alert("Stai uscendo dal gioco! Perderai tutti i dati non salvati");
 		});
@@ -53,13 +54,13 @@
 	</script>
 </head>
 <body>
-	<div id="header" style="width: 100%; background: #33261D; display: inline-block; padding: 5px 10px;">
-		<div style="float: left; color: #E07A5F" id="name">Pluto</div>
+	<div id="header" style="position: absolute; width: 100%; background: #33261D; display: inline-block; padding: 5px 10px;">
+		<div style="float: left; color: #E07A5F" id="name">{{ nome }}</div>
 		<div style="float: right; font-family: Digital; letter-spacing: 3px; color: #E4572E" id="points">0</div>
 	</div>
 	<div id="background">
 		<div id="content_page" style="position: relative;text-align: center; width: 100%;">
-			<div style="height: 100%;">
+			<div style="/*height: 100%;*/">
 				<h1 style="margin-top: 40%">Ascolta l'animatore</h1>
 			</div>
 		</div>

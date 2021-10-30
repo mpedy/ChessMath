@@ -1,7 +1,7 @@
 <div id="quiz">
 	<span id="title"></span>
 	<span id="question"></span>
-	<img src="static/img/uno1.png" width="100%"/>
+	<img src="static/img/quiz1.png" width="100%"/>
 	<ul id="answers">
 	</ul>
 </div>
