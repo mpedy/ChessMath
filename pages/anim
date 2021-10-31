@@ -79,12 +79,12 @@
 			document.getElementsByTagName("iframe")[0].src = url+"/game_Animatore";
 		</script>
 	</div>
-	<div style="float: right; width: 50%; height: 100%; margin-top: 15%">
+	<div style="float: right; width: 50%; height: 100%; padding-top: 100px">
 		<div>
-			<div style="display: flex; justify-content: center; align-items: center; margin-bottom: 30px;">
+			<div style="display: flex; justify-content: center; align-items: center; margin-bottom: 100px;">
 				<button style="margin: auto; display: block; padding: 16px; border-radius: 10px;" onclick="newGame()">Nuova partita</button>
 				<button style="margin: auto; display: block; padding: 16px; border-radius: 10px;" onclick="updateCode()">Aggiorna Codice</button>
-				<div style="margin: auto; display: block; margin-top: 20px;">
+				<div style="margin: auto; display: block;">
 					<span style="color: white; margin-right: 10px;">Codice:</span><button style="margin: auto; padding: 16px; border-radius: 10px; font-size: 18px;" id="codice">{{ codice }}</button>
 				</div>
 			</div>
