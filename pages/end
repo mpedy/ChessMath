@@ -1,0 +1,26 @@
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+	<link rel="stylesheet" href="static/css/style.css">
+</head>
+<body>
+	<div id="background">
+		<div id="content_page" style="position: relative;text-align: center; width: 100%;">
+			<div style="/*height: 100%;*/">
+				<h1>Ti sei divertito?</h1>
+				<img src="static/img/CMgrande-crop.png" style="width: 100%;"/>
+				<h2 style="margin-top: 12px">I nostri contatti:</h2>
+					<div style="text-align: left; margin-left: 40px;margin-top: 20px;">
+						<img align="center" src="static/img/Google__G__Logo.svg" style="width: 32px; margin-right: 8px;"><a style="text-decoration: none; color: inherit;" href="mailto:chessmath21@gmail.com">chessmath21@gmail.com</a>
+					</div>
+					<div style="text-align: left; margin-left: 40px;margin-top: 20px;">
+						<img align="center" src="static/img/Instagram_logo_2016.svg" style="width: 32px; margin-right: 8px;"><a target="_blank" style="text-decoration: none; color: inherit;" href="https://www.instagram.com/p/CU13vyYIFN2/">@chessmath21</a>
+					</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

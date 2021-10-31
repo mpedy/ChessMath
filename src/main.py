@@ -1,8 +1,9 @@
 from starlette.applications import Starlette
-from starlette.responses import JSONResponse, HTMLResponse, Response
+from starlette.responses import JSONResponse, HTMLResponse, Response, PlainTextResponse, RedirectResponse
 from starlette.routing import Mount, Route
 from starlette.staticfiles import StaticFiles
 from starlette.templating import Jinja2Templates
+
 
 import psycopg2
 from Quiz import Quiz
@@ -10,6 +11,10 @@ from Quiz import Quiz
 from random import seed, random
 from datetime import datetime
 import hashlib
+
+from starlette.middleware import Middleware
+from starlette.middleware.base import BaseHTTPMiddleware
+from loguru import logger
 
 page = 0
 
@@ -136,10 +141,14 @@ async def welcome(request):
     return HTMLResponse(open('pages/welcome',"r").read())
 
 async def mainRoute(request):
-    uuid = request.path_params["uuid"]
-    if uuid == "Animatore":
-        return templates.TemplateResponse('index.html', {"request":request, "nome": "Animatore"})
-    return templates.TemplateResponse('index.html', {"request":request, "nome": UUID_NAME[uuid]})
+    try:
+        uuid = request.path_params["uuid"]
+        if uuid == "Animatore":
+            return templates.TemplateResponse('index.html', {"request":request, "nome": "Animatore"})
+        return templates.TemplateResponse('index.html', {"request":request, "nome": UUID_NAME[uuid]})
+    except Exception as e:
+        print("Errore in mainRoute con request: ",str(request))
+    return RedirectResponse("/")
 
 async def gotoPage(request):
     global page
@@ -310,7 +319,7 @@ async def addNome(request):
             nm+="-"+str(k)
         allNames.append(nm)
     m = hashlib.sha512()
-    m.update(nm.encode())
+    m.update((str(codice)+nm).encode())
     uuid = m.hexdigest()
     UUID_NAME[uuid] = nm
     return Response(uuid)
@@ -322,7 +331,23 @@ async def reset(request):
     allNames = []
     return Response("ok")
 
+async def endGame(request):
+    return HTMLResponse(open("pages/end").read())
 
+class CustomHeaderMiddleware(BaseHTTPMiddleware):
+    async def dispatch(self, request, call_next):
+        logger.debug(f"{request.method} {request.url}")
+        logger.debug("Params:")
+        for name, value in request.path_params.items():
+            logger.debug(f"\t{name}: {value}")
+        logger.debug("Headers:")
+        for name, value in request.headers.items():
+            logger.debug(f"\t{name}: {value}")
+        response = await call_next(request)
+        return response
+
+middleware = [Middleware(CustomHeaderMiddleware)]
+middleware = []
 
 routes=[
     Route("/", welcome),
@@ -339,7 +364,8 @@ routes=[
     Route("/inseriscinome_{nome:str}", addNome),
     Route("/anim", getanimpage),
     Route("/reset", reset),
+    Route("/end",endGame),
     Mount('/static', app=StaticFiles(directory='static', packages=['bootstrap4']), name="static"),
 ]
 
-app = Starlette(debug=True, routes=routes, on_startup=[startup_task])
+app = Starlette(debug=True, routes=routes, on_startup=[startup_task], middleware=middleware)
