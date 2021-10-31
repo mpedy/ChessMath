@@ -367,8 +367,9 @@ class CustomHeaderMiddleware(BaseHTTPMiddleware):
         response = await call_next(request)
         return response
 
-middleware = [Middleware(CustomHeaderMiddleware)]
+#middleware = [Middleware(CustomHeaderMiddleware)]
 middleware = [Middleware(HTTPSRedirectMiddleware)]
+middleware = []
 
 routes=[
     Route("/", welcome),
