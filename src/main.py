@@ -369,7 +369,7 @@ class CustomHeaderMiddleware(BaseHTTPMiddleware):
 
 #middleware = [Middleware(CustomHeaderMiddleware)]
 middleware = [Middleware(HTTPSRedirectMiddleware)]
-middleware = []
+#middleware = []
 
 routes=[
     Route("/", welcome),
