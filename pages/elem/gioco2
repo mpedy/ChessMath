@@ -33,7 +33,7 @@ var moving_pieces = {
 var moving_piece = "";
 var possible_moves = new Array();
 var obstacles = ["rock-golem-1", "rock-golem","obstacle"]
-var end_position=B2;
+var end_position=B7;
 var number_of_moves = 0;
 var show_possible_moves = true;
 
