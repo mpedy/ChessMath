@@ -1,0 +1,26 @@
+<table rules=rows border=2 id="classifica" style="color: white; margin: auto; width: 80%; text-align: center;">
+	<thead>
+		<tr>
+			<th><h2>#</h2></th>
+			<th><h2>Nome</h2></th>
+			<th><h2>Punteggio</h2></th>
+		</tr>
+	</thead>
+	<tbody>
+
+	</tbody>
+</table>
+<script>
+$.ajax({url: "getClassifica_10",
+	success: function(res){
+		for(var i in res){
+			var num = parseInt(i)
+			if(res[i]!=null){
+				$("#classifica tbody").append("<tr><td>"+num+"</td><td>"+res[i][0]+"</td><td>"+res[i][1]+"</td></tr>")
+			}else{
+				$("#classifica tbody").append("<tr><td>"+num+"</td><td>...</td><td>...</td></tr>")
+			}
+		}
+	}
+})
+</script>

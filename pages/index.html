@@ -57,7 +57,14 @@
 </head>
 <body>
 	<div id="header" style="position: absolute; width: 100%; background: #33261D; display: inline-block; padding: 5px 10px;">
-		<div style="float: left; color: #E07A5F" id="name">{{ nome }}</div>
+		<div style="float: left;">
+			<img id="meeple" style="width: 18px; vertical-align: bottom;">
+			<script type="text/javascript">
+			var mp = parseInt(Math.random()*1000%5+1)
+			$("#meeple")[0].src = "static/img/meeple-"+mp+".svg"
+			</script>
+			<div style="color: #E07A5F; display: inline;" id="name">{{ nome }}</div>
+		</div>
 		<div style="float: right; font-family: Digital; letter-spacing: 3px; color: #E4572E" id="points">0</div>
 	</div>
 	<div id="background">

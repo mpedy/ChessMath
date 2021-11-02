@@ -52,8 +52,6 @@ handleMouseDown_casella = function(e){
     console.log(elem)
     casella = elem.getAttribute("casella");
     if(possible_moves.includes(casella)){
-    	//possible_moves.splice(possible_moves.indexOf(casella),1);
-    	//elem.removeChild(elem.children[elem.childElementCount-1]);
     	move(moving_piece, elem.id);
     	moving_piece = "";
     	possible_moves = new Array();
@@ -77,8 +75,6 @@ move = function(moving_piece, casella){
 	reset();
 	drawPieces(document.getElementById("chessboard"),lst);
 	moving_pieces[piece] = _to;
-	//dist(from,_to);
-	//number_of_moves+=1;
 	number_of_moves+=dist(from,_to);
 	$("#number_of_moves").html(number_of_moves);
 	if(_to == end_position){
@@ -102,22 +98,7 @@ dist = function(from, to){
 	return d;
 }
 
-enlight = function(casella, color="yellow"){
-	console.log("Enlighting "+casella)
-	if(enlighted == casella){
-		return;
-	}
-	enlighted = casella;
-	var elem = document.getElementById(casella);
-	if( elem.childElementCount > 1){
-		elem.removeChild(elem.children[elem.childElementCount-1]);
-	}else{
-		var div = document.createElement("div");
-		div.style="width: 100%; height: 100%; background: "+color+"; z-index: 1;";
-		elem.appendChild(div);
-	}
-}
-enlight(end_position);
+enlight(end_position,"orange",true);
 
 handleMouseDown_image = function(e){
 	console.log(e.currentTarget);
@@ -185,7 +166,7 @@ goal_reached = function(){
 			moving_pieces = {
 				"Bishop" : A2
 			}
-			enlight(end_position);
+			enlight(end_position,"orange",true);
 			number_of_moves = 0;
 			$("#number_of_moves").html(number_of_moves);
 			$(this).remove();
@@ -197,22 +178,9 @@ goal_reached = function(){
       		punti-=number_of_moves;
       		myalert("Punti","Il tuo punteggio è di "+punti+" punti!");
       		updatePoints(-number_of_moves);
+      		handleMouseDown_casella = function(){}
+			handleMouseDown_image = function(){}
       	}, false);
-	/*var yesno = */
-	/*if(yesno){
-		punti+=number_of_moves;
-		$("#chessboard").html("")[0].style=""
-		drawChessboard(document.getElementById("chessboard"));
-		drawPieces(document.getElementById("chessboard"),piece_position);
-		moving_pieces = {
-			"Rook" : "D5"
-		}
-		enlight(end_position);
-		number_of_moves = 0;
-		$("#number_of_moves").html(number_of_moves);
-	}else{
-		sec = 0;
-	}*/
 }
 
 procedi = function(){

@@ -45,7 +45,8 @@ allpages = {
         "pages/elem/quiz3",
         "pages/elem/scacchiera_vuota",
         "pages/elem/battaglia_navale",
-        "pages/ascolta_torre",
+        "pages/ascolta_torre", ## Torre
+        "pages/torre_help",
         "pages/elem/gioco1",
         "pages/elem/img_gioco1",
         "pages/elem/quiz4",
@@ -66,12 +67,10 @@ allpages = {
         "pages/elem/gioco7",
         "pages/elem/img_gioco7",
         "pages/elem/quiz9",
-        LISTEN,
         "pages/elem/quiz10",
         "pages/elem/quiz11",
         "pages/elem/quiz12",
         "pages/elem/quiz13",
-        LISTEN,
         "pages/elem/gioco8",
         "pages/elem/gioco9",
         LISTEN,
@@ -80,9 +79,11 @@ allpages = {
         "pages/elem/img_gioco10",
         "pages/elem/gioco11",
         "pages/elem/img_gioco11",
+        "pages/elem/img_allsquare",
         "pages/elem/quiz15",
         LISTEN,
         "pages/elem/quiz16",
+        "pages/classifica",
         "pages/endpage"
     ],
     "path_2": [
@@ -90,7 +91,9 @@ allpages = {
         "pages/med/quiz1",
         LISTEN,
         "pages/med/quiz2",
-        "pages/ascolta_torre",
+        "pages/elem/scacchiera_vuota",
+        "pages/ascolta_torre", ## Torre
+        "pages/torre_help",
         "pages/med/gioco1",
         "pages/med/img_gioco1",
         "pages/med/quiz3",
@@ -98,7 +101,7 @@ allpages = {
         "pages/med/quiz5",
         "pages/med/quiz6",
         "pages/med/img_1",
-        "pages/med/gioco2", ##da sistemare tutte le dialog (popup, sia quiz sia giochi)
+        "pages/med/gioco2",
         "pages/med/gioco4",
         "pages/med/quiz7",
         LISTEN,
@@ -113,21 +116,24 @@ allpages = {
         "pages/med/quiz8",
         "pages/med/quiz9",
         "pages/med/quiz10",
+        LISTEN,
         "pages/med/quiz11",
         "pages/med/gioco11b",
         "pages/med/img_gioco11b",
+        "pages/elem/img_allsquare",
         "pages/ascolta_cavallo",# CAVALLO
         "pages/med/img_cavallo",
         "pages/med/gioco_spirit",
         "pages/med/img_spirit",
-        "pages/med/quiz12",
-        "pages/med/gioco12b",
         "pages/med/gioco13b",
+        "pages/med/gioco13b_soluzione",
+        "pages/med/gioco12b",
+        "pages/med/gioco12b_soluzione",
         LISTEN,
-        "pages/med/quiz13",
         "pages/med/quiz14",
         LISTEN,
         "pages/med/quiz16",
+        "pages/classifica",
         "pages/endpage"
     ]
 }
@@ -329,6 +335,8 @@ async def reset(request):
     global allNames
     UUID_NAME = {}
     allNames = []
+    Classifica = {}
+    Classifica_ordered = []
     return Response("ok")
 
 async def endGame(request):
@@ -369,7 +377,32 @@ class CustomHeaderMiddleware(BaseHTTPMiddleware):
 
 #middleware = [Middleware(CustomHeaderMiddleware)]
 middleware = [Middleware(HTTPSRedirectMiddleware)]
-#middleware = []
+middleware = []
+
+
+Classifica = {}
+Classifica_ordered = []
+
+async def addPoints(request):
+    print("Siamo in addpoints")
+    nome = request.path_params["nome"]
+    punti = request.path_params["pt"]
+    print(f"Nome = {nome}, {type(nome)}; Punti= {punti},{type(punti)}")
+    print(f"Classifica: {Classifica},{type(Classifica)}")
+    Classifica[nome] = punti
+    print(f"Classifica: {Classifica},{type(Classifica)}")
+    Classifica_ordered = sorted(Classifica.items(), key=lambda x: x[1], reverse=True)
+    print(f"Classifica ordinata: {Classifica_ordered},{type(Classifica_ordered)}")
+    return Response("ok")
+
+async def getClassifica(request):
+    tillPosition = request.path_params["position"]
+    Classifica_ordered = sorted(Classifica.items(), key=lambda x: x[1], reverse=True)
+    result = {}
+    for i in range(0,tillPosition):
+        result[i+1] = Classifica_ordered[i] if i in range(0,len(Classifica_ordered)) else None
+    return JSONResponse(result)
+
 
 routes=[
     Route("/", welcome),
@@ -387,6 +420,8 @@ routes=[
     Route("/anim", getanimpage),
     Route("/reset", reset),
     Route("/end",endGame),
+    Route("/addPoints_{nome:str}_{pt:int}", addPoints),
+    Route("/getClassifica_{position:int}", getClassifica),
     Mount('/static', app=StaticFiles(directory='static', packages=['bootstrap4']), name="static"),
 ]
 

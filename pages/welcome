@@ -15,6 +15,10 @@
 	sendCodice = function(){
 		var code = $("#codice").val();
 		var nome = $("#nome").val();
+		if(nome.length<3){
+			myalert("Attenzione","Inserire un nome di almeno 3 caratteri")
+			return;
+		}
 		$.ajax({
 			url: "verificacodice_"+code,
 			async: false,

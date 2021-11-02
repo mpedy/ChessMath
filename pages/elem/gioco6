@@ -1,7 +1,7 @@
 <span id="title" style="padding: 10px; display: block;">Segna tutte le caselle a distanza 2 dalla casella in cui si trova la torre</span>
 <div id="chessboard"></div>
 <div>
-	<div class="timer" data-second="60" data-height="20px" data-width="80%"></div>
+	<div class="timer" data-second="90" data-height="20px" data-width="80%"></div>
 	<div style="margin: 10px">
 		<button style="border-radius: 10px; display: block; margin: 30px auto 15px auto; padding: 5px;" id="gobtn" onclick="procedi(this)">Conferma</button>
 		<button style="border-radius: 10px; display: block; margin: auto; padding: 5px;"id="reset" onclick="reset()" >Cancella tutto</button>

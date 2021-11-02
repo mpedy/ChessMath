@@ -1,18 +1,15 @@
 <div style="padding: 10px; display: block;">
-	Una mossa del cavallo:
+	Le due circonferenze a confronto:
 </div>
 <div id="chessboard"></div>
-<script type="text/javascript">
 
+<script type="text/javascript">
 drawChessboard(document.getElementById("chessboard"))
 
-piece_position={
-	D5: "Knight.svg",
-}
+drawPieces(document.getElementById("chessboard"),
+	{F5: "Bishop.svg", C5: "Rook.svg"})
 
-drawPieces(document.getElementById("chessboard"),piece_position)
-
-var cas = [E7]
+var cas = [D7,F7,H7,D5,H5,D3,F3,H3]
 
 for(var i in cas){
 	var elem = $("#"+cas[i])[0]
@@ -20,14 +17,12 @@ for(var i in cas){
 	div.style="background: red; border-radius: 50%; position: absolute; left: 10%; top: 10%; width: 80%; height: 80%; z-index: 1";
 	elem.appendChild(div);
 }
-cas = [D6,D7]
+
+cas = [C7,D6,E5,D4,C3,B4,A5,B6]
 for(var i in cas){
 	var elem = $("#"+cas[i])[0]
 	var div = document.createElement("div");
-	div.style="background: rgba(255,0,0,0.5); border-radius: 50%; position: absolute; left: 30%; top: 30%; width: 40%; height: 40%; z-index: 1";
+	div.style="background: blue; border-radius: 50%; position: absolute; left: 10%; top: 10%; width: 80%; height: 80%; z-index: 1";
 	elem.appendChild(div);
 }
-handleMouseDown_casella = function(){}
-handleMouseDown_image = function(){}
-
 </script>

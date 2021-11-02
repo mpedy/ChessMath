@@ -1,4 +1,4 @@
-<span id="title" style="padding: 10px">Dove può andare il cavallo in una mossa?</span>
+<span id="title" style="padding: 10px">Segna tutte le caselle in cui il cavallo può andare con una mossa</span>
 <div id="chessboard"></div>
 <div>
 	<div class="timer" data-second="60" data-height="20px" data-width="80%"></div>

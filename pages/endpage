@@ -1,8 +1,9 @@
 <div style="/*height: 100%;*/">
 <script type="text/javascript">
+	window.onbeforeunload= function(){}
 	window.location.href="/end"
 </script>
-	<h1 style="margin-top: 40%">Ciao a presto!</h1>
+	<!--<h1 style="margin-top: 40%">Ciao a presto!</h1>-->
 	<script>
 	clearInterval(timeinv)
 	</script>

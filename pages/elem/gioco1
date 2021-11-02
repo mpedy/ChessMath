@@ -1,4 +1,4 @@
-<span id="title" style="padding: 10px; display: block;">Dove può andare la torre in una mossa?</span>
+<span id="title" style="padding: 10px; display: block;">Quali sono le caselle che la torre può raggiungere in una mossa?</span>
 <div id="chessboard"></div>
 <div>
 	<div class="timer" data-second="60" data-height="20px" data-width="80%"></div>
@@ -25,7 +25,7 @@
 drawChessboard(document.getElementById("chessboard"))
 
 piece_position={
-	D5: "Rook.svg",
+	D5: "Rook.svg"
 }
 
 drawPieces(document.getElementById("chessboard"),piece_position)

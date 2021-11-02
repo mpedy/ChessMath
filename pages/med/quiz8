@@ -12,19 +12,8 @@
 drawChessboard($("#chessboard")[0])
 
 drawPieces($("#chessboard")[0],{D3: "Bishop.svg"})
-enlight = function(casella, color="yellow"){
-	console.log("Enlighting "+casella)
-	enlighted = casella;
-	var elem = document.getElementById(casella);
-	if( elem.childElementCount > 1){
-		elem.removeChild(elem.children[elem.childElementCount-1]);
-	}else{
-		var div = document.createElement("div");
-		div.style="width: 100%; height: 100%; background: "+color+"; z-index: 1;";
-		elem.appendChild(div);
-	}
-}
-enlight(B5,"orange")
+
+enlight(B5,"orange",true)
 var can_answer = true
 stopTimerFunction = function(pressed=false){
 	if(!pressed){

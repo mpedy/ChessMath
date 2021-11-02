@@ -40,7 +40,7 @@ $.ajax({url: "getquiz", success: function(quiz){
 				myconfirm("risposta esatta!", "Hai guadagnato "+(parseInt(quiz['punteggio'])+sec)+" punti","Ok","Cancel",
 					function(){
 						$(this).dialog("close");
-						updatePoints(parseInt(quiz['punteggio'])+sec)
+						updatePoints(parseInt(quiz['punteggio'])+sec);
 					},
 					function(){
 						$(this).dialog("close");

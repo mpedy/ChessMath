@@ -60,8 +60,41 @@ myalert = function(title, text){
 
 updatePoints = function(punti){
 	$("#points").text(parseInt($("#points").text()) + punti)
+	var nome = $("#name").text()
+	var pt = parseInt($("#points").text())
+	$.ajax({
+		url: "addPoints_"+nome+"_"+pt,
+		success: function(resp){
+			console.log(resp);
+		},
+		error: function(err){
+			console.log(err)
+		}
+	})
 }
 
 getPoints = function(){
 	return parseInt($("#points").text());
+}
+
+enlight = function(casella, color="yellow", end_pos=false){
+	console.log("Enlighting "+casella)
+	try{
+		if(enlighted == casella){
+			return;
+		}
+		enlighted = casella;
+	}catch{}
+	var elem = document.getElementById(casella);
+	if( elem.childElementCount > 1){
+		elem.removeChild(elem.children[elem.childElementCount-1]);
+	}else{
+		var div = document.createElement("div");
+		if(end_pos){
+			div.style="width: 70%; height: 70%; background: "+color+"; z-index: 1; position: relative; left: 15%; top: 15%; border-radius: 6px; border: 1px solid black;";
+		}else{
+			div.style="width: 100%; height: 100%; background: "+color+"; z-index: 1;";
+		}
+		elem.appendChild(div);
+	}
 }
