@@ -98,3 +98,14 @@ enlight = function(casella, color="yellow", end_pos=false){
 		elem.appendChild(div);
 	}
 }
+enwrite = function(casella, txt, txt_color="white", bck_color="yellow"){
+	var elem = document.getElementById(casella);
+	if( elem.childElementCount > 1){
+		elem.removeChild(elem.children[elem.childElementCount-1]);
+	}else{
+		var div = document.createElement("div");
+		div.style="width: 70%; height: 70%; background: "+bck_color+"; z-index: 1;display: table;left:15%; top: 15%; position: relative; border-radius: 6px;";
+		div.innerHTML = "<span style='display: table-cell; vertical-align: middle; color: "+txt_color+"'>"+txt+"</span>";
+		elem.appendChild(div);
+	}
+}

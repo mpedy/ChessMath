@@ -30,37 +30,9 @@ var end_position=E5;
 var number_of_moves = 0;
 var show_possible_moves = false;
 
-enwrite = function(casella, txt, txt_color="white", bck_color="yellow"){
-	var elem = document.getElementById(casella);
-	if( elem.childElementCount > 1){
-		elem.removeChild(elem.children[elem.childElementCount-1]);
-	}else{
-		var div = document.createElement("div");
-		div.style="width: 70%; height: 70%; background: "+bck_color+"; z-index: 1;display: table;left:15%; top: 15%; position: relative; border-radius: 6px;";
-		div.innerHTML = "<span style='display: table-cell; vertical-align: middle; color: "+txt_color+"'>"+txt+"</span>";
-		elem.appendChild(div);
-	}
-}
-
 enwrite(F6, 1, "white","rgb(200,0,0)")
 enwrite(D7, 2, "white","rgb(200,0,0)")
 enwrite(E5, 3, "black","yellow")
-
-enlight = function(casella, color="yellow"){
-	console.log("Enlighting "+casella)
-	if(enlighted == casella){
-		return;
-	}
-	enlighted = casella;
-	var elem = document.getElementById(casella);
-	if( elem.childElementCount > 1){
-		elem.removeChild(elem.children[elem.childElementCount-1]);
-	}else{
-		var div = document.createElement("div");
-		div.style="width: 100%; height: 100%; background: "+color+"; z-index: 1;";
-		elem.appendChild(div);
-	}
-}
 
 
 </script>

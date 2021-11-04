@@ -102,21 +102,6 @@ dist = function(from, to){
 	return d;
 }
 
-enlight = function(casella, color="yellow"){
-	console.log("Enlighting "+casella)
-	if(enlighted == casella){
-		return;
-	}
-	enlighted = casella;
-	var elem = document.getElementById(casella);
-	if( elem.childElementCount > 1){
-		elem.removeChild(elem.children[elem.childElementCount-1]);
-	}else{
-		var div = document.createElement("div");
-		div.style="width: 100%; height: 100%; background: "+color+"; z-index: 1;";
-		elem.appendChild(div);
-	}
-}
 enlight(end_position);
 
 handleMouseDown_image = function(e){
