@@ -44,7 +44,7 @@ $.ajax({url: "getquiz", success: function(quiz){
 					},
 					function(){
 						$(this).dialog("close");
-						$("#points").text(parseInt($("#points").text()) + parseInt(quiz['punteggio']))
+						updatePoints(parseInt(quiz['punteggio'])+sec);
 					})
 				clearInterval(window.myt);
 				stopTimerFunction(true);

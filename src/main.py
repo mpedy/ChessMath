@@ -384,15 +384,11 @@ Classifica = {}
 Classifica_ordered = []
 
 async def addPoints(request):
-    print("Siamo in addpoints")
     nome = request.path_params["nome"]
     punti = request.path_params["pt"]
-    print(f"Nome = {nome}, {type(nome)}; Punti= {punti},{type(punti)}")
-    print(f"Classifica: {Classifica},{type(Classifica)}")
-    Classifica[nome] = punti
-    print(f"Classifica: {Classifica},{type(Classifica)}")
-    Classifica_ordered = sorted(Classifica.items(), key=lambda x: x[1], reverse=True)
-    print(f"Classifica ordinata: {Classifica_ordered},{type(Classifica_ordered)}")
+    if nome != "Animatore":
+        Classifica[nome] = punti
+        Classifica_ordered = sorted(Classifica.items(), key=lambda x: x[1], reverse=True)
     return Response("ok")
 
 async def getClassifica(request):
