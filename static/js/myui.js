@@ -1,4 +1,5 @@
 myconfirm = function(title, text, yes_btn, no_btn, f1, f2, closable=true){
+	updatePoints(0);
 	var div = document.createElement("div");
 	div.setAttribute("title", title);
 	div.id = "mydialog_opened"
@@ -21,6 +22,10 @@ myconfirm = function(title, text, yes_btn, no_btn, f1, f2, closable=true){
 }
 
 myconfirm_2b = function(title, text, yes_btn, no_btn, f1, f2, closable=true){
+	var _f2 = function(){
+		f2.apply(this, arguments);
+		updatePoints(0);
+	}
 	var div = document.createElement("div");
 	div.setAttribute("title", title);
 	div.id = "mydialog_opened"
@@ -36,13 +41,14 @@ myconfirm_2b = function(title, text, yes_btn, no_btn, f1, f2, closable=true){
       	{
       		text: no_btn,
       		icon: "ui-icon-closethick",
-      		click: f2
+      		click: _f2
       	}]
 	});
 	$(div).dialog("open");
 }
 
 myalert = function(title, text){
+	updatePoints(0);
 	var div = document.createElement("div");
 	div.setAttribute("title", title);
 	div.id = "mydialog_opened"
@@ -53,7 +59,10 @@ myalert = function(title, text){
 		{
 			text: "Ok",
 			icon: "ui-icon-check",
-      		click: function() {$(this).dialog("close"); $(this).remove();}
+      		click: function() {
+      			$(this).dialog("close");
+      			$(this).remove();
+      		}
       	}]});
 	$(div).dialog("open");
 }

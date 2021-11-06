@@ -140,6 +140,9 @@ allpages = {
 
 
 MyQuiz = []
+Classifica = {}
+Classifica_ordered = []
+Answered = {}
 
 templates = Jinja2Templates(directory="pages")
 
@@ -150,8 +153,8 @@ async def mainRoute(request):
     try:
         uuid = request.path_params["uuid"]
         if uuid == "Animatore":
-            return templates.TemplateResponse('index.html', {"request":request, "nome": "Animatore"})
-        return templates.TemplateResponse('index.html', {"request":request, "nome": UUID_NAME[uuid]})
+            return templates.TemplateResponse('index.html', {"request":request, "nome": "Animatore", "codice": codice})
+        return templates.TemplateResponse('index.html', {"request":request, "nome": UUID_NAME[uuid], "codice": codice})
     except Exception as e:
         print("Errore in mainRoute con request: ",str(request))
     return RedirectResponse("/")
@@ -166,15 +169,26 @@ async def gotoPage(request):
 
 async def returnPage(request):
     global page
-    return JSONResponse({"page": page})
+    cod = int(request.path_params["cod"])
+    if cod == codice:
+        return JSONResponse({"page": page})
+    else:
+        return Redirect("/",status_code=401)
 
 async def setPage(request):
     global page
+    global Answered
     code = request.path_params['code']
     if code == 123111321:
         new_page = request.path_params['page']
         if new_page in range(0,len(allpages[percorso])):
             page = new_page
+            print("Answered in setPage")
+            print(Answered)
+            Answered = {}
+            Answered[page] = []
+            print("Answered in setPage")
+            print(Answered)
         arr = allpages[percorso]
         l = len(arr)
         res = [arr[page-1] if page-1 in range(0,l) else None, arr[page] if page in range(0,l) else None, arr[page+1] if page+1 in range(0,l) else None]
@@ -333,10 +347,14 @@ async def addNome(request):
 async def reset(request):
     global UUID_NAME
     global allNames
+    global Classifica
+    global Classifica_ordered
+    global Answered
     UUID_NAME = {}
     allNames = []
     Classifica = {}
     Classifica_ordered = []
+    Answered = {}
     return Response("ok")
 
 async def endGame(request):
@@ -380,15 +398,17 @@ middleware = [Middleware(HTTPSRedirectMiddleware)]
 middleware = []
 
 
-Classifica = {}
-Classifica_ordered = []
-
 async def addPoints(request):
+    global Answered
     nome = request.path_params["nome"]
     punti = request.path_params["pt"]
     if nome != "Animatore":
         Classifica[nome] = punti
         Classifica_ordered = sorted(Classifica.items(), key=lambda x: x[1], reverse=True)
+        print("Answered in addpoints")
+        print(Answered)
+        if nome not in Answered[page]:
+            Answered[page].append(nome)
     return Response("ok")
 
 async def getClassifica(request):
@@ -399,12 +419,27 @@ async def getClassifica(request):
         result[i+1] = Classifica_ordered[i] if i in range(0,len(Classifica_ordered)) else None
     return JSONResponse(result)
 
+async def getAnswered(request):
+    print("Answered")
+    print(Answered)
+    print("allNames")
+    print(allNames)
+    try:
+        l = len(Answered[page])
+        l_tot = len(allNames) ## Tolgo l'animatore
+        print(l," - ", l_tot)
+        if l_tot != 0:
+            return JSONResponse({"perc": l/l_tot*100, "page": page, "error": ""})
+        else:
+            return JSONResponse({"perc": -1, "page": page, "error": "Errore: divisione per 0"})
+    except Exception as e:
+        return JSONResponse({"perc":-1, "page":page, "error": "Ancora nessuno in lista"})
 
 routes=[
     Route("/", welcome),
     Route("/game_{uuid:str}",mainRoute),
-    Route("/page_{page:int}",gotoPage),
-    Route("/page", returnPage),
+    Route("/getpage_{page:int}",gotoPage),
+    Route("/page_{cod:int}", returnPage),
     Route("/setpage_{page:int}_{code:int}",setPage),
     Route("/setpath_{path:int}",setPath),
     Route("/getquiz",getquiz),
@@ -418,6 +453,7 @@ routes=[
     Route("/end",endGame),
     Route("/addPoints_{nome:str}_{pt:int}", addPoints),
     Route("/getClassifica_{position:int}", getClassifica),
+    Route("/getAnswered", getAnswered),
     Mount('/static', app=StaticFiles(directory='static', packages=['bootstrap4']), name="static"),
 ]
 

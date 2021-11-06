@@ -15,6 +15,7 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 	<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+	<script src="static/js/pureknob.js"></script>
 	<script type="text/javascript">
 	var url = window.location.origin
 	var page = 0;
@@ -50,14 +51,49 @@
 		if( cod_anim == "1324354321"){
 			$("#error_msg_anim").css({"display":"none"})
 			$("#blocked").toggle()
+			$.ajax({url: "reset"})
 		}else{
 			$("#error_msg_anim").css({"display":"inherit"})
 		}
 	}
+	const knob = pureknob.createKnob(150, 150);
+
+	// Set properties.
+	knob.setProperty('angleStart', -0.75 * Math.PI);
+	knob.setProperty('angleEnd', 0.75 * Math.PI);
+	knob.setProperty('colorFG', '#88ff88');
+	knob.setProperty('trackWidth', 0.4);
+	knob.setProperty('valMin', 0);
+	knob.setProperty('valMax', 100);
+
+	// Set initial value.
+	knob.setValue(0);
+
+	// Create element node.
+	const node = knob.node();
+	var percentuagePolling = setInterval(
+		function(){
+			$.ajax(
+				{
+					url: "getAnswered",
+					async: true,
+					success: function(res_page){
+						var perc= parseInt(res_page["perc"])
+						var p = res_page["page"]
+						var err = res_page["error"]
+						if(err.length==0){
+							$("#knoberror").text("");
+							knob.setValue(perc);
+						}else{
+							$("#knoberror").text(err);
+						}
+					}
+				})
+		},3000);
 	</script>
 </head>
 <body>
-	<div id="blocked" style="position: fixed;left: 0;top: 0;width: 100%;height: 100%;background: #c13d0c;display: grid;">
+	<div id="blocked" style="position: fixed;left: 0;top: 0;width: 100%;height: 100%;background: #c13d0c;display: grid;z-index: 1;">
 		<div style="margin: auto;">
 			<div>Inserisci il codice animatore:</div>
 			<input style="padding: 4px" id="codice_accesso" type="password" name="codice_accesso">
@@ -105,6 +141,15 @@
 				<h2 style="flex-grow: 1; text-align: center; font-size: 40px; margin: 0px 20px;" id="step">STOP</h2>
 				<span style="flex-grow: 1; text-align: center;margin: 0px 12px;" id="next_step"></span>
 			</div>
+			<div style="display: flex; color: white; margin: auto; justify-content: center; width: 600px;align-items: center; margin-top: 30px;">
+				<div id="knobparent"></div>
+				<div id="knoberror"></div>
+			</div>
+			<script type="text/javascript">	
+			// Add Knob it to the DOM.
+			const elem = document.getElementById('knobparent');
+			elem.appendChild(node);
+		</script>
 		</div>
 	</div>
 </body>

@@ -31,14 +31,15 @@
 		function(){
 			$.ajax(
 				{
-					url: "page",
+					url: "page_"+codice,
 					async: false,
 					success: function(res_page){
+						debugger;
 						if(page != res_page["page"]){
 							page = res_page["page"];
 							$.ajax(
 								{
-									url: "page_"+page,
+									url: "getpage_"+page,
 									async: false,
 									success: function(result){
 										clearInterval(window.myt);
@@ -47,7 +48,7 @@
 									}
 								})
 						}
-					}
+					},
 				})
 		},3000);
 	</script>
