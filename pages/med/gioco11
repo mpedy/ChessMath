@@ -1,4 +1,4 @@
-<span id="title" style="padding: 10px">Disegna tutte le caselle a distanza 2 dall'alfiere</span>
+<span id="title" style="padding: 10px">Segna tutte le caselle a distanza 2 dall'alfiere</span>
 <div id="chessboard"></div>
 <div>
 	<div class="timer" data-second="60" data-height="20px" data-width="80%"></div>
@@ -65,7 +65,7 @@ procedi = function(btn){
 			points-=1;
 		}
 	}
-	myalert("Corretto!","Hai guadagnato "+points+" punti.");
+	myalert("Risultato","Hai guadagnato "+points+" punti.");
 	updatePoints(points);
 	punti = getPoints();
 	clearInterval(window.myt);

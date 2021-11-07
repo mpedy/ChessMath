@@ -14,7 +14,7 @@ moveRook = function(casella, x,y){
 		}
 	}
 	for(var i=1; i<9; i++){//down
-		console.log("Down: "+(y-i));
+		//console.log("Down: "+(y-i));
 		var newcasella = casella[0]+(y-i)
 		if(y-i>0 && ( $("#"+newcasella).children().length==0 || !obstacles.includes($("#"+newcasella).children()[0].getAttribute("data-type"))) ){
 			possible_moves.push(newcasella)
@@ -28,9 +28,9 @@ moveRook = function(casella, x,y){
 		}
 	}
 	for(var i=1; i<9; i++){//dx
-		console.log("Dx: "+(x+i));
+		//console.log("Dx: "+(x+i));
 		var newcasella = String.fromCharCode(65+x+i-1)+casella[1]
-		console.log("Newcasella: "+newcasella)
+		//console.log("Newcasella: "+newcasella)
 		if(x+i<9 && (
 			$("#"+newcasella).children().length==0 || !obstacles.includes($("#"+newcasella).children()[0].getAttribute("data-type"))) ){
 			possible_moves.push(newcasella)
@@ -44,9 +44,9 @@ moveRook = function(casella, x,y){
 		}
 	}
 	for(var i=1; i<9; i++){//sx
-		console.log("Sx: "+(x-i));
+		//console.log("Sx: "+(x-i));
 		var newcasella = String.fromCharCode(65+x-i-1)+casella[1]
-		console.log("Newcasella: "+newcasella)
+		//console.log("Newcasella: "+newcasella)
 		if(x-i>0 && (
 			$("#"+newcasella).children().length==0 || !obstacles.includes($("#"+newcasella).children()[0].getAttribute("data-type"))) ){
 			possible_moves.push(newcasella)
@@ -81,7 +81,7 @@ moveBishop = function(casella, x, y){
 		}
 	}
 	for(var i=1; i<9; i++){//sx down
-		console.log("Down: "+(y-i));
+		//console.log("Down: "+(y-i));
 		if(x-i>0 && y-i>0){
 			var newcasella = String.fromCharCode(x-i+65-1)+(y-i)
 			try{
@@ -97,7 +97,7 @@ moveBishop = function(casella, x, y){
 		}
 	}
 	for(var i=1; i<9; i++){//dx up
-		console.log("Dx: "+(x+i));
+		//console.log("Dx: "+(x+i));
 		if(x+i<9 && y+i<9){
 			var newcasella = String.fromCharCode(x+i+65-1)+(y+i)
 			try{
@@ -113,7 +113,7 @@ moveBishop = function(casella, x, y){
 		}
 	}
 	for(var i=1; i<9; i++){//dx down
-		console.log("Sx: "+(x-i));
+		//console.log("Sx: "+(x-i));
 		if(x+i<9 && y-i>0){
 			var newcasella = String.fromCharCode(x+i+65-1)+(y-i)
 			try{

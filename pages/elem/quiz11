@@ -13,7 +13,7 @@
 drawChessboard($("#chessboard")[0])
 
 drawPieces($("#chessboard")[0],{D3: "Bishop.svg"})
-enlighted = []
+enlighted = ""
 enlight(B5,"orange",true)
 var can_answer = true
 stopTimerFunction = function(pressed=false){
@@ -41,7 +41,6 @@ $.ajax({url: "getquiz", success: function(quiz){
 				return
 			}
 			if($(this).attr("class") != undefined && $(this).attr("class").indexOf("corretta")>=0){
-				//myalert("risposta corretta!","Hai risposto giusto!");
 				myconfirm("risposta esatta!", "Hai guadagnato "+(parseInt(quiz['punteggio'])+sec)+" punti","Ok","Cancel",
 					function(){
 						$(this).dialog("close");

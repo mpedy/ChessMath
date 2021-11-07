@@ -56,19 +56,19 @@ ricomincia = function(){
 
 handleMouseDown_casella = function(e){
     var elem = e.currentTarget;
-    console.log(elem)
+    //console.log(elem)
     casella = elem.getAttribute("casella");
     if(possible_moves.includes(casella)){
     	move(moving_piece, elem.id);
     	moving_piece = "";
     	possible_moves = new Array();
     }else{
-    	console.log("non sposto" + moving_piece)
+    	//console.log("non sposto" + moving_piece)
     }
 }
 
 move = function(moving_piece, casella){
-	console.log("sposto "+moving_piece+ " in "+casella);
+	//console.log("sposto "+moving_piece+ " in "+casella);
 	var piece = moving_piece.split(";")[0]
 	var from = moving_piece.split(";")[1]
 	var _to = casella;
@@ -96,11 +96,11 @@ dist = function(from, to){
 enlight(end_position,"orange",true);
 
 handleMouseDown_image = function(e){
-	console.log(e.currentTarget);
+	//console.log(e.currentTarget);
 	var elem = e.currentTarget;
 	var casella = elem.getAttribute("data-casella");
 	var type = elem.getAttribute("data-type")
-	console.log("Casella e tipo: " + casella+"-"+type)
+	//console.log("Casella e tipo: " + casella+"-"+type)
 	if(enlighted == casella){
 		return;
 	}
@@ -112,7 +112,7 @@ handleMouseDown_image = function(e){
 			break;
 		}
 	}
-	console.log("Can Move? "+can_move)
+	//console.log("Can Move? "+can_move)
 	if(can_move){
 		calculatePossibleMoves(casella, type);
 		enlight(casella, "orange");
@@ -125,12 +125,12 @@ calculatePossibleMoves = function(casella, type){
 		case "Knight":{
 			var x = casella.charCodeAt(0)-65+1;
 			var y = parseInt(casella[1]);
-			console.log("Partenza: "+x+" - "+y)
+			//console.log("Partenza: "+x+" - "+y)
 			possible_moves = moveKnight(casella, x ,y);
 		}
 		break;
 	}
-	console.log(possible_moves);
+	//console.log(possible_moves);
 	if(show_possible_moves){
 		for(var i in possible_moves){
 			var elem = document.getElementById(possible_moves[i]);
@@ -156,7 +156,7 @@ goal_reached = function(){
 	myconfirm_2b("Obiettivo raggiunto","Hai percorso "+number_of_moves+" caselle. Vuoi riprovare?","sì","no",
 		function() {
         	$( this ).dialog( "close" );
-			ricomincia()
+			ricomincia();
 			$(this).remove();
       	},function() {
       		$(this).dialog("close");
@@ -177,6 +177,10 @@ procedi = function(){
 	punti-=number_of_moves;
 	myalert("Punti","Il tuo punteggio è "+punti+".");
 	sec = 0;
+	updatePoints(-number_of_moves);
+	handleMouseDown_casella = function(){}
+	handleMouseDown_image = function(){}
+	$("#ricomincia").prop("disabled",true);
 }
 
 </script>

@@ -10,6 +10,7 @@
 </style>
 <script>
 drawChessboard($("#chessboard")[0])
+enlighted = "";
 enlight(C3,"orange",true);
 enlight(F5,"orange",true);
 var can_answer = true

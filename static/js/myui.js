@@ -87,7 +87,7 @@ getPoints = function(){
 }
 
 enlight = function(casella, color="yellow", end_pos=false){
-	console.log("Enlighting "+casella)
+	//console.log("Enlighting "+casella)
 	try{
 		if(enlighted == casella){
 			return;

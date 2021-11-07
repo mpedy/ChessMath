@@ -56,7 +56,5 @@ $.ajax({url: "getquiz", success: function(quiz){
 		})
 		list.append(elem);
 	}
-	}, error: function(errore){
-		console.log("Occorso un errore: "+errore)
-	}});
+}});
 </script>

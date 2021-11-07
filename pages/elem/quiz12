@@ -13,6 +13,7 @@ drawChessboard($("#chessboard")[0])
 
 drawPieces($("#chessboard")[0],{D6: "Bishop.svg"})
 
+enlighted = "";
 enlight(F6,"orange",true)
 var can_answer = true
 stopTimerFunction = function(pressed=false){

@@ -17,7 +17,6 @@ stopTimerFunction = function(pressed=false){
 	$(".risposta").toggleClass("disabled")
 }
 $.ajax({url: "getquiz", success: function(quiz){
-	//$("#title").html("<span>Domanda da "+quiz["punteggio"]+" punti</span><br></br>");
 	$("#title").html("<div class=\"timer\" data-second=\""+quiz['tempo']+"\" data-height=\"20px\" data-width=\"80%\"></div>")
 	maketimer($(".timer")[0])
 	$("#question").text(quiz["domanda"]);
@@ -35,7 +34,6 @@ $.ajax({url: "getquiz", success: function(quiz){
 				return
 			}
 			if($(this).attr("class") != undefined && $(this).attr("class").indexOf("corretta")>=0){
-				//myalert("risposta corretta!","Hai risposto giusto!");
 				myconfirm("risposta esatta!", "Hai guadagnato "+(parseInt(quiz['punteggio'])+sec)+" punti","Ok","Cancel",
 					function(){
 						$(this).dialog("close");
@@ -55,7 +53,5 @@ $.ajax({url: "getquiz", success: function(quiz){
 		})
 		list.append(elem);
 	}
-	}, error: function(errore){
-		console.log("Occorso un errore: "+errore)
-	}});
+}});
 </script>

@@ -138,6 +138,7 @@ allpages = {
         "pages/med/quiz10",
         LISTEN,
         "pages/med/quiz11",
+        "pages/elem/img_gioco10",
         "pages/med/gioco11b",
         "pages/med/img_gioco11b",
         "pages/elem/img_allsquare",
@@ -203,12 +204,8 @@ async def setPage(request):
         new_page = request.path_params['page']
         if new_page in range(0,len(allpages[percorso])):
             page = new_page
-            print("Answered in setPage")
-            print(Answered)
             Answered = {}
             Answered[page] = []
-            print("Answered in setPage")
-            print(Answered)
         arr = allpages[percorso]
         l = len(arr)
         res = [arr[page-1] if page-1 in range(0,l) else None, arr[page] if page in range(0,l) else None, arr[page+1] if page+1 in range(0,l) else None]
@@ -274,12 +271,9 @@ async def setPath(request):
 async def getquiz(request):
     global page
     global MyQuiz
-    print(percorso, page)
     localpath = allpages[percorso][int(page)]
-    print(localpath)
     try:
         quizid = int(localpath[localpath.index("quiz")+4:])
-        print("QUIZID: ",quizid)
         return MyQuiz[quizid-1].json()
     except Exception as e:
         print("Errore in getquiz: ",page, MyQuiz)
@@ -314,16 +308,12 @@ codice = int(random()*100000%990+1)
 
 async def settacodice(request):
     global codice;
-    print("Settando il codice: prima = ",codice)
     codice = request.path_params["codice"]
-    print("Codice nuovo: ",codice)
     return Response("ok")
 
 async def verificacodice(request):
     cod = request.path_params["codice"]
-    print("Verificando il codice ",cod)
     if cod == codice:
-        print("Il codice è valido")
         return Response("ok")
     else:
         print("Il codice non è valido")
@@ -433,8 +423,6 @@ async def addPoints(request):
     if nome != "Animatore":
         Classifica[nome] = punti
         Classifica_ordered = sorted(Classifica.items(), key=lambda x: x[1], reverse=True)
-        print("Answered in addpoints")
-        print(Answered)
         if nome not in Answered[page]:
             Answered[page].append(nome)
     return Response("ok")
@@ -448,16 +436,11 @@ async def getClassifica(request):
     return JSONResponse(result)
 
 async def getAnswered(request):
-    print("Answered")
-    print(Answered)
-    print("allNames")
-    print(allNames)
     if len(allNames) == 0:
         return JSONResponse({"perc": -1, "page": page, "error": "Ancora nessuno in lista", "lista":0})
     try:
         l = len(Answered[page])
         l_tot = len(allNames) ## Tolgo l'animatore
-        print(l," - ", l_tot)
         if l_tot != 0:
             return JSONResponse({"perc": l/l_tot*100, "page": page, "error": "", "lista":len(allNames)})
         else:
@@ -512,7 +495,7 @@ async def anim(request):
 #]
 
 async def onerror(request, exc):
-    print("Errore: ",exc.detail)
+    print("Errore gestito: ",exc.detail)
     return RedirectResponse("/anim",status_code=301)
 
 routes=[
@@ -539,4 +522,4 @@ routes=[
     Mount('/static', app=StaticFiles(directory='static', packages=['bootstrap4']), name="static"),
 ]
 
-app = Starlette(debug=True, routes=routes, on_startup=[startup_task], middleware=middleware, exception_handlers={405: onerror})
+app = Starlette(routes=routes, on_startup=[startup_task], middleware=middleware, exception_handlers={405: onerror})
