@@ -423,7 +423,7 @@ class CustomHeaderMiddleware(BaseHTTPMiddleware):
 
 #middleware = [Middleware(CustomHeaderMiddleware)]
 middleware = [Middleware(HTTPSRedirectMiddleware)]
-middleware = []
+#middleware = []
 
 
 async def addPoints(request):
