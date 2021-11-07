@@ -1,9 +1,36 @@
 handleMouseDown_casella = function(){}
 handleMouseDown_image = function(){}
 
+redraw = function(elem){
+    var _w = Math.min(window.innerWidth, window.outerWidth)
+    var w = Math.min(_w,600)
+    elem.style.height=w+"px";
+    elem.style.width=w+"px";
+    elem.setAttribute("width",w)
+    elem.setAttribute("height",w)
+    w = _w-40;
+    w = Math.min(w,600-40)
+    const squareSize = parseInt(w/8);
+    var boardTopx = 20;
+    var boardTopy = 20;
+    elem.setAttribute("data-square-size",squareSize);
+    elem.setAttribute("data-boardtop-x",boardTopx);
+    elem.setAttribute("data-boardtop-y",boardTopy);
+    for(var i=0; i< elem.childElementCount; i++){
+        elem.children[i].style.width=squareSize+"px";
+        elem.children[i].style.height=squareSize+"px";
+    }
+    /*boardTopy += elem.getClientRects()[0].top;
+    boardTopx += elem.getClientRects()[0].left;*/
+}
+
 drawChessboard = function(elem){
-    var w = window.innerWidth
-    w = Math.min(w,600)
+    var _redraw = function(){
+        redraw.apply(this,[elem])
+    }
+    window.addEventListener("resize",_redraw)
+    var _w = Math.min(window.innerWidth, window.outerWidth)
+    var w = Math.min(_w,600)
     elem.style.background="black";
     elem.style.height=w+"px";
     elem.style.width=w+"px";
@@ -11,7 +38,7 @@ drawChessboard = function(elem){
     elem.setAttribute("width",w)
     elem.setAttribute("height",w)
     elem.style.padding="20px";
-    w = window.innerWidth-40;
+    w = _w-40;
     w = Math.min(w,600-40)
     const squareSize = parseInt(w/8);
     var boardTopx = 20;

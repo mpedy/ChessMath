@@ -1,0 +1,40 @@
+<html>
+<head>
+	<style>
+	*{
+		margin: 0;
+		padding: 0;
+		box-sizing: border-box;
+	}
+	body{
+		background: rgba(15,15,15,0.7);
+	}
+	</style>
+	<link rel="icon" type="image/svg+xml" href="static/img/favicon.svg">
+	<link rel="icon" type="image/png" href="static/img/favicon.png">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+	<script type="text/javascript">
+	var url = window.location.origin
+	function make_base_auth(user, password) {
+		var tok = user + ':' + password;
+		var hash = btoa(tok);
+		return "Basic " + hash;
+	}
+	</script>
+</head>
+<body>
+	<div id="blocked" style="position: fixed;left: 0;top: 0;width: 100%;height: 100%;background: #c13d0c;display: grid;z-index: 1;">
+		<div style="margin: auto;">
+			<form method="POST" action="/animatore">
+				<input name="username" style="display: none" value="anim"/>
+				<div>Inserisci il codice animatore:</div>
+				<input name="password" style="padding: 4px" type="password">
+				<button onclick="submit(this)">Ok</button>
+				{{ errore|safe }}
+			</form>
+		</div>
+	</div>
+</body>
+</html>

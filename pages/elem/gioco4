@@ -3,11 +3,13 @@
 <div>
 	<div style="background: black;">Caselle: <span id="number_of_moves">0</span></div>
 	<div class="timer" data-second="120" data-height="20px" data-width="80%"></div>
+	<button style="border-radius: 10px; display: block; margin: 30px auto 15px auto; padding: 5px;" id="ricomincia" onclick="ricomincia()" >Ricomincia</button>
 	<script type="text/javascript">
 	maketimer(document.getElementsByClassName("timer")[0]);
 	stopTimerFunction = function(){
 		handleMouseDown_casella = function(){}
 		handleMouseDown_image = function(){}
+		$("#ricomincia").prop("disabled",true);
 		procedi()
 	}
 	</script>
@@ -43,9 +45,24 @@ var moving_pieces = {
 var moving_piece = "";
 var possible_moves = new Array();
 var obstacles = ["rock-golem-1", "rock-golem","obstacle"]
-var end_position="A8";
+var end_position=A8;
 var number_of_moves = 0;
 var show_possible_moves = false;
+
+ricomincia = function(){
+	$("#chessboard").html("")[0].style=""
+	drawChessboard(document.getElementById("chessboard"));
+	drawPieces(document.getElementById("chessboard"),piece_position);
+	moving_pieces = {
+		"Rook" : D5
+	}
+	enlighted = ""
+	enlight(end_position,"orange",true);
+	number_of_moves = 0;
+	possible_moves = new Array();
+	caselle_colorate = new Array();
+	$("#number_of_moves").html(number_of_moves);
+}
 
 handleMouseDown_casella = function(e){
     var elem = e.currentTarget;
@@ -163,15 +180,7 @@ goal_reached = function(){
 	myconfirm_2b("Obiettivo raggiunto","Hai percorso "+number_of_moves+" caselle. Vuoi riprovare?","sì","no",
 		function() {
         	$( this ).dialog( "close" );
-			$("#chessboard").html("")[0].style=""
-			drawChessboard(document.getElementById("chessboard"));
-			drawPieces(document.getElementById("chessboard"),piece_position);
-			moving_pieces = {
-				"Rook" : "D5"
-			}
-			enlight(end_position,"orange",true);
-			number_of_moves = 0;
-			$("#number_of_moves").html(number_of_moves);
+			ricomincia();
 			$(this).remove();
       	},function() {
       		$(this).dialog("close");
@@ -183,6 +192,7 @@ goal_reached = function(){
       		updatePoints(-number_of_moves);
       		handleMouseDown_casella = function(){}
 			handleMouseDown_image = function(){}
+			$("#ricomincia").prop("disabled",true);
       	}, false);
 }
 

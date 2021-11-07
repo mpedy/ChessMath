@@ -40,6 +40,7 @@
 	setLevel = function(a){
 		changepath(a.value)
 	}
+	changepath(1);
 	newGame = function(){
 		fetch(url+"/reset").then(window.location.reload());
 	}
@@ -81,9 +82,11 @@
 						var perc= parseInt(res_page["perc"])
 						var p = res_page["page"]
 						var err = res_page["error"]
+						var lista = res_page["lista"]
 						if(err.length==0){
 							$("#knoberror").text("");
 							knob.setValue(perc);
+							$("#lista_utenti").text(lista);
 						}else{
 							$("#knoberror").text(err);
 						}
@@ -93,22 +96,6 @@
 	</script>
 </head>
 <body>
-	<div id="blocked" style="position: fixed;left: 0;top: 0;width: 100%;height: 100%;background: #c13d0c;display: grid;z-index: 1;">
-		<div style="margin: auto;">
-			<div>Inserisci il codice animatore:</div>
-			<input style="padding: 4px" id="codice_accesso" type="password" name="codice_accesso">
-			<button onclick="verificaAnimatore()">Ok</button>
-			<div id="error_msg_anim" style="display: none">Codice Errato!</div>
-		</div>
-		<script>
-			$("#codice_accesso").on("keyup",function(e){
-				if(e.keyCode === 13){
-					e.preventDefault();
-					$(this).click()
-				}
-			})
-		</script>
-	</div>
 	<div style="float: left; width: 50%;">
 		<iframe style="width: 320px; height: 640px; display: block; margin: auto;/*-ms-zoom: 0.75;-moz-transform: scale(0.75);-moz-transform-origin: top center;-o-transform: scale(0.75);-o-transform-origin: top center;-webkit-transform: scale(0.75);-webkit-transform-origin: top center;*/"></iframe>
 		<script type="text/javascript">
@@ -140,6 +127,9 @@
 				<span style="flex-grow: 1; text-align: center; margin: 0px 12px;" id="before_step"></span>
 				<h2 style="flex-grow: 1; text-align: center; font-size: 40px; margin: 0px 20px;" id="step">STOP</h2>
 				<span style="flex-grow: 1; text-align: center;margin: 0px 12px;" id="next_step"></span>
+			</div>
+			<div style="display: flex; color: white; margin: auto; justify-content: center; width: 600px;align-items: center; margin-top: 30px;">
+				<div>Utenti loggati: <span id="lista_utenti"></span></div>
 			</div>
 			<div style="display: flex; color: white; margin: auto; justify-content: center; width: 600px;align-items: center; margin-top: 30px;">
 				<div id="knobparent"></div>

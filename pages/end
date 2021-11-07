@@ -12,9 +12,9 @@
 	<div id="background">
 		<div id="content_page" style="position: relative;text-align: center; width: 100%;">
 			<div style="/*height: 100%;*/">
-				<h1>Ti sei divertito?</h1>
+				<h2>Grazie per aver giocato con noi!</h2>
 				<img src="static/img/CMgrande-crop.png" style="width: 100%;"/>
-				<h2 style="margin-top: 12px">I nostri contatti:</h2>
+				<h2 style="margin-top: 12px">Ci puoi trovare qui:</h2>
 					<div style="text-align: left; margin-left: 40px;margin-top: 20px;">
 						<img align="center" src="static/img/Google__G__Logo.svg" style="width: 32px; margin-right: 8px;"><a style="text-decoration: none; color: inherit;" href="mailto:chessmath21@gmail.com">chessmath21@gmail.com</a>
 					</div>

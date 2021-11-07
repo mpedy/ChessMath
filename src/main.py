@@ -1,5 +1,5 @@
 from starlette.applications import Starlette
-from starlette.responses import JSONResponse, HTMLResponse, Response, PlainTextResponse, RedirectResponse
+from starlette.responses import JSONResponse, HTMLResponse, Response, PlainTextResponse, RedirectResponse, PlainTextResponse
 from starlette.routing import Mount, Route
 from starlette.staticfiles import StaticFiles
 from starlette.templating import Jinja2Templates
@@ -15,6 +15,26 @@ import hashlib
 from starlette.middleware import Middleware
 from starlette.middleware.base import BaseHTTPMiddleware
 from loguru import logger
+
+
+
+
+from starlette.datastructures import URL
+from starlette.types import ASGIApp, Receive, Scope, Send
+
+
+
+
+
+
+
+from starlette.authentication import (
+    AuthenticationBackend, AuthenticationError, SimpleUser, UnauthenticatedUser,
+    AuthCredentials, requires
+)
+from starlette.middleware.authentication import AuthenticationMiddleware
+import base64
+import binascii
 
 page = 0
 
@@ -309,11 +329,19 @@ async def verificacodice(request):
         print("Il codice non è valido")
         return Response("ko",status_code=401)
 
+
 async def getanimpage(request):
     global codice;
-    seed(datetime.now())
-    codice = int(random()*100000%990+1)
-    return templates.TemplateResponse("anim", {"request": request, "codice": codice})
+    try:
+        form = await request.form()
+        if form["username"] == "anim" and form["password"] == "1324354321":
+            seed(datetime.now())
+            codice = int(random()*100000%990+1)
+            return templates.TemplateResponse("anim", {"request": request, "codice": codice})
+        else:
+            return templates.TemplateResponse("anim_key", {"request": request, "errore": """<div id="error_msg_anim">Codice Errato!</div>"""})
+    except Exception as e:
+        return RedirectResponse("/anim")
 
 async def getcodice(request):
     global codice
@@ -361,9 +389,9 @@ async def endGame(request):
     return HTMLResponse(open("pages/end").read())
 
 
-from starlette.datastructures import URL
-from starlette.responses import RedirectResponse
-from starlette.types import ASGIApp, Receive, Scope, Send
+
+
+
 
 
 class HTTPSRedirectMiddleware:
@@ -401,7 +429,7 @@ middleware = []
 async def addPoints(request):
     global Answered
     nome = request.path_params["nome"]
-    punti = request.path_params["pt"]
+    punti = int(request.path_params["pt"])
     if nome != "Animatore":
         Classifica[nome] = punti
         Classifica_ordered = sorted(Classifica.items(), key=lambda x: x[1], reverse=True)
@@ -424,16 +452,68 @@ async def getAnswered(request):
     print(Answered)
     print("allNames")
     print(allNames)
+    if len(allNames) == 0:
+        return JSONResponse({"perc": -1, "page": page, "error": "Ancora nessuno in lista", "lista":0})
     try:
         l = len(Answered[page])
         l_tot = len(allNames) ## Tolgo l'animatore
         print(l," - ", l_tot)
         if l_tot != 0:
-            return JSONResponse({"perc": l/l_tot*100, "page": page, "error": ""})
+            return JSONResponse({"perc": l/l_tot*100, "page": page, "error": "", "lista":len(allNames)})
         else:
-            return JSONResponse({"perc": -1, "page": page, "error": "Errore: divisione per 0"})
+            return JSONResponse({"perc": -1, "page": page, "error": "Ancora nessuno in lista","lista":0})
     except Exception as e:
-        return JSONResponse({"perc":-1, "page":page, "error": "Ancora nessuno in lista"})
+        return JSONResponse({"perc":-1, "page":page, "error": "Ancora nessuno ha risposto","lista":0})
+
+
+
+
+
+class BasicAuthBackend(AuthenticationBackend):
+    async def authenticate(self, request):
+        print("Siamo in BasicAuthBackend: ", type(request))
+        if request.url.path == "/anim":
+            form = await request.json()
+            print("FORM: ",form)
+            try:
+                print(request.query_params, " -- ",request.path_params," -- ",request.client," -- ", request.form())
+                user= request.query_params["username"]
+                passw = request.query_params["password"]
+                if user == "anim" and passw == "1324354321":
+                    return AuthCredentials(["authenticated",user]), SimpleUser(user)
+                else:
+                    raise AuthenticationError('Invalid basic auth credentials')
+            except Exception as e:
+                print("Errore nella login su anim: ",e)
+                raise AuthenticationError('Invalid basic auth credentials')
+        if "Authorization" not in request.headers:
+            return
+        auth = request.headers["Authorization"]
+        try:
+            scheme, credentials = auth.split()
+            if scheme.lower() != 'basic':
+                return
+            decoded = base64.b64decode(credentials).decode("ascii")
+        except (ValueError, UnicodeDecodeError, binascii.Error) as exc:
+            raise AuthenticationError('Invalid basic auth credentials')
+
+        username, _, password = decoded.partition(":")
+        # TODO: You'd want to verify the username and password here.
+        print(f"user={username},password={password}. Decoded: {decoded}")
+        return AuthCredentials(["authenticated",username]), SimpleUser(username)
+
+async def anim(request):
+    return templates.TemplateResponse("anim_key", {"request": request, "errore": """<div id="error_msg_anim"></div>"""})
+
+    #return HTMLResponse(open("pages/anim_key").read())
+
+#middleware = [
+#    Middleware(AuthenticationMiddleware, backend=BasicAuthBackend())
+#]
+
+async def onerror(request, exc):
+    print("Errore: ",exc.detail)
+    return RedirectResponse("/anim",status_code=301)
 
 routes=[
     Route("/", welcome),
@@ -448,13 +528,15 @@ routes=[
     Route("/settacodice_{codice:int}", settacodice),
     Route("/getcodice", getcodice),
     Route("/inseriscinome_{nome:str}", addNome),
-    Route("/anim", getanimpage),
+    Route("/animatore", getanimpage, methods=["POST"]),
     Route("/reset", reset),
     Route("/end",endGame),
-    Route("/addPoints_{nome:str}_{pt:int}", addPoints),
+    Route("/addPoints_{nome:str}_{pt:str}", addPoints),
     Route("/getClassifica_{position:int}", getClassifica),
     Route("/getAnswered", getAnswered),
+
+    Route("/anim",anim),
     Mount('/static', app=StaticFiles(directory='static', packages=['bootstrap4']), name="static"),
 ]
 
-app = Starlette(debug=True, routes=routes, on_startup=[startup_task], middleware=middleware)
+app = Starlette(debug=True, routes=routes, on_startup=[startup_task], middleware=middleware, exception_handlers={405: onerror})

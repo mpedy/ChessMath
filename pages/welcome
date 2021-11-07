@@ -45,7 +45,7 @@
 		<div id="content_page" style="position: relative;text-align: center; width: 100%;">
 			<div>
 				<h1 style="margin-top: 10px">Benvenuti in</h1>
-				<img src="static/img/CMgrande-crop.png" style="width: 100%; margin: 12px 0px;"/>
+				<img src="static/img/CMgrande-crop.png" style="width: 100%; margin: 12px 0px;max-width: 640px"/>
 				
 				<span style="display: block; margin-bottom: 6px;">Inserisci il codice del Laboratorio</span>
 				<input style="display: block; margin: auto; padding: 6px; text-align: center;" id="codice"></input>
