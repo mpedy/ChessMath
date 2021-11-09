@@ -9,7 +9,7 @@ moveRook = function(casella, x,y){
 			if(y+i>=8 || obstacles.includes($("#"+newcasella).children()[0].getAttribute("data-type")) ){
 				break;
 			}
-		}catch{
+		}catch (errore){
 			continue;
 		}
 	}
@@ -23,7 +23,7 @@ moveRook = function(casella, x,y){
 			if(y-i<=1 || obstacles.includes($("#"+newcasella).children()[0].getAttribute("data-type")) ){
 				break;
 			}
-		}catch{
+		}catch (errore){
 			continue;
 		}
 	}
@@ -39,7 +39,7 @@ moveRook = function(casella, x,y){
 			if(x+i>=8 || obstacles.includes($("#"+newcasella).children()[0].getAttribute("data-type")) ){
 				break;
 			}
-		}catch{
+		}catch (errore){
 			continue;
 		}
 	}
@@ -55,7 +55,7 @@ moveRook = function(casella, x,y){
 			if(x-i<=1 || obstacles.includes($("#"+newcasella).children()[0].getAttribute("data-type")) ){
 				break;
 			}
-		}catch{
+		}catch (errore){
 			continue;
 		}
 	}
@@ -71,7 +71,7 @@ moveBishop = function(casella, x, y){
 				if(obstacles.includes($("#"+newcasella).children()[0].getAttribute("data-type"))){
 					break;
 				}
-			}catch{}
+			}catch (errore){}
 			if(( $("#"+newcasella).children().length==0 || !obstacles.includes($("#"+newcasella).children()[0].getAttribute("data-type"))) ){
 				possible_moves.push(newcasella)
 			}
@@ -88,7 +88,7 @@ moveBishop = function(casella, x, y){
 				if(obstacles.includes($("#"+newcasella).children()[0].getAttribute("data-type"))){
 					break;
 				}
-			}catch{}
+			}catch (errore){}
 			if(( $("#"+newcasella).children().length==0 || !obstacles.includes($("#"+newcasella).children()[0].getAttribute("data-type"))) ){
 				possible_moves.push(newcasella)
 			}
@@ -104,7 +104,7 @@ moveBishop = function(casella, x, y){
 				if(obstacles.includes($("#"+newcasella).children()[0].getAttribute("data-type"))){
 					break;
 				}
-			}catch{}
+			}catch (errore){}
 			if(( $("#"+newcasella).children().length==0 || !obstacles.includes($("#"+newcasella).children()[0].getAttribute("data-type"))) ){
 				possible_moves.push(newcasella)
 			}
@@ -120,7 +120,7 @@ moveBishop = function(casella, x, y){
 				if(obstacles.includes($("#"+newcasella).children()[0].getAttribute("data-type"))){
 					break;
 				}
-			}catch{}
+			}catch (errore){}
 			if(( $("#"+newcasella).children().length==0 || !obstacles.includes($("#"+newcasella).children()[0].getAttribute("data-type"))) ){
 				possible_moves.push(newcasella)
 			}

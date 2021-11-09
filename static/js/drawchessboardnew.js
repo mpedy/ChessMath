@@ -2,7 +2,7 @@ handleMouseDown_casella = function(){}
 handleMouseDown_image = function(){}
 
 redraw = function(elem){
-    var _w = Math.min(window.innerWidth, window.outerWidth)
+    var _w = Math.min(window.innerWidth, window.outerWidth == 0 ? window.innerWidth : window.outerWidth)
     var w = Math.min(_w,600)
     elem.style.height=w+"px";
     elem.style.width=w+"px";
@@ -29,7 +29,7 @@ drawChessboard = function(elem){
         redraw.apply(this,[elem])
     }
     window.addEventListener("resize",_redraw)
-    var _w = Math.min(window.innerWidth, window.outerWidth)
+    var _w = Math.min(window.innerWidth, window.outerWidth==0? window.innerWidth : window.outerWidth)
     var w = Math.min(_w,600)
     elem.style.background="black";
     elem.style.height=w+"px";
@@ -57,9 +57,15 @@ drawChessboard = function(elem){
             div.style.position="relative"
             div.setAttribute("casella",String.fromCharCode(65+j)+""+(8-i))
             div.id = String.fromCharCode(65+j)+""+(8-i)
-            $(div).mousedown(function (e) {
-                handleMouseDown_casella(e);
-            });
+            if("ontouchstart" in document){
+                div.addEventListener("touchstart",function (e){
+                    handleMouseDown_casella(e);
+                });
+            }else{
+                $(div).mousedown(function (e) {
+                    handleMouseDown_casella(e);
+                });
+            }
             elem.appendChild(div)
         }
     }
@@ -104,13 +110,15 @@ drawPieces = function(elem, lst){
     var boardTopy  = parseInt(elem.getAttribute("data-boardtop-y"));
     for(var i in lst){
         casella = i.toUpperCase();
-        //var x = casella[0].charCodeAt(0)-65;
-        //var y = 8-parseInt(casella[1]);
         var image = new Image();
         image.src = "static/img/"+lst[i]
-        image.style="width: 100%;z-index: 2; position: absolute; left: 0; top: 0;";
+        image.style.width="100%"
+        image.style.zIndex="2"
+        image.style.position="absolute"
+        image.style.left="0"
+        image.style.top="0"
         image.setAttribute("data-casella",casella)
-        image.setAttribute("data-type",lst[i].replaceAll(".svg",""))
+        image.setAttribute("data-type",lst[i].replace(".svg",""))
         document.getElementById(casella).appendChild(image)
         $(image).mousedown(function (e) {
             handleMouseDown_image(e);

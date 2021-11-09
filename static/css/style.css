@@ -27,6 +27,30 @@ div#background{
 		max-width: 640px;
 	}
 }
+#gobtn{
+	background: lightgray;
+	font-size: 4vw;
+}
+#reset{
+	background: lightgray;
+	font-size: 4vw;
+}
+#ricomincia{
+	background: lightgray;
+	font-size: 4vw;
+}
+
+#quiz{
+	height: 100%;
+}
+
+#answers > li{
+	float: left;
+	width: 49%;
+}
+#answers > li > div{
+	margin: 10px;
+}
 
 .b{
 	font-weight: bold;

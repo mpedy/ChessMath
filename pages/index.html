@@ -12,6 +12,7 @@
 	<script src="static/js/drawchessboardnew.js"></script>
 	<script src="static/js/myui.js"></script>
 	<script src="static/js/movePieces.js"></script>
+
 	<script>
 	/*
 	* DA SCOMMENTARE
@@ -24,12 +25,12 @@
 	/**
 	* DA COMMENTARE!!
 	**/
-	var codice = {{ codice }}
-	var nxt = function(p){
+	/*var nxt = function(p){
 		fetch(window.location.origin+"/setpage_"+p+"_123111321").then(res => res.text().then(txt=>console.log(txt)))
 	}
 	var upt = function(){fetch(window.location.origin+"/updateQuest")}
-	var changepath = function(p){fetch(window.location.origin+"/setpath_"+p)}
+	var changepath = function(p){fetch(window.location.origin+"/setpath_"+p)}*/
+	var codice = {{ codice }}
 	var page = 0;
 	var timeinv = setInterval(
 		function(){

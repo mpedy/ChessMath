@@ -72,6 +72,8 @@ handleMouseDown_casella = function(e){
     	move(moving_piece, elem.id);
     	moving_piece = "";
     	possible_moves = new Array();
+    	e.stopPropagation();
+    	e.preventDefault();
     }else{
     	//console.log("non sposto" + moving_piece)
     }
@@ -157,7 +159,14 @@ calculatePossibleMoves = function(casella, type){
 			var elem = document.getElementById(possible_moves[i]);
 			caselle_colorate.push(possible_moves[i]);
     		var div = document.createElement("div");
-    		div.style="background: blue; border-radius: 50%; position: absolute; left: 20%; top: 20%; width: 60%; height: 60%; z-index: 1";
+    		div.style.background="blue"
+    		div.style.borderRadius="50%"
+    		div.style.position="absolute"
+    		div.style.left="10%"
+    		div.style.top="10%"
+    		div.style.width="80%"
+    		div.style.height="80%"
+    		div.style.zIndex="1";
     		elem.appendChild(div);
 		}
 	}

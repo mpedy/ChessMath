@@ -2,9 +2,9 @@
 <div id="chessboard"></div>
 <div>
 	<div class="timer" data-second="60" data-height="20px" data-width="80%"></div>
-	<div style="margin: 10px">
-		<button style="border-radius: 10px; display: block; margin: 30px auto 15px auto; padding: 5px;" id="gobtn" onclick="procedi(this)">Conferma</button>
-		<button style="border-radius: 10px; display: block; margin: auto; padding: 5px;"id="reset" onclick="reset()" >Cancella tutto</button>
+	<div style="margin: 10px; display: inline-table;">
+		<button style="border-radius: 10px; display: block; margin: 0px 15px; padding: 5px; float: left;" id="gobtn" onclick="procedi(this)">Conferma</button>
+		<button style="border-radius: 10px; display: block; margin: 0px 15px; padding: 5px; float: left;"id="reset" onclick="reset()" >Cancella tutto</button>
 	</div>
 	<script type="text/javascript">
 	maketimer(document.getElementsByClassName("timer")[0]);
@@ -42,10 +42,18 @@ handleMouseDown_casella = function(e){
     }else{
     	caselle_colorate.push(casella);
     	var div = document.createElement("div");
-    	div.style="background: red; border-radius: 50%; position: absolute; left: 10%; top: 10%; width: 80%; height: 80%; z-index: 1";
+    	div.style.background="red"
+    	div.style.borderRadius="50%"
+    	div.style.position="absolute"
+    	div.style.left="10%"
+    	div.style.top="10%"
+    	div.style.width="80%"
+    	div.style.height="80%"
+    	div.style.zIndex="1";
     	elem.appendChild(div);
     }
 }
+handleMouseDown_image = function(){}
 
 reset = function(){
 	for(var i in caselle_colorate){

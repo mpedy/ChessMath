@@ -7,12 +7,20 @@ maketimer = function(elem){
 	sec = totsec
 	var txt = document.createElement("span")
 	txt.innerText="Tempo rimanente: "+sec+" secondi"
-	txt.style="margin: 40px; font-size: 16px;"
+	txt.style.margin="40px"
+	txt.style.fontSize="16px"
 	timer.appendChild(txt)
 	var box = document.createElement("div")
-	box.style="width: "+width+"; height: "+height+"; background: black; position: relative; margin: auto;"
+	box.style.width=width
+	box.style.height=height
+	box.style.background="black"
+	box.style.position="relative"
+	box.style.margin="auto"
 	var clessidra = document.createElement("div")
-	clessidra.style="width: 100%; height: 100%; background: white; position: absolute;"
+	clessidra.style.width="100%"
+	clessidra.style.height="100%"
+	clessidra.style.background="white"
+	clessidra.style.position="absolute"
 	box.appendChild(clessidra)
 	box.style.border="2px solid white"
 	timer.appendChild(box)

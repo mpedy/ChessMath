@@ -15,4 +15,6 @@ $("#F4").append(ar)
 var ad = document.createElement("img")
 ad.src="static/img/arrow-down.svg"
 $("#E3").append(ad)
+handleMouseDown_casella = function(){}
+handleMouseDown_image = function(){}
 </script>
