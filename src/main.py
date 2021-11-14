@@ -156,6 +156,47 @@ allpages = {
         "pages/med/quiz16",
         "pages/classifica",
         "pages/endpage"
+    ],
+    "path_3" : [
+        LISTEN,
+        "pages/ascolta_torre",
+        "pages/med/img_gioco1",
+        "pages/med/quiz3",
+        "pages/med/quiz4",
+        "pages/med/img_1",
+        "pages/med/gioco2",
+        "pages/med/gioco4",
+        "pages/med/quiz7",
+        LISTEN,
+        "pages/med/gioco5",
+        "pages/med/img_gioco5",
+        "pages/med/gioco6",
+        "pages/med/img_gioco6",
+        "pages/ascolta_alfiere", ## Alfiere
+        "pages/med/img_gioco7",
+        "pages/med/gioco8",
+        "pages/med/quiz8",
+        "pages/med/quiz9",
+        "pages/med/quiz10",
+        LISTEN,
+        "pages/med/quiz11",
+        "pages/med/gioco11b",
+        "pages/med/img_gioco11b",
+        "pages/elem/img_allsquare",
+        "pages/ascolta_cavallo",# CAVALLO
+        "pages/med/img_cavallo",
+        "pages/med/gioco_spirit",
+        "pages/med/img_spirit",
+        "pages/med/gioco13b",
+        "pages/med/gioco13b_soluzione",
+        "pages/med/gioco12b",
+        "pages/med/gioco12b_soluzione",
+        LISTEN,
+        "pages/med/quiz14",
+        LISTEN,
+        "pages/med/quiz16",
+        "pages/classifica",
+        "pages/endpage"
     ]
 }
 
@@ -324,6 +365,7 @@ async def getanimpage(request):
     global codice;
     try:
         form = await request.form()
+        print("FORM: "+str(form))
         if form["username"] == "anim" and form["password"] == "1324354321":
             seed(datetime.now())
             codice = int(random()*100000%990+1)
@@ -331,6 +373,7 @@ async def getanimpage(request):
         else:
             return templates.TemplateResponse("anim_key", {"request": request, "errore": """<div id="error_msg_anim">Codice Errato!</div>"""})
     except Exception as e:
+        print("Eccezione trovata: "+str(e))
         return RedirectResponse("/anim")
 
 async def getcodice(request):
@@ -413,7 +456,7 @@ class CustomHeaderMiddleware(BaseHTTPMiddleware):
 
 #middleware = [Middleware(CustomHeaderMiddleware)]
 middleware = [Middleware(HTTPSRedirectMiddleware)]
-#middleware = []
+middleware = []
 
 
 async def addPoints(request):
@@ -495,6 +538,8 @@ async def anim(request):
 #]
 
 async def onerror(request, exc):
+    print("Errore")
+    print(str(exc))
     print("Errore gestito: ",exc.detail)
     return RedirectResponse("/anim",status_code=301)
 

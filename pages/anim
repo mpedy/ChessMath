@@ -115,6 +115,7 @@
 				<select style="padding: 10px; border-radius: 10px; font-size: 22px;" onchange="setLevel(this)">
 					<option value=1>Livello A - Elementari</option>
 					<option value=2>Livello B - Medie</option>
+					<option value=3>Livello C - Liceo</option>
 				</select>
 			</div>
 			<div style="display: flex; justify-content: center; align-items: center;">
