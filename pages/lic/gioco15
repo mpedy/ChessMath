@@ -1,4 +1,4 @@
-<div id="title">Muovi il cavallo verso la casella evidenziata nel minor numero di mosse</div>
+<div id="title">Muovi il cavallo verso il punto evidenziato nel minor numero di mosse</div>
 <div id="chessboard"></div>
 <div>
 	<div style="background: black;">Mosse: <span id="number_of_moves">0</span></div>
@@ -20,22 +20,35 @@
 drawChessboard(document.getElementById("chessboard"))
 
 piece_position={
-	D5: "Knight.svg",
+	H8: "Knight.svg",
+	G8: "obstacle.svg",
+	G7: "obstacle.svg",
+	H7: "obstacle.svg",
+	E4: "obstacle.svg",
+	G6: "obstacle.svg",
+	C2: "obstacle.svg",
+	C5: "obstacle.svg",
+	B2: "obstacle.svg",
+	B3: "obstacle.svg",
+	B5: "obstacle.svg",
+	D1: "obstacle.svg",
+	D3: "obstacle.svg"
 }
 
 drawPieces(document.getElementById("chessboard"),piece_position)
 
 var caselle_colorate = new Array();
+var caselle_corrette = [A5,B5,C5,E5,F5,G5,H5,D4,D3,D2,D1]
 
 var enlighted = "";
 
 var moving_pieces = {
-	"Knight" : D5
+	"Knight" :H8
 }
 var moving_piece = "";
 var possible_moves = new Array();
 var obstacles = ["rock-golem-1", "rock-golem","obstacle"]
-var end_position=E5;
+var end_position=C3;
 var number_of_moves = 0;
 var show_possible_moves = false;
 
@@ -44,9 +57,9 @@ ricomincia = function(){
 	drawChessboard(document.getElementById("chessboard"));
 	drawPieces(document.getElementById("chessboard"),piece_position);
 	moving_pieces = {
-		"Knight" : D5
+		"Knight" : H8
 	}
-	enlighted = ""
+	enlighted="";
 	enlight(end_position,"orange",true);
 	number_of_moves = 0;
 	$("#number_of_moves").html(number_of_moves);
@@ -127,7 +140,6 @@ calculatePossibleMoves = function(casella, type){
 		case "Knight":{
 			var x = casella.charCodeAt(0)-65+1;
 			var y = parseInt(casella[1]);
-			//console.log("Partenza: "+x+" - "+y)
 			possible_moves = moveKnight(casella, x ,y);
 		}
 		break;
@@ -165,7 +177,7 @@ goal_reached = function(){
 	myconfirm_2b("Obiettivo raggiunto","Hai impiegato "+number_of_moves+" mosse. Vuoi riprovare?","sì","no",
 		function() {
         	$( this ).dialog( "close" );
-			ricomincia()
+			ricomincia();
 			$(this).remove();
       	},function() {
       		$(this).dialog("close");

@@ -1,0 +1,27 @@
+<div id="quiz">
+	<span id="title"></span>
+	<span id="question"></span>
+	<ul id="answers">
+	</ul>
+</div>
+<style>
+	
+</style>
+<script>
+var can_answer = true
+stopTimerFunction = function(pressed){
+	try{
+		if(pressed == undefined){
+			pressed = false;
+		}
+	}catch ( errore ){
+		pressed = false;
+	}
+	if(!pressed){
+		myalert("Tempo esaurito!","E' scaduto il tempo!");
+	}
+	can_answer = false
+	$(".risposta").toggleClass("disabled")
+}
+getQuiz();
+</script>

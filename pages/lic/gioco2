@@ -1,8 +1,8 @@
-<div id="title">Muovi il cavallo verso la casella evidenziata nel minor numero di mosse</div>
+<div id="title">Muovi la torre verso il punto evidenziato percorrendo il minor numero di caselle possibile</div>
 <div id="chessboard"></div>
 <div>
-	<div style="background: black;">Mosse: <span id="number_of_moves">0</span></div>
-	<div class="timer" data-second="120" data-height="20px" data-width="80%"></div>
+	<div style="background: black;">Caselle: <span id="number_of_moves">0</span></div>
+	<div class="timer" data-second="30" data-height="20px" data-width="80%"></div>
 	<button style="border-radius: 10px; display: block; margin: 30px auto 15px auto; padding: 5px;" id="ricomincia" onclick="ricomincia()" >Ricomincia</button>
 	<script type="text/javascript">
 	maketimer(document.getElementsByClassName("timer")[0]);
@@ -20,7 +20,7 @@
 drawChessboard(document.getElementById("chessboard"))
 
 piece_position={
-	D5: "Knight.svg",
+	E2: "Rook.svg",
 }
 
 drawPieces(document.getElementById("chessboard"),piece_position)
@@ -30,12 +30,12 @@ var caselle_colorate = new Array();
 var enlighted = "";
 
 var moving_pieces = {
-	"Knight" : D5
+	"Rook" : E2
 }
 var moving_piece = "";
 var possible_moves = new Array();
 var obstacles = ["rock-golem-1", "rock-golem","obstacle"]
-var end_position=E5;
+var end_position="A8";
 var number_of_moves = 0;
 var show_possible_moves = false;
 
@@ -44,7 +44,7 @@ ricomincia = function(){
 	drawChessboard(document.getElementById("chessboard"));
 	drawPieces(document.getElementById("chessboard"),piece_position);
 	moving_pieces = {
-		"Knight" : D5
+		"Rook" : E2
 	}
 	enlighted = ""
 	enlight(end_position,"orange",true);
@@ -92,7 +92,19 @@ move = function(moving_piece, casella){
 }
 
 dist = function(from, to){
-	return 1;
+	var x1 = from[1]
+	var x2 = to[1]
+	var y1 = from.charCodeAt(0)-65+1
+	var y2 = to.charCodeAt(0)-65+1
+	var d = 0;
+	if(x1==x2){
+		d = Math.abs(y2-y1);
+		//console.log("Distanza: "+(y2-y1))
+	}else{
+		d = Math.abs(x2-x1);
+		//console.log("Distanza: "+(x2-x1))
+	}
+	return d;
 }
 
 enlight(end_position,"orange",true);
@@ -124,11 +136,10 @@ handleMouseDown_image = function(e){
 calculatePossibleMoves = function(casella, type){
 	possible_moves = new Array();
 	switch(type){
-		case "Knight":{
+		case "Rook":{
 			var x = casella.charCodeAt(0)-65+1;
 			var y = parseInt(casella[1]);
-			//console.log("Partenza: "+x+" - "+y)
-			possible_moves = moveKnight(casella, x ,y);
+			possible_moves = moveRook(casella, x ,y);
 		}
 		break;
 	}
@@ -162,10 +173,10 @@ reset = function(){
 
 goal_reached = function(){
 	punti = getPoints();
-	myconfirm_2b("Obiettivo raggiunto","Hai impiegato "+number_of_moves+" mosse. Vuoi riprovare?","sì","no",
+	myconfirm_2b("Obiettivo raggiunto","Hai percorso "+number_of_moves+" caselle. Vuoi riprovare?","sì","no",
 		function() {
         	$( this ).dialog( "close" );
-			ricomincia()
+			ricomincia();
 			$(this).remove();
       	},function() {
       		$(this).dialog("close");

@@ -20,7 +20,7 @@
 drawChessboard(document.getElementById("chessboard"))
 
 piece_position={
-	D5: "Knight.svg",
+	A2: "Knight.svg",
 }
 
 drawPieces(document.getElementById("chessboard"),piece_position)
@@ -30,12 +30,12 @@ var caselle_colorate = new Array();
 var enlighted = "";
 
 var moving_pieces = {
-	"Knight" : D5
+	"Knight" : A2
 }
 var moving_piece = "";
 var possible_moves = new Array();
 var obstacles = ["rock-golem-1", "rock-golem","obstacle"]
-var end_position=E5;
+var end_position=D6;
 var number_of_moves = 0;
 var show_possible_moves = false;
 
@@ -44,7 +44,7 @@ ricomincia = function(){
 	drawChessboard(document.getElementById("chessboard"));
 	drawPieces(document.getElementById("chessboard"),piece_position);
 	moving_pieces = {
-		"Knight" : D5
+		"Knight" : A2
 	}
 	enlighted = ""
 	enlight(end_position,"orange",true);
@@ -162,10 +162,10 @@ reset = function(){
 
 goal_reached = function(){
 	punti = getPoints();
-	myconfirm_2b("Obiettivo raggiunto","Hai impiegato "+number_of_moves+" mosse. Vuoi riprovare?","sì","no",
+	myconfirm_2b("Obiettivo raggiunto","Hai percorso "+number_of_moves+" caselle. Vuoi riprovare?","sì","no",
 		function() {
         	$( this ).dialog( "close" );
-			ricomincia()
+			ricomincia();
 			$(this).remove();
       	},function() {
       		$(this).dialog("close");

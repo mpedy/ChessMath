@@ -1,0 +1,118 @@
+<span id="title" style="padding: 10px">Piazza 8 regine sulla scacchiera in modo tale che non si guardino mai</span>
+<div id="chessboard"></div>
+<div>
+	<div class="timer" data-second="120" data-height="20px" data-width="80%"></div>
+	<div style="margin: 10px; display: inline-table;">
+		<button style="border-radius: 10px; display: block; margin: 0px 15px; padding: 5px; float: left;" id="gobtn" onclick="procedi(this)">Conferma</button>
+		<button style="border-radius: 10px; display: block; margin: 0px 15px; padding: 5px; float: left;"id="reset" onclick="reset()" >Cancella tutto</button>
+	</div>
+	<script type="text/javascript">
+	maketimer(document.getElementsByClassName("timer")[0]);
+	stopTimerFunction = function(){
+		var dis = document.getElementById("gobtn").disabled;
+		document.getElementById("gobtn").disabled = true;
+		document.getElementById("reset").disabled = true;
+		handleMouseDown_casella = function(){}
+		if(!dis){
+			procedi(document.getElementById("gobtn"))
+		}
+		myalert("Tempo scaduto","Il tuo punteggio è "+getPoints())
+	}
+	</script>
+</div>
+
+<script type="text/javascript">
+var dim_queens = 8;
+drawChessboard_bis(document.getElementById("chessboard"),dim_queens)
+
+var caselle_colorate = new Array();
+
+handleMouseDown_casella = function(e){
+    var elem = e.currentTarget;
+    casella = elem.getAttribute("casella");
+    if(caselle_colorate.includes(casella)){
+    	caselle_colorate.splice(caselle_colorate.indexOf(casella),1);
+    	elem.removeChild(elem.children[elem.childElementCount-1]);
+    }else{
+    	caselle_colorate.push(casella);
+    	var img = document.createElement("img")
+    	img.src="static/img/Queen.svg";
+    	img.style.width="100%";
+    	img.style.zIndex="2";
+    	img.style.position="absolute";
+    	img.style.left="0px";
+    	img.style.top="0px";
+    	elem.appendChild(img);
+    }
+}
+
+reset = function(){
+	for(var i in caselle_colorate){
+		var elem = document.getElementById(caselle_colorate[i])
+		elem.removeChild(elem.children[elem.childElementCount-1]);
+	}
+	caselle_colorate = new Array();
+}
+
+controllaRegine = function(casella){
+	var x = casella.charCodeAt(0)-65+1;
+	var y = parseInt(casella[1]);
+	possible_moves = moveRook(casella,x,y);
+	var pm = possible_moves;
+	possible_moves = moveBishop(casella,x,y);
+	for(var i=0; i<pm.length; i++){
+		possible_moves.push(pm[i]);
+	}
+	for(var i=0; i<possible_moves.length; i++){
+		var c = document.getElementById(possible_moves[i]);
+		if(c==undefined){
+			continue;
+		}
+		if(c.childElementCount>0 && c.children[0].tagName == "IMG"){
+			myalert("Attenzione","Le regine in "+casella+" e "+c.id+" si guardano");
+			return -1;
+		}
+	}
+	return 0;
+
+}
+
+procedi = function(btn){
+	btn.disabled = true;
+	var points = 0;
+	if(sec>0){
+		var chess = document.getElementById("chessboard");
+		var queens_position = new Array();
+		for(var i=0; i<chess.childElementCount; i++){
+			if(chess.children[i].childElementCount>0 && chess.children[i].children[0].tagName == "IMG"){
+				queens_position.push(chess.children[i].id);
+			}
+		}
+		if(queens_position.length!=dim_queens){
+			myalert("Attenzione", "Hai inserito "+queens_position.length+" regine");
+		}else{
+			var okpos = 0;
+			for(var q=0; q<queens_position.length; q++){
+				var isok = controllaRegine(queens_position[q]);
+				okpos=okpos + isok
+				if(isok==-1){
+					break;
+				}
+			}
+			if(okpos==0 && sec>0){
+				points = 50;
+				myalert("Risposta Corretta","Hai guadagnato "+points+" punti");
+			}
+		}
+	}
+	updatePoints(points);
+	punti = getPoints();
+	clearInterval(window.myt);
+	sec = 0;
+	document.getElementById("gobtn").disabled = true;
+	document.getElementById("reset").disabled = true;
+	handleMouseDown_casella = function(){}
+	handleMouseDown_image = function(){}
+}
+
+</script>

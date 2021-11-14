@@ -162,7 +162,7 @@ reset = function(){
 
 goal_reached = function(){
 	punti = getPoints();
-	myconfirm_2b("Obiettivo raggiunto","Hai impiegato "+number_of_moves+" mosse. Vuoi riprovare?","sì","no",
+	myconfirm_2b("Obiettivo raggiunto","Hai percorso "+number_of_moves+" mosse. Vuoi riprovare?","sì","no",
 		function() {
         	$( this ).dialog( "close" );
 			ricomincia()

@@ -1,7 +1,7 @@
-<div id="title">Muovi il cavallo verso la casella evidenziata nel minor numero di mosse</div>
+<div id="title">Muovi l'alfiere verso il punto evidenziato nel minor numero di caselle</div>
 <div id="chessboard"></div>
 <div>
-	<div style="background: black;">Mosse: <span id="number_of_moves">0</span></div>
+	<div style="background: black;">Caselle: <span id="number_of_moves">0</span></div>
 	<div class="timer" data-second="120" data-height="20px" data-width="80%"></div>
 	<button style="border-radius: 10px; display: block; margin: 30px auto 15px auto; padding: 5px;" id="ricomincia" onclick="ricomincia()" >Ricomincia</button>
 	<script type="text/javascript">
@@ -20,22 +20,32 @@
 drawChessboard(document.getElementById("chessboard"))
 
 piece_position={
-	D5: "Knight.svg",
+	A2: "Bishop.svg",
+	D4: "obstacle.svg",
+	E5: "obstacle.svg",
+	F6: "obstacle.svg",
+	G7: "obstacle.svg",
+	H3: "obstacle.svg",
+	B7: "obstacle.svg",
+	A8: "obstacle.svg",
+	C6: "obstacle.svg",
+	G3: "obstacle.svg"
 }
 
 drawPieces(document.getElementById("chessboard"),piece_position)
 
 var caselle_colorate = new Array();
+var caselle_corrette = [A5,B5,C5,E5,F5,G5,H5,D4,D3,D2,D1]
 
 var enlighted = "";
 
 var moving_pieces = {
-	"Knight" : D5
+	"Bishop" : A2
 }
 var moving_piece = "";
 var possible_moves = new Array();
 var obstacles = ["rock-golem-1", "rock-golem","obstacle"]
-var end_position=E5;
+var end_position=H7;
 var number_of_moves = 0;
 var show_possible_moves = false;
 
@@ -44,9 +54,9 @@ ricomincia = function(){
 	drawChessboard(document.getElementById("chessboard"));
 	drawPieces(document.getElementById("chessboard"),piece_position);
 	moving_pieces = {
-		"Knight" : D5
+		"Bishop" : A2
 	}
-	enlighted = ""
+	enlighted=""
 	enlight(end_position,"orange",true);
 	number_of_moves = 0;
 	$("#number_of_moves").html(number_of_moves);
@@ -62,8 +72,6 @@ handleMouseDown_casella = function(e){
     	move(moving_piece, elem.id);
     	moving_piece = "";
     	possible_moves = new Array();
-    	e.stopPropagation();
-    	e.preventDefault();
     }else{
     	//console.log("non sposto" + moving_piece)
     }
@@ -92,7 +100,19 @@ move = function(moving_piece, casella){
 }
 
 dist = function(from, to){
-	return 1;
+	var x1 = from[1]
+	var x2 = to[1]
+	var y1 = from.charCodeAt(0)-65+1
+	var y2 = to.charCodeAt(0)-65+1
+	var d = 0;
+	if(x1==x2){
+		d = Math.abs(y2-y1);
+		//console.log("Distanza: "+(y2-y1))
+	}else{
+		d = Math.abs(x2-x1);
+		//console.log("Distanza: "+(x2-x1))
+	}
+	return d;
 }
 
 enlight(end_position,"orange",true);
@@ -124,11 +144,10 @@ handleMouseDown_image = function(e){
 calculatePossibleMoves = function(casella, type){
 	possible_moves = new Array();
 	switch(type){
-		case "Knight":{
+		case "Bishop":{
 			var x = casella.charCodeAt(0)-65+1;
 			var y = parseInt(casella[1]);
-			//console.log("Partenza: "+x+" - "+y)
-			possible_moves = moveKnight(casella, x ,y);
+			possible_moves = moveBishop(casella, x ,y);
 		}
 		break;
 	}
@@ -162,10 +181,10 @@ reset = function(){
 
 goal_reached = function(){
 	punti = getPoints();
-	myconfirm_2b("Obiettivo raggiunto","Hai impiegato "+number_of_moves+" mosse. Vuoi riprovare?","sì","no",
+	myconfirm_2b("Obiettivo raggiunto","Hai percorso "+number_of_moves+" caselle. Vuoi riprovare?","sì","no",
 		function() {
         	$( this ).dialog( "close" );
-			ricomincia()
+			ricomincia();
 			$(this).remove();
       	},function() {
       		$(this).dialog("close");
