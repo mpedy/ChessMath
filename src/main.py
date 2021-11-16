@@ -36,23 +36,11 @@ from starlette.middleware.authentication import AuthenticationMiddleware
 import base64
 import binascii
 
+PROD = 0
+
 page = 0
 
 LISTEN = "pages/ascolta"
-
-pages = [
-    "pages/page0",
-    "pages/page1",
-    "pages/page2",
-    "pages/page3",
-    "pages/page4",
-    "pages/page5",
-    "pages/page6",
-    "pages/page7",
-    "pages/page8",
-    "pages/page9",
-    "pages/page10",
-]
 
 percorso = "path_1"
 
@@ -200,6 +188,10 @@ allpages = {
         "pages/lic/gioco16",
         "pages/lic/img_gioco16",
         "pages/lic/gioco17",
+
+        "pages/lic/gioco18",
+        "pages/lic/gioco_toro",
+        
         LISTEN, ## da fare da qui in avanti per i quiz
         "pages/lic/quiz14",
         LISTEN,
@@ -464,9 +456,12 @@ class CustomHeaderMiddleware(BaseHTTPMiddleware):
         response = await call_next(request)
         return response
 
-#middleware = [Middleware(CustomHeaderMiddleware)]
-middleware = [Middleware(HTTPSRedirectMiddleware)]
-#middleware = []
+if PROD == 1:
+    middleware = [Middleware(HTTPSRedirectMiddleware)]
+elif PROD == 2:
+    middleware = [Middleware(CustomHeaderMiddleware)]
+else:
+    middleware = []
 
 
 async def addPoints(request):

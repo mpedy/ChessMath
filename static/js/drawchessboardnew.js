@@ -47,6 +47,7 @@ drawChessboard = function(elem){
     elem.setAttribute("data-square-size",squareSize);
     elem.setAttribute("data-boardtop-x",boardTopx);
     elem.setAttribute("data-boardtop-y",boardTopy);
+    elem.setAttribute("data-number-caselle",8)
 
     for(var i=0; i<8; i++){
         for(var j=0; j<8; j++){
@@ -173,6 +174,7 @@ drawChessboard_bis = function(elem,dim){
     elem.setAttribute("data-square-size",squareSize);
     elem.setAttribute("data-boardtop-x",boardTopx);
     elem.setAttribute("data-boardtop-y",boardTopy);
+    elem.setAttribute("data-number-caselle",dim)
 
     for(var i=0; i<dim; i++){
         for(var j=0; j<dim; j++){
@@ -196,26 +198,13 @@ drawChessboard_bis = function(elem,dim){
             elem.appendChild(div)
         }
     }
-    $('<style>'+
-        'div#A8:before{content:"'+8+'"; position: absolute; top: '+(squareSize/2-5)+'px; left: -14px;font-size: 12px;}'+
-        'div#A7:before{content:"'+7+'"; position: absolute; top: '+(squareSize/2-5)+'px; left: -14px;font-size: 12px;}'+
-        'div#A6:before{content:"'+6+'"; position: absolute; top: '+(squareSize/2-5)+'px; left: -14px;font-size: 12px;}'+
-        'div#A5:before{content:"'+5+'"; position: absolute; top: '+(squareSize/2-5)+'px; left: -14px;font-size: 12px;}'+
-        'div#A4:before{content:"'+4+'"; position: absolute; top: '+(squareSize/2-5)+'px; left: -14px;font-size: 12px;}'+
-        'div#A3:before{content:"'+3+'"; position: absolute; top: '+(squareSize/2-5)+'px; left: -14px;font-size: 12px;}'+
-        'div#A2:before{content:"'+2+'"; position: absolute; top: '+(squareSize/2-5)+'px; left: -14px;font-size: 12px;}'+
-        'div#A1:before{content:"'+1+'"; position: absolute; top: '+(squareSize/2-5)+'px; left: -14px;font-size: 12px;}'+
-
-        'div#A1:after{content:"A"; position: absolute; top: 100%;font-size: 12px;margin:auto;}'+
-        'div#B1:after{content:"B"; position: absolute; top: 100%;font-size: 12px;margin:auto;}'+
-        'div#C1:after{content:"C"; position: absolute; top: 100%;font-size: 12px;margin:auto;}'+
-        'div#D1:after{content:"D"; position: absolute; top: 100%;font-size: 12px;margin:auto;}'+
-        'div#E1:after{content:"E"; position: absolute; top: 100%;font-size: 12px;margin:auto;}'+
-        'div#F1:after{content:"F"; position: absolute; top: 100%;font-size: 12px;margin:auto;}'+
-        'div#G1:after{content:"G"; position: absolute; top: 100%;font-size: 12px;margin:auto;}'+
-        'div#H1:after{content:"H"; position: absolute; top: 100%;font-size: 12px;margin:auto;}'+
-
-    '</style>').appendTo('head');
+    var css_str = "<style>";
+    for(var i=0; i<dim; i++){
+        css_str = css_str+"div#A"+(i+1)+":before{content:\""+(i+1)+"\"; position: absolute; top: "+(squareSize/2-5)+"px; left: -14px;font-size: 12px;}";
+        css_str = css_str+"div#"+String.fromCharCode(i+65)+"1:after{content:\""+String.fromCharCode(i+65)+"\"; position: absolute; top: 100%;font-size: 12px;margin:auto;}";
+    }
+    css_str = css_str+ "</style>";
+    $(css_str).appendTo("head");
     boardTopy += elem.getClientRects()[0].top;
     boardTopx += elem.getClientRects()[0].left;
 }
