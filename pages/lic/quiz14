@@ -14,6 +14,8 @@ enlighted = "";
 enlight(C3,"orange",true);
 enlight(F5,"orange",true);
 var can_answer = true
+handleMouseDown_casella = function(){}
+handleMouseDown_image = function(){}
 stopTimerFunction = function(pressed){
 	try{
 		if(pressed == undefined){
