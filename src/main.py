@@ -3,49 +3,39 @@ from starlette.responses import JSONResponse, HTMLResponse, Response, PlainTextR
 from starlette.routing import Mount, Route
 from starlette.staticfiles import StaticFiles
 from starlette.templating import Jinja2Templates
+from starlette.datastructures import URL
+from starlette.middleware import Middleware
+from starlette.endpoints import HTTPEndpoint
 
 
-import psycopg2
+
 from Quiz import Quiz
 
 from random import seed, random
 from datetime import datetime
 import hashlib
 
-from starlette.middleware import Middleware
-from starlette.middleware.base import BaseHTTPMiddleware
-from loguru import logger
 
-
-
-
-from starlette.datastructures import URL
-from starlette.types import ASGIApp, Receive, Scope, Send
-
-
-
-
-
-
-
-from starlette.authentication import (
-    AuthenticationBackend, AuthenticationError, SimpleUser, UnauthenticatedUser,
-    AuthCredentials, requires
-)
-from starlette.middleware.authentication import AuthenticationMiddleware
 import base64
 import binascii
 
-PROD = 0
+from .customMiddleware import CustomHeaderMiddleware
+from .httpsMiddleware import HTTPSRedirectMiddleware
+from .DBConnection import DBConnection
 
-page = 0
+PROD = 0
+if PROD == 1:
+    middleware = [Middleware(HTTPSRedirectMiddleware)]
+elif PROD == 2:
+    middleware = [Middleware(CustomHeaderMiddleware)]
+else:
+    middleware = []
+
 
 LISTEN = "pages/ascolta"
 
-percorso = "path_1"
-
-allpages = {
-    "path_1": [
+def getPath1():
+    return [
         LISTEN,
         "pages/elem/quiz1",
         "pages/elem/quiz2",
@@ -93,8 +83,10 @@ allpages = {
         "pages/elem/quiz16",
         "pages/classifica",
         "pages/endpage"
-    ],
-    "path_2": [
+    ]
+
+def getPath2():
+    return [
         LISTEN,
         "pages/med/quiz1",
         LISTEN,
@@ -144,8 +136,10 @@ allpages = {
         "pages/med/quiz16",
         "pages/classifica",
         "pages/endpage"
-    ],
-    "path_3" : [
+    ]
+
+def getPath3():
+    return [
         LISTEN,
         "pages/ascolta_torre",
         "pages/lic/img_gioco1",
@@ -188,10 +182,10 @@ allpages = {
         "pages/lic/gioco16",
         "pages/lic/img_gioco16",
         "pages/lic/gioco17",
-
         "pages/lic/gioco18",
         "pages/lic/gioco_toro",
-        
+        "pages/lic/gioco_toro1",
+        "pages/lic/gioco_toro2",
         LISTEN, ## da fare da qui in avanti per i quiz
         "pages/lic/quiz14",
         LISTEN,
@@ -199,13 +193,63 @@ allpages = {
         "pages/classifica",
         "pages/endpage"
     ]
+
+allpages = {
+    "path_1": getPath1(),
+    "path_2": getPath2(),
+    "path_3" : getPath3()
 }
 
+class GameOptions():
+    MyQuiz = []
+    Classifica = {}
+    Classifica_ordered =[]
+    Answered = {}
+    allNames = []
+    UUID_NAME = {}
+    codice = -1
+    page = 0
+    percorso = "path_1"
+    setPageCode = 123111321
+    def __init__(self):
+        self.MyQuiz = []
+        self.Classifica = {}
+        self.Classifica_ordered = []
+        self.Answered = {}
+        self.allNames = []
+        self.UUID_NAME = {}
+        self.codice = int(random()*100000%990+1)
+        self.page = 0
+        self.percorso = "path_1"
+        setPageCode = 123111321
+    def reset(self):
+        self.UUID_NAME = {}
+        self.allNames = []
+        self.Classifica = {}
+        self.Classifica_ordered = []
+        self.Answered = {}
+    def obtainNewQuiz(self, res):
+        for i in res:
+            q = False
+            nuovo = True
+            for qu in self.MyQuiz:
+                if qu.id == i[0]:
+                    q = qu
+                    nuovo = False
+                    break
+            if q is False:
+                q = Quiz()
+                q.setId(i[0])
+            q.set(i[1],i[2])
+            if nuovo:
+                self.MyQuiz.append(q)
+    def generaUuid(self, nomeFinale):
+        uuidGenerator = hashlib.sha512()
+        uuidGenerator.update((str(self.codice)+nomeFinale).encode())
+        uuid = uuidGenerator.hexdigest()
+        self.UUID_NAME[uuid] = nomeFinale
 
-MyQuiz = []
-Classifica = {}
-Classifica_ordered = []
-Answered = {}
+opt = GameOptions()
 
 templates = Jinja2Templates(directory="pages")
 
@@ -213,150 +257,97 @@ async def welcome(request):
     return HTMLResponse(open('pages/welcome',"r").read())
 
 async def mainRoute(request):
+    global opt
     try:
         uuid = request.path_params["uuid"]
         if uuid == "Animatore":
-            return templates.TemplateResponse('index.html', {"request":request, "nome": "Animatore", "codice": codice})
-        return templates.TemplateResponse('index.html', {"request":request, "nome": UUID_NAME[uuid], "codice": codice})
+            return templates.TemplateResponse('index.html', {"request":request, "nome": "Animatore", "codice": opt.codice})
+        return templates.TemplateResponse('index.html', {"request":request, "nome": opt.UUID_NAME[uuid], "codice": opt.codice})
     except Exception as e:
         print("Errore in mainRoute con request: ",str(request))
     return RedirectResponse("/")
 
 async def gotoPage(request):
-    global page
-    page = request.path_params['page']
+    global opt
+    opt.page = request.path_params['page']
     try:
-        return HTMLResponse(open(allpages[percorso][page]).read())
+        return HTMLResponse(open(allpages[opt.percorso][opt.page]).read())
     except Exception as e:
         return HTMLResponse(f"""<div> Errore: {e} """)
 
 async def returnPage(request):
-    global page
+    global opt
     cod = int(request.path_params["cod"])
-    if cod == codice:
-        return JSONResponse({"page": page})
+    if cod == opt.codice:
+        return JSONResponse({"page": opt.page})
     else:
         return Redirect("/",status_code=401)
 
 async def setPage(request):
-    global page
-    global Answered
+    global opt
     code = request.path_params['code']
-    if code == 123111321:
+    if code == opt.setPageCode:
         new_page = request.path_params['page']
-        if new_page in range(0,len(allpages[percorso])):
-            page = new_page
-            Answered = {}
-            Answered[page] = []
-        arr = allpages[percorso]
+        if new_page in range(0,len(allpages[opt.percorso])):
+            opt.page = new_page
+            opt.Answered = {}
+            opt.Answered[opt.page] = []
+        arr = allpages[opt.percorso]
         l = len(arr)
-        res = [arr[page-1] if page-1 in range(0,l) else None, arr[page] if page in range(0,l) else None, arr[page+1] if page+1 in range(0,l) else None]
+        res = [arr[opt.page-1] if opt.page-1 in range(0,l) else None, arr[opt.page] if opt.page in range(0,l) else None, arr[opt.page+1] if opt.page+1 in range(0,l) else None]
         return JSONResponse({"status":"ok","prev":res[0],"current":res[1],"next":res[2]})
     else:
         return Response("Errore: codice non valido");
 
 async def updateQuest(request):
-    global MyQuiz
-    MyQuiz = []
-    conn = psycopg2.connect("host=ec2-79-125-30-28.eu-west-1.compute.amazonaws.com dbname=dc2bgg77rj8mls user=wzhqirdlfueovm password=8b322163c254d39da687f9132ae38979552554fe6b82d43bc6307e5b797b2445")
-    cursor = conn.cursor()
-    cursor.execute("select quizid, tipo, json_agg(test) from chessmath."+percorso+" group by quizid, tipo order by quizid, tipo desc;")
-    res = cursor.fetchall()
-    for i in res:
-        q = False
-        nuovo = True
-        for qu in MyQuiz:
-            if qu.id == i[0]:
-                q = qu
-                nuovo = False
-                break
-        if q is False:
-            q = Quiz()
-            q.setId(i[0])
-        q.set(i[1],i[2])
-        if nuovo:
-            MyQuiz.append(q)
-    for qu in MyQuiz:
-        print(qu,"\n")
-    cursor.close()
-    conn.close()
+    global opt
+    opt.MyQuiz = []
+    dbConn = DBConnection()
+    dbConn.openConnectionAndCursor()
+    res = dbConn.executeAndFetchall("select quizid, tipo, json_agg(test) from chessmath."+opt.percorso+" group by quizid, tipo order by quizid, tipo desc;")
+    opt.obtainNewQuiz(res)
+    dbConn.closeConnectionAndCursor()
     return Response("ok")
 
 async def setPath(request):
-    global percorso
-    percorso = "path_"+str(request.path_params['path'])
-    page = 0
-    conn = psycopg2.connect("host=ec2-79-125-30-28.eu-west-1.compute.amazonaws.com dbname=dc2bgg77rj8mls user=wzhqirdlfueovm password=8b322163c254d39da687f9132ae38979552554fe6b82d43bc6307e5b797b2445")
-    cursor = conn.cursor()
-    cursor.execute("select quizid, tipo, json_agg(test) from chessmath."+percorso+" group by quizid, tipo order by quizid, tipo desc;")
-    res = cursor.fetchall()
-    for i in res:
-        q = False
-        nuovo = True
-        for qu in MyQuiz:
-            if qu.id == i[0]:
-                q = qu
-                nuovo = False
-                break
-        if q is False:
-            q = Quiz()
-            q.setId(i[0])
-        q.set(i[1],i[2])
-        if nuovo:
-            MyQuiz.append(q)
-    for qu in MyQuiz:
-        print(qu,"\n")
-    cursor.close()
-    conn.close()
+    global opt
+    opt.percorso = "path_"+str(request.path_params['path'])
+    opt.page = 0
+    dbConn = DBConnection()
+    dbConn.openConnectionAndCursor()
+    res = dbConn.executeAndFetchall("select quizid, tipo, json_agg(test) from chessmath."+opt.percorso+" group by quizid, tipo order by quizid, tipo desc;")
+    opt.obtainNewQuiz(res)
+    dbConn.closeConnectionAndCursor()
     return Response("ok")
 
 async def getquiz(request):
-    global page
-    global MyQuiz
-    localpath = allpages[percorso][int(page)]
+    global opt
+    localpath = allpages[opt.percorso][int(opt.page)]
     try:
         quizid = int(localpath[localpath.index("quiz")+4:])
-        return MyQuiz[quizid-1].json()
+        return opt.MyQuiz[quizid-1].json()
     except Exception as e:
-        print("Errore in getquiz: ",page, MyQuiz)
-        print(e)
+        print("Errore in getquiz: ",opt.page, opt.MyQuiz,": "+str(e))
         return Response("Errore")
 
 
 async def startup_task():
-    conn = psycopg2.connect("host=ec2-79-125-30-28.eu-west-1.compute.amazonaws.com dbname=dc2bgg77rj8mls user=wzhqirdlfueovm password=8b322163c254d39da687f9132ae38979552554fe6b82d43bc6307e5b797b2445")
-    cursor = conn.cursor()
-    cursor.execute("select quizid, tipo, json_agg(test) from chessmath."+percorso+" group by quizid, tipo order by quizid, tipo desc;")
-    res = cursor.fetchall()
-    for i in res:
-        q = False
-        nuovo = True
-        for qu in MyQuiz:
-            if qu.id == i[0]:
-                q = qu
-                nuovo = False
-                break
-        if q is False:
-            q = Quiz()
-            q.setId(i[0])
-        q.set(i[1],i[2])
-        if nuovo:
-            MyQuiz.append(q)
-    for qu in MyQuiz:
-        print(qu,"\n")
-    cursor.close()
-    conn.close()
-
-codice = int(random()*100000%990+1)
+    global opt
+    dbConn = DBConnection()
+    dbConn.openConnectionAndCursor()
+    res = dbConn.executeAndFetchall("select quizid, tipo, json_agg(test) from chessmath."+opt.percorso+" group by quizid, tipo order by quizid, tipo desc;")
+    opt.obtainNewQuiz(res)
+    dbConn.closeConnectionAndCursor()
 
 async def settacodice(request):
-    global codice;
-    codice = request.path_params["codice"]
+    global opt;
+    opt.codice = request.path_params["codice"]
     return Response("ok")
 
 async def verificacodice(request):
+    global opt
     cod = request.path_params["codice"]
-    if cod == codice:
+    if cod == opt.codice:
         return Response("ok")
     else:
         print("Il codice non è valido")
@@ -364,14 +355,13 @@ async def verificacodice(request):
 
 
 async def getanimpage(request):
-    global codice;
+    global opt;
     try:
         form = await request.form()
-        print("FORM: "+str(form))
         if form["username"] == "anim" and form["password"] == "1324354321":
             seed(datetime.now())
-            codice = int(random()*100000%990+1)
-            return templates.TemplateResponse("anim", {"request": request, "codice": codice})
+            opt.codice = int(random()*100000%990+1)
+            return templates.TemplateResponse("anim", {"request": request, "codice": opt.codice})
         else:
             return templates.TemplateResponse("anim_key", {"request": request, "errore": """<div id="error_msg_anim">Codice Errato!</div>"""})
     except Exception as e:
@@ -379,168 +369,73 @@ async def getanimpage(request):
         return RedirectResponse("/anim")
 
 async def getcodice(request):
-    global codice
-    return Response(str(codice))
-
-allNames = []
-UUID_NAME = {}
+    global opt
+    return Response(str(opt.codice))
 
 async def addNome(request):
-    nome_toadd = request.path_params["nome"]
-    k = 0
-    nm = ""
+    global opt
+    nomeDaAggiungere = request.path_params["nome"]
+    numDiNomiUguali = 0
+    nomeFinale = ""
     try:
-        idx = allNames.index(nome_toadd)
-        if idx >=0:
-            k = 1
-            while idx >=0:
-                idx = allNames.index(nome_toadd+"-"+str(k))
-                k+=1
+        indiceDelNomeDaAggiungere = opt.allNames.index(nomeDaAggiungere)
+        if indiceDelNomeDaAggiungere >=0:
+            numDiNomiUguali = 1
+            while indiceDelNomeDaAggiungere >=0:
+                indiceDelNomeDaAggiungere = opt.allNames.index(nomeDaAggiungere+"-"+str(numDiNomiUguali))
+                numDiNomiUguali+=1
     except Exception as e:
-        nm = nome_toadd
-        if k > 0:
-            nm+="-"+str(k)
-        allNames.append(nm)
-    m = hashlib.sha512()
-    m.update((str(codice)+nm).encode())
-    uuid = m.hexdigest()
-    UUID_NAME[uuid] = nm
+        nomeFinale = nomeDaAggiungere
+        if numDiNomiUguali > 0:
+            nomeFinale+="-"+str(numDiNomiUguali)
+        opt.allNames.append(nomeFinale)
+    opt.generaUuid(nomeFinale)
     return Response(uuid)
 
 async def reset(request):
-    global UUID_NAME
-    global allNames
-    global Classifica
-    global Classifica_ordered
-    global Answered
-    UUID_NAME = {}
-    allNames = []
-    Classifica = {}
-    Classifica_ordered = []
-    Answered = {}
+    global opt
+    opt.reset()
     return Response("ok")
 
 async def endGame(request):
     return HTMLResponse(open("pages/end").read())
 
-
-
-
-
-
-
-class HTTPSRedirectMiddleware:
-    def __init__(self, app: ASGIApp) -> None:
-        self.app = app
-
-    async def __call__(self, scope: Scope, receive: Receive, send: Send) -> None:
-        if scope["type"] in ("http", "websocket") and scope["scheme"] in ("http", "ws"):
-            url = URL(scope=scope)
-            redirect_scheme = {"http": "https", "ws": "wss"}[url.scheme]
-            netloc = url.hostname if url.port in (80, 443) else url.netloc
-            url = url.replace(scheme=redirect_scheme, netloc=netloc)
-            response = RedirectResponse(url, status_code=307)
-            await response(scope, receive, send)
-        else:
-            await self.app(scope, receive, send)
-
-class CustomHeaderMiddleware(BaseHTTPMiddleware):
-    async def dispatch(self, request, call_next):
-        logger.debug(f"{request.method} {request.url}")
-        logger.debug("Params:")
-        for name, value in request.path_params.items():
-            logger.debug(f"\t{name}: {value}")
-        logger.debug("Headers:")
-        for name, value in request.headers.items():
-            logger.debug(f"\t{name}: {value}")
-        response = await call_next(request)
-        return response
-
-if PROD == 1:
-    middleware = [Middleware(HTTPSRedirectMiddleware)]
-elif PROD == 2:
-    middleware = [Middleware(CustomHeaderMiddleware)]
-else:
-    middleware = []
-
-
 async def addPoints(request):
-    global Answered
+    global opt
     nome = request.path_params["nome"]
     punti = int(request.path_params["pt"])
     if nome != "Animatore":
-        Classifica[nome] = punti
-        Classifica_ordered = sorted(Classifica.items(), key=lambda x: x[1], reverse=True)
-        if nome not in Answered[page]:
-            Answered[page].append(nome)
+        opt.Classifica[nome] = punti
+        opt.Classifica_ordered = sorted(opt.Classifica.items(), key=lambda x: x[1], reverse=True)
+        if nome not in opt.Answered[opt.page]:
+            opt.Answered[opt.page].append(nome)
     return Response("ok")
 
 async def getClassifica(request):
+    global opt
     tillPosition = request.path_params["position"]
-    Classifica_ordered = sorted(Classifica.items(), key=lambda x: x[1], reverse=True)
+    opt.Classifica_ordered = sorted(opt.Classifica.items(), key=lambda x: x[1], reverse=True)
     result = {}
     for i in range(0,tillPosition):
-        result[i+1] = Classifica_ordered[i] if i in range(0,len(Classifica_ordered)) else None
+        result[i+1] = opt.Classifica_ordered[i] if i in range(0,len(opt.Classifica_ordered)) else None
     return JSONResponse(result)
 
 async def getAnswered(request):
-    if len(allNames) == 0:
-        return JSONResponse({"perc": -1, "page": page, "error": "Ancora nessuno in lista", "lista":0})
+    global opt
+    if len(opt.allNames) == 0:
+        return JSONResponse({"perc": -1, "page": opt.page, "error": "Ancora nessuno in lista", "lista":0})
     try:
-        l = len(Answered[page])
-        l_tot = len(allNames) ## Tolgo l'animatore
+        l = len(opt.Answered[opt.page])
+        l_tot = len(opt.allNames) ## Tolgo l'animatore
         if l_tot != 0:
-            return JSONResponse({"perc": l/l_tot*100, "page": page, "error": "", "lista":len(allNames)})
+            return JSONResponse({"perc": l/l_tot*100, "page": opt.page, "error": "", "lista":len(opt.allNames)})
         else:
-            return JSONResponse({"perc": -1, "page": page, "error": "Ancora nessuno in lista","lista":0})
+            return JSONResponse({"perc": -1, "page": opt.page, "error": "Ancora nessuno in lista","lista":0})
     except Exception as e:
-        return JSONResponse({"perc":-1, "page":page, "error": "Ancora nessuno ha risposto","lista":0})
-
-
-
-
-
-class BasicAuthBackend(AuthenticationBackend):
-    async def authenticate(self, request):
-        print("Siamo in BasicAuthBackend: ", type(request))
-        if request.url.path == "/anim":
-            form = await request.json()
-            print("FORM: ",form)
-            try:
-                print(request.query_params, " -- ",request.path_params," -- ",request.client," -- ", request.form())
-                user= request.query_params["username"]
-                passw = request.query_params["password"]
-                if user == "anim" and passw == "1324354321":
-                    return AuthCredentials(["authenticated",user]), SimpleUser(user)
-                else:
-                    raise AuthenticationError('Invalid basic auth credentials')
-            except Exception as e:
-                print("Errore nella login su anim: ",e)
-                raise AuthenticationError('Invalid basic auth credentials')
-        if "Authorization" not in request.headers:
-            return
-        auth = request.headers["Authorization"]
-        try:
-            scheme, credentials = auth.split()
-            if scheme.lower() != 'basic':
-                return
-            decoded = base64.b64decode(credentials).decode("ascii")
-        except (ValueError, UnicodeDecodeError, binascii.Error) as exc:
-            raise AuthenticationError('Invalid basic auth credentials')
-
-        username, _, password = decoded.partition(":")
-        # TODO: You'd want to verify the username and password here.
-        print(f"user={username},password={password}. Decoded: {decoded}")
-        return AuthCredentials(["authenticated",username]), SimpleUser(username)
+        return JSONResponse({"perc":-1, "page":opt.page, "error": "Ancora nessuno ha risposto","lista":0})
 
 async def anim(request):
     return templates.TemplateResponse("anim_key", {"request": request, "errore": """<div id="error_msg_anim"></div>"""})
-
-    #return HTMLResponse(open("pages/anim_key").read())
-
-#middleware = [
-#    Middleware(AuthenticationMiddleware, backend=BasicAuthBackend())
-#]
 
 async def onerror(request, exc):
     print("Errore")
