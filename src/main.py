@@ -23,7 +23,7 @@ from .customMiddleware import CustomHeaderMiddleware
 from .httpsMiddleware import HTTPSRedirectMiddleware
 from .DBConnection import DBConnection
 
-PROD = 0
+PROD = 1
 if PROD == 1:
     middleware = [Middleware(HTTPSRedirectMiddleware)]
 elif PROD == 2:
