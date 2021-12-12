@@ -3,7 +3,6 @@ from starlette.responses import JSONResponse, HTMLResponse, Response, PlainTextR
 from starlette.routing import Mount, Route
 from starlette.staticfiles import StaticFiles
 from starlette.templating import Jinja2Templates
-from starlette.datastructures import URL
 from starlette.middleware import Middleware
 from starlette.endpoints import HTTPEndpoint
 
