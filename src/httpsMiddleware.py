@@ -11,6 +11,7 @@ class HTTPSRedirectMiddleware:
             url = URL(scope=scope)
             redirect_scheme = {"http": "https", "ws": "wss"}[url.scheme]
             netloc = url.hostname if url.port in (80, 443) else url.netloc
+            print("Redirecting ",netloc)
             url = url.replace(scheme=redirect_scheme, netloc=netloc)
             response = RedirectResponse(url, status_code=307)
             await response(scope, receive, send)

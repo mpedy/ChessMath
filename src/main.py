@@ -22,13 +22,13 @@ from .customMiddleware import CustomHeaderMiddleware
 from .httpsMiddleware import HTTPSRedirectMiddleware
 from .DBConnection import DBConnection
 
+middleware = []
+
 PROD = 1
 if PROD == 1:
     middleware = [Middleware(HTTPSRedirectMiddleware)]
 elif PROD == 2:
     middleware = [Middleware(CustomHeaderMiddleware)]
-else:
-    middleware = []
 
 
 LISTEN = "pages/ascolta"
@@ -182,6 +182,8 @@ def getPath3():
         "pages/lic/img_gioco16",
         "pages/lic/gioco17",
         #"pages/lic/gioco18",
+        LISTEN,
+        "pages/lic/gioco_training_toro",
         "pages/lic/gioco_toro",
         "pages/lic/gioco_toro1",
         "pages/lic/gioco_toro2",
