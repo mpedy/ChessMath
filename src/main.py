@@ -182,7 +182,7 @@ def getPath3():
         "pages/lic/gioco16",
         "pages/lic/img_gioco16",
         "pages/lic/gioco17",
-        "pages/lic/gioco18",
+        #"pages/lic/gioco18",
         "pages/lic/gioco_toro",
         "pages/lic/gioco_toro1",
         "pages/lic/gioco_toro2",
@@ -248,6 +248,7 @@ class GameOptions():
         uuidGenerator.update((str(self.codice)+nomeFinale).encode())
         uuid = uuidGenerator.hexdigest()
         self.UUID_NAME[uuid] = nomeFinale
+        return uuid
 
 opt = GameOptions()
 
@@ -281,7 +282,7 @@ async def returnPage(request):
     if cod == opt.codice:
         return JSONResponse({"page": opt.page})
     else:
-        return Redirect("/",status_code=401)
+        return RedirectResponse("/",status_code=401)
 
 async def setPage(request):
     global opt
@@ -389,7 +390,7 @@ async def addNome(request):
         if numDiNomiUguali > 0:
             nomeFinale+="-"+str(numDiNomiUguali)
         opt.allNames.append(nomeFinale)
-    opt.generaUuid(nomeFinale)
+    uuid = opt.generaUuid(nomeFinale)
     return Response(uuid)
 
 async def reset(request):
@@ -439,7 +440,7 @@ async def anim(request):
 
 async def onerror(request, exc):
     print("Errore")
-    print(str(exc))
+    print(exc)
     print("Errore gestito: ",exc.detail)
     return RedirectResponse("/anim",status_code=301)
 
