@@ -1,0 +1,170 @@
+-- Domande percorso A: 4-5 elementare
+
+('domanda','L'aula è vuota e devi arrivare alla porta. Non hai ancora mangiato la merenda e hai pochissime energie. Quale percorso scegli tra i 4 indicati?',1),
+('risposta','Rosso',1),
+('risposta','Blu',1),
+('risposta','Verde',1),
+('risposta','Giallo',1),
+('corretta','Blu',1),
+('punteggio','10',1);
+-- Domanda con immagine da creare (NO SCACCHIERA) con i 4 percorsi dei colori indicati. La distanza è il percorso blu.
+
+
+('domanda','Tra i seguenti quale percorso scegli? Ricordati che hai poche energie!',2),
+('risposta','Rosso',2),
+('risposta','Blu',2),
+('risposta','Verde',2),
+('risposta','Giallo',2),
+('corretta','Verde',2),
+('punteggio','10',2);
+-- Domanda con immagine da creare (NO SCACCHIERA) con i 4 percorsi dei colori indicati. La distanza è il percorso verde.
+
+
+('domanda','Se l'aula fosse 10 volte più grande, la distanza tra te e la porta sarebbe la stessa?',3),
+('risposta','Sì',3),
+('risposta','No',3),
+('corretta','No',3),
+('punteggio','5',3);
+ 
+
+-- GIOCO: Dove può andare la torre con una mossa
+
+
+('domanda','Qual è il percorso possibile per la torre per raggiungere la casella segnata con la X?',4),
+('risposta','Rosso',4),
+('risposta','Blu',4),
+('risposta','Verde',4),
+('risposta','Giallo',4),
+('corretta','Verde',4),
+('punteggio','10',4);
+-- Immagine scacchiera "libera" da ostacoli, con una X su casella lontana almeno due mosse dalla torre, 4 percorsi di cui 3 usano movimenti in diagonale.
+
+
+('domanda','Quale percorso è il più breve per la torre per arrivare alla casella segnata con la X?',5),
+('risposta','Rosso',5),
+('risposta','Blu',5),
+('risposta','Verde',5),
+('risposta','Giallo',5),
+('corretta','Verde',5),
+('punteggio','10',5);
+-- Immagine con 4 percorsi per arrivare a X, di cui tre con giri strani e lunghi.
+
+
+('domanda','Quante caselle è lungo il percorso più breve?',6),
+('risposta','2',6),
+('risposta','7',6),
+('risposta','8',6),
+('risposta','10',6),
+('corretta','8',6),
+('punteggio','10',6);
+-- Immagine precedente con solo il percorso più breve.
+
+
+('domanda','Se la scacchiera fosse 10 volte più grande la distanza tra la torre e la casella con la X sarebbe maggiore?',7),
+('risposta','Sì',7),
+('risposta','No',7),
+('corretta','No',7),
+('punteggio','5',7);
+
+
+-- GIOCO: Percorso con meno caselle percorse per raggiungere il punto X
+-- GIOCO: Percorso con meno caselle percorse per raggiungere il punto X con Golem
+-- GIOCO: Percorso con meno caselle percorse per raggiungere il punto X con Golem level più difficile
+
+
+('domanda','Quale delle seguenti è una circonferenza?',8),
+('risposta','A',8),
+('risposta','B',8),
+('risposta','C',8),
+('risposta','D',8),
+('corretta','B',8),
+('punteggio','10',8);
+-- Immagine con 4 figure geometriche di cui una è cfr
+
+ 
+-- GIOCO: segna tutte le caselle a distanza 1 dalla casella in cui si trova la torre
+-- GIOCO: segna tutte le caselle a distanza 2 dalla casella in cui si trova la torre
+
+-- GIOCO: segna tutte le caselle che può raggiungere l'alfiere con una sola mossa
+
+
+('domanda','Qual è il percorso possibile per l'alfiere per raggiungere la casella segnata con la X?',9),
+('risposta','Rosso',9),
+('risposta','Blu',9),
+('risposta','Verde',9),
+('risposta','Giallo',9),
+('corretta','Giallo',9),
+('punteggio','10',9);
+-- Immagine scacchiera "libera" da ostacoli, con una X su casella lontana almeno due mosse dell'alfiere, 4 percorsi di cui 3 usano movimenti orizzontali o verticali.
+
+
+('domanda','Qual è il percorso più breve per l'alfiere per raggiungere la casella segnata con la X?',10),
+('risposta','Rosso',10),
+('risposta','Blu',10),
+('risposta','Verde',10),
+('risposta','Giallo',10),
+('corretta','Rosso',10),
+('punteggio','10',10);
+-- Immagine scacchiera "libera" da ostacoli, con una X su casella lontana almeno due mosse dell'alfiere, 4 percorsi di cui 3 contorti
+
+
+('domanda','Quante caselle è distante la casella segnata con la X?',11),
+('risposta','1',11),
+('risposta','2',11),
+('risposta','4',11),
+('risposta','Non ci può arrivare',11),
+('corretta','2',11),
+('punteggio','10',11);
+-- Immagine con la X su una casella a distanza 2 dall'alfiere sulla sua diagonale
+
+
+('domanda','Quante caselle è distante la casella segnata con la X?',12),
+('risposta','1',12),
+('risposta','2',12),
+('risposta','4',12),
+('risposta','Non ci può arrivare',12),
+('corretta','2',12),
+('punteggio','10',12);
+-- Immagine con la X su una casella a distanza 2 dall'alfiere sulla sua orizzontale (due step)
+
+
+('domanda','Quante caselle è distante la casella segnata con la X?',13),
+('risposta','1',13),
+('risposta','2',13),
+('risposta','4',13),
+('risposta','Non ci può arrivare',13),
+('corretta','Non ci può arrivare',13),
+('punteggio','10',13);
+-- Immagine con la X su una casella del colore opposto dell'alfiere
+
+
+-- GIOCO: Casella con X e Golem, caselle minime per raggiungerla
+-- GIOCO: Casella con X e Golem, caselle minime per raggiungerla, level più difficile
+
+
+('domanda','Da quante caselle è composta la circonferenza di raggio 1?',14),
+('risposta','1',14),
+('risposta','6',14),
+('risposta','4',14),
+('risposta','Infinite',14),
+('corretta','4',14),
+('punteggio','10',14);
+-- Immagine con l'alfiere e la scacchiera vuota
+
+
+-- GIOCO: Disegna tutte le caselle a distanza 1 dall'alfiere
+-- GIOCO: Disegna tutte le caselle a distanza 2 dall'alfiere
+
+
+('domanda','Se cambiamo il modo di misurare la distanza, cambiamo la geometria?',15),
+('risposta','Sì',15),
+('risposta','No',15),
+('corretta','Sì',15),
+('punteggio','5',15);
+
+
+('domanda','Secondo te è possibile inventarsi altre pedine che si muovono in modi ancora più strani?',16),
+('risposta','Sì',16),
+('risposta','No',16),
+('corretta','Sì',16),
+('punteggio','5',16);

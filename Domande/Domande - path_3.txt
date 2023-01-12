@@ -1,0 +1,153 @@
+-- Domande percorso C: Superiori
+
+-- GIOCO: Dove può andare la torre con una mossa
+
+('domanda','Quale percorso è il più breve per la torre per arrivare alla casella segnata?',1),
+('risposta','Rosso',1),
+('risposta','Blu',1),
+('risposta','Verde',1),
+('risposta','Giallo',1),
+('corretta','Verde',1),
+('punteggio','10',1),
+('tempo','30',1),
+-- Immagine con 4 percorsi per arrivare a X, di cui tre con giri strani e lunghi.
+
+
+('domanda','Quante caselle è lungo il percorso più breve?',2),
+('risposta','2',2),
+('risposta','7',2),
+('risposta','8',2),
+('risposta','10',2),
+('corretta','8',2),
+('punteggio','10',2),
+('tempo','20',2),
+-- Immagine precedente con solo il percorso più breve.
+
+
+-- GIOCO: Percorso con meno caselle percorse per raggiungere la casella segnata, qualche ostacolo
+
+
+('domanda','Una circonferenza è l''insieme dei punti:',3),
+('risposta','allineati',3),
+('risposta','equidistanti da un''asse',3),
+('risposta','equidistanti da un centro',3),
+('risposta','equidistanti da due punti',3),
+('corretta','equidistanti da un centro',3),
+('punteggio','10',3),
+('tempo','30',3),
+
+ 
+-- GIOCO: segna tutte le caselle che stanno sulla cfr di raggio 1
+-- GIOCO: segna tutte le caselle che stanno sulla cfr di raggio 2
+
+-- GIOCO: Quali caselle può raggiungere alfiere con una mossa
+-- GIOCO: Trova il percorso più breve per l'alfiere per raggiungere la casella segnata, con ostacoli
+
+
+('domanda','Quante caselle è distante la casella segnata?',4),
+('risposta','1',4),
+('risposta','2',4),
+('risposta','4',4),
+('risposta','Non ci può arrivare',4),
+('corretta','2',4),
+('punteggio','10',4),
+('tempo','30',4),
+-- Immagine con la X su una casella a distanza 2 dall'alfiere sulla sua diagonale
+
+
+('domanda','Quante caselle è distante la casella segnata?',5),
+('risposta','1',5),
+('risposta','2',5),
+('risposta','4',5),
+('risposta','Non ci può arrivare',5),
+('corretta','2',5),
+('punteggio','10',5),
+('tempo','30',5),
+-- Immagine con la X su una casella a distanza 2 dall'alfiere sulla sua orizzontale (due step)
+
+
+('domanda','Quante caselle è distante la casella segnata?',6),
+('risposta','1',6),
+('risposta','2',6),
+('risposta','4',6),
+('risposta','Non ci può arrivare',6),
+('corretta','Non ci può arrivare',6),
+('punteggio','10',6),
+('tempo','40',6),
+-- Immagine con la X su una casella del colore opposto dell'alfiere
+
+
+('domanda','Da quante caselle è composta la circonferenza di raggio 1?', 7),
+('risposta','1',7),
+('risposta','6',7),
+('risposta','4',7),
+('risposta','Infinite',7),
+('corretta','4',7),
+('punteggio','10',7),
+('tempo','30',7),
+-- Immagine con l'alfiere e la scacchiera vuota
+
+
+-- GIOCO: Disegna tutte le caselle a distanza 2 dall'alfiere
+
+-- GIOCO: Disegna sulla base dell'esempio tutte le caselle che può raggiungere il cavallo con una mossa
+
+-- GIOCO: distanza del cavallo da una casella adiacente
+
+('domanda','Qual è la distanza del cavallo dalla casella adiacente?',8),
+('risposta','1',8),
+('risposta','2',8),
+('risposta','3',8),
+('risposta','4',8),
+('corretta','3',8),
+('punteggio','10',8),
+('tempo','20',8),
+
+
+('domanda','Per quale personaggio le due caselle segnate sono più distanti tra loro?',9),
+('risposta','Torre',9),
+('risposta','Alfiere',9),
+('risposta','Cavallo',9),
+('risposta','Umano',9),
+('corretta','Alfiere',9),
+('punteggio','10',9),
+('tempo','60',9),
+-- Caselle una bianca e una nera
+
+
+('domanda','Se i bordi della scacchiera fossero comunicanti, con una mossa quale distanza può percorrere la torre?',10),
+('risposta','1',10),
+('risposta','8',10),
+('risposta','64',10),
+('risposta','infinita',10),
+('corretta','infinita',10),
+('punteggio','10',10),
+('tempo','50',10),
+
+
+('domanda','Se i bordi della scacchiera fossero comunicanti, con una mossa quale distanza può percorrere l''alfiere?',11),
+('risposta','1',11),
+('risposta','8',11),
+('risposta','64',11),
+('risposta','infinita',11),
+('corretta','infinita',11),
+('punteggio','10',11),
+('tempo','50',11),
+
+
+('domanda','Se i bordi della scacchiera fossero comunicanti, con una mossa quale distanza può percorrere il cavallo?',12),
+('risposta','1',12),
+('risposta','8',12),
+('risposta','64',12),
+('risposta','infinita',12),
+('corretta','1',12),
+('punteggio','10',12),
+('tempo','50',12),
+
+
+('domanda','Secondo te è possibile inventarsi altre pedine che si muovono in modi ancora più strani?',13),
+('risposta','Sì',13),
+('risposta','No',13),
+('corretta','Sì',13),
+('punteggio','5',13),
+('tempo','30',13);

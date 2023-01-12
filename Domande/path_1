@@ -1,0 +1,490 @@
+[
+    {
+        "quizid": 1,
+        "tipo": "risposta",
+        "value": [
+            "Rosso",
+            "Blu",
+            "Verde",
+            "Giallo"
+        ]
+    },
+    {
+        "quizid": 1,
+        "tipo": "punteggio",
+        "value": [
+            "10"
+        ]
+    },
+    {
+        "quizid": 1,
+        "tipo": "domanda",
+        "value": [
+            "L'aula è vuota e devi arrivare alla porta. Non hai ancora mangiato la merenda e hai pochissime energie. Quale percorso scegli tra i 4 indicati?"
+        ]
+    },
+    {
+        "quizid": 1,
+        "tipo": "corretta",
+        "value": [
+            "Blu"
+        ]
+    },
+    {
+        "quizid": 2,
+        "tipo": "risposta",
+        "value": [
+            "Rosso",
+            "Blu",
+            "Verde",
+            "Giallo"
+        ]
+    },
+    {
+        "quizid": 2,
+        "tipo": "punteggio",
+        "value": [
+            "10"
+        ]
+    },
+    {
+        "quizid": 2,
+        "tipo": "domanda",
+        "value": [
+            "Tra i seguenti quale percorso scegli? Ricordati che hai poche energie!"
+        ]
+    },
+    {
+        "quizid": 2,
+        "tipo": "corretta",
+        "value": [
+            "Verde"
+        ]
+    },
+    {
+        "quizid": 3,
+        "tipo": "risposta",
+        "value": [
+            "Sì",
+            "No"
+        ]
+    },
+    {
+        "quizid": 3,
+        "tipo": "punteggio",
+        "value": [
+            "5"
+        ]
+    },
+    {
+        "quizid": 3,
+        "tipo": "domanda",
+        "value": [
+            "Se l'aula fosse 10 volte più grande, la distanza tra te e la porta sarebbe la stessa?"
+        ]
+    },
+    {
+        "quizid": 3,
+        "tipo": "corretta",
+        "value": [
+            "No"
+        ]
+    },
+    {
+        "quizid": 4,
+        "tipo": "risposta",
+        "value": [
+            "Rosso",
+            "Blu",
+            "Verde",
+            "Giallo"
+        ]
+    },
+    {
+        "quizid": 4,
+        "tipo": "punteggio",
+        "value": [
+            "10"
+        ]
+    },
+    {
+        "quizid": 4,
+        "tipo": "domanda",
+        "value": [
+            "Qual è il percorso possibile per la torre per raggiungere la casella segnata con la X?"
+        ]
+    },
+    {
+        "quizid": 4,
+        "tipo": "corretta",
+        "value": [
+            "Verde"
+        ]
+    },
+    {
+        "quizid": 5,
+        "tipo": "risposta",
+        "value": [
+            "Rosso",
+            "Blu",
+            "Verde",
+            "Giallo"
+        ]
+    },
+    {
+        "quizid": 5,
+        "tipo": "punteggio",
+        "value": [
+            "10"
+        ]
+    },
+    {
+        "quizid": 5,
+        "tipo": "domanda",
+        "value": [
+            "Quale percorso è il più breve per la torre per arrivare alla casella segnata con la X?"
+        ]
+    },
+    {
+        "quizid": 5,
+        "tipo": "corretta",
+        "value": [
+            "Verde"
+        ]
+    },
+    {
+        "quizid": 6,
+        "tipo": "risposta",
+        "value": [
+            "2",
+            "7",
+            "8",
+            "10"
+        ]
+    },
+    {
+        "quizid": 6,
+        "tipo": "punteggio",
+        "value": [
+            "10"
+        ]
+    },
+    {
+        "quizid": 6,
+        "tipo": "domanda",
+        "value": [
+            "Quante caselle è lungo il percorso più breve?"
+        ]
+    },
+    {
+        "quizid": 6,
+        "tipo": "corretta",
+        "value": [
+            "8"
+        ]
+    },
+    {
+        "quizid": 7,
+        "tipo": "risposta",
+        "value": [
+            "Sì",
+            "No"
+        ]
+    },
+    {
+        "quizid": 7,
+        "tipo": "punteggio",
+        "value": [
+            "5"
+        ]
+    },
+    {
+        "quizid": 7,
+        "tipo": "domanda",
+        "value": [
+            "Se la scacchiera fosse 10 volte più grande la distanza tra la torre e la casella con la X sarebbe maggiore?"
+        ]
+    },
+    {
+        "quizid": 7,
+        "tipo": "corretta",
+        "value": [
+            "No"
+        ]
+    },
+    {
+        "quizid": 8,
+        "tipo": "risposta",
+        "value": [
+            "A",
+            "B",
+            "C",
+            "D"
+        ]
+    },
+    {
+        "quizid": 8,
+        "tipo": "punteggio",
+        "value": [
+            "10"
+        ]
+    },
+    {
+        "quizid": 8,
+        "tipo": "domanda",
+        "value": [
+            "Quale delle seguenti è una circonferenza?"
+        ]
+    },
+    {
+        "quizid": 8,
+        "tipo": "corretta",
+        "value": [
+            "B"
+        ]
+    },
+    {
+        "quizid": 9,
+        "tipo": "risposta",
+        "value": [
+            "Rosso",
+            "Blu",
+            "Verde",
+            "Giallo"
+        ]
+    },
+    {
+        "quizid": 9,
+        "tipo": "punteggio",
+        "value": [
+            "10"
+        ]
+    },
+    {
+        "quizid": 9,
+        "tipo": "domanda",
+        "value": [
+            "Qual è il percorso possibile per l'alfiere per raggiungere la casella segnata con la X?"
+        ]
+    },
+    {
+        "quizid": 9,
+        "tipo": "corretta",
+        "value": [
+            "Giallo"
+        ]
+    },
+    {
+        "quizid": 10,
+        "tipo": "risposta",
+        "value": [
+            "Rosso",
+            "Blu",
+            "Verde",
+            "Giallo"
+        ]
+    },
+    {
+        "quizid": 10,
+        "tipo": "punteggio",
+        "value": [
+            "10"
+        ]
+    },
+    {
+        "quizid": 10,
+        "tipo": "domanda",
+        "value": [
+            "Qual è il percorso più breve per l'alfiere per raggiungere la casella segnata con la X?"
+        ]
+    },
+    {
+        "quizid": 10,
+        "tipo": "corretta",
+        "value": [
+            "Rosso"
+        ]
+    },
+    {
+        "quizid": 11,
+        "tipo": "risposta",
+        "value": [
+            "1",
+            "2",
+            "4",
+            "Non ci può arrivare"
+        ]
+    },
+    {
+        "quizid": 11,
+        "tipo": "punteggio",
+        "value": [
+            "10"
+        ]
+    },
+    {
+        "quizid": 11,
+        "tipo": "domanda",
+        "value": [
+            "Quante caselle è distante la casella segnata con la X?"
+        ]
+    },
+    {
+        "quizid": 11,
+        "tipo": "corretta",
+        "value": [
+            "2"
+        ]
+    },
+    {
+        "quizid": 12,
+        "tipo": "risposta",
+        "value": [
+            "1",
+            "2",
+            "4",
+            "Non ci può arrivare"
+        ]
+    },
+    {
+        "quizid": 12,
+        "tipo": "punteggio",
+        "value": [
+            "10"
+        ]
+    },
+    {
+        "quizid": 12,
+        "tipo": "domanda",
+        "value": [
+            "Quante caselle è distante la casella segnata con la X?"
+        ]
+    },
+    {
+        "quizid": 12,
+        "tipo": "corretta",
+        "value": [
+            "2"
+        ]
+    },
+    {
+        "quizid": 13,
+        "tipo": "risposta",
+        "value": [
+            "1",
+            "2",
+            "4",
+            "Non ci può arrivare"
+        ]
+    },
+    {
+        "quizid": 13,
+        "tipo": "punteggio",
+        "value": [
+            "10"
+        ]
+    },
+    {
+        "quizid": 13,
+        "tipo": "domanda",
+        "value": [
+            "Quante caselle è distante la casella segnata con la X?"
+        ]
+    },
+    {
+        "quizid": 13,
+        "tipo": "corretta",
+        "value": [
+            "Non ci può arrivare"
+        ]
+    },
+    {
+        "quizid": 14,
+        "tipo": "risposta",
+        "value": [
+            "1",
+            "6",
+            "4",
+            "Infinite"
+        ]
+    },
+    {
+        "quizid": 14,
+        "tipo": "punteggio",
+        "value": [
+            "10"
+        ]
+    },
+    {
+        "quizid": 14,
+        "tipo": "domanda",
+        "value": [
+            "Da quante caselle è composta la circonferenza di raggio 1?"
+        ]
+    },
+    {
+        "quizid": 14,
+        "tipo": "corretta",
+        "value": [
+            "4"
+        ]
+    },
+    {
+        "quizid": 15,
+        "tipo": "risposta",
+        "value": [
+            "Sì",
+            "No"
+        ]
+    },
+    {
+        "quizid": 15,
+        "tipo": "punteggio",
+        "value": [
+            "5"
+        ]
+    },
+    {
+        "quizid": 15,
+        "tipo": "domanda",
+        "value": [
+            "Se cambiamo il modo di misurare la distanza, cambiamo la geometria?"
+        ]
+    },
+    {
+        "quizid": 15,
+        "tipo": "corretta",
+        "value": [
+            "Sì"
+        ]
+    },
+    {
+        "quizid": 16,
+        "tipo": "risposta",
+        "value": [
+            "Sì",
+            "No"
+        ]
+    },
+    {
+        "quizid": 16,
+        "tipo": "punteggio",
+        "value": [
+            "5"
+        ]
+    },
+    {
+        "quizid": 16,
+        "tipo": "domanda",
+        "value": [
+            "Secondo te è possibile inventarsi altre pedine che si muovono in modi ancora più strani?"
+        ]
+    },
+    {
+        "quizid": 16,
+        "tipo": "corretta",
+        "value": [
+            "Sì"
+        ]
+    }
+]

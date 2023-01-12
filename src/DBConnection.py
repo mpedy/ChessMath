@@ -1,4 +1,6 @@
 import psycopg2
+import dotenv
+import os
 
 class DBConnection:
     __dbhost = ""
@@ -8,10 +10,11 @@ class DBConnection:
     conn = None
     cursor = None
     def __init__(self):
-        self.__dbhost = "ec2-79-125-30-28.eu-west-1.compute.amazonaws.com dbname=dc2bgg77rj8mls"
-        self.__dbuser = "wzhqirdlfueovm"
-        self.__dbpsw = "8b322163c254d39da687f9132ae38979552554fe6b82d43bc6307e5b797b2445"
-        self.__dbname = "dc2bgg77rj8mls"
+        dotenv.load_dotenv()
+        self.__dbhost = os.getenv("DBHOST") #"ec2-79-125-30-28.eu-west-1.compute.amazonaws.com dbname=dc2bgg77rj8mls"
+        self.__dbuser = os.getenv("DBUSER") #"wzhqirdlfueovm"
+        self.__dbpsw = os.getenv("DBPASS") #"8b322163c254d39da687f9132ae38979552554fe6b82d43bc6307e5b797b2445"
+        self.__dbname = os.getenv("DBNAME") #"dc2bgg77rj8mls"
     def openConnection(self):
         try:
             self.conn = psycopg2.connect(f"host={self.getHost()} dbname={self.getDbname()} user={self.getUser()} password={self.getPsw()}")

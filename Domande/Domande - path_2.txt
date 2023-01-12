@@ -1,0 +1,181 @@
+-- Domande percorso B: Medie
+
+('domanda','Devi raggiungere la focaccia, non hai ancora mangiato e hai pochissime energie. Quale percorso scegli tra i 4 indicati?',1),
+('risposta','Rosso',1),
+('risposta','Blu',1),
+('risposta','Verde',1),
+('risposta','Giallo',1),
+('corretta','Blu',1),
+('punteggio','10',1),
+('tempo','40',1),
+-- Domanda con immagine da creare (NO SCACCHIERA) con i 4 percorsi dei colori indicati. La distanza è il percorso blu.
+
+
+('domanda','Se la stanza fosse 10 volte più grande, la distanza tra te e focaccia sarebbe la stessa?',2),
+('risposta','Sì',2),
+('risposta','No',2),
+('corretta','No',2),
+('punteggio','5',2),
+('tempo','20',2),
+ 
+
+-- GIOCO: Dove può andare la torre con una mossa
+
+
+('domanda','Qual è il percorso possibile per la torre per raggiungere la casella segnata?',3),
+('risposta','Rosso',3),
+('risposta','Blu',3),
+('risposta','Verde',3),
+('risposta','Giallo',3),
+('corretta','Verde',3),
+('punteggio','10',3),
+('tempo','40',3),
+-- Immagine scacchiera "libera" da ostacoli, con una X su casella lontana almeno due mosse dalla torre, 4 percorsi di cui 3 usano movimenti in diagonale.
+
+
+('domanda','Quale percorso è il più breve per la torre per arrivare alla casella segnata?',4),
+('risposta','Rosso',4),
+('risposta','Blu',4),
+('risposta','Verde',4),
+('risposta','Giallo',4),
+('corretta','Verde',4),
+('punteggio','10',4),
+('tempo','60',4),
+-- Immagine con 4 percorsi per arrivare a X, di cui tre con giri strani e lunghi.
+
+
+('domanda','Quante caselle è lungo il percorso più breve?',5),
+('risposta','2',5),
+('risposta','7',5),
+('risposta','8',5),
+('risposta','10',5),
+('corretta','8',5),
+('punteggio','10',5),
+('tempo','40',1),
+-- Immagine precedente con solo il percorso più breve.
+
+
+('domanda','Se la scacchiera fosse 10 volte più grande la distanza tra la torre e la casella segnata sarebbe maggiore?',6),
+('risposta','Sì',6),
+('risposta','No',6),
+('corretta','No',6),
+('punteggio','5',6),
+('tempo','20',1),
+
+
+-- GIOCO: Percorso con meno caselle percorse per raggiungere la casella segnata, qualche ostacolo
+
+
+('domanda','Una circonferenza è l'insieme dei punti:',7),
+('risposta','allineati',7),
+('risposta','equidistanti da un''asse',7),
+('risposta','equidistanti da un centro',7),
+('risposta','equidistanti da due punti',7),
+('corretta','equidistanti da un centro',7),
+('punteggio','10',7),
+('tempo','60',7),
+
+ 
+-- GIOCO: segna tutte le caselle che stanno sulla cfr di raggio 1
+-- GIOCO: segna tutte le caselle che stanno sulla cfr di raggio 2
+
+-- GIOCO: Quali caselle può raggiungere alfiere con una mossa
+-- GIOCO: Trova il percorso più breve per l'alfiere per raggiungere la casella segnata, con ostacoli
+
+
+('domanda','Quante caselle è distante la casella segnata?',8),
+('risposta','1',8),
+('risposta','2',8),
+('risposta','4',8),
+('risposta','Non ci può arrivare',8),
+('corretta','2',8),
+('punteggio','10',8),
+('tempo','30',8),
+-- Immagine con la X su una casella a distanza 2 dall'alfiere sulla sua diagonale
+
+
+('domanda','Quante caselle è distante la casella segnata?',9),
+('risposta','1',9),
+('risposta','2',9),
+('risposta','4',9),
+('risposta','Non ci può arrivare',9),
+('corretta','2',9),
+('punteggio','10',9),
+('tempo','30',9),
+-- Immagine con la X su una casella a distanza 2 dall'alfiere sulla sua orizzontale (due step)
+
+
+('domanda','Quante caselle è distante la casella segnata?',10),
+('risposta','1',10),
+('risposta','2',10),
+('risposta','4',10),
+('risposta','Non ci può arrivare',10),
+('corretta','Non ci può arrivare',10),
+('punteggio','10',10),
+('tempo','40',10),
+-- Immagine con la X su una casella del colore opposto dell'alfiere
+
+
+('domanda','Da quante caselle è composta la circonferenza di raggio 1?', 11),
+('risposta','1',11),
+('risposta','6',11),
+('risposta','4',11),
+('risposta','Infinite',11),
+('corretta','4',11),
+('punteggio','10',11),
+('tempo','40',11),
+-- Immagine con l'alfiere e la scacchiera vuota
+
+
+-- GIOCO: Disegna tutte le caselle a distanza 1 dall'alfiere
+-- GIOCO: Disegna tutte le caselle a distanza 2 dall'alfiere
+
+-- GIOCO: Disegna sulla base dell'esempio tutte le caselle che puuò raggiungere il cavallo con una mossa
+
+
+('domanda','Ha senso contare il numero di caselle percorse in una mossa con il cavallo?',12),
+('risposta','Sì',12),
+('risposta','No',12),
+('corretta','No',12),
+('punteggio','5',12),
+('tempo','20',12),
+
+
+-- GIOCO: distanza del cavallo da una casella adiacente
+
+
+('domanda','Qual è la distanza del cavallo dalla casella adiacente?',13),
+('risposta','1',13),
+('risposta','2',13),
+('risposta','3',13),
+('risposta','4',13),
+('corretta','3',13),
+('punteggio','10',13),
+('tempo','60',13),
+
+
+('domanda','Per quale personaggio le due caselle segnate sono più distanti tra loro?',14),
+('risposta','Torre',14),
+('risposta','Alfiere',14),
+('risposta','Cavallo',14),
+('risposta','Umano',14),
+('corretta','Alfiere',14),
+('punteggio','10',14),
+('tempo','60',14),
+-- Caselle una bianca e una nera
+
+
+('domanda','Se cambiamo il modo di misurare la distanza, cambiamo le figure geometriche?',15),
+('risposta','Sì',15),
+('risposta','No',15),
+('corretta','Sì',15),
+('punteggio','5',15),
+('tempo','20',15),
+
+
+('domanda','Secondo te è possibile inventarsi altre pedine che si muovono in modi ancora più strani?',16),
+('risposta','Sì',16),
+('risposta','No',16),
+('corretta','Sì',16),
+('punteggio','5',16),
+('tempo','30',16);

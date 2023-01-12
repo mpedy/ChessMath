@@ -15,16 +15,16 @@ from datetime import datetime
 import hashlib
 
 
-import base64
-import binascii
+#import base64
+#import binascii
 
 from .customMiddleware import CustomHeaderMiddleware
 from .httpsMiddleware import HTTPSRedirectMiddleware
-from .DBConnection import DBConnection
+#from .DBConnection import DBConnection
 
 middleware = []
 
-PROD = 1
+PROD = 0
 if PROD == 1:
     middleware = [Middleware(HTTPSRedirectMiddleware)]
 elif PROD == 2:
@@ -189,8 +189,8 @@ def getPath3():
         "pages/lic/gioco_toro2",
         LISTEN, ## da fare da qui in avanti per i quiz
         "pages/lic/quiz14",
-        LISTEN,
-        "pages/lic/quiz16",
+        #LISTEN,
+        #"pages/lic/quiz16",
         "pages/classifica",
         "pages/endpage"
     ]
@@ -301,25 +301,37 @@ async def setPage(request):
     else:
         return Response("Errore: codice non valido");
 
+def fetchQuiz(path: str):
+    global opt
+    #dbConn = DBConnection()
+    #dbConn.openConnectionAndCursor()
+    #res = dbConn.executeAndFetchall("select quizid, tipo, json_agg(test) from chessmath."+path+" group by quizid, tipo order by quizid, tipo desc;")
+    #dbConn.closeConnectionAndCursor()
+    #print("RES prima")
+    #print(res, type(res[0]))
+    with open(f"Domande/{path}","r") as f:
+        import json
+        domande = json.load(f)
+        res = []
+        for d in domande:
+            res.append((d['quizid'],d['tipo'],d['value']))
+    #print("RES dopo")
+    #print(res)
+    return res
+
 async def updateQuest(request):
     global opt
     opt.MyQuiz = []
-    dbConn = DBConnection()
-    dbConn.openConnectionAndCursor()
-    res = dbConn.executeAndFetchall("select quizid, tipo, json_agg(test) from chessmath."+opt.percorso+" group by quizid, tipo order by quizid, tipo desc;")
+    res = fetchQuiz(opt.percorso)
     opt.obtainNewQuiz(res)
-    dbConn.closeConnectionAndCursor()
     return Response("ok")
 
 async def setPath(request):
     global opt
     opt.percorso = "path_"+str(request.path_params['path'])
     opt.page = 0
-    dbConn = DBConnection()
-    dbConn.openConnectionAndCursor()
-    res = dbConn.executeAndFetchall("select quizid, tipo, json_agg(test) from chessmath."+opt.percorso+" group by quizid, tipo order by quizid, tipo desc;")
+    res = fetchQuiz(opt.percorso)
     opt.obtainNewQuiz(res)
-    dbConn.closeConnectionAndCursor()
     return Response("ok")
 
 async def getquiz(request):
@@ -335,14 +347,11 @@ async def getquiz(request):
 
 async def startup_task():
     global opt
-    dbConn = DBConnection()
-    dbConn.openConnectionAndCursor()
-    res = dbConn.executeAndFetchall("select quizid, tipo, json_agg(test) from chessmath."+opt.percorso+" group by quizid, tipo order by quizid, tipo desc;")
+    res = fetchQuiz(opt.percorso)
     opt.obtainNewQuiz(res)
-    dbConn.closeConnectionAndCursor()
 
 async def settacodice(request):
-    global opt;
+    global opt
     opt.codice = request.path_params["codice"]
     return Response("ok")
 
@@ -357,11 +366,11 @@ async def verificacodice(request):
 
 
 async def getanimpage(request):
-    global opt;
+    global opt
     try:
         form = await request.form()
         if form["username"] == "anim" and form["password"] == "1324354321":
-            seed(datetime.now())
+            seed(datetime.now().timestamp())
             opt.codice = int(random()*100000%990+1)
             return templates.TemplateResponse("anim", {"request": request, "codice": opt.codice})
         else:
