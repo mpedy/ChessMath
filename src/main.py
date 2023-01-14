@@ -7,6 +7,9 @@ from starlette.middleware import Middleware
 from starlette.endpoints import HTTPEndpoint
 
 
+# per esportare da DB:
+# select array_to_json(array_agg(t)) from (select quizid,tipo,json_agg(test) as "value" from chessmath.path_2 p group by quizid, tipo order by quizid, tipo desc) t; 
+
 
 from Quiz import Quiz
 

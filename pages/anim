@@ -93,6 +93,13 @@
 					}
 				})
 		},3000);
+	
+	/*var updateQuest = setInterval(function(){
+		$.ajax({
+			url: "updateQuest",
+			async: true
+		})
+	}, 5000);*/
 	</script>
 </head>
 <body>
