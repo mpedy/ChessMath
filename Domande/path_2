@@ -27,7 +27,7 @@
         "quizid": 1,
         "tipo": "domanda",
         "value": [
-            "Quale percorso è il più breve per la torre per arrivare alla casella segnata?"
+            "Quale percorso è il più breve per la Torre per arrivare alla casella segnata?"
         ]
     },
     {
@@ -445,7 +445,7 @@
         "quizid": 12,
         "tipo": "domanda",
         "value": [
-            "Se i bordi della scacchiera fossero comunicanti, con una mossa quale distanza può percorrere il cavallo?"
+            "Se i bordi della scacchiera fossero comunicanti, con una mossa quale distanza può percorrere il Cavallo?"
         ]
     },
     {

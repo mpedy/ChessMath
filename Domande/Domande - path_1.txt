@@ -27,20 +27,20 @@
 ('punteggio','5',3);
  
 
--- GIOCO: Dove può andare la torre con una mossa
+-- GIOCO: Dove può andare la Torre con una mossa
 
 
-('domanda','Qual è il percorso possibile per la torre per raggiungere la casella segnata con la X?',4),
+('domanda','Qual è il percorso possibile per la Torre per raggiungere la casella segnata con la X?',4),
 ('risposta','Rosso',4),
 ('risposta','Blu',4),
 ('risposta','Verde',4),
 ('risposta','Giallo',4),
 ('corretta','Verde',4),
 ('punteggio','10',4);
--- Immagine scacchiera "libera" da ostacoli, con una X su casella lontana almeno due mosse dalla torre, 4 percorsi di cui 3 usano movimenti in diagonale.
+-- Immagine scacchiera "libera" da ostacoli, con una X su casella lontana almeno due mosse dalla Torre, 4 percorsi di cui 3 usano movimenti in diagonale.
 
 
-('domanda','Quale percorso è il più breve per la torre per arrivare alla casella segnata con la X?',5),
+('domanda','Quale percorso è il più breve per la Torre per arrivare alla casella segnata con la X?',5),
 ('risposta','Rosso',5),
 ('risposta','Blu',5),
 ('risposta','Verde',5),
@@ -60,7 +60,7 @@
 -- Immagine precedente con solo il percorso più breve.
 
 
-('domanda','Se la scacchiera fosse 10 volte più grande la distanza tra la torre e la casella con la X sarebbe maggiore?',7),
+('domanda','Se la scacchiera fosse 10 volte più grande la distanza tra la Torre e la casella con la X sarebbe maggiore?',7),
 ('risposta','Sì',7),
 ('risposta','No',7),
 ('corretta','No',7),
@@ -82,30 +82,30 @@
 -- Immagine con 4 figure geometriche di cui una è cfr
 
  
--- GIOCO: segna tutte le caselle a distanza 1 dalla casella in cui si trova la torre
--- GIOCO: segna tutte le caselle a distanza 2 dalla casella in cui si trova la torre
+-- GIOCO: segna tutte le caselle a distanza 1 dalla casella in cui si trova la Torre
+-- GIOCO: segna tutte le caselle a distanza 2 dalla casella in cui si trova la Torre
 
--- GIOCO: segna tutte le caselle che può raggiungere l'alfiere con una sola mossa
+-- GIOCO: segna tutte le caselle che può raggiungere l'Alfiere con una sola mossa
 
 
-('domanda','Qual è il percorso possibile per l'alfiere per raggiungere la casella segnata con la X?',9),
+('domanda','Qual è il percorso possibile per l'Alfiere per raggiungere la casella segnata con la X?',9),
 ('risposta','Rosso',9),
 ('risposta','Blu',9),
 ('risposta','Verde',9),
 ('risposta','Giallo',9),
 ('corretta','Giallo',9),
 ('punteggio','10',9);
--- Immagine scacchiera "libera" da ostacoli, con una X su casella lontana almeno due mosse dell'alfiere, 4 percorsi di cui 3 usano movimenti orizzontali o verticali.
+-- Immagine scacchiera "libera" da ostacoli, con una X su casella lontana almeno due mosse dell'Alfiere, 4 percorsi di cui 3 usano movimenti orizzontali o verticali.
 
 
-('domanda','Qual è il percorso più breve per l'alfiere per raggiungere la casella segnata con la X?',10),
+('domanda','Qual è il percorso più breve per l'Alfiere per raggiungere la casella segnata con la X?',10),
 ('risposta','Rosso',10),
 ('risposta','Blu',10),
 ('risposta','Verde',10),
 ('risposta','Giallo',10),
 ('corretta','Rosso',10),
 ('punteggio','10',10);
--- Immagine scacchiera "libera" da ostacoli, con una X su casella lontana almeno due mosse dell'alfiere, 4 percorsi di cui 3 contorti
+-- Immagine scacchiera "libera" da ostacoli, con una X su casella lontana almeno due mosse dell'Alfiere, 4 percorsi di cui 3 contorti
 
 
 ('domanda','Quante caselle è distante la casella segnata con la X?',11),
@@ -115,7 +115,7 @@
 ('risposta','Non ci può arrivare',11),
 ('corretta','2',11),
 ('punteggio','10',11);
--- Immagine con la X su una casella a distanza 2 dall'alfiere sulla sua diagonale
+-- Immagine con la X su una casella a distanza 2 dall'Alfiere sulla sua diagonale
 
 
 ('domanda','Quante caselle è distante la casella segnata con la X?',12),
@@ -125,7 +125,7 @@
 ('risposta','Non ci può arrivare',12),
 ('corretta','2',12),
 ('punteggio','10',12);
--- Immagine con la X su una casella a distanza 2 dall'alfiere sulla sua orizzontale (due step)
+-- Immagine con la X su una casella a distanza 2 dall'Alfiere sulla sua orizzontale (due step)
 
 
 ('domanda','Quante caselle è distante la casella segnata con la X?',13),
@@ -135,7 +135,7 @@
 ('risposta','Non ci può arrivare',13),
 ('corretta','Non ci può arrivare',13),
 ('punteggio','10',13);
--- Immagine con la X su una casella del colore opposto dell'alfiere
+-- Immagine con la X su una casella del colore opposto dell'Alfiere
 
 
 -- GIOCO: Casella con X e Golem, caselle minime per raggiungerla
@@ -149,11 +149,11 @@
 ('risposta','Infinite',14),
 ('corretta','4',14),
 ('punteggio','10',14);
--- Immagine con l'alfiere e la scacchiera vuota
+-- Immagine con l'Alfiere e la scacchiera vuota
 
 
--- GIOCO: Disegna tutte le caselle a distanza 1 dall'alfiere
--- GIOCO: Disegna tutte le caselle a distanza 2 dall'alfiere
+-- GIOCO: Disegna tutte le caselle a distanza 1 dall'Alfiere
+-- GIOCO: Disegna tutte le caselle a distanza 2 dall'Alfiere
 
 
 ('domanda','Se cambiamo il modo di misurare la distanza, cambiamo la geometria?',15),

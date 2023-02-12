@@ -213,7 +213,7 @@ class GameOptions():
     UUID_NAME = {}
     codice = -1
     page = 0
-    percorso = "path_1"
+    percorso = "path_3"
     setPageCode = 123111321
     def __init__(self):
         self.MyQuiz = []
@@ -224,7 +224,7 @@ class GameOptions():
         self.UUID_NAME = {}
         self.codice = int(random()*100000%990+1)
         self.page = 0
-        self.percorso = "path_1"
+        self.percorso = "path_3"
         setPageCode = 123111321
     def reset(self):
         self.UUID_NAME = {}

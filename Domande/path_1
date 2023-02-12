@@ -111,7 +111,7 @@
         "quizid": 4,
         "tipo": "domanda",
         "value": [
-            "Qual è il percorso possibile per la torre per raggiungere la casella segnata con la X?"
+            "Qual è il percorso possibile per la Torre per raggiungere la casella segnata con la X?"
         ]
     },
     {
@@ -142,7 +142,7 @@
         "quizid": 5,
         "tipo": "domanda",
         "value": [
-            "Quale percorso è il più breve per la torre per arrivare alla casella segnata con la X?"
+            "Quale percorso è il più breve per la Torre per arrivare alla casella segnata con la X?"
         ]
     },
     {
@@ -202,7 +202,7 @@
         "quizid": 7,
         "tipo": "domanda",
         "value": [
-            "Se la scacchiera fosse 10 volte più grande la distanza tra la torre e la casella con la X sarebbe maggiore?"
+            "Se la scacchiera fosse 10 volte più grande la distanza tra la Torre e la casella con la X sarebbe maggiore?"
         ]
     },
     {
@@ -264,7 +264,7 @@
         "quizid": 9,
         "tipo": "domanda",
         "value": [
-            "Qual è il percorso possibile per l'alfiere per raggiungere la casella segnata con la X?"
+            "Qual è il percorso possibile per l'Alfiere per raggiungere la casella segnata con la X?"
         ]
     },
     {
@@ -295,7 +295,7 @@
         "quizid": 10,
         "tipo": "domanda",
         "value": [
-            "Qual è il percorso più breve per l'alfiere per raggiungere la casella segnata con la X?"
+            "Qual è il percorso più breve per l'Alfiere per raggiungere la casella segnata con la X?"
         ]
     },
     {

@@ -19,10 +19,10 @@
 ('tempo','20',2),
  
 
--- GIOCO: Dove può andare la torre con una mossa
+-- GIOCO: Dove può andare la Torre con una mossa
 
 
-('domanda','Qual è il percorso possibile per la torre per raggiungere la casella segnata?',3),
+('domanda','Qual è il percorso possibile per la Torre per raggiungere la casella segnata?',3),
 ('risposta','Rosso',3),
 ('risposta','Blu',3),
 ('risposta','Verde',3),
@@ -30,10 +30,10 @@
 ('corretta','Verde',3),
 ('punteggio','10',3),
 ('tempo','40',3),
--- Immagine scacchiera "libera" da ostacoli, con una X su casella lontana almeno due mosse dalla torre, 4 percorsi di cui 3 usano movimenti in diagonale.
+-- Immagine scacchiera "libera" da ostacoli, con una X su casella lontana almeno due mosse dalla Torre, 4 percorsi di cui 3 usano movimenti in diagonale.
 
 
-('domanda','Quale percorso è il più breve per la torre per arrivare alla casella segnata?',4),
+('domanda','Quale percorso è il più breve per la Torre per arrivare alla casella segnata?',4),
 ('risposta','Rosso',4),
 ('risposta','Blu',4),
 ('risposta','Verde',4),
@@ -55,7 +55,7 @@
 -- Immagine precedente con solo il percorso più breve.
 
 
-('domanda','Se la scacchiera fosse 10 volte più grande la distanza tra la torre e la casella segnata sarebbe maggiore?',6),
+('domanda','Se la scacchiera fosse 10 volte più grande la distanza tra la Torre e la casella segnata sarebbe maggiore?',6),
 ('risposta','Sì',6),
 ('risposta','No',6),
 ('corretta','No',6),
@@ -79,8 +79,8 @@
 -- GIOCO: segna tutte le caselle che stanno sulla cfr di raggio 1
 -- GIOCO: segna tutte le caselle che stanno sulla cfr di raggio 2
 
--- GIOCO: Quali caselle può raggiungere alfiere con una mossa
--- GIOCO: Trova il percorso più breve per l'alfiere per raggiungere la casella segnata, con ostacoli
+-- GIOCO: Quali caselle può raggiungere Alfiere con una mossa
+-- GIOCO: Trova il percorso più breve per l'Alfiere per raggiungere la casella segnata, con ostacoli
 
 
 ('domanda','Quante caselle è distante la casella segnata?',8),
@@ -91,7 +91,7 @@
 ('corretta','2',8),
 ('punteggio','10',8),
 ('tempo','30',8),
--- Immagine con la X su una casella a distanza 2 dall'alfiere sulla sua diagonale
+-- Immagine con la X su una casella a distanza 2 dall'Alfiere sulla sua diagonale
 
 
 ('domanda','Quante caselle è distante la casella segnata?',9),
@@ -102,7 +102,7 @@
 ('corretta','2',9),
 ('punteggio','10',9),
 ('tempo','30',9),
--- Immagine con la X su una casella a distanza 2 dall'alfiere sulla sua orizzontale (due step)
+-- Immagine con la X su una casella a distanza 2 dall'Alfiere sulla sua orizzontale (due step)
 
 
 ('domanda','Quante caselle è distante la casella segnata?',10),
@@ -113,7 +113,7 @@
 ('corretta','Non ci può arrivare',10),
 ('punteggio','10',10),
 ('tempo','40',10),
--- Immagine con la X su una casella del colore opposto dell'alfiere
+-- Immagine con la X su una casella del colore opposto dell'Alfiere
 
 
 ('domanda','Da quante caselle è composta la circonferenza di raggio 1?', 11),
@@ -124,16 +124,16 @@
 ('corretta','4',11),
 ('punteggio','10',11),
 ('tempo','40',11),
--- Immagine con l'alfiere e la scacchiera vuota
+-- Immagine con l'Alfiere e la scacchiera vuota
 
 
--- GIOCO: Disegna tutte le caselle a distanza 1 dall'alfiere
--- GIOCO: Disegna tutte le caselle a distanza 2 dall'alfiere
+-- GIOCO: Disegna tutte le caselle a distanza 1 dall'Alfiere
+-- GIOCO: Disegna tutte le caselle a distanza 2 dall'Alfiere
 
--- GIOCO: Disegna sulla base dell'esempio tutte le caselle che puuò raggiungere il cavallo con una mossa
+-- GIOCO: Disegna sulla base dell'esempio tutte le caselle che puuò raggiungere il Cavallo con una mossa
 
 
-('domanda','Ha senso contare il numero di caselle percorse in una mossa con il cavallo?',12),
+('domanda','Ha senso contare il numero di caselle percorse in una mossa con il Cavallo?',12),
 ('risposta','Sì',12),
 ('risposta','No',12),
 ('corretta','No',12),
@@ -141,10 +141,10 @@
 ('tempo','20',12),
 
 
--- GIOCO: distanza del cavallo da una casella adiacente
+-- GIOCO: distanza del Cavallo da una casella adiacente
 
 
-('domanda','Qual è la distanza del cavallo dalla casella adiacente?',13),
+('domanda','Qual è la distanza del Cavallo dalla casella adiacente?',13),
 ('risposta','1',13),
 ('risposta','2',13),
 ('risposta','3',13),

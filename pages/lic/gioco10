@@ -1,4 +1,4 @@
-<span id="title" style="padding: 10px">Segna tutte le caselle a distanza 1 dall'alfiere</span>
+<span id="title" style="padding: 10px">Segna tutte le caselle a distanza 1 dall'Alfiere</span>
 <div id="chessboard"></div>
 <div>
 	<div class="timer" data-second="60" data-height="20px" data-width="80%"></div>

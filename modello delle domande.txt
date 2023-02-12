@@ -1,4 +1,4 @@
-('domanda','Di quante caselle può al massimo spostarsi la torre?',3),
+('domanda','Di quante caselle può al massimo spostarsi la Torre?',3),
 ('punteggio','100',3),
 ('risposta','3',3),
 ('risposta','5',3),
@@ -38,7 +38,7 @@ Le risposte possibili al massimo possono essere 4, non di più.
 ('punteggio','100',2),
 ('corretta','Falso',2),
 
-('domanda','Di quante caselle può al massimo spostarsi la torre?',3),
+('domanda','Di quante caselle può al massimo spostarsi la Torre?',3),
 ('risposta','3',3),
 ('risposta','5',3),
 ('risposta','8',3),

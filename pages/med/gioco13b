@@ -1,4 +1,4 @@
-<div id="title">Muovi il cavallo verso la casella evidenziata nel minor numero di mosse</div>
+<div id="title">Muovi il Cavallo verso la casella evidenziata nel minor numero di mosse</div>
 <div id="chessboard"></div>
 <div>
 	<div style="background: black;">Mosse: <span id="number_of_moves">0</span></div>

@@ -1,4 +1,4 @@
-<span id="title" style="padding: 10px; display: block;">Direzioni possibili per la torre</span>
+<span id="title" style="padding: 10px; display: block;">Direzioni possibili per la Torre</span>
 <div id="chessboard"></div>
 <script type="text/javascript">
 drawChessboard(document.getElementById("chessboard"))

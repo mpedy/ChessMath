@@ -187,8 +187,9 @@ getQuiz = function(){
 	$("#title").html("<div class=\"timer\" data-second=\""+quiz['tempo']+"\" data-height=\"20px\" data-width=\"80%\"></div>")
 	maketimer($(".timer")[0])
 	$("#question").text(quiz["domanda"]);
-	var list = $("#answers").html("");
-	list.css({/*"columns":"2","-webkit-columns": "2", "-moz-columns": "2", */"list-style":"none","height":"0px","display":"block"});
+	var list = $("#answers")
+	list.html("");
+	list.css({/*"columns":"2","-webkit-columns": "2", "-moz-columns": "2", */"list-style":"none","height":"100%","display":"block"});
 	for(var i =0; i<quiz["risposta"].length; i++){
 		var elem = document.createElement("li");
 		if(quiz["risposta"][i] == quiz["corretta"]){
