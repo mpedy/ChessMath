@@ -1,10 +1,13 @@
+import json
 from starlette.applications import Starlette
 from starlette.responses import JSONResponse, HTMLResponse, Response, PlainTextResponse, RedirectResponse, PlainTextResponse
-from starlette.routing import Mount, Route
+from starlette.routing import Mount, Route, WebSocketRoute
 from starlette.staticfiles import StaticFiles
 from starlette.templating import Jinja2Templates
 from starlette.middleware import Middleware
-from starlette.endpoints import HTTPEndpoint
+from starlette.endpoints import HTTPEndpoint, WebSocketEndpoint
+from starlette.websockets import WebSocket
+import threading
 
 
 # per esportare da DB:
@@ -255,6 +258,8 @@ class GameOptions():
         return uuid
 
 opt = GameOptions()
+websockets = []
+lock = threading.Lock()
 
 templates = Jinja2Templates(directory="pages")
 
@@ -288,6 +293,16 @@ async def returnPage(request):
     else:
         return RedirectResponse("/",status_code=401)
 
+
+async def notifyAllWS():
+    global opt
+    global websockets
+    for ws in websockets:
+        if ws["cod"] == opt.codice:
+            await ws["ws"].send_text(json.dumps({"pagina": opt.page}))
+
+
+
 async def setPage(request):
     global opt
     code = request.path_params['code']
@@ -300,6 +315,7 @@ async def setPage(request):
         arr = allpages[opt.percorso]
         l = len(arr)
         res = [arr[opt.page-1] if opt.page-1 in range(0,l) else None, arr[opt.page] if opt.page in range(0,l) else None, arr[opt.page+1] if opt.page+1 in range(0,l) else None]
+        await notifyAllWS()
         return JSONResponse({"status":"ok","prev":res[0],"current":res[1],"next":res[2]})
     else:
         return Response("Errore: codice non valido");
@@ -408,7 +424,13 @@ async def addNome(request):
 
 async def reset(request):
     global opt
+    global websockets
     opt.reset()
+    with lock:
+        import copy
+        ws_all = copy.copy(websockets)
+        for ws in ws_all:
+            await ws["ws"].close()
     return Response("ok")
 
 async def endGame(request):
@@ -457,6 +479,50 @@ async def onerror(request, exc):
     print("Errore gestito: ",exc.detail)
     return RedirectResponse("/anim",status_code=301)
 
+class MyWebSocket(WebSocketEndpoint):
+    import typing
+    websockets = []
+    async def on_connect(self, websocket: WebSocket) -> None:
+        global opt
+        global websockets
+        if websocket.path_params["cod"] == opt.codice:
+            websockets.append({"cod": websocket.path_params["cod"], "name": websocket.path_params["name"], "ws": websocket})
+        return await super().on_connect(websocket)
+    
+    async def on_disconnect(self, websocket: WebSocket, close_code: int) -> None:
+        global opt
+        global websockets
+        for index in range(0, len(websockets)):
+            ws = websockets[index]
+            if ws["ws"] == websocket:
+                websockets.pop(index)
+                break
+        return await super().on_disconnect(websocket, close_code)
+    
+    async def on_receive(self, websocket: WebSocket, data: typing.Any) -> None:
+        global opt
+        await websocket.send_text(json.dumps({"pagina": opt.page}))
+        return await super().on_receive(websocket, data)
+    
+    async def notify_all(self, data):
+        global opt
+        global websockets
+        for index in range(0, len(websockets)):
+            ws = websockets[index]
+            if ws["cod"] != opt.codice:
+                websockets.pop(index)
+                index = index - 1
+            else:
+                await ws["ws"].send_text(data)
+    
+#async def startWebSocket(ws: WebSocket):
+#    print("PATH PARAMS: ", ws.path_params["cod"])
+#    if ws.path_params["cod"] == opt.codice:
+#        await ws.accept()
+#        while True:
+#            await ws.send_text("Ti leggo")
+#    return Response("OK")
+
 routes=[
     Route("/", welcome),
     Route("/game_{uuid:str}",mainRoute),
@@ -476,6 +542,7 @@ routes=[
     Route("/addPoints_{nome:str}_{pt:str}", addPoints),
     Route("/getClassifica_{position:int}", getClassifica),
     Route("/getAnswered", getAnswered),
+    WebSocketRoute("/ws/{cod:int}_{name:str}", MyWebSocket),
 
     Route("/anim",anim),
     Mount('/static', app=StaticFiles(directory='static', packages=['bootstrap4']), name="static"),
