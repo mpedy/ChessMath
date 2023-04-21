@@ -34,7 +34,7 @@
 		var codice = {{ codice }}
 		var nome = "{{ nome }}"
 		var page = 0;
-		var socket = new WebSocket("ws://"+window.location.host+"/ws/" + codice+"_"+nome);
+		var socket = new WebSocket("ws"+window.location.protocol.replace("http","")+"//"+window.location.host+"/ws/" + codice+"_"+nome);
 
 		socket.onopen = function (event) {
 			console.log("WebSocket connection opened: ", event);
