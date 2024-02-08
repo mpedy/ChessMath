@@ -1,6 +1,6 @@
 import json
 from starlette.applications import Starlette
-from starlette.responses import JSONResponse, HTMLResponse, Response, PlainTextResponse, RedirectResponse, PlainTextResponse
+from starlette.responses import JSONResponse, HTMLResponse, Response, RedirectResponse
 from starlette.routing import Mount, Route, WebSocketRoute
 from starlette.staticfiles import StaticFiles
 from starlette.templating import Jinja2Templates
@@ -14,11 +14,8 @@ import threading
 # select array_to_json(array_agg(t)) from (select quizid,tipo,json_agg(test) as "value" from chessmath.path_2 p group by quizid, tipo order by quizid, tipo desc) t; 
 
 
-from Quiz import Quiz
-
 from random import seed, random
 from datetime import datetime
-import hashlib
 
 
 #import base64
@@ -37,225 +34,8 @@ elif PROD == 2:
     middleware = [Middleware(CustomHeaderMiddleware)]
 
 
-LISTEN = "pages/ascolta"
-
-def getPath1():
-    return [
-        LISTEN,
-        "pages/elem/quiz1",
-        "pages/elem/quiz2",
-        LISTEN,
-        "pages/elem/quiz3",
-        "pages/elem/scacchiera_vuota",
-        "pages/elem/battaglia_navale",
-        "pages/ascolta_torre", ## Torre
-        "pages/torre_help",
-        "pages/elem/gioco1",
-        "pages/elem/img_gioco1",
-        "pages/elem/quiz4",
-        "pages/elem/quiz5",
-        "pages/elem/quiz6",
-        "pages/elem/quiz7",
-        "pages/elem/img_1",
-        "pages/elem/gioco2",
-        "pages/elem/gioco3",
-        "pages/elem/gioco4",
-        "pages/elem/quiz8",
-        LISTEN,
-        "pages/elem/gioco5",
-        "pages/elem/img_gioco5",
-        "pages/elem/gioco6",
-        "pages/elem/img_gioco6",
-        "pages/ascolta_alfiere",## Alfiere
-        "pages/elem/gioco7",
-        "pages/elem/img_gioco7",
-        "pages/elem/quiz9",
-        "pages/elem/quiz10",
-        "pages/elem/quiz11",
-        "pages/elem/quiz12",
-        "pages/elem/quiz13",
-        "pages/elem/gioco8",
-        "pages/elem/gioco9",
-        LISTEN,
-        "pages/elem/quiz14",
-        "pages/elem/gioco10",
-        "pages/elem/img_gioco10",
-        "pages/elem/gioco11",
-        "pages/elem/img_gioco11",
-        "pages/elem/img_allsquare",
-        "pages/elem/quiz15",
-        LISTEN,
-        "pages/elem/quiz16",
-        "pages/classifica",
-        "pages/endpage"
-    ]
-
-def getPath2():
-    return [
-        LISTEN,
-        "pages/med/quiz1",
-        LISTEN,
-        "pages/med/quiz2",
-        "pages/elem/scacchiera_vuota",
-        "pages/ascolta_torre", ## Torre
-        "pages/torre_help",
-        "pages/med/gioco1",
-        "pages/med/img_gioco1",
-        "pages/med/quiz3",
-        "pages/med/quiz4",
-        "pages/med/quiz5",
-        "pages/med/quiz6",
-        "pages/med/img_1",
-        "pages/med/gioco2",
-        "pages/med/gioco4",
-        "pages/med/quiz7",
-        LISTEN,
-        "pages/med/gioco5",
-        "pages/med/img_gioco5",
-        "pages/med/gioco6",
-        "pages/med/img_gioco6",
-        "pages/ascolta_alfiere", ## Alfiere
-        "pages/med/gioco7",
-        "pages/med/img_gioco7",
-        "pages/med/gioco8",
-        "pages/med/quiz8",
-        "pages/med/quiz9",
-        "pages/med/quiz10",
-        LISTEN,
-        "pages/med/quiz11",
-        "pages/elem/img_gioco10",
-        "pages/med/gioco11b",
-        "pages/med/img_gioco11b",
-        "pages/elem/img_allsquare",
-        "pages/ascolta_cavallo",# CAVALLO
-        "pages/med/img_cavallo",
-        "pages/med/gioco_spirit",
-        "pages/med/img_spirit",
-        "pages/med/gioco13b",
-        "pages/med/gioco13b_soluzione",
-        "pages/med/gioco12b",
-        "pages/med/gioco12b_soluzione",
-        LISTEN,
-        "pages/med/quiz14",
-        LISTEN,
-        "pages/med/quiz16",
-        "pages/classifica",
-        "pages/endpage"
-    ]
-
-def getPath3():
-    return [
-        LISTEN,
-        "pages/ascolta_torre",
-        "pages/lic/img_gioco1",
-        "pages/lic/quiz1",
-        "pages/lic/quiz2",
-        "pages/lic/img_1",
-        "pages/lic/gioco2",
-        "pages/lic/gioco4",
-        "pages/lic/quiz7",
-        LISTEN,
-        "pages/lic/gioco5",
-        "pages/lic/img_gioco5",
-        "pages/lic/gioco6",
-        "pages/lic/img_gioco6",
-        "pages/ascolta_alfiere", ## Alfiere
-        "pages/lic/img_gioco7",
-        "pages/lic/gioco8",
-        "pages/lic/quiz8",
-        "pages/lic/quiz9",
-        "pages/lic/quiz10",
-        LISTEN,
-        "pages/lic/quiz11",
-        "pages/lic/img_gioco10",
-        "pages/lic/gioco11b",
-        "pages/lic/img_gioco11b",
-        "pages/lic/img_allsquare",
-        "pages/ascolta_cavallo",# CAVALLO
-        "pages/lic/img_cavallo",
-        "pages/lic/gioco_spirit",
-        "pages/lic/img_spirit",
-        "pages/lic/gioco13b",
-        "pages/lic/gioco13b_soluzione",
-        "pages/lic/gioco12b",
-        "pages/lic/gioco12b_soluzione",
-        "pages/lic/gioco14",
-        "pages/lic/gioco15",
-        "pages/lic/img_gioco15",
-        "pages/ascolta_regina",
-        "pages/lic/img_regina",
-        "pages/lic/gioco16",
-        "pages/lic/img_gioco16",
-        "pages/lic/gioco17",
-        #"pages/lic/gioco18",
-        LISTEN,
-        "pages/lic/gioco_training_toro",
-        "pages/lic/gioco_toro",
-        "pages/lic/gioco_toro1",
-        "pages/lic/gioco_toro2",
-        LISTEN, ## da fare da qui in avanti per i quiz
-        "pages/lic/quiz14",
-        #LISTEN,
-        #"pages/lic/quiz16",
-        "pages/classifica",
-        "pages/endpage"
-    ]
-
-allpages = {
-    "path_1": getPath1(),
-    "path_2": getPath2(),
-    "path_3" : getPath3()
-}
-
-class GameOptions():
-    MyQuiz = []
-    Classifica = {}
-    Classifica_ordered =[]
-    Answered = {}
-    allNames = []
-    UUID_NAME = {}
-    codice = -1
-    page = 0
-    percorso = "path_3"
-    setPageCode = 123111321
-    def __init__(self):
-        self.MyQuiz = []
-        self.Classifica = {}
-        self.Classifica_ordered = []
-        self.Answered = {}
-        self.allNames = []
-        self.UUID_NAME = {}
-        self.codice = int(random()*100000%990+1)
-        self.page = 0
-        self.percorso = "path_3"
-        setPageCode = 123111321
-    def reset(self):
-        self.UUID_NAME = {}
-        self.allNames = []
-        self.Classifica = {}
-        self.Classifica_ordered = []
-        self.Answered = {}
-    def obtainNewQuiz(self, res):
-        for i in res:
-            q = False
-            nuovo = True
-            for qu in self.MyQuiz:
-                if qu.id == i[0]:
-                    q = qu
-                    nuovo = False
-                    break
-            if q is False:
-                q = Quiz()
-                q.setId(i[0])
-            q.set(i[1],i[2])
-            if nuovo:
-                self.MyQuiz.append(q)
-    def generaUuid(self, nomeFinale):
-        uuidGenerator = hashlib.sha512()
-        uuidGenerator.update((str(self.codice)+nomeFinale).encode())
-        uuid = uuidGenerator.hexdigest()
-        self.UUID_NAME[uuid] = nomeFinale
-        return uuid
+from .paths import allpages
+from .GameOptions import GameOptions
 
 opt = GameOptions()
 websockets = []
@@ -264,7 +44,7 @@ lock = threading.Lock()
 templates = Jinja2Templates(directory="pages")
 
 async def welcome(request):
-    return HTMLResponse(open('pages/welcome',"r").read())
+    return HTMLResponse(open('pages/welcome',"r",encoding="utf-8").read())
 
 async def mainRoute(request):
     global opt
@@ -281,7 +61,7 @@ async def gotoPage(request):
     global opt
     opt.page = request.path_params['page']
     try:
-        return HTMLResponse(open(allpages[opt.percorso][opt.page]).read())
+        return HTMLResponse(open(allpages[opt.percorso][opt.page], encoding="utf-8").read())
     except Exception as e:
         return HTMLResponse(f"""<div> Errore: {e} """)
 
@@ -328,7 +108,7 @@ def fetchQuiz(path: str):
     #dbConn.closeConnectionAndCursor()
     #print("RES prima")
     #print(res, type(res[0]))
-    with open(f"Domande/{path}","r") as f:
+    with open(f"Domande/{path}","r", encoding="utf-8") as f:
         import json
         domande = json.load(f)
         res = []
@@ -434,7 +214,7 @@ async def reset(request):
     return Response("ok")
 
 async def endGame(request):
-    return HTMLResponse(open("pages/end").read())
+    return HTMLResponse(open("pages/end","r",encoding="utf-8").read())
 
 async def addPoints(request):
     global opt
