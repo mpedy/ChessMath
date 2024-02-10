@@ -176,7 +176,7 @@ enwrite = function(casella, txt, txt_color, bck_color){
 		div.style.top="15%";
 		div.style.position="relative";
 		div.style.borderRadius="6px;";
-		div.innerHTML = "<span style='display: table-cell; vertical-align: middle; color: "+txt_color+"'>"+txt+"</span>";
+		div.innerHTML = "<span style='display: table-cell; vertical-align: middle; color: "+txt_color+"; font-size: initial'>"+txt+"</span>";
 		elem.appendChild(div);
 	}
 }

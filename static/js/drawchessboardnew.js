@@ -128,6 +128,19 @@ drawPieces = function(elem, lst){
     }
 }
 
+drawHints = function(cas, style){
+    if(!style){
+        style="background: red; border-radius: 50%; position: absolute; left: 10%; width: 80%; height: 80%; z-index: 1"
+    }
+    for(var i in cas){
+	    var elem = $("#"+cas[i])[0]
+	    var div = document.createElement("div");
+	    div.style=style
+        div.style.borderRadius="2px"
+	    elem.appendChild(div);
+    }
+}
+
 
 redraw_bis = function(elem,dim){
     var _w = Math.min(window.innerWidth, window.outerWidth == 0 ? window.innerWidth : window.outerWidth)
