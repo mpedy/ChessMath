@@ -1,9 +1,7 @@
-
 env/
 *mp4
 *gif
 __pycache__/
 linux_env/
-linux-env/
 chiavi/
 .DS_Store
