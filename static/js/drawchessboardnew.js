@@ -1,3 +1,24 @@
+// Adding some features for old browsers
+/*if (!Array.prototype.includes) {
+    Object.defineProperty(Array.prototype, "includes",{
+        value: function(element,start){
+            if (start === undefined) {
+                start = 0;
+            }
+            if (start < 0) {
+                start = Math.max(this.length + start, 0);
+            }
+            for (var i = start; i < this.length; i++) {
+                if (this[i] === element) {
+                    return true;
+                }
+            }
+            return false;
+        },
+        enumerable: false
+    })
+}*/
+
 handleMouseDown_casella = function(){}
 handleMouseDown_image = function(){}
 var obstacles = ["rock-golem-1", "rock-golem","obstacle"]
@@ -122,9 +143,15 @@ drawPieces = function(elem, lst){
         image.setAttribute("data-casella",casella)
         image.setAttribute("data-type",lst[i].replace(".svg",""))
         document.getElementById(casella).appendChild(image)
-        $(image).mousedown(function (e) {
-            handleMouseDown_image(e);
-        })
+        if("ontouchstart" in document){
+            image.addEventListener("touchstart",function (e){
+                handleMouseDown_image(e);
+            });
+        }else{
+            $(image).mousedown(function (e) {
+                handleMouseDown_image(e);
+            })
+        }
     }
 }
 

@@ -55,6 +55,7 @@ ricomincia = function(){
 }
 
 handleMouseDown_casella = function(e){
+	try{
     var elem = e.currentTarget;
     //console.log(elem)
     casella = elem.getAttribute("casella");
@@ -66,7 +67,10 @@ handleMouseDown_casella = function(e){
     	e.preventDefault();
     }else{
     	//console.log("non sposto" + moving_piece)
-    }
+    }}catch(error){
+		alert("Problema in handlemousedown_casella")
+		alert(error)
+	}
 }
 
 move = function(moving_piece, casella){

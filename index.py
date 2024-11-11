@@ -12,7 +12,7 @@ def send_command(sql):
 
 @hug.get("/main", output=hug.output_format.html)
 def main():
-	return "<h3>Ciao</h3>";
+	return "<h3>Ciao</h3>"
 
 @hug.get("/ciao")
 def ciao():
