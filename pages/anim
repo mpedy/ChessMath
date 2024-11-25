@@ -123,6 +123,7 @@
 					<option value=1>Livello A - Elementari</option>
 					<option value=2>Livello B - Medie</option>
 					<option value=3 selected>Livello C - Liceo</option>
+					<option value=4>Livello D - Natale</option>
 				</select>
 			</div>
 			<div style="display: flex; justify-content: center; align-items: center;">

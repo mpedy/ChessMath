@@ -8,27 +8,4 @@
 <style>
 	
 </style>
-<script>
-drawChessboard($("#chessboard")[0])
-
-drawPieces($("#chessboard")[0],{D6: "Bishop.svg"})
-
-enlighted = "";
-enlight(F6,"orange",true)
-var can_answer = true
-stopTimerFunction = function(pressed){
-	try{
-		if(pressed == undefined){
-			pressed = false;
-		}
-	}catch ( errore ){
-		pressed = false;
-	}
-	if(!pressed){
-		myalert("Tempo esaurito!","E' scaduto il tempo!");
-	}
-	can_answer = false
-	$(".risposta").toggleClass("disabled")
-}
-getQuiz();
-</script>
+<script src="/static/js/dist/lic/quiz9.js"></script>

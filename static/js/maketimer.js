@@ -1,5 +1,6 @@
 var sec;
-maketimer = function(elem){
+var stopTimerFunction = function(){};
+var maketimer = function(elem){
 	var timer = elem
 	var totsec = parseInt(timer.getAttribute("data-second"))
 	var height = timer.getAttribute("data-height") || "50px";
@@ -35,4 +36,9 @@ maketimer = function(elem){
 		}
 		txt.innerText="Tempo rimanente: "+sec+" secondi"
 	},1000)
+}
+
+module.exports = {
+	maketimer: maketimer,
+	stopTimerFunction: stopTimerFunction
 }

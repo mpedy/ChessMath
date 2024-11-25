@@ -1,0 +1,8 @@
+/*import "./connector.js"
+import "./drawchessboard.js"
+import "./drawchessboardnew.js"
+import "./maketimer.js"
+import "./movePieces.js"
+import "./my_modernizr.js"
+import "./myui.js"
+import "./pureknob.js"*/

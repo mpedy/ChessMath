@@ -1,29 +1,8 @@
-// Adding some features for old browsers
-/*if (!Array.prototype.includes) {
-    Object.defineProperty(Array.prototype, "includes",{
-        value: function(element,start){
-            if (start === undefined) {
-                start = 0;
-            }
-            if (start < 0) {
-                start = Math.max(this.length + start, 0);
-            }
-            for (var i = start; i < this.length; i++) {
-                if (this[i] === element) {
-                    return true;
-                }
-            }
-            return false;
-        },
-        enumerable: false
-    })
-}*/
+window.handleMouseDown_casella = function(e){}
+window.handleMouseDown_image = function(e){}
+export var obstacles = ["rock-golem-1", "rock-golem","obstacle"]
 
-handleMouseDown_casella = function(){}
-handleMouseDown_image = function(){}
-var obstacles = ["rock-golem-1", "rock-golem","obstacle"]
-
-redraw = function(elem){
+export var redraw = function(elem){
     var _w = Math.min(window.innerWidth, window.outerWidth == 0 ? window.innerWidth : window.outerWidth)
     var w = Math.min(_w,600)
     elem.style.height=w+"px";
@@ -46,7 +25,7 @@ redraw = function(elem){
     boardTopx += elem.getClientRects()[0].left;*/
 }
 
-drawChessboard = function(elem){
+export var drawChessboard = function(elem){
     var _redraw = function(){
         redraw.apply(this,[elem])
     }
@@ -82,11 +61,11 @@ drawChessboard = function(elem){
             div.id = String.fromCharCode(65+j)+""+(8-i)
             if("ontouchstart" in document){
                 div.addEventListener("touchstart",function (e){
-                    handleMouseDown_casella(e);
+                    window.handleMouseDown_casella(e);
                 });
             }else{
                 $(div).mousedown(function (e) {
-                    handleMouseDown_casella(e);
+                    window.handleMouseDown_casella(e);
                 });
             }
             elem.appendChild(div)
@@ -126,8 +105,9 @@ drawChessboard = function(elem){
     }*/
 }
 
+export var casella;
 
-drawPieces = function(elem, lst){
+export var drawPieces = function(elem, lst){
     var squareSize = parseInt(elem.getAttribute("data-square-size"));
     var boardTopx  = parseInt(elem.getAttribute("data-boardtop-x"));
     var boardTopy  = parseInt(elem.getAttribute("data-boardtop-y"));
@@ -145,17 +125,17 @@ drawPieces = function(elem, lst){
         document.getElementById(casella).appendChild(image)
         if("ontouchstart" in document){
             image.addEventListener("touchstart",function (e){
-                handleMouseDown_image(e);
+                window.handleMouseDown_image(e);
             });
         }else{
             $(image).mousedown(function (e) {
-                handleMouseDown_image(e);
+                window.handleMouseDown_image(e);
             })
         }
     }
 }
 
-drawHints = function(cas, style){
+export var drawHints = function(cas, style){
     if(!style){
         style="background: red; border-radius: 50%; position: absolute; left: 10%; width: 80%; height: 80%; z-index: 1"
     }
@@ -169,7 +149,7 @@ drawHints = function(cas, style){
 }
 
 
-redraw_bis = function(elem,dim){
+export var redraw_bis = function(elem,dim){
     var _w = Math.min(window.innerWidth, window.outerWidth == 0 ? window.innerWidth : window.outerWidth)
     var w = Math.min(_w,600)
     elem.style.height=w+"px";
@@ -192,7 +172,7 @@ redraw_bis = function(elem,dim){
     boardTopx += elem.getClientRects()[0].left;*/
 }
 
-drawChessboard_bis = function(elem,dim){
+export var drawChessboard_bis = function(elem,dim){
     var _redraw = function(){
         redraw_bis.apply(this,[elem,dim])
     }
@@ -228,11 +208,11 @@ drawChessboard_bis = function(elem,dim){
             div.id = String.fromCharCode(65+j)+""+(dim-i)
             if("ontouchstart" in document){
                 div.addEventListener("touchstart",function (e){
-                    handleMouseDown_casella(e);
+                    window.handleMouseDown_casella(e);
                 });
             }else{
                 $(div).mousedown(function (e) {
-                    handleMouseDown_casella(e);
+                    window.handleMouseDown_casella(e);
                 });
             }
             elem.appendChild(div)

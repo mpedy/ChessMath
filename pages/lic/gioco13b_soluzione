@@ -3,35 +3,4 @@
 </div>
 <div id="chessboard"></div>
 
-<script type="text/javascript">
-
-drawChessboard(document.getElementById("chessboard"))
-
-piece_position={
-	A2: "Knight.svg",
-}
-
-drawPieces(document.getElementById("chessboard"),piece_position)
-
-
-
-
-var caselle_colorate = new Array();
-
-var enlighted = "";
-
-var moving_pieces = {
-	"Knight" : D5
-}
-var moving_piece = "";
-var possible_moves = new Array();
-var obstacles = ["rock-golem-1", "rock-golem","obstacle"]
-var end_position=E5;
-var number_of_moves = 0;
-var show_possible_moves = false;
-
-enwrite(C3, 1, "white","rgb(200,0,0)")
-enwrite(B5, 2, "white","rgb(200,0,0)")
-enwrite(D6, 3, "black","yellow")
-
-</script>
+<script src="/static/js/dist/lic/gioco13b_soluzione.js"></script>

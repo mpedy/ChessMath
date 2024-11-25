@@ -61,7 +61,10 @@ async def gotoPage(request):
     global opt
     opt.page = request.path_params['page']
     try:
-        return HTMLResponse(open(allpages[opt.percorso][opt.page], encoding="utf-8").read())
+        return HTMLResponse(open(allpages[opt.percorso][opt.page], encoding="utf-8").read(),headers={
+            "X-PATH": opt.percorso,
+            "X-PAGENAME": allpages[opt.percorso][opt.page]
+        })
     except Exception as e:
         return HTMLResponse(f"""<div> Errore: {e} """)
 
