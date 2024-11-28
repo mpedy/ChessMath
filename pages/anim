@@ -47,6 +47,9 @@
 	updateCode = function(){
 		fetch(url+"/getcodice").then(res => res.text()).then(res => $("#codice").text(res))
 	}
+	updateQuest = function(){
+		fetch(url+"/updateQuest").then(res => res.text())
+	}
 	verificaAnimatore = function(){
 		var cod_anim = $("#codice_accesso").val()
 		if( cod_anim == "1324354321"){
@@ -72,27 +75,37 @@
 
 	// Create element node.
 	const node = knob.node();
-	var percentuagePolling = setInterval(
+	var ws = new WebSocket("/ws/{{ codice }}_Animatore-console")
+	ws.onmessage = function(msg){
+		console.log(msg)
+		populateKnob(JSON.parse(msg.data))
+	}
+
+	var populateKnob = function(data){
+		var perc= parseInt(data["perc"])
+		var p = data["page"]
+		var err = data["error"]
+		var lista = data["lista"]
+		if(err.length==0){
+			$("#knoberror").text("");
+			knob.setValue(perc);
+			$("#lista_utenti").text(lista);
+		}else{
+			$("#knoberror").text(err);
+		}
+	}
+	
+/*	var percentuagePolling = setInterval(
 		function(){
 			$.ajax(
 				{
 					url: "getAnswered",
 					async: true,
 					success: function(res_page){
-						var perc= parseInt(res_page["perc"])
-						var p = res_page["page"]
-						var err = res_page["error"]
-						var lista = res_page["lista"]
-						if(err.length==0){
-							$("#knoberror").text("");
-							knob.setValue(perc);
-							$("#lista_utenti").text(lista);
-						}else{
-							$("#knoberror").text(err);
-						}
+						populateKnob(res_page);
 					}
 				})
-		},3000);
+		},3000);*/
 	
 	/*var updateQuest = setInterval(function(){
 		$.ajax({
@@ -117,6 +130,7 @@
 				<div style="margin: auto; display: block;">
 					<span style="color: white; margin-right: 10px;">Codice:</span><button style="margin: auto; padding: 16px; border-radius: 10px; font-size: 18px;" id="codice">{{ codice }}</button>
 				</div>
+				<button style="margin: auto; display: block; padding: 16px; border-radius: 10px;" onclick="updateQuest()">Aggiorna Domande</button>
 			</div>
 			<div style="display: flex; justify-content: center; align-items: center; margin-bottom: 30px;">
 				<select style="padding: 10px; border-radius: 10px; font-size: 22px;" onchange="setLevel(this)">
