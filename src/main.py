@@ -22,7 +22,7 @@ from datetime import datetime
 #import binascii
 
 from .customMiddleware import CustomHeaderMiddleware
-from .httpsMiddleware import HTTPSRedirectMiddleware
+from .HTTPSMiddleware import HTTPSRedirectMiddleware
 #from .DBConnection import DBConnection
 
 middleware = []
