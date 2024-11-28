@@ -18,4 +18,4 @@ maketimer.stopTimerFunction = function (pressed) {
     can_answer = false
     $(".risposta").toggleClass("disabled")
 }
-getQuiz();
+getQuiz(maketimer);

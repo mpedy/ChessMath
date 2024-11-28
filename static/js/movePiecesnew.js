@@ -1,5 +1,55 @@
 class PieceMove {
     constructor() { }
+    moveKing = function (casella, x, y) {
+        var possible_moves = new Array();
+        var dim = parseInt(document.getElementById("chessboard").getAttribute("data-number-caselle"));
+        //UP
+        var newcasella = casella[0] + (y + 1)
+        if (y + 1 < dim + 1 && ($("#" + newcasella).children().length == 0 || !window.obstacles.includes($("#" + newcasella).children()[0].getAttribute("data-type")))) {
+            possible_moves.push(newcasella)
+        }
+        //DOWN
+        var newcasella = casella[0] + (y - 1)
+        if (y - 1 > 0 && ($("#" + newcasella).children().length == 0 || !window.obstacles.includes($("#" + newcasella).children()[0].getAttribute("data-type")))) {
+            possible_moves.push(newcasella)
+        }
+        //DX
+        var newcasella = String.fromCharCode(65 + x + 1 - 1) + y
+        if (x + 1 < dim + 1 && (
+            $("#" + newcasella).children().length == 0 || !window.obstacles.includes($("#" + newcasella).children()[0].getAttribute("data-type")))) {
+            possible_moves.push(newcasella)
+        }
+        //SX
+        var newcasella = String.fromCharCode(65 + x - 1 - 1) + y
+        if (x - 1 > 0 && (
+            $("#" + newcasella).children().length == 0 || !window.obstacles.includes($("#" + newcasella).children()[0].getAttribute("data-type")))) {
+            possible_moves.push(newcasella)
+        }
+        //UP SX
+        var newcasella = String.fromCharCode(x - 1 + 65 - 1) + (y + 1)
+        if (y + 1 < dim + 1 && x - 1 > 0 && ($("#" + newcasella).children().length == 0 || !window.obstacles.includes($("#" + newcasella).children()[0].getAttribute("data-type")))) {
+            possible_moves.push(newcasella)
+        }
+
+        //UP DX
+        var newcasella = String.fromCharCode(x + 1 + 65 - 1) + (y + 1)
+        if (y + 1 < dim + 1 && x + 1 < dim + 1 && ($("#" + newcasella).children().length == 0 || !window.obstacles.includes($("#" + newcasella).children()[0].getAttribute("data-type")))) {
+            possible_moves.push(newcasella)
+        }
+
+        //DOWN DX
+        var newcasella = String.fromCharCode(x + 1 + 65 - 1) + (y - 1)
+        if (y - 1 > 0 && x + 1 < dim + 1 && ($("#" + newcasella).children().length == 0 || !window.obstacles.includes($("#" + newcasella).children()[0].getAttribute("data-type")))) {
+            possible_moves.push(newcasella)
+        }
+
+        //DOWN SX
+        var newcasella = String.fromCharCode(x - 1 + 65 - 1) + (y - 1)
+        if (y - 1 > 0 && x - 1 > 0 && ($("#" + newcasella).children().length == 0 || !window.obstacles.includes($("#" + newcasella).children()[0].getAttribute("data-type")))) {
+            possible_moves.push(newcasella)
+        }
+        return possible_moves;
+    }
     moveRook = function (casella, x, y) {
         var possible_moves = new Array();
         var dim = parseInt(document.getElementById("chessboard").getAttribute("data-number-caselle"));

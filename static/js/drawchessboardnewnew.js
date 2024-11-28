@@ -1,10 +1,13 @@
+import { PieceClass } from "./PieceClass";
+
 export class DrawChessboard {
     constructor() {
         this.handleMouseDown_casella = function (e) { }
         this.handleMouseDown_image = function (e) { }
         this.casella;
         this.piece_position;
-        this.createObstacles()
+        this.pieces = new Array()
+        this.createObstacles();
     }
     createObstacles() {
         window.obstacles = ["rock-golem-1", "rock-golem", "obstacle"]

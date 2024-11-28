@@ -8,21 +8,4 @@
 <style>
 	
 </style>
-<script>
-var can_answer = true
-stopTimerFunction = function(pressed){
-	try{
-		if(pressed == undefined){
-			pressed = false;
-		}
-	}catch ( errore ){
-		pressed = false;
-	}
-	if(!pressed){
-		myalert("Tempo esaurito!","E' scaduto il tempo!");
-	}
-	can_answer = false
-	$(".risposta").toggleClass("disabled")
-}
-getQuiz();
-</script>
+<script src="/static/js/dist/elem/quiz.js"></script>

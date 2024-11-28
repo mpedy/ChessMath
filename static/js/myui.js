@@ -1,6 +1,4 @@
-import { MakeTimerClass } from "./maketimernew.js"
-
-var maketimer = new MakeTimerClass()
+import { MakeTimerClass } from "./maketimernew";
 
 export var myconfirm = function (title, text, yes_btn, no_btn, f1, f2, closable) {
 	try {
@@ -186,7 +184,10 @@ enwrite = function (casella, txt, txt_color, bck_color) {
 	}
 }
 
-export var getQuiz = function () {
+export var getQuiz = function (maketimer) {
+	if(maketimer === undefined){
+		maketimer = new MakeTimerClass();
+	}
 	$.ajax({
 		url: "getquiz", success: function (quiz) {
 			//$("#title").html("<span>Domanda da "+quiz["punteggio"]+" punti</span><br></br>");
@@ -218,13 +219,11 @@ export var getQuiz = function () {
 								$(this).dialog("close");
 								updatePoints(parseInt(quiz['punteggio']) + maketimer.sec);
 							})
-						clearInterval(maketimer.myt);
-						maketimer.stopTimerFunction(true);
 					} else {
 						myalert("risposta sbagliata!", "Hai risposto sbagliato!");
-						clearInterval(maketimer.myt);
-						maketimer.stopTimerFunction(true);
 					}
+					clearInterval(maketimer.myt);
+					maketimer.stopTimerFunction(true);
 				})
 				list.append(elem);
 			}

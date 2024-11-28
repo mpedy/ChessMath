@@ -1,4 +1,5 @@
 env/
+statvenv/
 *mp4
 *gif
 __pycache__/

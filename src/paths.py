@@ -207,6 +207,7 @@ def getPath4():
         "pages/natale/img_gioco16",
         "pages/natale/gioco17",
         #"pages/natale/gioco18",
+        "pages/natale/gioco19",
         LISTEN,
         "pages/natale/gioco_training_toro",
         "pages/natale/gioco_toro",
