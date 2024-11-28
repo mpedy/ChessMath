@@ -1,6 +1,6 @@
 {
     "plugins": [
-        ["./test_babel.cjs", {"addVar": false, "useWindow": true}]
+        ["./myplugin__define_var.cjs", {"addVar": false, "useWindow": true}]
     ],
     "presets": [
         [

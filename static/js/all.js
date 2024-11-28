@@ -1,5 +1,6 @@
 /*import "./connector.js"
 import "./drawchessboard.js"
+import "./drawchessboardnewnew.js"
 import "./drawchessboardnew.js"
 import "./maketimer.js"
 import "./movePieces.js"

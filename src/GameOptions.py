@@ -1,7 +1,7 @@
 from random import seed, random
 from datetime import datetime
 import hashlib
-from Quiz import Quiz
+from src.Quiz import Quiz
 
 class GameOptions():
     MyQuiz = []

@@ -111,7 +111,7 @@ def fetchQuiz(path: str):
     #dbConn.closeConnectionAndCursor()
     #print("RES prima")
     #print(res, type(res[0]))
-    with open(f"Domande/{path}","r", encoding="utf-8") as f:
+    with open(f"src/Domande/{path}","r", encoding="utf-8") as f:
         import json
         domande = json.load(f)
         res = []
