@@ -34,48 +34,51 @@ var licObj = createWebPackObj("static/js/lic")
 var medObj = createWebPackObj("static/js/med")
 var elemObj = createWebPackObj("static/js/elem")
 var commonObj = createWebPackObj("static/js/common")
-module.exports = {
+module.exports = (env) => {
     //entry: "/static/js/all.js",
-    entry: {
-        welcome: [
-            path.resolve(__dirname, "static/js/drawchessboardnewnew.js"),
-            path.resolve(__dirname, "static/js/maketimernew.js"),
-            path.resolve(__dirname, "static/js/movePiecesnew.js"),
-            path.resolve(__dirname, "static/js/myui.js"),
-            path.resolve(__dirname, "static/js/welcome.js")
-        ],
-        ////common: defaultFiles,
-        //lic: licFiles, // ora è vuoto
-        //med: medFiles, // ora è vuoto
-        //elem: elemFiles, // ora è vuoto
-        //natale: nataleFiles,
-        ...nataleObj,
-        ...licObj,
-        ...medObj,
-        ...elemObj,
-        ...commonObj
+    console.log(env, env.production ? "production" : "development")
+    return {
+        entry: {
+            welcome: [
+                path.resolve(__dirname, "static/js/drawchessboardnewnew.js"),
+                path.resolve(__dirname, "static/js/maketimernew.js"),
+                path.resolve(__dirname, "static/js/movePiecesnew.js"),
+                path.resolve(__dirname, "static/js/myui.js"),
+                path.resolve(__dirname, "static/js/welcome.js")
+            ],
+            ////common: defaultFiles,
+            //lic: licFiles, // ora è vuoto
+            //med: medFiles, // ora è vuoto
+            //elem: elemFiles, // ora è vuoto
+            //natale: nataleFiles,
+            ...nataleObj,
+            ...licObj,
+            ...medObj,
+            ...elemObj,
+            ...commonObj
 
-    },
-    mode: "development",
-    output: {
-        //filename: "[name].[contenthash].bundle.js",
-        filename: "[name].js",
-        path: path.resolve(__dirname, "static/js/dist")
-    },
-    module: {
-        rules: [
-            {
-                test: /\.(?:js|mjs|cjs)$/,
-                include: [
-                    path.resolve(__dirname, "static/js")
-                ],
-                exclude: [
-                    path.resolve(__dirname, "node_modules")
-                ],
-                use: {
-                    loader: 'babel-loader',
+        },
+        mode: env.production ? "production" : "development",
+        output: {
+            //filename: "[name].[contenthash].bundle.js",
+            filename: "[name].js",
+            path: path.resolve(__dirname, "static/js/dist")
+        },
+        module: {
+            rules: [
+                {
+                    test: /\.(?:js|mjs|cjs)$/,
+                    include: [
+                        path.resolve(__dirname, "static/js")
+                    ],
+                    exclude: [
+                        path.resolve(__dirname, "node_modules")
+                    ],
+                    use: {
+                        loader: 'babel-loader',
+                    }
                 }
-            }
-        ]
+            ]
+        }
     }
 }
