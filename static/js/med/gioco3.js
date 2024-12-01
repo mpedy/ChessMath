@@ -186,9 +186,9 @@ goal_reached = function(){
 			$(this).remove();
       	},function() {
       		$(this).dialog("close");
-      		clearInterval(window.myt);
+      		clearInterval(maketimer.myt);
       		maketimer.sec = 0;
-			maketimer.expire = false
+			maketimer.expired = false
       		$(this).remove();
       		punti-=number_of_moves;
       		myalert("Punti","Il tuo punteggio è di "+punti+" punti!");

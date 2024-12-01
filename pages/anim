@@ -141,7 +141,7 @@
 				</select>
 			</div>
 			<div style="display: flex; justify-content: center; align-items: center;">
-				<button style="border-radius: 10px; flex-grow: 1; margin: 0px 20px; padding: 10px;background: lightblue;" onclick="page--; nxt(page);">Torna indietro</button>
+				<button style="border-radius: 10px; flex-grow: 1; margin: 0px 20px; padding: 10px;background: lightblue;" onclick="page=Math.max(0,page-1); nxt(page);">Torna indietro</button>
 				<button style="border-radius: 10px; flex-grow: 1; margin: 0px 20px; padding: 10px;background: red; display: none;">STOP!</button>
 				<button style="border-radius: 10px; flex-grow: 1; margin: 0px 20px; padding: 10px;background: lightgreen;" onclick="page++; nxt(page);">Vai avanti</button>
 			</div>

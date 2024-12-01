@@ -11,7 +11,7 @@ drawChessboard.drawPieces($("#chessboard")[0], { D3: "Bishop.svg" })
 
 enlighted = "";
 enlight(B5, "orange", true)
-var can_answer = true
+can_answer = true
 maketimer.stopTimerFunction = function (pressed) {
     try {
         if (pressed == undefined) {
@@ -26,4 +26,4 @@ maketimer.stopTimerFunction = function (pressed) {
     can_answer = false
     $(".risposta").toggleClass("disabled")
 }
-getQuiz(maketimer);
+getQuiz();

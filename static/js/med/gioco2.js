@@ -175,7 +175,7 @@ goal_reached = function () {
 			$(this).remove();
 		}, function () {
 			$(this).dialog("close");
-			clearInterval(window.myt);
+			clearInterval(maketimer.myt);
 			maketimer.sec = 0;
             maketimer.expired = false
 			$(this).remove();

@@ -12,6 +12,8 @@
     "bundle": "webpack --config webpack.config.js"
   },
   "dependencies": {
-    "core-js": "^2.6.12"
+    "core-js": "^2.6.12",
+    "ejs": "^3.1.10",
+    "ws": "^8.18.0"
   }
 }

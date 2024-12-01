@@ -67,7 +67,7 @@ procedi = function (btn) {
 	myalert("Risultato", "Hai guadagnato " + points + " punti.");
 	updatePoints(points);
 	punti = getPoints();
-	clearInterval(window.myt);
+	clearInterval(maketimer.myt);
 	maketimer.sec = 0;
 	document.getElementById("gobtn").disabled = true;
 	document.getElementById("reset").disabled = true;

@@ -32,7 +32,8 @@ const jsFiles = [defaultFiles, licFiles, medFiles, elemFiles, nataleFiles].flat(
 var nataleObj = createWebPackObj("static/js/natale")
 var licObj = createWebPackObj("static/js/lic")
 var medObj = createWebPackObj("static/js/med")
-console.log(medObj)
+var elemObj = createWebPackObj("static/js/elem")
+var commonObj = createWebPackObj("static/js/common")
 module.exports = {
     //entry: "/static/js/all.js",
     entry: {
@@ -50,7 +51,9 @@ module.exports = {
         //natale: nataleFiles,
         ...nataleObj,
         ...licObj,
-        ...medObj
+        ...medObj,
+        ...elemObj,
+        ...commonObj
 
     },
     mode: "development",

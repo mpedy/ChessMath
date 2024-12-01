@@ -108,21 +108,14 @@ async def setPage(request):
 
 def fetchQuiz(path: str):
     global opt
-    #dbConn = DBConnection()
-    #dbConn.openConnectionAndCursor()
-    #res = dbConn.executeAndFetchall("select quizid, tipo, json_agg(test) from chessmath."+path+" group by quizid, tipo order by quizid, tipo desc;")
-    #dbConn.closeConnectionAndCursor()
-    #print("RES prima")
-    #print(res, type(res[0]))
-    with open(f"src/Domande/{path}","r", encoding="utf-8") as f:
+    with open(f"Domande/{path}","r", encoding="utf-8") as f:
         import json
         domande = json.load(f)
-        res = []
-        for d in domande:
-            res.append((d['quizid'],d['tipo'],d['value']))
-    #print("RES dopo")
-    #print(res)
-    return res
+    return domande
+        #res = []
+        #for d in domande:
+        #    res.append((d['quizid'],d['tipo'],d['value']))
+    #return res
 
 async def updateQuest(request):
     global opt
@@ -338,27 +331,27 @@ class MyWebSocket(WebSocketEndpoint):
                 await ws["ws"].send_text(data)
 
 routes=[
-    Route("/", welcome),
-    Route("/game_{uuid:str}",mainRoute),
-    Route("/getpage_{page:int}",gotoPage),
-    Route("/page_{cod:int}", returnPage),
-    Route("/setpage_{page:int}_{code:int}",setPage),
-    Route("/setpath_{path:int}",setPath),
-    Route("/getquiz",getquiz),
-    Route("/updateQuest",updateQuest),
-    Route("/verificacodice_{codice:int}", verificacodice),
-    Route("/settacodice_{codice:int}", settacodice),
-    Route("/getcodice", getcodice),
-    Route("/inseriscinome_{nome:str}", addNome),
-    Route("/animatore", getanimpage, methods=["POST"]),
-    Route("/reset", reset),
-    Route("/end",endGame),
+    Route("/", welcome), #ok
+    Route("/game_{uuid:str}",mainRoute),#ok
+    Route("/getpage_{page:int}",gotoPage),#ok
+    Route("/page_{cod:int}", returnPage), #deprecato
+    Route("/setpage_{page:int}_{code:int}",setPage),#ok
+    Route("/setpath_{path:int}",setPath),#ok
+    Route("/getquiz",getquiz),#ok
+    Route("/updateQuest",updateQuest),#ok
+    Route("/verificacodice_{codice:int}", verificacodice),#ok
+    Route("/settacodice_{codice:int}", settacodice),#ok
+    Route("/getcodice", getcodice),#ok
+    Route("/inseriscinome_{nome:str}", addNome),#ok
+    Route("/animatore", getanimpage, methods=["POST"]),#ok
+    Route("/reset", reset),#ok
+    Route("/end",endGame),#ok
     Route("/addPoints_{nome:str}_{pt:str}", addPoints),
-    Route("/getClassifica_{position:int}", getClassifica),
+    Route("/getClassifica_{position:int}", getClassifica),#
     Route("/getAnswered", getAnswered),
     WebSocketRoute("/ws/{cod:int}_{name:str}", MyWebSocket),
-    Route("/anim",anim),
-    Mount('/static', app=StaticFiles(directory='static', packages=['bootstrap4']), name="static"),
+    Route("/anim",anim),#ok
+    Mount('/static', app=StaticFiles(directory='static', packages=['bootstrap4']), name="static"),#ok
 ]
 
 app = Starlette(routes=routes, on_startup=[startup_task], middleware=middleware, exception_handlers={405: onerror})

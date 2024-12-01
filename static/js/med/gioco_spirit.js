@@ -96,7 +96,7 @@ procedi = function (btn) {
     }
     myalert("Punti", "Hai totalizzato " + points + " punti.");
     updatePoints(points);
-    clearInterval(window.myt);
+    clearInterval(maketimer.myt);
     maketimer.sec = 0;
     document.getElementById("gobtn").disabled = true;
     document.getElementById("reset").disabled = true;
