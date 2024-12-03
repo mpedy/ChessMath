@@ -7,17 +7,15 @@ const fs = require('fs');
 const path = require("path")
 const { randomUUID } = require("node:crypto");
 const ejs = require("ejs");
-//ejs.openDelimiter = '{{';
-//ejs.closeDelimiter = '}}';
-const mime_type = require("./mime-type-helper.cjs");
 const { GameOptions } = require("./GameOptions.cjs");
 const { Player } = require("./Player.cjs");
 const { serveStatic } = require("./serve-static.cjs");
 const { allpages } = require("./path.cjs");
 
+var gameOptions = new GameOptions();
+
 const hostname = "127.0.0.1";
 const port = 8000;
-var gameOptions = new GameOptions();
 
 const server = createServer()
 server.on("request", (request, response) => {
@@ -43,8 +41,7 @@ server.on("request", (request, response) => {
                     gameOptions.createCod();
                     fs.readFile("pages/anim_node", function (err, data) {
                         response.setHeader('Content-type', "text/html; charset=utf8");
-                        data = data.toString().replace(/{{ codice }}/g, "<%=codice%>")
-                        data = ejs.render(data.toString(), { "errore": `<div id="error_msg_anim"></div>`, "codice": gameOptions.codice }, { views: [__dirname] });
+                        data = ejs.render(data.toString(), { "codice": gameOptions.codice }, { views: [__dirname] });
                         response.end(data);
                         return;
                     })

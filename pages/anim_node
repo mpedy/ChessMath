@@ -99,7 +99,7 @@
 
 	// Create element node.
 	const node = knob.node();
-	var ws = new WebSocket("/ws/{{ codice }}_Animatore-console")
+	var ws = new WebSocket("/ws/<%=codice%>_Animatore-console")
 	ws.onmessage = function(msg){
 		console.log(msg)
 		populateKnob(JSON.parse(msg.data))
@@ -193,7 +193,7 @@
 			<button style="/*margin: auto;*/ display: block; padding: 16px; border-radius: 10px;background-color: #ff0000bb;color: white; font-weight: bold; border: 2px solid black;" onclick="newGame()">Nuova partita</button>
 			<div style="display: flex; justify-content: center; align-items: center;">
 				<div style="/*margin: auto;*/ display: block;">
-					<span style="color: white; margin-right: 10px;">Codice:</span><button style="/*margin: auto;*/ padding: 16px; border-radius: 10px; font-size: 18px;" id="codice">{{ codice }}</button>
+					<span style="color: white; margin-right: 10px;">Codice:</span><button style="/*margin: auto;*/ padding: 16px; border-radius: 10px; font-size: 18px;" id="codice"><%=codice%></button>
 				</div>
 				<button style="/*margin: auto;*/ display: block; padding: 16px; border-radius: 10px;" onclick="updateCode()">Aggiorna Codice</button>
 			</div>
