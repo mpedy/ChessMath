@@ -14,7 +14,7 @@ const { allpages } = require("./path.cjs");
 
 var gameOptions = new GameOptions();
 
-const hostname = "127.0.0.1";
+const hostname = "0.0.0.0";
 const port = 8000;
 
 const server = createServer()
@@ -405,3 +405,4 @@ ws.on("connection", async (webs, req) => {
 
 
 server.listen(port, hostname);
+console.log(`In ascolto su ${hostname}:${port}`)

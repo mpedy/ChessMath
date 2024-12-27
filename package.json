@@ -10,7 +10,8 @@
   },
   "scripts": {
     "bundle": "webpack --config webpack.config.js",
-    "bundle-prod": "webpack --env=production=true --config webpack.config.js"
+    "bundle-prod": "webpack --env=production=true --config webpack.config.js",
+    "start": "node src/index.cjs"
   },
   "dependencies": {
     "core-js": "^2.6.12",

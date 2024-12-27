@@ -108,7 +108,7 @@ async def setPage(request):
 
 def fetchQuiz(path: str):
     global opt
-    with open(f"Domande/{path}","r", encoding="utf-8") as f:
+    with open(f"src/Domande/{path}","r", encoding="utf-8") as f:
         import json
         domande = json.load(f)
     return domande
