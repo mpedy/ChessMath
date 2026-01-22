@@ -26,8 +26,9 @@ const licFiles = readdir("static/js/lic")
 const medFiles = readdir("static/js/med")
 const elemFiles = readdir("static/js/elem")
 const nataleFiles = readdir("static/js/natale")
+const alienFiles = readdir("static/js/alien")
 
-const jsFiles = [defaultFiles, licFiles, medFiles, elemFiles, nataleFiles].flat()
+const jsFiles = [defaultFiles, licFiles, medFiles, elemFiles, nataleFiles, alienFiles].flat()
 
 var nataleObj = createWebPackObj("static/js/natale")
 var licObj = createWebPackObj("static/js/lic")
@@ -51,6 +52,8 @@ module.exports = (env) => {
             //med: medFiles, // ora è vuoto
             //elem: elemFiles, // ora è vuoto
             //natale: nataleFiles,
+            //alien: alienFiles
+            ...alienObj,
             ...nataleObj,
             ...licObj,
             ...medObj,

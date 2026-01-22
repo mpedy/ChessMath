@@ -221,9 +221,20 @@ def getPath4():
         "pages/endpage"
     ]
 
+def getPath5():
+    return [
+        LISTEN,
+        "pages/alien/earth",
+        "pages/alien/alien1",
+        "pages/alien/alien2",
+        "pages/classifica",
+        "pages/endpage"
+    ]
+
 allpages = {
     "path_1": getPath1(),
     "path_2": getPath2(),
     "path_3" : getPath3(),
-    "path_4": getPath4()
+    "path_4": getPath4(),
+    "path_5": getPath5()
 }
