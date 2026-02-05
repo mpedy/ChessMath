@@ -1,14 +1,18 @@
 from starlette.middleware.base import BaseHTTPMiddleware
-from loguru import logger
+import logging
 
 class CustomHeaderMiddleware(BaseHTTPMiddleware):
+    def __init__(self):
+        super().__init__()
+        logging.basicConfig(level=logging.DEBUG)
+        self.logger = logging.getLogger("custom_middleware")
     async def dispatch(self, request, call_next):
-        logger.debug(f"{request.method} {request.url}")
-        logger.debug("Params:")
+        self.logger.debug(f"{request.method} {request.url}")
+        self.logger.debug("Params:")
         for name, value in request.path_params.items():
-            logger.debug(f"\t{name}: {value}")
-        logger.debug("Headers:")
+            self.logger.debug(f"\t{name}: {value}")
+        self.logger.debug("Headers:")
         for name, value in request.headers.items():
-            logger.debug(f"\t{name}: {value}")
+            self.logger.debug(f"\t{name}: {value}")
         response = await call_next(request)
         return response

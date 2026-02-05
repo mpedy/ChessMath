@@ -351,7 +351,7 @@ routes=[
     Route("/getAnswered", getAnswered),
     WebSocketRoute("/ws/{cod:int}_{name:str}", MyWebSocket),
     Route("/anim",anim),#ok
-    Mount('/static', app=StaticFiles(directory='static', packages=['bootstrap4']), name="static"),#ok
+    Mount('/static', app=StaticFiles(directory='static'), name="static"),#ok
 ]
 
 app = Starlette(routes=routes, on_startup=[startup_task], middleware=middleware, exception_handlers={405: onerror})
