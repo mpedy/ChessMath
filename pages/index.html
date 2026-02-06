@@ -60,7 +60,7 @@
 					$.ajax(
 						{
 							url: "getpage_" + page,
-							async: false,
+							async: true,
 							success: function (result) {
 								clearInterval(window.myt);
 								$("#mydialog_opened").dialog("close").remove();
