@@ -5,7 +5,6 @@ import { DrawChessboard as DrawChessboardClass } from "./drawchessboardnewnew.js
 class Page15 {
     constructor() { }
     start() {
-
         var drawChessboard = new DrawChessboardClass()
         var maketimer = new MakeTimerClass()
 
