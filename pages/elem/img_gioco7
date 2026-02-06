@@ -2,4 +2,4 @@
 	Risposta corretta:
 </div>
 <div style="margin-top: 20px" id="chessboard"></div>
-<script src="/static/js/dist/elem/img_gioco7.js"></script>
+<!-- <script src="/static/js/dist/elem/img_gioco7.js"></script> -->

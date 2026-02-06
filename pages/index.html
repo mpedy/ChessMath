@@ -18,6 +18,7 @@
 	<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/3.11.2/modernizr.min.js"></script>-->
 	<!--<script src="static/js/my_modernizr.js"></script>-->
 	<script src="/static/js/dist/welcome.js"></script>
+	<script src="/static/js/app.dist.js"></script>
 
 	<script>
 		/*
@@ -48,10 +49,14 @@
 
 		socket.onmessage = function (event) {
 			console.log("WebSocket message received: ", event.data);
+			debugger;
 			try {
 				var data = JSON.parse(event.data)
 				if (data.hasOwnProperty("pagina")) {
 					page = data["pagina"]
+					if(data.hasOwnProperty("path")){
+						app.setPath(data["path"]);
+					}
 					$.ajax(
 						{
 							url: "getpage_" + page,
@@ -60,8 +65,11 @@
 								clearInterval(window.myt);
 								$("#mydialog_opened").dialog("close").remove();
 								$("#content_page").html(result)
+								app.currentGame.setPage(parseInt(page))
 							}
 						})
+				}else if (data.hasOwnProperty("path")){
+					app.setPath(data["path"]);
 				}
 			} catch (err) {
 

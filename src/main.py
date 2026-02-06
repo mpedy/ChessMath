@@ -130,6 +130,11 @@ async def setPath(request):
     opt.page = 0
     res = fetchQuiz(opt.percorso)
     opt.obtainNewQuiz(res)
+    for ws in websockets:
+        if ws["cod"] == opt.codice:
+            if ws["name"] != "Animatore-console":
+                await ws["ws"].send_text(json.dumps({"path": str(request.path_params['path'])}))
+        
     return PlainTextResponse("ok")
 
 async def getquiz(request):
@@ -316,7 +321,7 @@ class MyWebSocket(WebSocketEndpoint):
                     await websocket.send_json({"perc": -1, "page": opt.page, "error": "Ancora nessuno in lista","lista":0})
             except Exception as e:
                 await websocket.send_json({"perc":-1, "page":opt.page, "error": "Ancora nessuno ha risposto","lista":0})
-        await websocket.send_text(json.dumps({"pagina": opt.page}))
+        await websocket.send_text(json.dumps({"pagina": opt.page, "path": opt.percorso.split("_")[1]}))
         return await super().on_receive(websocket, data)
     
     async def notify_all(self, data):
