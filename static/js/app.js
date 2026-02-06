@@ -1,4 +1,4 @@
-import { elementari } from "./elementari.js";
+import { elementari } from "./elem/elementari.js";
 import { medie } from "./medie.js";
 import { liceo } from "./liceo.js";
 

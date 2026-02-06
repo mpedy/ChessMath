@@ -340,9 +340,10 @@
   };
   var attesa = new Attesa();
 
-  // static/js/elem_page1.js
-  var Page1 = class {
-    constructor() {
+  // static/js/Quiz.js
+  var Quiz = class {
+    constructor(name) {
+      this.name = name;
     }
     start() {
       window.maketimer = new MakeTimerClass();
@@ -350,31 +351,6 @@
       getQuiz();
     }
   };
-  var page1 = new Page1();
-
-  // static/js/elem_page2.js
-  var Page2 = class {
-    constructor() {
-    }
-    start() {
-      window.maketimer = new MakeTimerClass();
-      window.can_answer = true;
-      getQuiz();
-    }
-  };
-  var page2 = new Page2();
-
-  // static/js/elem_page3.js
-  var Page3 = class {
-    constructor() {
-    }
-    start() {
-      window.maketimer = new MakeTimerClass();
-      window.can_answer = true;
-      getQuiz();
-    }
-  };
-  var page3 = new Page3();
 
   // static/js/drawchessboardnewnew.js
   var DrawChessboard = class {
@@ -586,7 +562,7 @@
     }
   };
 
-  // static/js/elem_page4.js
+  // static/js/elem/pages/elem_page4.js
   var Page4 = class {
     constructor() {
     }
@@ -597,7 +573,7 @@
   };
   var page4 = new Page4();
 
-  // static/js/elem_page5.js
+  // static/js/elem/pages/elem_page5.js
   var Page5 = class {
     constructor() {
     }
@@ -673,7 +649,7 @@
   };
   var page5 = new Page5();
 
-  // static/js/elem_page6.js
+  // static/js/elem/pages/elem_page6.js
   var Page6 = class {
     constructor() {
     }
@@ -701,7 +677,7 @@
   };
   var page6 = new Page6();
 
-  // static/js/elem_page7.js
+  // static/js/elem/pages/elem_page7.js
   var Page7 = class {
     constructor() {
     }
@@ -781,7 +757,7 @@
   };
   var page7 = new Page7();
 
-  // static/js/elem_page8.js
+  // static/js/elem/pages/elem_page8.js
   var Page8 = class {
     constructor() {
     }
@@ -813,54 +789,6 @@
     }
   };
   var page8 = new Page8();
-
-  // static/js/elem_page9.js
-  var Page9 = class {
-    constructor() {
-    }
-    start() {
-      window.maketimer = new MakeTimerClass();
-      window.can_answer = true;
-      getQuiz();
-    }
-  };
-  var page9 = new Page9();
-
-  // static/js/elem_page10.js
-  var Page10 = class {
-    constructor() {
-    }
-    start() {
-      window.maketimer = new MakeTimerClass();
-      window.can_answer = true;
-      getQuiz();
-    }
-  };
-  var page10 = new Page10();
-
-  // static/js/elem_page11.js
-  var Page11 = class {
-    constructor() {
-    }
-    start() {
-      window.maketimer = new MakeTimerClass();
-      window.can_answer = true;
-      getQuiz();
-    }
-  };
-  var page11 = new Page11();
-
-  // static/js/elem_page12.js
-  var Page12 = class {
-    constructor() {
-    }
-    start() {
-      window.maketimer = new MakeTimerClass();
-      window.can_answer = true;
-      getQuiz();
-    }
-  };
-  var page12 = new Page12();
 
   // static/js/movePiecesnew.js
   var PieceMove = class {
@@ -1304,7 +1232,7 @@
   };
   var pieceMove = new PieceMove();
 
-  // static/js/elem_page14.js
+  // static/js/elem/pages/elem_page14.js
   var Page14 = class {
     constructor() {
     }
@@ -1338,11 +1266,25 @@
       var end_position = B7;
       var number_of_moves = 0;
       var show_possible_moves = true;
+      window.ricomincia = function() {
+        $("#chessboard").html("")[0].style = "";
+        drawChessboard.drawChessboard(document.getElementById("chessboard"));
+        drawChessboard.drawPieces(document.getElementById("chessboard"), drawChessboard.piece_position);
+        moving_pieces = {
+          "Rook": E2
+        };
+        window.enlighted = "";
+        window.enlight(end_position, "orange", true);
+        number_of_moves = 0;
+        possible_moves = new Array();
+        caselle_colorate = new Array();
+        $("#number_of_moves").html(number_of_moves);
+      };
       drawChessboard.handleMouseDown_casella = function(e) {
         var elem = e.currentTarget;
         var casella = elem.getAttribute("casella");
         if (possible_moves.includes(casella)) {
-          move(moving_piece, elem.id);
+          window.move(moving_piece, elem.id);
           moving_piece = "";
           possible_moves = new Array();
           e.preventDefault();
@@ -1439,20 +1381,6 @@
         }
         caselle_colorate = new Array();
       };
-      window.ricomincia = function() {
-        $("#chessboard").html("")[0].style = "";
-        drawChessboard.drawChessboard(document.getElementById("chessboard"));
-        drawChessboard.drawPieces(document.getElementById("chessboard"), drawChessboard.piece_position);
-        moving_pieces = {
-          "Rook": E2
-        };
-        enlighted = "";
-        window.enlight(end_position, "orange", true);
-        number_of_moves = 0;
-        possible_moves = new Array();
-        caselle_colorate = new Array();
-        $("#number_of_moves").html(number_of_moves);
-      };
       window.goal_reached = function() {
         punti = window.getPoints();
         window.myconfirm_2b(
@@ -1499,7 +1427,7 @@
   };
   var page14 = new Page14();
 
-  // static/js/elem_page15.js
+  // static/js/elem/pages/elem_page15.js
   var Page15 = class {
     constructor() {
     }
@@ -1704,7 +1632,7 @@
   };
   var page15 = new Page15();
 
-  // static/js/elem_page16.js
+  // static/js/elem/pages/elem_page16.js
   var Page16 = class {
     constructor() {
     }
@@ -1909,19 +1837,7 @@
   };
   var page16 = new Page16();
 
-  // static/js/elem_page17.js
-  var Page17 = class {
-    constructor() {
-    }
-    start() {
-      window.maketimer = new MakeTimerClass();
-      window.can_answer = true;
-      getQuiz();
-    }
-  };
-  var page17 = new Page17();
-
-  // static/js/elem_page18.js
+  // static/js/elem/pages/elem_page18.js
   var Page18 = class {
     constructor() {
     }
@@ -1999,7 +1915,7 @@
   };
   var page18 = new Page18();
 
-  // static/js/elem_page19.js
+  // static/js/elem/pages/elem_page19.js
   var Page19 = class {
     constructor() {
     }
@@ -2032,7 +1948,7 @@
   };
   var page19 = new Page19();
 
-  // static/js/elem_page20.js
+  // static/js/elem/pages/elem_page20.js
   var Page20 = class {
     constructor() {
     }
@@ -2110,7 +2026,7 @@
   };
   var page20 = new Page20();
 
-  // static/js/elem_page21.js
+  // static/js/elem/pages/elem_page21.js
   var Page21 = class {
     constructor() {
     }
@@ -2143,7 +2059,7 @@
   };
   var page21 = new Page21();
 
-  // static/js/elem_page22.js
+  // static/js/elem/pages/elem_page22.js
   var Page22 = class {
     constructor() {
     }
@@ -2221,7 +2137,7 @@
   };
   var page22 = new Page22();
 
-  // static/js/elem_page23.js
+  // static/js/elem/pages/elem_page23.js
   var Page23 = class {
     constructor() {
     }
@@ -2254,31 +2170,7 @@
   };
   var page23 = new Page23();
 
-  // static/js/elem_page24.js
-  var Page24 = class {
-    constructor() {
-    }
-    start() {
-      window.maketimer = new MakeTimerClass();
-      window.can_answer = true;
-      getQuiz();
-    }
-  };
-  var page24 = new Page24();
-
-  // static/js/elem_page25.js
-  var Page25 = class {
-    constructor() {
-    }
-    start() {
-      window.maketimer = new MakeTimerClass();
-      window.can_answer = true;
-      getQuiz();
-    }
-  };
-  var page25 = new Page25();
-
-  // static/js/elem_page26.js
+  // static/js/elem/pages/elem_page26.js
   var Page26 = class {
     constructor() {
     }
@@ -2309,7 +2201,7 @@
   };
   var page26 = new Page26();
 
-  // static/js/elem_page27.js
+  // static/js/elem/pages/elem_page27.js
   var Page27 = class {
     constructor() {
     }
@@ -2340,7 +2232,7 @@
   };
   var page27 = new Page27();
 
-  // static/js/elem_page28.js
+  // static/js/elem/pages/elem_page28.js
   var Page28 = class {
     constructor() {
     }
@@ -2371,7 +2263,7 @@
   };
   var page28 = new Page28();
 
-  // static/js/elem_page29.js
+  // static/js/elem/pages/elem_page29.js
   var Page29 = class {
     constructor() {
     }
@@ -2403,7 +2295,7 @@
       drawChessboard.drawPieces(document.getElementById("chessboard"), drawChessboard.piece_position);
       var caselle_colorate = new Array();
       var caselle_corrette = [A5, B5, C5, E5, F5, G5, H5, D4, D3, D2, D1];
-      enlighted = "";
+      window.enlighted = "";
       var moving_pieces = {
         "Bishop": A2
       };
@@ -2574,7 +2466,7 @@
   };
   var page29 = new Page29();
 
-  // static/js/elem_page30.js
+  // static/js/elem/pages/elem_page30.js
   var Page30 = class {
     constructor() {
     }
@@ -2604,7 +2496,7 @@
       drawChessboard.drawPieces(document.getElementById("chessboard"), drawChessboard.piece_position);
       var caselle_colorate = new Array();
       var caselle_corrette = [A5, B5, C5, E5, F5, G5, H5, D4, D3, D2, D1];
-      enlighted = "";
+      window.enlighted = "";
       var moving_pieces = {
         "Bishop": A4
       };
@@ -2774,7 +2666,7 @@
   };
   var page30 = new Page30();
 
-  // static/js/elem_page31.js
+  // static/js/elem/pages/elem_page31.js
   var Page31 = class {
     constructor() {
     }
@@ -2803,7 +2695,7 @@
   };
   var page31 = new Page31();
 
-  // static/js/elem_page32.js
+  // static/js/elem/pages/elem_page32.js
   var Page32 = class {
     constructor() {
     }
@@ -2881,7 +2773,7 @@
   };
   var page32 = new Page32();
 
-  // static/js/elem_page33.js
+  // static/js/elem/pages/elem_page33.js
   var Page33 = class {
     constructor() {
     }
@@ -2914,7 +2806,7 @@
   };
   var page33 = new Page33();
 
-  // static/js/elem_page34.js
+  // static/js/elem/pages/elem_page34.js
   var Page34 = class {
     constructor() {
     }
@@ -2992,7 +2884,7 @@
   };
   var page34 = new Page34();
 
-  // static/js/elem_page35.js
+  // static/js/elem/pages/elem_page35.js
   var Page35 = class {
     constructor() {
     }
@@ -3025,7 +2917,7 @@
   };
   var page35 = new Page35();
 
-  // static/js/elem_page36.js
+  // static/js/elem/pages/elem_page36.js
   var Page36 = class {
     constructor() {
     }
@@ -3068,30 +2960,6 @@
   };
   var page36 = new Page36();
 
-  // static/js/elem_page37.js
-  var Page37 = class {
-    constructor() {
-    }
-    start() {
-      window.maketimer = new MakeTimerClass();
-      window.can_answer = true;
-      getQuiz();
-    }
-  };
-  var page37 = new Page37();
-
-  // static/js/elem_page38.js
-  var Page38 = class {
-    constructor() {
-    }
-    start() {
-      window.maketimer = new MakeTimerClass();
-      window.can_answer = true;
-      getQuiz();
-    }
-  };
-  var page38 = new Page38();
-
   // static/js/classifica.js
   var Classifica = class {
     constructor() {
@@ -3110,31 +2978,31 @@
   };
   var endpage = new Endpage();
 
-  // static/js/elementari.js
+  // static/js/elem/elementari.js
   var Elementari = class extends Prototipo {
     constructor() {
       super();
       this.pages = [
         attesa,
-        page1,
-        page2,
+        new Quiz("quiz1"),
+        new Quiz("quiz2"),
         ascolta,
-        page3,
+        new Quiz("quiz3"),
         page4,
         page5,
         ascolta,
         page6,
         page7,
         page8,
-        page9,
-        page10,
-        page11,
-        page12,
+        new Quiz("quiz4"),
+        new Quiz("quiz5"),
+        new Quiz("quiz6"),
+        new Quiz("quiz7"),
         attesa,
         page14,
         page15,
         page16,
-        page17,
+        new Quiz("quiz8"),
         ascolta,
         page18,
         page19,
@@ -3143,8 +3011,8 @@
         ascolta,
         page22,
         page23,
-        page24,
-        page25,
+        new Quiz("quiz9"),
+        new Quiz("quiz10"),
         page26,
         page27,
         page28,
@@ -3157,9 +3025,9 @@
         page34,
         page35,
         page36,
-        page37,
+        new Quiz("quiz15"),
         ascolta,
-        page38,
+        new Quiz("quiz16"),
         classifica,
         endpage
       ];
