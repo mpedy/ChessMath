@@ -4,5 +4,5 @@
 	<div style="background: black;">Caselle: <span id="number_of_moves">0</span></div>
 	<div class="timer" data-second="30" data-height="20px" data-width="80%"></div>
 	<button style="border-radius: 10px; display: block; margin: 30px auto 15px auto; padding: 5px;" id="ricomincia" onclick="window.ricomincia()" >Ricomincia</button>
-	<script src="/static/js/dist/lic/gioco2.js"></script>
+	<!-- <script src="/static/js/dist/lic/gioco2.js"></script> -->
 </div>

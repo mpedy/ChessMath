@@ -2,4 +2,4 @@
 	Una mossa della Torre:
 </div>
 <div id="chessboard"></div>
-<script src="/static/js/dist/lic/img_gioco1.js"></script>
+<!-- <script src="/static/js/dist/lic/img_gioco1.js"></script> -->

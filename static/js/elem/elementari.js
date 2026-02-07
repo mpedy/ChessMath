@@ -45,7 +45,6 @@ class Elementari extends Prototipo {
             quiz14, gioco10, img_gioco10, gioco11, img_gioco11, img_allsquares, new Quiz("quiz15"), ascolta, new Quiz("quiz16"), classifica, endpage];
     }
     setPage(index) {
-        debugger;
         this.currentPageIndex = index;
         this.currentPage = this.pages[index];
         this.currentPage.start();

@@ -6,5 +6,5 @@
 		<button style="border-radius: 10px; display: block; margin: 0px 15px; padding: 5px; float: left;" id="gobtn" onclick="procedi(this)">Conferma</button>
 		<button style="border-radius: 10px; display: block; margin: 0px 15px; padding: 5px; float: left;"id="reset" onclick="reset()" >Cancella tutto</button>
 	</div>
-	<script src="/static/js/dist/lic/gioco6.js"></script>
+	<!-- <script src="/static/js/dist/lic/gioco6.js"></script> -->
 </div>
