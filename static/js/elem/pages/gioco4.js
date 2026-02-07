@@ -1,6 +1,6 @@
-import { pieceMove } from "../../movePiecesnew.js";
-import { MakeTimerClass } from "../../maketimernew.js"
-import { DrawChessboard as DrawChessboardClass } from "../../drawchessboardnewnew.js";
+import { pieceMove } from "../../Utility/MovePieces.js";
+import { MakeTimerClass } from "../../Utility/Maketimer.js"
+import { DrawChessboard as DrawChessboardClass } from "../../Utility/Drawchessboard.js";
 
 /* global $ */
 class Gioco4 {

@@ -1,6 +1,6 @@
-import { DrawChessboard as DrawChessboardClass } from "../../drawchessboardnewnew.js";
-import { MakeTimerClass } from "../../maketimernew.js"
-import { getQuiz } from "../../myui.js"
+import { DrawChessboard as DrawChessboardClass } from "../../Utility/Drawchessboard.js";
+import { MakeTimerClass } from "../../Utility/Maketimer.js"
+import { getQuiz } from "../../Utility/MyUI.js"
 
 /* global $ */
 class Quiz8 {

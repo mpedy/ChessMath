@@ -1,5 +1,5 @@
-import { MakeTimerClass } from "../../maketimernew.js"
-import { DrawChessboard as DrawChessboardClass } from "../../drawchessboardnewnew.js";
+import { MakeTimerClass } from "../../Utility/Maketimer.js"
+import { DrawChessboard as DrawChessboardClass } from "../../Utility/Drawchessboard.js";
 
 class Gioco5 {
     constructor() { }

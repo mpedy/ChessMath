@@ -1,4 +1,4 @@
-export class PieceClass {
+class PieceClass {
     constructor(tipo, casella, immagine) {
         this.tipo = tipo;
         this.casella = casella;
@@ -8,3 +8,5 @@ export class PieceClass {
         this.selected = false
     }
 }
+
+export { PieceClass };

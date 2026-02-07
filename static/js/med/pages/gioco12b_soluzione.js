@@ -1,4 +1,4 @@
-import { DrawChessboard as DrawChessboardClass } from "../../drawchessboardnewnew.js";
+import { DrawChessboard as DrawChessboardClass } from "../../Utility/Drawchessboard.js";
 
 class Gioco12b_soluzione {
     constructor() { }

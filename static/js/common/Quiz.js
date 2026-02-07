@@ -1,5 +1,5 @@
-import { MakeTimerClass } from "../maketimernew.js"
-import { getQuiz } from "../myui.js"
+import { MakeTimerClass } from "../Utility/Maketimer.js"
+import { getQuiz } from "../Utility/MyUI.js"
 
 class Quiz {
     constructor(name) {this.name = name}

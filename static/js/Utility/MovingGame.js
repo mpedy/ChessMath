@@ -2,6 +2,7 @@ import { pieceMove } from "./movePiecesnew.js";
 import { MakeTimerClass } from "./maketimernew.js"
 import { DrawChessboard as DrawChessboardClass } from "./drawchessboardnewnew.js";
 
+/* global $ */
 class MovingGame {
     constructor(piece_position, moving_pieces, end_position, show_possible_moves) {
         this.piece_position = piece_position;
@@ -26,7 +27,7 @@ class MovingGame {
 
         drawChessboard.drawChessboard(document.getElementById("chessboard"))
 
-        drawChessboard.piece_position =  this.piece_position;
+        drawChessboard.piece_position = this.piece_position;
 
         drawChessboard.drawPieces(document.getElementById("chessboard"), drawChessboard.piece_position)
 
@@ -36,7 +37,6 @@ class MovingGame {
 
         var moving_piece = "";
         var possible_moves = new Array();
-        var obstacles = ["rock-golem-1", "rock-golem", "obstacle"]
         var end_position = this.end_position
         var number_of_moves = 0;
         var show_possible_moves = this.show_possible_moves
@@ -45,7 +45,7 @@ class MovingGame {
             $("#chessboard").html("")[0].style = ""
             drawChessboard.drawChessboard(document.getElementById("chessboard"));
             drawChessboard.drawPieces(document.getElementById("chessboard"), drawChessboard.piece_position);
-            this.moving_pieces =  this.moving_pieces_initial;
+            this.moving_pieces = this.moving_pieces_initial;
             window.enlighted = ""
             window.enlight(end_position, "orange", true);
             number_of_moves = 0;
@@ -78,7 +78,7 @@ class MovingGame {
             window.enlighted = ""
             elem_from.removeChild(elem_from.children[elem_from.childElementCount - 1])
             elem_from.removeChild(elem_from.children[elem_from.childElementCount - 1])
-            var elem_to = document.getElementById(_to);
+            // var elem_to = document.getElementById(_to);
             var lst = new Object();
             lst[_to] = piece + ".svg";
             window.reset();
@@ -172,7 +172,7 @@ class MovingGame {
         }
 
         window.goal_reached = function () {
-            punti = window.getPoints();
+            window.punti = window.getPoints();
             window.myconfirm_2b("Obiettivo raggiunto", "Hai percorso " + number_of_moves + " caselle. Vuoi riprovare?", "sì", "no",
                 function () {
                     $(this).dialog("close");
@@ -184,8 +184,8 @@ class MovingGame {
                     maketimer.sec = 0;
                     maketimer.expired = false
                     $(this).remove();
-                    punti -= number_of_moves;
-                    window.myalert("Punti", "Il tuo punteggio è di " + punti + " punti!");
+                    window.punti -= number_of_moves;
+                    window.myalert("Punti", "Il tuo punteggio è di " + window.punti + " punti!");
                     window.updatePoints(-number_of_moves);
                     drawChessboard.handleMouseDown_casella = function () { }
                     drawChessboard.handleMouseDown_image = function () { }
@@ -194,16 +194,16 @@ class MovingGame {
         }
 
         window.procedi = function () {
-            punti = window.getPoints();
-            punti -= number_of_moves;
-            window.myalert("Punti", "Il tuo punteggio è " + punti + ".");
+            window.punti = window.getPoints();
+            window.punti -= number_of_moves;
+            window.myalert("Punti", "Il tuo punteggio è " + window.punti + ".");
             maketimer.sec = 0;
             window.updatePoints(-number_of_moves);
             drawChessboard.handleMouseDown_casella = function () { }
             drawChessboard.handleMouseDown_image = function () { }
             $("#ricomincia").prop("disabled", true);
         }
-
     }
 }
+
 export { MovingGame };

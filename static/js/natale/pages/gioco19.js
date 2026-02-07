@@ -1,6 +1,6 @@
-import { DrawChessboard as DrawChessboardClass } from "../../drawchessboardnewnew.js";
-import { pieceMove } from "../../movePiecesnew.js";
-import { PieceClass } from "../../PieceClass.js";
+import { DrawChessboard as DrawChessboardClass } from "../../Utility/Drawchessboard.js";
+import { pieceMove } from "../../Utility/MovePieces.js";
+import { PieceClass } from "../../Utility/PieceClass.js";
 
 /* global $ */
 class Gioco19 {
