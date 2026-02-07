@@ -1,5 +1,6 @@
 import { DrawChessboard as DrawChessboardClass } from "../../drawchessboardnewnew.js";
 
+/* global $ */
 class ImgGioco7 {
     constructor() { }
     start() {
@@ -9,12 +10,12 @@ class ImgGioco7 {
         drawChessboard.drawChessboard(document.getElementById("chessboard"))
 
         drawChessboard.piece_position = {
-            D5: "Bishop.svg",
+            "D5": "Bishop.svg",
         }
 
         drawChessboard.drawPieces(document.getElementById("chessboard"), drawChessboard.piece_position)
 
-        var cas = [A2, A8, B3, B7, C4, C6, E4, E6, F3, F7, G2, G8, H1]
+        var cas = ["A2", "A8", "B3", "B7", "C4", "C6", "E4", "E6", "F3", "F7", "G2", "G8", "H1"]
 
         for (var i in cas) {
             var elem = $("#" + cas[i])[0]

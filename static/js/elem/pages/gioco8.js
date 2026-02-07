@@ -2,6 +2,7 @@ import { DrawChessboard as DrawChessboardClass } from "../../drawchessboardnewne
 import { MakeTimerClass } from "../../maketimernew.js"
 import { pieceMove } from "../../movePiecesnew.js";
 
+/* global $ */
 class Gioco8 {
     constructor() { }
     start() {
@@ -20,32 +21,30 @@ class Gioco8 {
         drawChessboard.drawChessboard(document.getElementById("chessboard"))
 
         drawChessboard.piece_position = {
-            A2: "Bishop.svg",
-            D4: "obstacle.svg",
-            E5: "obstacle.svg",
-            F6: "obstacle.svg",
-            G7: "obstacle.svg",
-            H3: "obstacle.svg",
-            B7: "obstacle.svg",
-            A8: "obstacle.svg",
-            C6: "obstacle.svg",
-            G3: "obstacle.svg"
+            "A2": "Bishop.svg",
+            "D4": "obstacle.svg",
+            "E5": "obstacle.svg",
+            "F6": "obstacle.svg",
+            "G7": "obstacle.svg",
+            "H3": "obstacle.svg",
+            "B7": "obstacle.svg",
+            "A8": "obstacle.svg",
+            "C6": "obstacle.svg",
+            "G3": "obstacle.svg"
         }
 
         drawChessboard.drawPieces(document.getElementById("chessboard"), drawChessboard.piece_position)
 
         var caselle_colorate = new Array();
-        var caselle_corrette = [A5, B5, C5, E5, F5, G5, H5, D4, D3, D2, D1]
 
         window.enlighted = "";
 
         var moving_pieces = {
-            "Bishop": A2
+            "Bishop": "A2"
         }
         var moving_piece = "";
         var possible_moves = new Array();
-        var obstacles = ["rock-golem-1", "rock-golem", "obstacle"]
-        var end_position = H7;
+        var end_position = "H7";
         var number_of_moves = 0;
         var show_possible_moves = true;
 
@@ -54,7 +53,7 @@ class Gioco8 {
             drawChessboard.drawChessboard(document.getElementById("chessboard"));
             drawChessboard.drawPieces(document.getElementById("chessboard"), drawChessboard.piece_position);
             moving_pieces = {
-                "Bishop": A2
+                "Bishop": "A2"
             }
             window.enlighted = ""
             window.enlight(end_position, "orange", true);
@@ -88,7 +87,7 @@ class Gioco8 {
             window.enlighted = ""
             elem_from.removeChild(elem_from.children[elem_from.childElementCount - 1])
             elem_from.removeChild(elem_from.children[elem_from.childElementCount - 1])
-            var elem_to = document.getElementById(_to);
+            // var elem_to = document.getElementById(_to);
             var lst = new Object();
             lst[_to] = piece + ".svg";
             window.reset();
@@ -182,7 +181,7 @@ class Gioco8 {
         }
 
         window.goal_reached = function () {
-            punti = window.getPoints();
+            window.punti = window.getPoints();
             window.myconfirm_2b("Obiettivo raggiunto", "Hai percorso " + number_of_moves + " caselle. Vuoi riprovare?", "sì", "no",
                 function () {
                     $(this).dialog("close");
@@ -194,8 +193,8 @@ class Gioco8 {
                     maketimer.sec = 0;
                     maketimer.expired = false
                     $(this).remove();
-                    punti -= number_of_moves;
-                    window.myalert("Punti", "Il tuo punteggio è di " + punti + " punti!");
+                    window.punti -= number_of_moves;
+                    window.myalert("Punti", "Il tuo punteggio è di " + window.punti + " punti!");
                     window.updatePoints(-number_of_moves);
                     drawChessboard.handleMouseDown_casella = function () { }
                     drawChessboard.handleMouseDown_image = function () { }
@@ -204,9 +203,9 @@ class Gioco8 {
         }
 
         window.procedi = function () {
-            punti = window.getPoints();
-            punti -= number_of_moves;
-            window.myalert("Punti", "Il tuo punteggio è " + punti + ".");
+            window.punti = window.getPoints();
+            window.punti -= number_of_moves;
+            window.myalert("Punti", "Il tuo punteggio è " + window.punti + ".");
             maketimer.sec = 0;
             window.updatePoints(-number_of_moves);
             drawChessboard.handleMouseDown_casella = function () { }

@@ -2,6 +2,7 @@ import { DrawChessboard as DrawChessboardClass } from "../../drawchessboardnewne
 import { getQuiz } from "../../myui.js"
 import { MakeTimerClass } from "../../maketimernew.js"
 
+/* global $ */
 class Quiz14 {
     constructor() { }
     start() {
@@ -19,6 +20,7 @@ class Quiz14 {
                 }
             } catch (errore) {
                 pressed = false;
+                console.error(errore);
             }
             if (!pressed) {
                 window.myalert("Tempo esaurito!", "E' scaduto il tempo!");
