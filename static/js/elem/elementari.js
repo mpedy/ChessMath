@@ -1,9 +1,9 @@
-import { Prototipo } from "../prototipo.js";
-import { ascolta } from "../ascolta.js";
-import { attesa } from "../attesa.js";
-import { Quiz } from "../Quiz.js";
-import { classifica } from "../classifica.js";
-import { endpage } from "../endpage.js";
+import { Prototipo } from "../common/Prototipo.js";
+import { ascolta } from "../common/Ascolta.js";
+import { attesa } from "../common/Attesa.js";
+import { Quiz } from "../common/Quiz.js";
+import { classifica } from "../common/Classifica.js";
+import { endpage } from "../common/Endpage.js";
 
 
 import { scacchiera_vuota } from "../common/Scacchiera_vuota.js";

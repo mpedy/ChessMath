@@ -1,11 +1,12 @@
 import { DrawChessboard as DrawChessboardClass } from "../drawchessboardnewnew.js";
 
+/* global $ */
 class TorreHelp {
     constructor() { }
     start() {
         var drawChessboard = new DrawChessboardClass()
         drawChessboard.drawChessboard(document.getElementById("chessboard"))
-        drawChessboard.drawPieces(document.getElementById("chessboard"), { E4: "Rook.svg" })
+        drawChessboard.drawPieces(document.getElementById("chessboard"), { "E4": "Rook.svg" })
         var au = document.createElement("img")
         au.src = "static/img/arrow-up.svg"
         $("#E5").append(au)

@@ -1,7 +1,7 @@
 import { Prototipo } from "../common/Prototipo.js";
 import { ascolta } from "../common/Ascolta.js";
 import { attesa } from "../common/Attesa.js";
-import { LicQuiz } from "./LicQuiz.js";
+import { NatQuiz } from "./NatQuiz.js";
 import { classifica } from "../common/Classifica.js";
 import { endpage } from "../common/Endpage.js";
 
@@ -40,18 +40,19 @@ import { img_regina } from "./pages/img_regina.js";
 import { gioco16 } from "./pages/gioco16.js";
 import { img_gioco16 } from "./pages/img_gioco16.js";
 import { gioco17 } from "./pages/gioco17.js";
+import { gioco19 } from "./pages/gioco19.js";
 import { gioco_training_toro } from "./pages/gioco_training_toro.js";
 import { gioco_toro } from "./pages/gioco_toro.js";
 import { gioco_toro1 } from "./pages/gioco_toro1.js";
 import { gioco_toro2 } from "./pages/gioco_toro2.js";
 
 
-class Liceo extends Prototipo {
+class Natale extends Prototipo {
     constructor() {
         super();
-        this.pages = [attesa, ascolta, img_gioco1, new LicQuiz("quiz1"), new LicQuiz("quiz2"), ascolta, gioco2, gioco4, new LicQuiz("quiz7"), ascolta,
+        this.pages = [attesa, ascolta, img_gioco1, new NatQuiz("quiz1"), new NatQuiz("quiz2"), ascolta, gioco2, gioco4, new NatQuiz("quiz7"), ascolta,
             gioco5, img_gioco5, gioco6, img_gioco6, ascolta, img_gioco7, gioco8, quiz8, quiz9, quiz10, ascolta,
-            quiz11, img_gioco10, gioco11b, img_gioco11b, img_allsquares, ascolta, img_cavallo, gioco_spirit, img_spirit, gioco13b, gioco13b_soluzione, gioco12b, gioco12b_soluzione, gioco14, gioco15, img_gioco15, ascolta, img_regina, gioco16, img_gioco16, gioco17, ascolta,
+            quiz11, img_gioco10, gioco11b, img_gioco11b, img_allsquares, ascolta, img_cavallo, gioco_spirit, img_spirit, gioco13b, gioco13b_soluzione, gioco12b, gioco12b_soluzione, gioco14, gioco15, img_gioco15, ascolta, img_regina, gioco16, img_gioco16, gioco17, gioco19, ascolta,
             gioco_training_toro, gioco_toro, gioco_toro1, gioco_toro2, ascolta, quiz14,
             classifica, endpage];
     }
@@ -63,6 +64,6 @@ class Liceo extends Prototipo {
 }
 
 
-const liceo = new Liceo();
+const natale = new Natale();
 
-export { liceo };
+export { natale };

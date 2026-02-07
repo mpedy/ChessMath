@@ -1,6 +1,7 @@
 import { elementari } from "./elem/elementari.js";
 import { medie } from "./med/medie.js";
 import { liceo } from "./lic/liceo.js";
+import { natale } from "./natale/natale.js";
 
 class App {
     constructor() {

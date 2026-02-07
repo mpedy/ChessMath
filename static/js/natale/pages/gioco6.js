@@ -1,11 +1,13 @@
-import { DrawChessboard as DrawChessboardClass } from "../drawchessboardnewnew.js";
-import { MakeTimerClass } from "../maketimernew.js"
+import { MakeTimerClass } from "../../maketimernew.js"
+import { DrawChessboard as DrawChessboardClass } from "../../drawchessboardnewnew.js";
 
-class BattagliaNavale {
+class Gioco6 {
     constructor() { }
     start() {
+
         var drawChessboard = new DrawChessboardClass()
         var maketimer = new MakeTimerClass()
+
         maketimer.maketimer(document.getElementsByClassName("timer")[0]);
         maketimer.stopTimerFunction = function () {
             var dis = document.getElementById("gobtn").disabled;
@@ -16,10 +18,17 @@ class BattagliaNavale {
                 window.procedi(document.getElementById("gobtn"))
             }
         }
+
         drawChessboard.drawChessboard(document.getElementById("chessboard"))
 
+        drawChessboard.piece_position = {
+            "D5": "Rook.svg",
+        }
+
+        drawChessboard.drawPieces(document.getElementById("chessboard"), drawChessboard.piece_position)
+
         var caselle_colorate = new Array();
-        var caselle_corrette = ["A3", "E8", "F4", "B5"]
+        var caselle_corrette = ["D3", "D7", "C4", "C6", "B5", "E4", "E6", "F5"];
 
         drawChessboard.handleMouseDown_casella = function (e) {
             var elem = e.currentTarget;
@@ -40,9 +49,8 @@ class BattagliaNavale {
                 div.style.zIndex = "1";
                 elem.appendChild(div);
             }
-            e.preventDefault();
-            e.stopPropagation();
         }
+        drawChessboard.handleMouseDown_image = function () { }
 
         window.reset = function () {
             for (var i in caselle_colorate) {
@@ -62,7 +70,7 @@ class BattagliaNavale {
                     points -= 1;
                 }
             }
-            window.myalert("Risultato", "Hai guadagnato " + points + " punti.");
+            window.myalert("Punti", "Hai guadagnato " + points + " punti.");
             window.updatePoints(points);
             window.punti = window.getPoints();
             clearInterval(maketimer.myt)
@@ -72,8 +80,9 @@ class BattagliaNavale {
             drawChessboard.handleMouseDown_casella = function () { }
             drawChessboard.handleMouseDown_image = function () { }
         }
+
     }
 }
 
-const battaglia_navale = new BattagliaNavale();
-export { battaglia_navale };
+const gioco6 = new Gioco6();
+export { gioco6 };

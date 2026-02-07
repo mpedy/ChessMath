@@ -1,11 +1,14 @@
-import { DrawChessboard as DrawChessboardClass } from "../drawchessboardnewnew.js";
-import { MakeTimerClass } from "../maketimernew.js"
+import { MakeTimerClass } from "../../maketimernew.js"
+import { DrawChessboard as DrawChessboardClass } from "../../drawchessboardnewnew.js";
+import { pieceMove } from "../../movePiecesnew.js";
 
-class BattagliaNavale {
+class GiocoSpirit {
     constructor() { }
     start() {
+
         var drawChessboard = new DrawChessboardClass()
         var maketimer = new MakeTimerClass()
+
         maketimer.maketimer(document.getElementsByClassName("timer")[0]);
         maketimer.stopTimerFunction = function () {
             var dis = document.getElementById("gobtn").disabled;
@@ -18,8 +21,15 @@ class BattagliaNavale {
         }
         drawChessboard.drawChessboard(document.getElementById("chessboard"))
 
+        drawChessboard.piece_position = {
+            "D5": "Knight.svg",
+        }
+
+        drawChessboard.drawPieces(document.getElementById("chessboard"), drawChessboard.piece_position)
+
         var caselle_colorate = new Array();
-        var caselle_corrette = ["A3", "E8", "F4", "B5"]
+        var caselle_corrette = ["B4", "B6", "C3", "C7", "E3", "E7", "F4", "F6"]
+        var possible_moves = new Array();
 
         drawChessboard.handleMouseDown_casella = function (e) {
             var elem = e.currentTarget;
@@ -40,9 +50,36 @@ class BattagliaNavale {
                 div.style.zIndex = "1";
                 elem.appendChild(div);
             }
-            e.preventDefault();
-            e.stopPropagation();
         }
+
+        window.calculatePossibleMoves = function (casella, type) {
+            possible_moves = new Array();
+            switch (type) {
+                case "Rook": {
+                    var x = casella.charCodeAt(0) - 65 + 1;
+                    var y = parseInt(casella[1]);
+                    //console.log("Partenza: "+x+" - "+y)
+                    possible_moves = pieceMove.moveRook(casella, x, y)
+                }
+                    break;
+            }
+            //console.log(possible_moves);
+            for (var i in possible_moves) {
+                var elem = document.getElementById(possible_moves[i]);
+                caselle_colorate.push(possible_moves[i]);
+                var div = document.createElement("div");
+                div.style.background = "blue"
+                div.style.borderRadius = "50%"
+                div.style.position = "absolute"
+                div.style.left = "10%"
+                div.style.top = "10%"
+                div.style.width = "80%"
+                div.style.height = "80%"
+                div.style.zIndex = "1";
+                elem.appendChild(div);
+            }
+        }
+
 
         window.reset = function () {
             for (var i in caselle_colorate) {
@@ -62,18 +99,19 @@ class BattagliaNavale {
                     points -= 1;
                 }
             }
-            window.myalert("Risultato", "Hai guadagnato " + points + " punti.");
+            window.myalert("Punti", "Hai totalizzato " + points + " punti.");
             window.updatePoints(points);
-            window.punti = window.getPoints();
-            clearInterval(maketimer.myt)
+            clearInterval(maketimer.myt);
             maketimer.sec = 0;
             document.getElementById("gobtn").disabled = true;
             document.getElementById("reset").disabled = true;
             drawChessboard.handleMouseDown_casella = function () { }
             drawChessboard.handleMouseDown_image = function () { }
         }
+
+
     }
 }
 
-const battaglia_navale = new BattagliaNavale();
-export { battaglia_navale };
+const gioco_spirit = new GiocoSpirit();
+export { gioco_spirit };

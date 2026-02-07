@@ -1,5 +1,6 @@
 import { DrawChessboard as DrawChessboardClass } from "../drawchessboardnewnew.js";
 
+/* global $ */
 class ImgGioco {
     constructor(piece_position, cas) {
         this.piece_position = piece_position;

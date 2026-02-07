@@ -1,0 +1,31 @@
+import { MakeTimerClass } from "../maketimernew.js"
+import { getQuiz } from "../myui.js"
+
+/* global $ */
+class NatQuiz {
+    constructor(name) {
+        this.name = name;
+    }
+    start() {
+        var maketimer = new MakeTimerClass()
+        window.can_answer = true
+        maketimer.stopTimerFunction = function (pressed) {
+            try {
+                if (pressed == undefined) {
+                    pressed = false;
+                }
+            } catch (errore) {
+                pressed = false;
+                console.error(errore);
+            }
+            if (!pressed) {
+                window.myalert("Tempo esaurito!", "E' scaduto il tempo!");
+            }
+            window.can_answer = false
+            $(".risposta").toggleClass("disabled")
+        }
+        getQuiz(maketimer);
+    }
+}
+
+export { NatQuiz };
