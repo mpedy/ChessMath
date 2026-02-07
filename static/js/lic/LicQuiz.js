@@ -21,7 +21,7 @@ class LicQuiz {
                 window.myalert("Tempo esaurito!", "E' scaduto il tempo!");
             }
             window.can_answer = false
-            document.getElementsByClassName(".risposta")[0].classList.toggle("disabled")
+            $(".risposta").toggleClass("disabled")
         }
         getQuiz(maketimer);
     }
