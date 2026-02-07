@@ -47,7 +47,6 @@ class Medie extends Prototipo {
             classifica, endpage];
     }
     setPage(index) {
-        debugger;
         this.currentPageIndex = index;
         this.currentPage = this.pages[index];
         this.currentPage.start();
