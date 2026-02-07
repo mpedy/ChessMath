@@ -190,14 +190,14 @@
 	</div>
 	<div style="float: right; width: 50%; height: 100%; padding-top: 100px">
 		<div>
-			<button style="/*margin: auto;*/ display: block; padding: 16px; border-radius: 10px;background-color: #ff0000bb;color: white; font-weight: bold; border: 2px solid black;" onclick="newGame()">Nuova partita</button>
+			<button style="display: block; padding: 16px; border-radius: 10px;background-color: #ff0000bb;color: white; font-weight: bold; border: 2px solid black;" onclick="newGame()">Nuova partita</button>
 			<div style="display: flex; justify-content: center; align-items: center;">
-				<div style="/*margin: auto;*/ display: block;">
-					<span style="color: white; margin-right: 10px;">Codice:</span><button style="/*margin: auto;*/ padding: 16px; border-radius: 10px; font-size: 18px;" id="codice"><%=codice%></button>
+				<div style="display: block;">
+					<span style="color: white; margin-right: 10px;">Codice:</span><button style="padding: 16px; border-radius: 10px; font-size: 18px;" id="codice"><%=codice%></button>
 				</div>
-				<button style="/*margin: auto;*/ display: block; padding: 16px; border-radius: 10px;" onclick="updateCode()">Aggiorna Codice</button>
+				<button style="display: block; padding: 16px; border-radius: 10px;" onclick="updateCode()">Aggiorna Codice</button>
 			</div>
-			<button style="/*margin: auto;*/ display: block; padding: 10px; border-radius: 10px;" onclick="updateQuest()">Aggiorna Domande</button>
+			<button style="display: block; padding: 10px; border-radius: 10px;" onclick="updateQuest()">Aggiorna Domande</button>
 			<div style="display: flex; justify-content: center; align-items: center; margin-bottom: 30px;">
 				<select style="padding: 10px; border-radius: 10px; font-size: 22px;" onchange="setLevel(this)">
 					<option value=1>Livello A - Elementari</option>

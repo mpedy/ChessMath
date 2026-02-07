@@ -6,4 +6,4 @@
 	<button style="border-radius: 10px; display: block; margin: 30px auto 15px auto; padding: 5px;" id="ricomincia" onclick="ricomincia()" >Ricomincia</button>
 </div>
 
-<script src="/static/js/dist/natale/gioco13b.js"></script>
+<!-- <script src="/static/js/dist/natale/gioco13b.js"></script> -->

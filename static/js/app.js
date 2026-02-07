@@ -8,6 +8,7 @@ class App {
         this.elementari = elementari;
         this.medie = medie;
         this.liceo = liceo;
+        this.natale = natale;
         this.currentGame = null;
         this.path = "";
     }
@@ -24,6 +25,10 @@ class App {
         } else if (this.path.includes("liceo") || this.path == 3) {
             if (this.currentGame != this.liceo) {
                 this.loadGame(this.liceo)
+            }
+        } else if (this.path.includes("natale") || this.path == 4) {
+            if (this.currentGame != this.natale) {
+                this.loadGame(this.natale)
             }
         }
     }

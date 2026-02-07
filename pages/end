@@ -11,7 +11,7 @@
 <body>
 	<div id="background">
 		<div id="content_page" style="position: relative;text-align: center; width: 100%;">
-			<div style="/*height: 100%;*/">
+			<div>
 				<h2>Grazie per aver giocato con noi!</h2>
 				<img src="static/img/CMgrande-crop.png" style="width: 100%;"/>
 				<h2 style="margin-top: 12px">Ci puoi trovare qui:</h2>
