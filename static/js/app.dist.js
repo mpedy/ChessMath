@@ -352,6 +352,24 @@
     }
   };
 
+  // static/js/classifica.js
+  var Classifica = class {
+    constructor() {
+    }
+    start() {
+    }
+  };
+  var classifica = new Classifica();
+
+  // static/js/endpage.js
+  var Endpage = class {
+    constructor() {
+    }
+    start() {
+    }
+  };
+  var endpage = new Endpage();
+
   // static/js/drawchessboardnewnew.js
   var DrawChessboard = class {
     constructor() {
@@ -562,8 +580,8 @@
     }
   };
 
-  // static/js/elem/pages/elem_page4.js
-  var Page4 = class {
+  // static/js/common/Scacchiera_vuota.js
+  var ScacchieraVuota = class {
     constructor() {
     }
     start() {
@@ -571,10 +589,10 @@
       drawChessboard.drawChessboard(document.getElementById("chessboard"));
     }
   };
-  var page4 = new Page4();
+  var scacchiera_vuota = new ScacchieraVuota();
 
-  // static/js/elem/pages/elem_page5.js
-  var Page5 = class {
+  // static/js/common/BattagliaNavale.js
+  var BattagliaNavale = class {
     constructor() {
     }
     start() {
@@ -647,10 +665,10 @@
       };
     }
   };
-  var page5 = new Page5();
+  var battaglia_navale = new BattagliaNavale();
 
-  // static/js/elem/pages/elem_page6.js
-  var Page6 = class {
+  // static/js/common/TorreHelp.js
+  var TorreHelp = class {
     constructor() {
     }
     start() {
@@ -675,10 +693,10 @@
       };
     }
   };
-  var page6 = new Page6();
+  var torre_help = new TorreHelp();
 
-  // static/js/elem/pages/elem_page7.js
-  var Page7 = class {
+  // static/js/elem/pages/gioco1.js
+  var Gioco1 = class {
     constructor() {
     }
     start() {
@@ -755,10 +773,10 @@
       };
     }
   };
-  var page7 = new Page7();
+  var gioco1 = new Gioco1();
 
-  // static/js/elem/pages/elem_page8.js
-  var Page8 = class {
+  // static/js/elem/pages/img_gioco1.js
+  var ImgGioco1 = class {
     constructor() {
     }
     start() {
@@ -788,7 +806,7 @@
       };
     }
   };
-  var page8 = new Page8();
+  var img_gioco1 = new ImgGioco1();
 
   // static/js/movePiecesnew.js
   var PieceMove = class {
@@ -1232,8 +1250,8 @@
   };
   var pieceMove = new PieceMove();
 
-  // static/js/elem/pages/elem_page14.js
-  var Page14 = class {
+  // static/js/elem/pages/gioco2.js
+  var Gioco2 = class {
     constructor() {
     }
     start() {
@@ -1425,10 +1443,10 @@
       };
     }
   };
-  var page14 = new Page14();
+  var gioco2 = new Gioco2();
 
-  // static/js/elem/pages/elem_page15.js
-  var Page15 = class {
+  // static/js/elem/pages/gioco3.js
+  var Gioco3 = class {
     constructor() {
     }
     start() {
@@ -1630,10 +1648,10 @@
       };
     }
   };
-  var page15 = new Page15();
+  var gioco3 = new Gioco3();
 
-  // static/js/elem/pages/elem_page16.js
-  var Page16 = class {
+  // static/js/elem/pages/gioco4.js
+  var Gioco4 = class {
     constructor() {
     }
     start() {
@@ -1835,10 +1853,10 @@
       };
     }
   };
-  var page16 = new Page16();
+  var gioco4 = new Gioco4();
 
-  // static/js/elem/pages/elem_page18.js
-  var Page18 = class {
+  // static/js/elem/pages/gioco5.js
+  var Gioco5 = class {
     constructor() {
     }
     start() {
@@ -1913,10 +1931,10 @@
       };
     }
   };
-  var page18 = new Page18();
+  var gioco5 = new Gioco5();
 
-  // static/js/elem/pages/elem_page19.js
-  var Page19 = class {
+  // static/js/elem/pages/img_gioco5.js
+  var ImgGioco5 = class {
     constructor() {
     }
     start() {
@@ -1946,10 +1964,10 @@
       };
     }
   };
-  var page19 = new Page19();
+  var img_gioco5 = new ImgGioco5();
 
-  // static/js/elem/pages/elem_page20.js
-  var Page20 = class {
+  // static/js/elem/pages/gioco6.js
+  var Gioco6 = class {
     constructor() {
     }
     start() {
@@ -2024,10 +2042,10 @@
       };
     }
   };
-  var page20 = new Page20();
+  var gioco6 = new Gioco6();
 
-  // static/js/elem/pages/elem_page21.js
-  var Page21 = class {
+  // static/js/elem/pages/img_gioco6.js
+  var ImgGioco6 = class {
     constructor() {
     }
     start() {
@@ -2057,10 +2075,10 @@
       };
     }
   };
-  var page21 = new Page21();
+  var img_gioco6 = new ImgGioco6();
 
-  // static/js/elem/pages/elem_page22.js
-  var Page22 = class {
+  // static/js/elem/pages/gioco7.js
+  var Gioco7 = class {
     constructor() {
     }
     start() {
@@ -2135,10 +2153,10 @@
       };
     }
   };
-  var page22 = new Page22();
+  var gioco7 = new Gioco7();
 
-  // static/js/elem/pages/elem_page23.js
-  var Page23 = class {
+  // static/js/elem/pages/img_gioco7.js
+  var ImgGioco7 = class {
     constructor() {
     }
     start() {
@@ -2168,10 +2186,10 @@
       };
     }
   };
-  var page23 = new Page23();
+  var img_gioco7 = new ImgGioco7();
 
-  // static/js/elem/pages/elem_page26.js
-  var Page26 = class {
+  // static/js/elem/pages/quiz11.js
+  var Quiz11 = class {
     constructor() {
     }
     start() {
@@ -2199,10 +2217,10 @@
       getQuiz();
     }
   };
-  var page26 = new Page26();
+  var quiz11 = new Quiz11();
 
-  // static/js/elem/pages/elem_page27.js
-  var Page27 = class {
+  // static/js/elem/pages/quiz12.js
+  var Quiz12 = class {
     constructor() {
     }
     start() {
@@ -2230,10 +2248,10 @@
       getQuiz();
     }
   };
-  var page27 = new Page27();
+  var quiz12 = new Quiz12();
 
-  // static/js/elem/pages/elem_page28.js
-  var Page28 = class {
+  // static/js/elem/pages/quiz13.js
+  var Quiz13 = class {
     constructor() {
     }
     start() {
@@ -2261,10 +2279,10 @@
       getQuiz();
     }
   };
-  var page28 = new Page28();
+  var quiz13 = new Quiz13();
 
-  // static/js/elem/pages/elem_page29.js
-  var Page29 = class {
+  // static/js/elem/pages/gioco8.js
+  var Gioco8 = class {
     constructor() {
     }
     start() {
@@ -2464,10 +2482,10 @@
       };
     }
   };
-  var page29 = new Page29();
+  var gioco8 = new Gioco8();
 
-  // static/js/elem/pages/elem_page30.js
-  var Page30 = class {
+  // static/js/elem/pages/gioco9.js
+  var Gioco9 = class {
     constructor() {
     }
     start() {
@@ -2664,10 +2682,10 @@
       };
     }
   };
-  var page30 = new Page30();
+  var gioco9 = new Gioco9();
 
-  // static/js/elem/pages/elem_page31.js
-  var Page31 = class {
+  // static/js/elem/pages/quiz14.js
+  var Quiz14 = class {
     constructor() {
     }
     start() {
@@ -2693,10 +2711,10 @@
       getQuiz();
     }
   };
-  var page31 = new Page31();
+  var quiz14 = new Quiz14();
 
-  // static/js/elem/pages/elem_page32.js
-  var Page32 = class {
+  // static/js/elem/pages/gioco10.js
+  var Gioco10 = class {
     constructor() {
     }
     start() {
@@ -2771,10 +2789,10 @@
       };
     }
   };
-  var page32 = new Page32();
+  var gioco10 = new Gioco10();
 
-  // static/js/elem/pages/elem_page33.js
-  var Page33 = class {
+  // static/js/elem/pages/img_gioco10.js
+  var ImgGioco10 = class {
     constructor() {
     }
     start() {
@@ -2804,10 +2822,10 @@
       };
     }
   };
-  var page33 = new Page33();
+  var img_gioco10 = new ImgGioco10();
 
-  // static/js/elem/pages/elem_page34.js
-  var Page34 = class {
+  // static/js/elem/pages/gioco11.js
+  var Gioco11 = class {
     constructor() {
     }
     start() {
@@ -2882,10 +2900,10 @@
       };
     }
   };
-  var page34 = new Page34();
+  var gioco11 = new Gioco11();
 
-  // static/js/elem/pages/elem_page35.js
-  var Page35 = class {
+  // static/js/elem/pages/img_gioco11.js
+  var ImgGioco11 = class {
     constructor() {
     }
     start() {
@@ -2915,10 +2933,10 @@
       };
     }
   };
-  var page35 = new Page35();
+  var img_gioco11 = new ImgGioco11();
 
-  // static/js/elem/pages/elem_page36.js
-  var Page36 = class {
+  // static/js/common/ImgAllSquares.js
+  var ImgAllSquares = class {
     constructor() {
     }
     start() {
@@ -2958,25 +2976,7 @@
       }
     }
   };
-  var page36 = new Page36();
-
-  // static/js/classifica.js
-  var Classifica = class {
-    constructor() {
-    }
-    start() {
-    }
-  };
-  var classifica = new Classifica();
-
-  // static/js/endpage.js
-  var Endpage = class {
-    constructor() {
-    }
-    start() {
-    }
-  };
-  var endpage = new Endpage();
+  var img_allsquares = new ImgAllSquares();
 
   // static/js/elem/elementari.js
   var Elementari = class extends Prototipo {
@@ -2988,43 +2988,43 @@
         new Quiz("quiz2"),
         ascolta,
         new Quiz("quiz3"),
-        page4,
-        page5,
+        scacchiera_vuota,
+        battaglia_navale,
         ascolta,
-        page6,
-        page7,
-        page8,
+        torre_help,
+        gioco1,
+        img_gioco1,
         new Quiz("quiz4"),
         new Quiz("quiz5"),
         new Quiz("quiz6"),
         new Quiz("quiz7"),
         attesa,
-        page14,
-        page15,
-        page16,
+        gioco2,
+        gioco3,
+        gioco4,
         new Quiz("quiz8"),
         ascolta,
-        page18,
-        page19,
-        page20,
-        page21,
+        gioco5,
+        img_gioco5,
+        gioco6,
+        img_gioco6,
         ascolta,
-        page22,
-        page23,
+        gioco7,
+        img_gioco7,
         new Quiz("quiz9"),
         new Quiz("quiz10"),
-        page26,
-        page27,
-        page28,
-        page29,
-        page30,
+        quiz11,
+        quiz12,
+        quiz13,
+        gioco8,
+        gioco9,
         ascolta,
-        page31,
-        page32,
-        page33,
-        page34,
-        page35,
-        page36,
+        quiz14,
+        gioco10,
+        img_gioco10,
+        gioco11,
+        img_gioco11,
+        img_allsquares,
         new Quiz("quiz15"),
         ascolta,
         new Quiz("quiz16"),
@@ -3041,10 +3041,1896 @@
   };
   var elementari = new Elementari();
 
-  // static/js/medie.js
+  // static/js/med/pages/gioco1.js
+  var Gioco12 = class {
+    constructor() {
+    }
+    start() {
+      var drawChessboard = new DrawChessboard();
+      var maketimer = new MakeTimerClass();
+      maketimer.maketimer(document.getElementsByClassName("timer")[0]);
+      maketimer.stopTimerFunction = function() {
+        var dis = document.getElementById("gobtn").disabled;
+        document.getElementById("gobtn").disabled = true;
+        document.getElementById("reset").disabled = true;
+        drawChessboard.handleMouseDown_casella = function() {
+        };
+        if (!dis) {
+          window.procedi(document.getElementById("gobtn"));
+        }
+      };
+      drawChessboard.drawChessboard(document.getElementById("chessboard"));
+      drawChessboard.piece_position = {
+        D5: "Rook.svg"
+      };
+      drawChessboard.drawPieces(document.getElementById("chessboard"), drawChessboard.piece_position);
+      var caselle_colorate = new Array();
+      var caselle_corrette = [C5, B5, A5, E5, F5, G5, H5, D4, D3, D2, D1, D6, D7, D8];
+      drawChessboard.handleMouseDown_casella = function(e) {
+        var elem = e.currentTarget;
+        var casella = elem.getAttribute("casella");
+        if (caselle_colorate.includes(casella)) {
+          caselle_colorate.splice(caselle_colorate.indexOf(casella), 1);
+          elem.removeChild(elem.children[elem.childElementCount - 1]);
+        } else {
+          caselle_colorate.push(casella);
+          var div = document.createElement("div");
+          div.style.background = "red";
+          div.style.borderRadius = "50%";
+          div.style.position = "absolute";
+          div.style.left = "10%";
+          div.style.top = "10%";
+          div.style.width = "80%";
+          div.style.height = "80%";
+          div.style.zIndex = "1";
+          elem.appendChild(div);
+        }
+      };
+      window.reset = function() {
+        for (var i in caselle_colorate) {
+          var elem = document.getElementById(caselle_colorate[i]);
+          elem.removeChild(elem.children[elem.childElementCount - 1]);
+        }
+        caselle_colorate = new Array();
+      };
+      window.procedi = function(btn) {
+        btn.disabled = true;
+        var points = 0;
+        for (var i in caselle_colorate) {
+          if (caselle_corrette.includes(caselle_colorate[i])) {
+            points += 1;
+          } else {
+            points -= 1;
+          }
+        }
+        window.myalert("Risultato", "Hai guadagnato " + points + " punti.");
+        window.updatePoints(points);
+        punti = window.getPoints();
+        clearInterval(maketimer.myt);
+        maketimer.sec = 0;
+        document.getElementById("gobtn").disabled = true;
+        document.getElementById("reset").disabled = true;
+        drawChessboard.handleMouseDown_casella = function() {
+        };
+        drawChessboard.handleMouseDown_image = function() {
+        };
+      };
+    }
+  };
+  var gioco12 = new Gioco12();
+
+  // static/js/common/ImgGioco.js
+  var ImgGioco = class {
+    constructor(piece_position, cas) {
+      this.piece_position = piece_position;
+      this.cas = cas;
+    }
+    start() {
+      var drawChessboard = new DrawChessboard();
+      drawChessboard.drawChessboard(document.getElementById("chessboard"));
+      drawChessboard.piece_position = this.piece_position;
+      drawChessboard.drawPieces(document.getElementById("chessboard"), drawChessboard.piece_position);
+      for (var i in this.cas) {
+        var elem = $("#" + this.cas[i])[0];
+        var div = document.createElement("div");
+        div.style.background = "red";
+        div.style.borderRadius = "50%";
+        div.style.position = "absolute";
+        div.style.left = "10%";
+        div.style.top = "10%";
+        div.style.width = "80%";
+        div.style.height = "80%";
+        div.style.zIndex = "1";
+        elem.appendChild(div);
+      }
+      drawChessboard.handleMouseDown_casella = function() {
+      };
+      drawChessboard.handleMouseDown_image = function() {
+      };
+    }
+  };
+
+  // static/js/med/pages/img_gioco1.js
+  var ImgGioco12 = class extends ImgGioco {
+    constructor() {
+      debugger;
+      super(
+        { D5: "Rook.svg" },
+        [C5, B5, A5, E5, F5, G5, H5, D4, D3, D2, D1, D6, D7, D8]
+      );
+    }
+  };
+  var img_gioco12 = new ImgGioco12();
+
+  // static/js/med/pages/gioco2.js
+  var Gioco22 = class {
+    constructor() {
+    }
+    start() {
+      var drawChessboard = new DrawChessboard();
+      var maketimer = new MakeTimerClass();
+      maketimer.maketimer(document.getElementsByClassName("timer")[0]);
+      maketimer.stopTimerFunction = function() {
+        drawChessboard.handleMouseDown_casella = function() {
+        };
+        drawChessboard.handleMouseDown_image = function() {
+        };
+        $("#ricomincia").prop("disabled", true);
+        window.procedi();
+      };
+      drawChessboard.drawChessboard(document.getElementById("chessboard"));
+      drawChessboard.piece_position = {
+        E2: "Rook.svg"
+      };
+      drawChessboard.drawPieces(document.getElementById("chessboard"), drawChessboard.piece_position);
+      var caselle_colorate = new Array();
+      window.enlighted = "";
+      var moving_pieces = {
+        "Rook": E2
+      };
+      var moving_piece = "";
+      var possible_moves = new Array();
+      var obstacles = ["rock-golem-1", "rock-golem", "obstacle"];
+      var end_position = "A8";
+      var number_of_moves = 0;
+      var show_possible_moves = false;
+      window.ricomincia = function() {
+        $("#chessboard").html("")[0].style = "";
+        drawChessboard.drawChessboard(document.getElementById("chessboard"));
+        drawChessboard.drawPieces(document.getElementById("chessboard"), drawChessboard.piece_position);
+        moving_pieces = {
+          "Rook": E2
+        };
+        window.enlighted = "";
+        window.enlight(end_position, "orange", true);
+        number_of_moves = 0;
+        $("#number_of_moves").html(number_of_moves);
+        possible_moves = new Array();
+        caselle_colorate = new Array();
+      };
+      drawChessboard.handleMouseDown_casella = function(e) {
+        var elem = e.currentTarget;
+        var casella = elem.getAttribute("casella");
+        if (possible_moves.includes(casella)) {
+          window.move(moving_piece, elem.id);
+          moving_piece = "";
+          possible_moves = new Array();
+          e.stopPropagation();
+          e.preventDefault();
+        } else {
+        }
+      };
+      window.move = function(moving_piece2, casella) {
+        var piece = moving_piece2.split(";")[0];
+        var from = moving_piece2.split(";")[1];
+        var _to = casella;
+        var elem_from = document.getElementById(from);
+        window.enlighted = "";
+        elem_from.removeChild(elem_from.children[elem_from.childElementCount - 1]);
+        elem_from.removeChild(elem_from.children[elem_from.childElementCount - 1]);
+        var elem_to = document.getElementById(_to);
+        var lst = new Object();
+        lst[_to] = piece + ".svg";
+        window.reset();
+        drawChessboard.drawPieces(document.getElementById("chessboard"), lst);
+        moving_pieces[piece] = _to;
+        number_of_moves += window.dist(from, _to);
+        $("#number_of_moves").html(number_of_moves);
+        if (_to == end_position) {
+          window.goal_reached();
+        }
+      };
+      window.dist = function(from, to) {
+        var x1 = from[1];
+        var x2 = to[1];
+        var y1 = from.charCodeAt(0) - 65 + 1;
+        var y2 = to.charCodeAt(0) - 65 + 1;
+        var d = 0;
+        if (x1 == x2) {
+          d = Math.abs(y2 - y1);
+        } else {
+          d = Math.abs(x2 - x1);
+        }
+        return d;
+      };
+      window.enlight(end_position, "orange", true);
+      drawChessboard.handleMouseDown_image = function(e) {
+        var elem = e.currentTarget;
+        var casella = elem.getAttribute("data-casella");
+        var type = elem.getAttribute("data-type");
+        if (window.enlighted == casella) {
+          return;
+        }
+        var can_move = false;
+        for (var i in moving_pieces) {
+          if (i == type && moving_pieces[i] == casella) {
+            can_move = true;
+            moving_piece = i + ";" + moving_pieces[i];
+            break;
+          }
+        }
+        if (can_move) {
+          window.calculatePossibleMoves(casella, type);
+          window.enlight(casella, "orange");
+        }
+      };
+      window.calculatePossibleMoves = function(casella, type) {
+        possible_moves = new Array();
+        switch (type) {
+          case "Rook":
+            {
+              var x = casella.charCodeAt(0) - 65 + 1;
+              var y = parseInt(casella[1]);
+              possible_moves = pieceMove.moveRook(casella, x, y);
+            }
+            break;
+        }
+        if (show_possible_moves) {
+          for (var i in possible_moves) {
+            var elem = document.getElementById(possible_moves[i]);
+            caselle_colorate.push(possible_moves[i]);
+            var div = document.createElement("div");
+            div.style.background = "blue";
+            div.style.borderRadius = "50%";
+            div.style.position = "absolute";
+            div.style.left = "10%";
+            div.style.top = "10%";
+            div.style.width = "80%";
+            div.style.height = "80%";
+            div.style.zIndex = "1";
+            elem.appendChild(div);
+          }
+        }
+      };
+      window.reset = function() {
+        for (var i in caselle_colorate) {
+          var elem = document.getElementById(caselle_colorate[i]);
+          elem.removeChild(elem.children[elem.childElementCount - 1]);
+        }
+        caselle_colorate = new Array();
+      };
+      window.goal_reached = function() {
+        punti = window.getPoints();
+        window.myconfirm_2b(
+          "Obiettivo raggiunto",
+          "Hai percorso " + number_of_moves + " caselle. Vuoi riprovare?",
+          "s\xEC",
+          "no",
+          function() {
+            $(this).dialog("close");
+            window.ricomincia();
+            $(this).remove();
+          },
+          function() {
+            $(this).dialog("close");
+            clearInterval(maketimer.myt);
+            maketimer.sec = 0;
+            maketimer.expired = false;
+            $(this).remove();
+            punti -= number_of_moves;
+            window.myalert("Punti", "Il tuo punteggio \xE8 di " + punti + " punti!");
+            window.updatePoints(-number_of_moves);
+            drawChessboard.handleMouseDown_casella = function() {
+            };
+            drawChessboard.handleMouseDown_image = function() {
+            };
+            $("#ricomincia").prop("disabled", true);
+          },
+          false
+        );
+      };
+      window.procedi = function() {
+        punti = window.getPoints();
+        punti -= number_of_moves;
+        window.myalert("Punti", "Il tuo punteggio \xE8 " + punti + ".");
+        maketimer.sec = 0;
+        window.updatePoints(-number_of_moves);
+        drawChessboard.handleMouseDown_casella = function() {
+        };
+        drawChessboard.handleMouseDown_image = function() {
+        };
+        $("#ricomincia").prop("disabled", true);
+      };
+    }
+  };
+  var gioco22 = new Gioco22();
+
+  // static/js/med/pages/gioco4.js
+  var Gioco42 = class {
+    constructor() {
+    }
+    start() {
+      var drawChessboard = new DrawChessboard();
+      var maketimer = new MakeTimerClass();
+      maketimer.maketimer(document.getElementsByClassName("timer")[0]);
+      maketimer.stopTimerFunction = function() {
+        drawChessboard.handleMouseDown_casella = function() {
+        };
+        drawChessboard.handleMouseDown_image = function() {
+        };
+        $("#ricomincia").prop("disabled", true);
+        window.procedi();
+      };
+      drawChessboard.drawChessboard(document.getElementById("chessboard"));
+      drawChessboard.piece_position = {
+        D5: "Rook.svg",
+        A1: "obstacle.svg",
+        D6: "obstacle.svg",
+        F4: "obstacle.svg",
+        B7: "obstacle.svg",
+        B4: "obstacle.svg",
+        B5: "obstacle.svg",
+        C7: "obstacle.svg",
+        B6: "obstacle.svg",
+        C6: "obstacle.svg"
+      };
+      drawChessboard.drawPieces(document.getElementById("chessboard"), drawChessboard.piece_position);
+      var caselle_colorate = new Array();
+      var caselle_corrette = [A5, B5, C5, E5, F5, G5, H5, D4, D3, D2, D1];
+      window.enlighted = "";
+      var moving_pieces = {
+        "Rook": D5
+      };
+      var moving_piece = "";
+      var possible_moves = new Array();
+      var obstacles = ["rock-golem-1", "rock-golem", "obstacle"];
+      var end_position = "A8";
+      var number_of_moves = 0;
+      var show_possible_moves = false;
+      window.ricomincia = function() {
+        $("#chessboard").html("")[0].style = "";
+        drawChessboard.drawChessboard(document.getElementById("chessboard"));
+        drawChessboard.drawPieces(document.getElementById("chessboard"), drawChessboard.piece_position);
+        moving_pieces = {
+          "Rook": "D5"
+        };
+        window.enlighted = "";
+        window.enlight(end_position, "orange", true);
+        number_of_moves = 0;
+        $("#number_of_moves").html(number_of_moves);
+        possible_moves = new Array();
+        caselle_colorate = new Array();
+      };
+      drawChessboard.handleMouseDown_casella = function(e) {
+        var elem = e.currentTarget;
+        var casella = elem.getAttribute("casella");
+        if (possible_moves.includes(casella)) {
+          window.move(moving_piece, elem.id);
+          moving_piece = "";
+          possible_moves = new Array();
+          e.stopPropagation();
+          e.preventDefault();
+        } else {
+        }
+      };
+      window.move = function(moving_piece2, casella) {
+        var piece = moving_piece2.split(";")[0];
+        var from = moving_piece2.split(";")[1];
+        var _to = casella;
+        var elem_from = document.getElementById(from);
+        window.enlighted = "";
+        elem_from.removeChild(elem_from.children[elem_from.childElementCount - 1]);
+        elem_from.removeChild(elem_from.children[elem_from.childElementCount - 1]);
+        var elem_to = document.getElementById(_to);
+        var lst = new Object();
+        lst[_to] = piece + ".svg";
+        reset();
+        drawChessboard.drawPieces(document.getElementById("chessboard"), lst);
+        moving_pieces[piece] = _to;
+        number_of_moves += dist(from, _to);
+        $("#number_of_moves").html(number_of_moves);
+        if (_to == end_position) {
+          window.goal_reached();
+        }
+      };
+      window.dist = function(from, to) {
+        var x1 = from[1];
+        var x2 = to[1];
+        var y1 = from.charCodeAt(0) - 65 + 1;
+        var y2 = to.charCodeAt(0) - 65 + 1;
+        var d = 0;
+        if (x1 == x2) {
+          d = Math.abs(y2 - y1);
+        } else {
+          d = Math.abs(x2 - x1);
+        }
+        return d;
+      };
+      window.enlight(end_position, "orange", true);
+      drawChessboard.handleMouseDown_image = function(e) {
+        var elem = e.currentTarget;
+        var casella = elem.getAttribute("data-casella");
+        var type = elem.getAttribute("data-type");
+        if (window.enlighted == casella) {
+          return;
+        }
+        var can_move = false;
+        for (var i in moving_pieces) {
+          if (i == type && moving_pieces[i] == casella) {
+            can_move = true;
+            moving_piece = i + ";" + moving_pieces[i];
+            break;
+          }
+        }
+        if (can_move) {
+          window.calculatePossibleMoves(casella, type);
+          window.enlight(casella, "orange");
+        }
+      };
+      window.calculatePossibleMoves = function(casella, type) {
+        possible_moves = new Array();
+        switch (type) {
+          case "Rook":
+            {
+              var x = casella.charCodeAt(0) - 65 + 1;
+              var y = parseInt(casella[1]);
+              possible_moves = pieceMove.moveRook(casella, x, y);
+            }
+            break;
+        }
+        if (show_possible_moves) {
+          for (var i in possible_moves) {
+            var elem = document.getElementById(possible_moves[i]);
+            caselle_colorate.push(possible_moves[i]);
+            var div = document.createElement("div");
+            div.style.background = "blue";
+            div.style.borderRadius = "50%";
+            div.style.position = "absolute";
+            div.style.left = "10%";
+            div.style.top = "10%";
+            div.style.width = "80%";
+            div.style.height = "80%";
+            div.style.zIndex = "1";
+            elem.appendChild(div);
+          }
+        }
+      };
+      window.reset = function() {
+        for (var i in caselle_colorate) {
+          var elem = document.getElementById(caselle_colorate[i]);
+          elem.removeChild(elem.children[elem.childElementCount - 1]);
+        }
+        caselle_colorate = new Array();
+      };
+      window.goal_reached = function() {
+        punti = window.getPoints();
+        window.myconfirm_2b(
+          "Obiettivo raggiunto",
+          "Hai percorso " + number_of_moves + " caselle. Vuoi riprovare?",
+          "s\xEC",
+          "no",
+          function() {
+            $(this).dialog("close");
+            window.ricomincia();
+            $(this).remove();
+          },
+          function() {
+            $(this).dialog("close");
+            clearInterval(maketimer.myt);
+            maketimer.sec = 0;
+            maketimer.expired = false;
+            $(this).remove();
+            punti -= number_of_moves;
+            window.myalert("Punti", "Il tuo punteggio \xE8 di " + punti + " punti!");
+            window.updatePoints(-number_of_moves);
+            drawChessboard.handleMouseDown_casella = function() {
+            };
+            drawChessboard.handleMouseDown_image = function() {
+            };
+            $("#ricomincia").prop("disabled", true);
+          },
+          false
+        );
+      };
+      window.procedi = function() {
+        punti = window.getPoints();
+        punti -= number_of_moves;
+        window.myalert("Punti", "Il tuo punteggio \xE8 " + punti + ".");
+        maketimer.sec = 0;
+        window.updatePoints(-number_of_moves);
+        drawChessboard.handleMouseDown_casella = function() {
+        };
+        drawChessboard.handleMouseDown_image = function() {
+        };
+        $("#ricomincia").prop("disabled", true);
+      };
+    }
+  };
+  var gioco42 = new Gioco42();
+
+  // static/js/med/pages/gioco5.js
+  var Gioco52 = class {
+    constructor() {
+    }
+    start() {
+      var drawChessboard = new DrawChessboard();
+      var maketimer = new MakeTimerClass();
+      maketimer.maketimer(document.getElementsByClassName("timer")[0]);
+      maketimer.stopTimerFunction = function() {
+        var dis = document.getElementById("gobtn").disabled;
+        document.getElementById("gobtn").disabled = true;
+        document.getElementById("reset").disabled = true;
+        drawChessboard.handleMouseDown_casella = function() {
+        };
+        if (!dis) {
+          window.procedi(document.getElementById("gobtn"));
+        }
+      };
+      drawChessboard.drawChessboard(document.getElementById("chessboard"));
+      drawChessboard.piece_position = {
+        D5: "Rook.svg"
+      };
+      drawChessboard.drawPieces(document.getElementById("chessboard"), drawChessboard.piece_position);
+      var caselle_colorate = new Array();
+      var caselle_corrette = [D6, E5, D4, C5];
+      drawChessboard.handleMouseDown_casella = function(e) {
+        var elem = e.currentTarget;
+        var casella = elem.getAttribute("casella");
+        if (caselle_colorate.includes(casella)) {
+          caselle_colorate.splice(caselle_colorate.indexOf(casella), 1);
+          elem.removeChild(elem.children[elem.childElementCount - 1]);
+        } else {
+          caselle_colorate.push(casella);
+          var div = document.createElement("div");
+          div.style.background = "red";
+          div.style.borderRadius = "50%";
+          div.style.position = "absolute";
+          div.style.left = "10%";
+          div.style.top = "10%";
+          div.style.width = "80%";
+          div.style.height = "80%";
+          div.style.zIndex = "1";
+          elem.appendChild(div);
+        }
+      };
+      drawChessboard.handleMouseDown_image = function() {
+      };
+      window.reset = function() {
+        for (var i in caselle_colorate) {
+          var elem = document.getElementById(caselle_colorate[i]);
+          elem.removeChild(elem.children[elem.childElementCount - 1]);
+        }
+        caselle_colorate = new Array();
+      };
+      window.procedi = function(btn) {
+        btn.disabled = true;
+        var points = 0;
+        for (var i in caselle_colorate) {
+          if (caselle_corrette.includes(caselle_colorate[i])) {
+            points += 1;
+          } else {
+            points -= 1;
+          }
+        }
+        window.myalert("Punti", "Hai guadagnato " + points + " punti.");
+        window.updatePoints(points);
+        punti = window.getPoints();
+        clearInterval(maketimer.myt);
+        maketimer.sec = 0;
+        document.getElementById("gobtn").disabled = true;
+        document.getElementById("reset").disabled = true;
+        drawChessboard.handleMouseDown_casella = function() {
+        };
+        drawChessboard.handleMouseDown_image = function() {
+        };
+      };
+    }
+  };
+  var gioco52 = new Gioco52();
+
+  // static/js/med/pages/img_gioco5.js
+  var ImgGioco52 = class extends ImgGioco {
+    constructor() {
+      super(
+        { D5: "Rook.svg" },
+        [C5, E5, D4, D6]
+      );
+    }
+  };
+  var img_gioco52 = new ImgGioco52();
+
+  // static/js/med/pages/gioco6.js
+  var Gioco62 = class {
+    constructor() {
+    }
+    start() {
+      var drawChessboard = new DrawChessboard();
+      var maketimer = new MakeTimerClass();
+      maketimer.maketimer(document.getElementsByClassName("timer")[0]);
+      maketimer.stopTimerFunction = function() {
+        var dis = document.getElementById("gobtn").disabled;
+        document.getElementById("gobtn").disabled = true;
+        document.getElementById("reset").disabled = true;
+        drawChessboard.handleMouseDown_casella = function() {
+        };
+        if (!dis) {
+          window.procedi(document.getElementById("gobtn"));
+        }
+      };
+      drawChessboard.drawChessboard(document.getElementById("chessboard"));
+      drawChessboard.piece_position = {
+        D5: "Rook.svg"
+      };
+      drawChessboard.drawPieces(document.getElementById("chessboard"), drawChessboard.piece_position);
+      var caselle_colorate = new Array();
+      var caselle_corrette = [D3, D7, C4, C6, B5, E4, E6, F5];
+      drawChessboard.handleMouseDown_casella = function(e) {
+        var elem = e.currentTarget;
+        var casella = elem.getAttribute("casella");
+        if (caselle_colorate.includes(casella)) {
+          caselle_colorate.splice(caselle_colorate.indexOf(casella), 1);
+          elem.removeChild(elem.children[elem.childElementCount - 1]);
+        } else {
+          caselle_colorate.push(casella);
+          var div = document.createElement("div");
+          div.style.background = "red";
+          div.style.borderRadius = "50%";
+          div.style.position = "absolute";
+          div.style.left = "10%";
+          div.style.top = "10%";
+          div.style.width = "80%";
+          div.style.height = "80%";
+          div.style.zIndex = "1";
+          elem.appendChild(div);
+        }
+      };
+      drawChessboard.handleMouseDown_image = function() {
+      };
+      window.reset = function() {
+        for (var i in caselle_colorate) {
+          var elem = document.getElementById(caselle_colorate[i]);
+          elem.removeChild(elem.children[elem.childElementCount - 1]);
+        }
+        caselle_colorate = new Array();
+      };
+      window.procedi = function(btn) {
+        btn.disabled = true;
+        var points = 0;
+        for (var i in caselle_colorate) {
+          if (caselle_corrette.includes(caselle_colorate[i])) {
+            points += 1;
+          } else {
+            points -= 1;
+          }
+        }
+        window.myalert("Punti", "Hai guadagnato " + points + " punti.");
+        window.updatePoints(points);
+        punti = window.getPoints();
+        clearInterval(maketimer.myt);
+        maketimer.sec = 0;
+        document.getElementById("gobtn").disabled = true;
+        document.getElementById("reset").disabled = true;
+        drawChessboard.handleMouseDown_casella = function() {
+        };
+        drawChessboard.handleMouseDown_image = function() {
+        };
+      };
+    }
+  };
+  var gioco62 = new Gioco62();
+
+  // static/js/med/pages/img_gioco6.js
+  var ImgGioco62 = class extends ImgGioco {
+    constructor() {
+      super(
+        { D5: "Rook.svg" },
+        [D3, D7, C4, C6, B5, E4, E6, F5]
+      );
+    }
+  };
+  var img_gioco62 = new ImgGioco62();
+
+  // static/js/med/pages/gioco7.js
+  var Gioco72 = class {
+    constructor() {
+    }
+    start() {
+      var drawChessboard = new DrawChessboard();
+      var maketimer = new MakeTimerClass();
+      maketimer.maketimer(document.getElementsByClassName("timer")[0]);
+      maketimer.stopTimerFunction = function() {
+        var dis = document.getElementById("gobtn").disabled;
+        document.getElementById("gobtn").disabled = true;
+        document.getElementById("reset").disabled = true;
+        drawChessboard.handleMouseDown_casella = function() {
+        };
+        if (!dis) {
+          window.procedi(document.getElementById("gobtn"));
+        }
+      };
+      drawChessboard.drawChessboard(document.getElementById("chessboard"));
+      drawChessboard.piece_position = {
+        D5: "Bishop.svg"
+      };
+      drawChessboard.drawPieces(document.getElementById("chessboard"), drawChessboard.piece_position);
+      var caselle_colorate = new Array();
+      var caselle_corrette = [A2, A8, B3, B7, C4, C6, E4, E6, F3, F7, G2, G8, H1];
+      drawChessboard.handleMouseDown_casella = function(e) {
+        var elem = e.currentTarget;
+        var casella = elem.getAttribute("casella");
+        if (caselle_colorate.includes(casella)) {
+          caselle_colorate.splice(caselle_colorate.indexOf(casella), 1);
+          elem.removeChild(elem.children[elem.childElementCount - 1]);
+        } else {
+          caselle_colorate.push(casella);
+          var div = document.createElement("div");
+          div.style.background = "red";
+          div.style.borderRadius = "50%";
+          div.style.position = "absolute";
+          div.style.left = "10%";
+          div.style.top = "10%";
+          div.style.width = "80%";
+          div.style.height = "80%";
+          div.style.zIndex = "1";
+          elem.appendChild(div);
+        }
+      };
+      drawChessboard.handleMouseDown_image = function() {
+      };
+      window.reset = function() {
+        for (var i in caselle_colorate) {
+          var elem = document.getElementById(caselle_colorate[i]);
+          elem.removeChild(elem.children[elem.childElementCount - 1]);
+        }
+        caselle_colorate = new Array();
+      };
+      window.procedi = function(btn) {
+        btn.disabled = true;
+        var points = 0;
+        for (var i in caselle_colorate) {
+          if (caselle_corrette.includes(caselle_colorate[i])) {
+            points += 1;
+          } else {
+            points -= 1;
+          }
+        }
+        window.myalert("Punti", "Hai guadagnato " + points + " punti.");
+        window.updatePoints(points);
+        punti = window.getPoints();
+        clearInterval(maketimer.myt);
+        maketimer.sec = 0;
+        document.getElementById("gobtn").disabled = true;
+        document.getElementById("reset").disabled = true;
+        drawChessboard.handleMouseDown_casella = function() {
+        };
+        drawChessboard.handleMouseDown_image = function() {
+        };
+      };
+    }
+  };
+  var gioco72 = new Gioco72();
+
+  // static/js/med/pages/img_gioco7.js
+  var ImgGioco72 = class extends ImgGioco {
+    constructor() {
+      super(
+        { D5: "Bishop.svg" },
+        [A2, A8, B3, B7, C4, C6, E4, E6, F3, F7, G2, G8, H1]
+      );
+    }
+  };
+  var img_gioco72 = new ImgGioco72();
+
+  // static/js/med/pages/gioco8.js
+  var Gioco82 = class {
+    constructor() {
+    }
+    start() {
+      var drawChessboard = new DrawChessboard();
+      var maketimer = new MakeTimerClass();
+      maketimer.maketimer(document.getElementsByClassName("timer")[0]);
+      maketimer.stopTimerFunction = function() {
+        drawChessboard.handleMouseDown_casella = function() {
+        };
+        drawChessboard.handleMouseDown_image = function() {
+        };
+        $("#ricomincia").prop("disabled", true);
+        window.procedi();
+      };
+      drawChessboard.drawChessboard(document.getElementById("chessboard"));
+      drawChessboard.piece_position = {
+        A2: "Bishop.svg",
+        D4: "obstacle.svg",
+        E5: "obstacle.svg",
+        F6: "obstacle.svg",
+        G7: "obstacle.svg",
+        H3: "obstacle.svg",
+        B7: "obstacle.svg",
+        A8: "obstacle.svg",
+        C6: "obstacle.svg",
+        G3: "obstacle.svg"
+      };
+      drawChessboard.drawPieces(document.getElementById("chessboard"), drawChessboard.piece_position);
+      var caselle_colorate = new Array();
+      var caselle_corrette = [A5, B5, C5, E5, F5, G5, H5, D4, D3, D2, D1];
+      window.enlighted = "";
+      var moving_pieces = {
+        "Bishop": A2
+      };
+      var moving_piece = "";
+      var possible_moves = new Array();
+      var obstacles = ["rock-golem-1", "rock-golem", "obstacle"];
+      var end_position = H7;
+      var number_of_moves = 0;
+      var show_possible_moves = false;
+      window.ricomincia = function() {
+        $("#chessboard").html("")[0].style = "";
+        drawChessboard.drawChessboard(document.getElementById("chessboard"));
+        drawChessboard.drawPieces(document.getElementById("chessboard"), drawChessboard.piece_position);
+        moving_pieces = {
+          "Bishop": A2
+        };
+        window.enlighted = "";
+        window.enlight(end_position, "orange", true);
+        number_of_moves = 0;
+        $("#number_of_moves").html(number_of_moves);
+        possible_moves = new Array();
+        caselle_colorate = new Array();
+      };
+      drawChessboard.handleMouseDown_casella = function(e) {
+        var elem = e.currentTarget;
+        var casella = elem.getAttribute("casella");
+        if (possible_moves.includes(casella)) {
+          window.move(moving_piece, elem.id);
+          moving_piece = "";
+          possible_moves = new Array();
+          e.stopPropagation();
+          e.preventDefault();
+        } else {
+        }
+      };
+      window.move = function(moving_piece2, casella) {
+        var piece = moving_piece2.split(";")[0];
+        var from = moving_piece2.split(";")[1];
+        var _to = casella;
+        var elem_from = document.getElementById(from);
+        window.enlighted = "";
+        elem_from.removeChild(elem_from.children[elem_from.childElementCount - 1]);
+        elem_from.removeChild(elem_from.children[elem_from.childElementCount - 1]);
+        var elem_to = document.getElementById(_to);
+        var lst = new Object();
+        lst[_to] = piece + ".svg";
+        window.reset();
+        drawChessboard.drawPieces(document.getElementById("chessboard"), lst);
+        moving_pieces[piece] = _to;
+        number_of_moves += window.dist(from, _to);
+        $("#number_of_moves").html(number_of_moves);
+        if (_to == end_position) {
+          window.goal_reached();
+        }
+      };
+      window.dist = function(from, to) {
+        var x1 = from[1];
+        var x2 = to[1];
+        var y1 = from.charCodeAt(0) - 65 + 1;
+        var y2 = to.charCodeAt(0) - 65 + 1;
+        var d = 0;
+        if (x1 == x2) {
+          d = Math.abs(y2 - y1);
+        } else {
+          d = Math.abs(x2 - x1);
+        }
+        return d;
+      };
+      window.enlight(end_position, "orange", true);
+      drawChessboard.handleMouseDown_image = function(e) {
+        var elem = e.currentTarget;
+        var casella = elem.getAttribute("data-casella");
+        var type = elem.getAttribute("data-type");
+        if (window.enlighted == casella) {
+          return;
+        }
+        var can_move = false;
+        for (var i in moving_pieces) {
+          if (i == type && moving_pieces[i] == casella) {
+            can_move = true;
+            moving_piece = i + ";" + moving_pieces[i];
+            break;
+          }
+        }
+        if (can_move) {
+          window.calculatePossibleMoves(casella, type);
+          window.enlight(casella, "orange");
+        }
+      };
+      window.calculatePossibleMoves = function(casella, type) {
+        possible_moves = new Array();
+        switch (type) {
+          case "Bishop":
+            {
+              var x = casella.charCodeAt(0) - 65 + 1;
+              var y = parseInt(casella[1]);
+              possible_moves = pieceMove.moveBishop(casella, x, y);
+            }
+            break;
+        }
+        if (show_possible_moves) {
+          for (var i in possible_moves) {
+            var elem = document.getElementById(possible_moves[i]);
+            caselle_colorate.push(possible_moves[i]);
+            var div = document.createElement("div");
+            div.style.background = "blue";
+            div.style.borderRadius = "50%";
+            div.style.position = "absolute";
+            div.style.left = "10%";
+            div.style.top = "10%";
+            div.style.width = "80%";
+            div.style.height = "80%";
+            div.style.zIndex = "1";
+            elem.appendChild(div);
+          }
+        }
+      };
+      window.reset = function() {
+        for (var i in caselle_colorate) {
+          var elem = document.getElementById(caselle_colorate[i]);
+          elem.removeChild(elem.children[elem.childElementCount - 1]);
+        }
+        caselle_colorate = new Array();
+      };
+      window.goal_reached = function() {
+        punti = window.getPoints();
+        window.myconfirm_2b(
+          "Obiettivo raggiunto",
+          "Hai percorso " + number_of_moves + " caselle. Vuoi riprovare?",
+          "s\xEC",
+          "no",
+          function() {
+            $(this).dialog("close");
+            window.ricomincia();
+            $(this).remove();
+          },
+          function() {
+            $(this).dialog("close");
+            clearInterval(maketimer.myt);
+            maketimer.sec = 0;
+            maketimer.expired = false;
+            $(this).remove();
+            punti -= number_of_moves;
+            window.myalert("Punti", "Il tuo punteggio \xE8 di " + punti + " punti!");
+            window.updatePoints(-number_of_moves);
+            drawChessboard.handleMouseDown_casella = function() {
+            };
+            drawChessboard.handleMouseDown_image = function() {
+            };
+            $("#ricomincia").prop("disabled", true);
+          },
+          false
+        );
+      };
+      window.procedi = function() {
+        punti = window.getPoints();
+        punti -= number_of_moves;
+        window.myalert("Punti", "Il tuo punteggio \xE8 " + punti + ".");
+        maketimer.sec = 0;
+        window.updatePoints(-number_of_moves);
+        drawChessboard.handleMouseDown_casella = function() {
+        };
+        drawChessboard.handleMouseDown_image = function() {
+        };
+        $("#ricomincia").prop("disabled", true);
+      };
+    }
+  };
+  var gioco82 = new Gioco82();
+
+  // static/js/med/pages/quiz8.js
+  var Quiz8 = class {
+    constructor() {
+    }
+    start() {
+      var drawChessboard = new DrawChessboard();
+      var maketimer = new MakeTimerClass();
+      drawChessboard.drawChessboard($("#chessboard")[0]);
+      drawChessboard.drawPieces($("#chessboard")[0], { D3: "Bishop.svg" });
+      window.enlighted = "";
+      window.enlight(B5, "orange", true);
+      window.can_answer = true;
+      maketimer.stopTimerFunction = function(pressed) {
+        try {
+          if (pressed == void 0) {
+            pressed = false;
+          }
+        } catch (errore) {
+          pressed = false;
+        }
+        if (!pressed) {
+          window.myalert("Tempo esaurito!", "E' scaduto il tempo!");
+        }
+        window.can_answer = false;
+        $(".risposta").toggleClass("disabled");
+      };
+      getQuiz();
+    }
+  };
+  var quiz8 = new Quiz8();
+
+  // static/js/med/pages/quiz9.js
+  var Quiz9 = class {
+    constructor() {
+    }
+    start() {
+      var drawChessboard = new DrawChessboard();
+      var maketimer = new MakeTimerClass();
+      drawChessboard.drawChessboard($("#chessboard")[0]);
+      drawChessboard.drawPieces($("#chessboard")[0], { D6: "Bishop.svg" });
+      window.enlighted = "";
+      window.enlight(F6, "orange", true);
+      window.can_answer = true;
+      maketimer.stopTimerFunction = function(pressed) {
+        try {
+          if (pressed == void 0) {
+            pressed = false;
+          }
+        } catch (errore) {
+          pressed = false;
+        }
+        if (!pressed) {
+          window.myalert("Tempo esaurito!", "E' scaduto il tempo!");
+        }
+        window.can_answer = false;
+        $(".risposta").toggleClass("disabled");
+      };
+      getQuiz();
+    }
+  };
+  var quiz9 = new Quiz9();
+
+  // static/js/med/pages/quiz10.js
+  var Quiz10 = class {
+    constructor() {
+    }
+    start() {
+      var drawChessboard = new DrawChessboard();
+      var maketimer = new MakeTimerClass();
+      drawChessboard.drawChessboard($("#chessboard")[0]);
+      drawChessboard.drawPieces($("#chessboard")[0], { D6: "Bishop.svg" });
+      window.enlighted = "";
+      window.enlight(E6, "orange", true);
+      window.can_answer = true;
+      maketimer.stopTimerFunction = function(pressed) {
+        try {
+          if (pressed == void 0) {
+            pressed = false;
+          }
+        } catch (errore) {
+          pressed = false;
+        }
+        if (!pressed) {
+          window.myalert("Tempo esaurito!", "E' scaduto il tempo!");
+        }
+        window.can_answer = false;
+        $(".risposta").toggleClass("disabled");
+      };
+      getQuiz();
+    }
+  };
+  var quiz10 = new Quiz10();
+
+  // static/js/med/pages/quiz11.js
+  var Quiz112 = class {
+    constructor() {
+    }
+    start() {
+      var drawChessboard = new DrawChessboard();
+      var maketimer = new MakeTimerClass();
+      drawChessboard.drawChessboard($("#chessboard")[0]);
+      drawChessboard.drawPieces($("#chessboard")[0], { D5: "Bishop.svg" });
+      window.can_answer = true;
+      maketimer.stopTimerFunction = function(pressed) {
+        try {
+          if (pressed == void 0) {
+            pressed = false;
+          }
+        } catch (errore) {
+          pressed = false;
+        }
+        if (!pressed) {
+          window.myalert("Tempo esaurito!", "E' scaduto il tempo!");
+        }
+        window.can_answer = false;
+        $(".risposta").toggleClass("disabled");
+      };
+      getQuiz();
+    }
+  };
+  var quiz112 = new Quiz112();
+
+  // static/js/med/pages/img_gioco10.js
+  var ImgGioco102 = class extends ImgGioco {
+    constructor() {
+      super(
+        { D5: "Bishop.svg" },
+        [C4, C6, E4, E6]
+      );
+    }
+  };
+  var img_gioco102 = new ImgGioco102();
+
+  // static/js/med/pages/gioco11b.js
+  var Gioco11b = class {
+    constructor() {
+    }
+    start() {
+      var drawChessboard = new DrawChessboard();
+      var maketimer = new MakeTimerClass();
+      maketimer.maketimer(document.getElementsByClassName("timer")[0]);
+      maketimer.stopTimerFunction = function() {
+        var dis = document.getElementById("gobtn").disabled;
+        document.getElementById("gobtn").disabled = true;
+        document.getElementById("reset").disabled = true;
+        drawChessboard.handleMouseDown_casella = function() {
+        };
+        if (!dis) {
+          window.procedi(document.getElementById("gobtn"));
+        }
+      };
+      drawChessboard.drawChessboard(document.getElementById("chessboard"));
+      drawChessboard.piece_position = {
+        F5: "Bishop.svg"
+      };
+      drawChessboard.drawPieces(document.getElementById("chessboard"), drawChessboard.piece_position);
+      var caselle_colorate = new Array();
+      var caselle_corrette = [D7, F7, H7, D5, H5, D3, F3, H3];
+      drawChessboard.handleMouseDown_casella = function(e) {
+        var elem = e.currentTarget;
+        var casella = elem.getAttribute("casella");
+        if (caselle_colorate.includes(casella)) {
+          caselle_colorate.splice(caselle_colorate.indexOf(casella), 1);
+          elem.removeChild(elem.children[elem.childElementCount - 1]);
+        } else {
+          caselle_colorate.push(casella);
+          var div = document.createElement("div");
+          div.style.background = "red";
+          div.style.borderRadius = "50%";
+          div.style.position = "absolute";
+          div.style.left = "10%";
+          div.style.top = "10%";
+          div.style.width = "80%";
+          div.style.height = "80%";
+          div.style.zIndex = "1";
+          elem.appendChild(div);
+        }
+      };
+      window.reset = function() {
+        for (var i in caselle_colorate) {
+          var elem = document.getElementById(caselle_colorate[i]);
+          elem.removeChild(elem.children[elem.childElementCount - 1]);
+        }
+        caselle_colorate = new Array();
+      };
+      window.procedi = function(btn) {
+        btn.disabled = true;
+        var points = 0;
+        for (var i in caselle_colorate) {
+          if (caselle_corrette.includes(caselle_colorate[i])) {
+            points += 1;
+          } else {
+            points -= 1;
+          }
+        }
+        window.myalert("Punti", "Hai guadaganto " + points + " punti.");
+        window.updatePoints(points);
+        punti = window.getPoints();
+        clearInterval(maketimer.myt);
+        maketimer.sec = 0;
+        document.getElementById("gobtn").disabled = true;
+        document.getElementById("reset").disabled = true;
+        drawChessboard.handleMouseDown_casella = function() {
+        };
+        drawChessboard.handleMouseDown_image = function() {
+        };
+      };
+    }
+  };
+  var gioco11b = new Gioco11b();
+
+  // static/js/med/pages/img_gioco11.js
+  var ImgGioco112 = class extends ImgGioco {
+    constructor() {
+      super(
+        { F5: "Bishop.svg" },
+        [D7, F7, H7, D5, H5, D3, F3, H3]
+      );
+    }
+  };
+  var img_gioco112 = new ImgGioco112();
+
+  // static/js/med/pages/img_cavallo.js
+  var ImgCavallo = class {
+    constructor() {
+    }
+    start() {
+      var drawChessboard = new DrawChessboard();
+      drawChessboard.drawChessboard(document.getElementById("chessboard"));
+      drawChessboard.piece_position = {
+        D5: "Knight.svg"
+      };
+      drawChessboard.drawPieces(document.getElementById("chessboard"), drawChessboard.piece_position);
+      var cas = [E7];
+      for (var i in cas) {
+        var elem = $("#" + cas[i])[0];
+        var div = document.createElement("div");
+        div.style.background = "red";
+        div.style.borderRadius = "50%";
+        div.style.position = "absolute";
+        div.style.left = "10%";
+        div.style.top = "10%";
+        div.style.width = "80%";
+        div.style.height = "80%";
+        div.style.zIndex = "1";
+        elem.appendChild(div);
+      }
+      cas = [D6, D7];
+      for (var i in cas) {
+        var elem = $("#" + cas[i])[0];
+        var div = document.createElement("div");
+        div.style.background = "rgba(255,0,0,0.5)";
+        div.style.borderRadius = "50%";
+        div.style.position = "absolute";
+        div.style.left = "30%";
+        div.style.top = "30%";
+        div.style.width = "40%";
+        div.style.height = "40%";
+        div.style.zIndex = "1";
+        elem.appendChild(div);
+      }
+      drawChessboard.handleMouseDown_casella = function() {
+      };
+      drawChessboard.handleMouseDown_image = function() {
+      };
+    }
+  };
+  var img_cavallo = new ImgCavallo();
+
+  // static/js/med/pages/gioco_spirit.js
+  var GiocoSpirit = class {
+    constructor() {
+    }
+    start() {
+      var drawChessboard = new DrawChessboard();
+      var maketimer = new MakeTimerClass();
+      maketimer.maketimer(document.getElementsByClassName("timer")[0]);
+      maketimer.stopTimerFunction = function() {
+        var dis = document.getElementById("gobtn").disabled;
+        document.getElementById("gobtn").disabled = true;
+        document.getElementById("reset").disabled = true;
+        drawChessboard.handleMouseDown_casella = function() {
+        };
+        if (!dis) {
+          window.procedi(document.getElementById("gobtn"));
+        }
+      };
+      drawChessboard.drawChessboard(document.getElementById("chessboard"));
+      drawChessboard.piece_position = {
+        D5: "Knight.svg"
+      };
+      drawChessboard.drawPieces(document.getElementById("chessboard"), drawChessboard.piece_position);
+      var caselle_colorate = new Array();
+      var caselle_corrette = [B4, B6, C3, C7, E3, E7, F4, F6];
+      drawChessboard.handleMouseDown_casella = function(e) {
+        var elem = e.currentTarget;
+        var casella = elem.getAttribute("casella");
+        if (caselle_colorate.includes(casella)) {
+          caselle_colorate.splice(caselle_colorate.indexOf(casella), 1);
+          elem.removeChild(elem.children[elem.childElementCount - 1]);
+        } else {
+          caselle_colorate.push(casella);
+          var div = document.createElement("div");
+          div.style.background = "red";
+          div.style.borderRadius = "50%";
+          div.style.position = "absolute";
+          div.style.left = "10%";
+          div.style.top = "10%";
+          div.style.width = "80%";
+          div.style.height = "80%";
+          div.style.zIndex = "1";
+          elem.appendChild(div);
+        }
+      };
+      window.calculatePossibleMoves = function(casella, type) {
+        var possible_moves = new Array();
+        switch (type) {
+          case "Rook":
+            {
+              var x = casella.charCodeAt(0) - 65 + 1;
+              var y = parseInt(casella[1]);
+              possible_moves = pieceMove.moveRook(casella, x, y);
+            }
+            break;
+        }
+        for (var i in possible_moves) {
+          var elem = document.getElementById(possible_moves[i]);
+          caselle_colorate.push(possible_moves[i]);
+          var div = document.createElement("div");
+          div.style.background = "blue";
+          div.style.borderRadius = "50%";
+          div.style.position = "absolute";
+          div.style.left = "10%";
+          div.style.top = "10%";
+          div.style.width = "80%";
+          div.style.height = "80%";
+          div.style.zIndex = "1";
+          elem.appendChild(div);
+        }
+      };
+      window.reset = function() {
+        for (var i in caselle_colorate) {
+          var elem = document.getElementById(caselle_colorate[i]);
+          elem.removeChild(elem.children[elem.childElementCount - 1]);
+        }
+        caselle_colorate = new Array();
+      };
+      window.procedi = function(btn) {
+        btn.disabled = true;
+        var points = 0;
+        for (var i in caselle_colorate) {
+          if (caselle_corrette.includes(caselle_colorate[i])) {
+            points += 1;
+          } else {
+            points -= 1;
+          }
+        }
+        window.myalert("Punti", "Hai totalizzato " + points + " punti.");
+        window.updatePoints(points);
+        clearInterval(maketimer.myt);
+        maketimer.sec = 0;
+        document.getElementById("gobtn").disabled = true;
+        document.getElementById("reset").disabled = true;
+        drawChessboard.handleMouseDown_casella = function() {
+        };
+        drawChessboard.handleMouseDown_image = function() {
+        };
+      };
+    }
+  };
+  var gioco_spirit = new GiocoSpirit();
+
+  // static/js/med/pages/img_gioco_spirit.js
+  var ImgGiocoSpirit = class extends ImgGioco {
+    constructor() {
+      super(
+        { D5: "Knight.svg" },
+        [B4, B6, C3, C7, E3, E7, F4, F6]
+      );
+    }
+  };
+  var img_gioco_spirit = new ImgGiocoSpirit();
+
+  // static/js/med/pages/gioco13b.js
+  var Gioco13b = class {
+    constructor() {
+    }
+    start() {
+      var drawChessboard = new DrawChessboard();
+      var maketimer = new MakeTimerClass();
+      maketimer.maketimer(document.getElementsByClassName("timer")[0]);
+      maketimer.stopTimerFunction = function() {
+        drawChessboard.handleMouseDown_casella = function() {
+        };
+        drawChessboard.handleMouseDown_image = function() {
+        };
+        $("#ricomincia").prop("disabled", true);
+        procedi();
+      };
+      drawChessboard.drawChessboard(document.getElementById("chessboard"));
+      drawChessboard.piece_position = {
+        A2: "Knight.svg"
+      };
+      drawChessboard.drawPieces(document.getElementById("chessboard"), drawChessboard.piece_position);
+      var caselle_colorate = new Array();
+      window.enlighted = "";
+      var moving_pieces = {
+        "Knight": A2
+      };
+      var moving_piece = "";
+      var possible_moves = new Array();
+      var obstacles = ["rock-golem-1", "rock-golem", "obstacle"];
+      var end_position = D6;
+      var number_of_moves = 0;
+      var show_possible_moves = false;
+      window.ricomincia = function() {
+        $("#chessboard").html("")[0].style = "";
+        drawChessboard.drawChessboard(document.getElementById("chessboard"));
+        drawChessboard.drawPieces(document.getElementById("chessboard"), drawChessboard.piece_position);
+        moving_pieces = {
+          "Knight": A2
+        };
+        window.enlighted = "";
+        window.enlight(end_position, "orange", true);
+        number_of_moves = 0;
+        $("#number_of_moves").html(number_of_moves);
+        possible_moves = new Array();
+        caselle_colorate = new Array();
+      };
+      drawChessboard.handleMouseDown_casella = function(e) {
+        var elem = e.currentTarget;
+        var casella = elem.getAttribute("casella");
+        if (possible_moves.includes(casella)) {
+          window.move(moving_piece, elem.id);
+          moving_piece = "";
+          possible_moves = new Array();
+          e.stopPropagation();
+          e.preventDefault();
+        } else {
+        }
+      };
+      window.move = function(moving_piece2, casella) {
+        var piece = moving_piece2.split(";")[0];
+        var from = moving_piece2.split(";")[1];
+        var _to = casella;
+        var elem_from = document.getElementById(from);
+        window.enlighted = "";
+        elem_from.removeChild(elem_from.children[elem_from.childElementCount - 1]);
+        elem_from.removeChild(elem_from.children[elem_from.childElementCount - 1]);
+        var elem_to = document.getElementById(_to);
+        var lst = new Object();
+        lst[_to] = piece + ".svg";
+        window.reset();
+        drawChessboard.drawPieces(document.getElementById("chessboard"), lst);
+        moving_pieces[piece] = _to;
+        number_of_moves += dist(from, _to);
+        $("#number_of_moves").html(number_of_moves);
+        if (_to == end_position) {
+          window.goal_reached();
+        }
+      };
+      window.dist = function(from, to) {
+        return 1;
+      };
+      window.enlight(end_position, "orange", true);
+      drawChessboard.handleMouseDown_image = function(e) {
+        var elem = e.currentTarget;
+        var casella = elem.getAttribute("data-casella");
+        var type = elem.getAttribute("data-type");
+        if (window.enlighted == casella) {
+          return;
+        }
+        var can_move = false;
+        for (var i in moving_pieces) {
+          if (i == type && moving_pieces[i] == casella) {
+            can_move = true;
+            moving_piece = i + ";" + moving_pieces[i];
+            break;
+          }
+        }
+        if (can_move) {
+          window.calculatePossibleMoves(casella, type);
+          window.enlight(casella, "orange");
+        }
+      };
+      window.calculatePossibleMoves = function(casella, type) {
+        possible_moves = new Array();
+        switch (type) {
+          case "Knight":
+            {
+              var x = casella.charCodeAt(0) - 65 + 1;
+              var y = parseInt(casella[1]);
+              possible_moves = pieceMove.moveKnight(casella, x, y);
+            }
+            break;
+        }
+        if (show_possible_moves) {
+          for (var i in possible_moves) {
+            var elem = document.getElementById(possible_moves[i]);
+            caselle_colorate.push(possible_moves[i]);
+            var div = document.createElement("div");
+            div.style.background = "blue";
+            div.style.borderRadius = "50%";
+            div.style.position = "absolute";
+            div.style.left = "10%";
+            div.style.top = "10%";
+            div.style.width = "80%";
+            div.style.height = "80%";
+            div.style.zIndex = "1";
+            elem.appendChild(div);
+          }
+        }
+      };
+      window.reset = function() {
+        for (var i in caselle_colorate) {
+          var elem = document.getElementById(caselle_colorate[i]);
+          elem.removeChild(elem.children[elem.childElementCount - 1]);
+        }
+        caselle_colorate = new Array();
+      };
+      window.goal_reached = function() {
+        punti = window.getPoints();
+        window.myconfirm_2b(
+          "Obiettivo raggiunto",
+          "Hai impiegato " + number_of_moves + " mosse. Vuoi riprovare?",
+          "s\xEC",
+          "no",
+          function() {
+            $(this).dialog("close");
+            window.ricomincia();
+            $(this).remove();
+          },
+          function() {
+            $(this).dialog("close");
+            clearInterval(maketimer.myt);
+            maketimer.sec = 0;
+            $(this).remove();
+            punti -= number_of_moves;
+            window.myalert("Punti", "Il tuo punteggio \xE8 di " + punti + " punti!");
+            window.updatePoints(-number_of_moves);
+            drawChessboard.handleMouseDown_casella = function() {
+            };
+            drawChessboard.handleMouseDown_image = function() {
+            };
+            $("#ricomincia").prop("disabled", true);
+          },
+          false
+        );
+      };
+      window.procedi = function() {
+        punti = window.getPoints();
+        punti -= number_of_moves;
+        window.myalert("Punti", "Il tuo punteggio \xE8 " + punti + ".");
+        maketimer.sec = 0;
+        window.updatePoints(-number_of_moves);
+        drawChessboard.handleMouseDown_casella = function() {
+        };
+        drawChessboard.handleMouseDown_image = function() {
+        };
+        $("#ricomincia").prop("disabled", true);
+      };
+    }
+  };
+  var gioco13b = new Gioco13b();
+
+  // static/js/med/pages/gioco13b_soluzione.js
+  var Gioco13b_soluzione = class {
+    constructor() {
+    }
+    start() {
+      var drawChessboard = new DrawChessboard();
+      drawChessboard.drawChessboard(document.getElementById("chessboard"));
+      drawChessboard.piece_position = {
+        A2: "Knight.svg"
+      };
+      drawChessboard.drawPieces(document.getElementById("chessboard"), drawChessboard.piece_position);
+      var caselle_colorate = new Array();
+      window.enlighted = "";
+      var moving_pieces = {
+        "Knight": D5
+      };
+      var moving_piece = "";
+      var possible_moves = new Array();
+      var obstacles = ["rock-golem-1", "rock-golem", "obstacle"];
+      var end_position = E5;
+      var number_of_moves = 0;
+      var show_possible_moves = false;
+      window.enwrite(C3, 1, "white", "rgb(200,0,0)");
+      window.enwrite(B5, 2, "white", "rgb(200,0,0)");
+      window.enwrite(D6, 3, "black", "yellow");
+    }
+  };
+  var gioco13b_soluzione = new Gioco13b_soluzione();
+
+  // static/js/med/pages/gioco12b.js
+  var Gioco12b = class {
+    constructor() {
+    }
+    start() {
+      var drawChessboard = new DrawChessboard();
+      var maketimer = new MakeTimerClass();
+      maketimer.maketimer(document.getElementsByClassName("timer")[0]);
+      maketimer.stopTimerFunction = function() {
+        drawChessboard.handleMouseDown_casella = function() {
+        };
+        drawChessboard.handleMouseDown_image = function() {
+        };
+        $("#ricomincia").prop("disabled", true);
+        window.procedi();
+      };
+      drawChessboard.drawChessboard(document.getElementById("chessboard"));
+      drawChessboard.piece_position = {
+        D5: "Knight.svg"
+      };
+      drawChessboard.drawPieces(document.getElementById("chessboard"), drawChessboard.piece_position);
+      var caselle_colorate = new Array();
+      window.enlighted = "";
+      var moving_pieces = {
+        "Knight": D5
+      };
+      var moving_piece = "";
+      var possible_moves = new Array();
+      var obstacles = ["rock-golem-1", "rock-golem", "obstacle"];
+      var end_position = E5;
+      var number_of_moves = 0;
+      var show_possible_moves = false;
+      window.ricomincia = function() {
+        $("#chessboard").html("")[0].style = "";
+        drawChessboard.drawChessboard(document.getElementById("chessboard"));
+        drawChessboard.drawPieces(document.getElementById("chessboard"), drawChessboard.piece_position);
+        moving_pieces = {
+          "Knight": D5
+        };
+        window.enlighted = "";
+        window.enlight(end_position, "orange", true);
+        number_of_moves = 0;
+        $("#number_of_moves").html(number_of_moves);
+        possible_moves = new Array();
+        caselle_colorate = new Array();
+      };
+      drawChessboard.handleMouseDown_casella = function(e) {
+        var elem = e.currentTarget;
+        var casella = elem.getAttribute("casella");
+        if (possible_moves.includes(casella)) {
+          window.move(moving_piece, elem.id);
+          moving_piece = "";
+          possible_moves = new Array();
+          e.stopPropagation();
+          e.preventDefault();
+        } else {
+        }
+      };
+      window.move = function(moving_piece2, casella) {
+        var piece = moving_piece2.split(";")[0];
+        var from = moving_piece2.split(";")[1];
+        var _to = casella;
+        var elem_from = document.getElementById(from);
+        window.enlighted = "";
+        elem_from.removeChild(elem_from.children[elem_from.childElementCount - 1]);
+        elem_from.removeChild(elem_from.children[elem_from.childElementCount - 1]);
+        var elem_to = document.getElementById(_to);
+        var lst = new Object();
+        lst[_to] = piece + ".svg";
+        window.reset();
+        drawChessboard.drawPieces(document.getElementById("chessboard"), lst);
+        moving_pieces[piece] = _to;
+        number_of_moves += dist(from, _to);
+        $("#number_of_moves").html(number_of_moves);
+        if (_to == end_position) {
+          window.goal_reached();
+        }
+      };
+      window.dist = function(from, to) {
+        return 1;
+      };
+      window.enlight(end_position, "orange", true);
+      drawChessboard.handleMouseDown_image = function(e) {
+        var elem = e.currentTarget;
+        var casella = elem.getAttribute("data-casella");
+        var type = elem.getAttribute("data-type");
+        if (window.enlighted == casella) {
+          return;
+        }
+        var can_move = false;
+        for (var i in moving_pieces) {
+          if (i == type && moving_pieces[i] == casella) {
+            can_move = true;
+            moving_piece = i + ";" + moving_pieces[i];
+            break;
+          }
+        }
+        if (can_move) {
+          window.calculatePossibleMoves(casella, type);
+          window.enlight(casella, "orange");
+        }
+      };
+      window.calculatePossibleMoves = function(casella, type) {
+        possible_moves = new Array();
+        switch (type) {
+          case "Knight":
+            {
+              var x = casella.charCodeAt(0) - 65 + 1;
+              var y = parseInt(casella[1]);
+              possible_moves = pieceMove.moveKnight(casella, x, y);
+            }
+            break;
+        }
+        if (show_possible_moves) {
+          for (var i in possible_moves) {
+            var elem = document.getElementById(possible_moves[i]);
+            caselle_colorate.push(possible_moves[i]);
+            var div = document.createElement("div");
+            div.style.background = "blue";
+            div.style.borderRadius = "50%";
+            div.style.position = "absolute";
+            div.style.left = "10%";
+            div.style.top = "10%";
+            div.style.width = "80%";
+            div.style.height = "80%";
+            div.style.zIndex = "1";
+            elem.appendChild(div);
+          }
+        }
+      };
+      window.reset = function() {
+        for (var i in caselle_colorate) {
+          var elem = document.getElementById(caselle_colorate[i]);
+          elem.removeChild(elem.children[elem.childElementCount - 1]);
+        }
+        caselle_colorate = new Array();
+      };
+      window.goal_reached = function() {
+        punti = window.getPoints();
+        window.myconfirm_2b(
+          "Obiettivo raggiunto",
+          "Hai impiegato " + number_of_moves + " mosse. Vuoi riprovare?",
+          "s\xEC",
+          "no",
+          function() {
+            $(this).dialog("close");
+            window.ricomincia();
+            $(this).remove();
+          },
+          function() {
+            $(this).dialog("close");
+            clearInterval(maketimer.myt);
+            maketimer.sec = 0;
+            $(this).remove();
+            punti -= number_of_moves;
+            window.myalert("Punti", "Il tuo punteggio \xE8 di " + punti + " punti!");
+            window.updatePoints(-number_of_moves);
+            drawChessboard.handleMouseDown_casella = function() {
+            };
+            drawChessboard.handleMouseDown_image = function() {
+            };
+            $("#ricomincia").prop("disabled", true);
+          },
+          false
+        );
+      };
+      window.procedi = function() {
+        punti = window.getPoints();
+        punti -= number_of_moves;
+        window.myalert("Punti", "Il tuo punteggio \xE8 " + punti + ".");
+        maketimer.sec = 0;
+        window.updatePoints(-number_of_moves);
+        drawChessboard.handleMouseDown_casella = function() {
+        };
+        drawChessboard.handleMouseDown_image = function() {
+        };
+        $("#ricomincia").prop("disabled", true);
+      };
+    }
+  };
+  var gioco12b = new Gioco12b();
+
+  // static/js/med/pages/gioco12b_soluzione.js
+  var Gioco12b_soluzione = class {
+    constructor() {
+    }
+    start() {
+      var drawChessboard = new DrawChessboard();
+      drawChessboard.drawChessboard(document.getElementById("chessboard"));
+      drawChessboard.piece_position = {
+        D5: "Knight.svg"
+      };
+      drawChessboard.drawPieces(document.getElementById("chessboard"), drawChessboard.piece_position);
+      var caselle_colorate = new Array();
+      window.enlighted = "";
+      var moving_pieces = {
+        "Knight": D5
+      };
+      var moving_piece = "";
+      var possible_moves = new Array();
+      var obstacles = ["rock-golem-1", "rock-golem", "obstacle"];
+      var end_position = E5;
+      var number_of_moves = 0;
+      var show_possible_moves = false;
+      window.enwrite(F6, 1, "white", "rgb(200,0,0)");
+      window.enwrite(D7, 2, "white", "rgb(200,0,0)");
+      window.enwrite(E5, 3, "black", "yellow");
+    }
+  };
+  var gioco12b_soluzione = new Gioco12b_soluzione();
+
+  // static/js/med/pages/quiz14.js
+  var Quiz142 = class {
+    constructor() {
+    }
+    start() {
+      var drawChessboard = new DrawChessboard();
+      var maketimer = new MakeTimerClass();
+      drawChessboard.drawChessboard($("#chessboard")[0]);
+      window.enlighted = "";
+      window.enlight(C3, "orange", true);
+      window.enlight(F5, "orange", true);
+      window.can_answer = true;
+      maketimer.stopTimerFunction = function(pressed) {
+        try {
+          if (pressed == void 0) {
+            pressed = false;
+          }
+        } catch (errore) {
+          pressed = false;
+        }
+        if (!pressed) {
+          window.myalert("Tempo esaurito!", "E' scaduto il tempo!");
+        }
+        window.can_answer = false;
+        $(".risposta").toggleClass("disabled");
+      };
+      getQuiz();
+    }
+  };
+  var quiz142 = new Quiz142();
+
+  // static/js/med/medie.js
   var Medie = class extends Prototipo {
     constructor() {
       super();
+      this.pages = [
+        attesa,
+        new Quiz("quiz1"),
+        ascolta,
+        new Quiz("quiz2"),
+        scacchiera_vuota,
+        ascolta,
+        torre_help,
+        gioco12,
+        img_gioco12,
+        new Quiz("quiz3"),
+        new Quiz("quiz4"),
+        new Quiz("quiz5"),
+        new Quiz("quiz6"),
+        attesa,
+        gioco22,
+        gioco42,
+        new Quiz("quiz7"),
+        ascolta,
+        gioco52,
+        img_gioco52,
+        gioco62,
+        img_gioco62,
+        ascolta,
+        gioco72,
+        img_gioco72,
+        gioco82,
+        quiz8,
+        quiz9,
+        quiz10,
+        ascolta,
+        quiz112,
+        img_gioco102,
+        gioco11b,
+        img_gioco112,
+        img_allsquares,
+        ascolta,
+        img_cavallo,
+        gioco_spirit,
+        img_gioco_spirit,
+        gioco13b,
+        gioco13b_soluzione,
+        gioco12b,
+        gioco12b_soluzione,
+        ascolta,
+        quiz142,
+        ascolta,
+        new Quiz("quiz16"),
+        classifica,
+        endpage
+      ];
+    }
+    setPage(index) {
+      debugger;
+      this.currentPageIndex = index;
+      this.currentPage = this.pages[index];
+      this.currentPage.start();
     }
   };
   var medie = new Medie();

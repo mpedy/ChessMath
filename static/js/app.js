@@ -1,5 +1,5 @@
 import { elementari } from "./elem/elementari.js";
-import { medie } from "./medie.js";
+import { medie } from "./med/medie.js";
 import { liceo } from "./liceo.js";
 
 class App {
@@ -27,11 +27,11 @@ class App {
         }
     }
     loadGame(game) {
-        if(this.currentGame){
+        if (this.currentGame) {
             this.currentGame.dismount();
             this.currentGame = game;
             this.currentGame.mount();
-        }else{
+        } else {
             this.currentGame = game;
             this.currentGame.mount();
         }

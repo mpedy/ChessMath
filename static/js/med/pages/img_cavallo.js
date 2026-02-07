@@ -1,19 +1,20 @@
 import { DrawChessboard as DrawChessboardClass } from "../../drawchessboardnewnew.js";
 
-class Page8 {
+class ImgCavallo {
     constructor() { }
     start() {
+
         var drawChessboard = new DrawChessboardClass()
 
         drawChessboard.drawChessboard(document.getElementById("chessboard"))
 
         drawChessboard.piece_position = {
-            D5: "Rook.svg",
+            D5: "Knight.svg",
         }
 
         drawChessboard.drawPieces(document.getElementById("chessboard"), drawChessboard.piece_position)
 
-        var cas = [C5, B5, A5, E5, F5, G5, H5, D4, D3, D2, D1, D6, D7, D8]
+        var cas = [E7]
 
         for (var i in cas) {
             var elem = $("#" + cas[i])[0]
@@ -28,10 +29,25 @@ class Page8 {
             div.style.zIndex = "1";
             elem.appendChild(div);
         }
-
+        cas = [D6, D7]
+        for (var i in cas) {
+            var elem = $("#" + cas[i])[0]
+            var div = document.createElement("div");
+            div.style.background = "rgba(255,0,0,0.5)";
+            div.style.borderRadius = "50%"
+            div.style.position = "absolute"
+            div.style.left = "30%"
+            div.style.top = "30%"
+            div.style.width = "40%"
+            div.style.height = "40%"
+            div.style.zIndex = "1";
+            elem.appendChild(div);
+        }
         drawChessboard.handleMouseDown_casella = function () { }
         drawChessboard.handleMouseDown_image = function () { }
+
     }
 }
-const page8 = new Page8();
-export { page8 };
+
+const img_cavallo = new ImgCavallo();
+export { img_cavallo };
