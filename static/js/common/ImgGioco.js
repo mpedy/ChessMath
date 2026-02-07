@@ -1,5 +1,4 @@
 import { DrawChessboard as DrawChessboardClass } from "../drawchessboardnewnew.js";
-import { initVariables } from "./Variables.js";
 
 class ImgGioco {
     constructor(piece_position, cas) {
