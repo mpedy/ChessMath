@@ -1,4 +1,4 @@
-<div style="/*height: 100%;*/">
+<div>
 <script type="text/javascript">
 	window.onbeforeunload= function(){}
 	window.location.href="/end"
