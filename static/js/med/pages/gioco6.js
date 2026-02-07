@@ -21,13 +21,13 @@ class Gioco6 {
         drawChessboard.drawChessboard(document.getElementById("chessboard"))
 
         drawChessboard.piece_position = {
-            D5: "Rook.svg",
+            "D5": "Rook.svg",
         }
 
         drawChessboard.drawPieces(document.getElementById("chessboard"), drawChessboard.piece_position)
 
         var caselle_colorate = new Array();
-        var caselle_corrette = [D3, D7, C4, C6, B5, E4, E6, F5]
+        var caselle_corrette = ["D3", "D7", "C4", "C6", "B5", "E4", "E6", "F5"]
 
         drawChessboard.handleMouseDown_casella = function (e) {
             var elem = e.currentTarget;
@@ -71,7 +71,7 @@ class Gioco6 {
             }
             window.myalert("Punti", "Hai guadagnato " + points + " punti.");
             window.updatePoints(points);
-            punti = window.getPoints();
+            window.punti = window.getPoints();
             clearInterval(maketimer.myt)
             maketimer.sec = 0;
             document.getElementById("gobtn").disabled = true;

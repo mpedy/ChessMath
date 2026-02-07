@@ -2,6 +2,7 @@ import { DrawChessboard as DrawChessboardClass } from "../../drawchessboardnewne
 import { MakeTimerClass } from "../../maketimernew.js"
 import { pieceMove } from "../../movePiecesnew.js";
 
+/* global $ */
 class Gioco2 {
     constructor() { }
     start() {
@@ -19,7 +20,7 @@ class Gioco2 {
         drawChessboard.drawChessboard(document.getElementById("chessboard"))
 
         drawChessboard.piece_position = {
-            E2: "Rook.svg",
+            "E2": "Rook.svg",
         }
 
         drawChessboard.drawPieces(document.getElementById("chessboard"), drawChessboard.piece_position)
@@ -29,11 +30,10 @@ class Gioco2 {
         window.enlighted = "";
 
         var moving_pieces = {
-            "Rook": E2
+            "Rook": "E2"
         }
         var moving_piece = "";
         var possible_moves = new Array();
-        var obstacles = ["rock-golem-1", "rock-golem", "obstacle"]
         var end_position = "A8";
         var number_of_moves = 0;
         var show_possible_moves = false;
@@ -43,7 +43,7 @@ class Gioco2 {
             drawChessboard.drawChessboard(document.getElementById("chessboard"));
             drawChessboard.drawPieces(document.getElementById("chessboard"), drawChessboard.piece_position);
             moving_pieces = {
-                "Rook": E2
+                "Rook": "E2"
             }
             window.enlighted = ""
             window.enlight(end_position, "orange", true);
@@ -77,7 +77,7 @@ class Gioco2 {
             window.enlighted = ""
             elem_from.removeChild(elem_from.children[elem_from.childElementCount - 1])
             elem_from.removeChild(elem_from.children[elem_from.childElementCount - 1])
-            var elem_to = document.getElementById(_to);
+            // var elem_to = document.getElementById(_to);
             var lst = new Object();
             lst[_to] = piece + ".svg";
             window.reset();
@@ -171,7 +171,7 @@ class Gioco2 {
         }
 
         window.goal_reached = function () {
-            punti = window.getPoints();
+            window.punti = window.getPoints();
             window.myconfirm_2b("Obiettivo raggiunto", "Hai percorso " + number_of_moves + " caselle. Vuoi riprovare?", "sì", "no",
                 function () {
                     $(this).dialog("close");
@@ -183,8 +183,8 @@ class Gioco2 {
                     maketimer.sec = 0;
                     maketimer.expired = false
                     $(this).remove();
-                    punti -= number_of_moves;
-                    window.myalert("Punti", "Il tuo punteggio è di " + punti + " punti!");
+                    window.punti -= number_of_moves;
+                    window.myalert("Punti", "Il tuo punteggio è di " + window.punti + " punti!");
                     window.updatePoints(-number_of_moves);
                     drawChessboard.handleMouseDown_casella = function () { }
                     drawChessboard.handleMouseDown_image = function () { }
@@ -193,9 +193,9 @@ class Gioco2 {
         }
 
         window.procedi = function () {
-            punti = window.getPoints();
-            punti -= number_of_moves;
-            window.myalert("Punti", "Il tuo punteggio è " + punti + ".");
+            window.punti = window.getPoints();
+            window.punti -= number_of_moves;
+            window.myalert("Punti", "Il tuo punteggio è " + window.punti + ".");
             maketimer.sec = 0;
             window.updatePoints(-number_of_moves);
             drawChessboard.handleMouseDown_casella = function () { }

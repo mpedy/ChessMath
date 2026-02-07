@@ -2,6 +2,7 @@ import { DrawChessboard as DrawChessboardClass } from "../../drawchessboardnewne
 import { MakeTimerClass } from "../../maketimernew.js"
 import { getQuiz } from "../../myui.js"
 
+/* global $ */
 class Quiz10 {
     constructor() { }
     start() {
@@ -10,9 +11,9 @@ class Quiz10 {
 
         drawChessboard.drawChessboard($("#chessboard")[0])
 
-        drawChessboard.drawPieces($("#chessboard")[0], { D6: "Bishop.svg" })
+        drawChessboard.drawPieces($("#chessboard")[0], { "D6": "Bishop.svg" })
         window.enlighted = ""
-        window.enlight(E6, "orange", true)
+        window.enlight("E6", "orange", true)
         window.can_answer = true
         maketimer.stopTimerFunction = function (pressed) {
             try {
@@ -21,6 +22,7 @@ class Quiz10 {
                 }
             } catch (errore) {
                 pressed = false;
+                console.error(errore);
             }
             if (!pressed) {
                 window.myalert("Tempo esaurito!", "E' scaduto il tempo!");

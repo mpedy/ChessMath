@@ -1,6 +1,5 @@
 import { DrawChessboard as DrawChessboardClass } from "../../drawchessboardnewnew.js";
 import { MakeTimerClass } from "../../maketimernew.js"
-import { pieceMove } from "../../movePiecesnew.js";
 
 class Gioco11b {
     constructor() { }
@@ -22,13 +21,13 @@ class Gioco11b {
         drawChessboard.drawChessboard(document.getElementById("chessboard"))
 
         drawChessboard.piece_position = {
-            F5: "Bishop.svg",
+            "F5": "Bishop.svg",
         }
 
         drawChessboard.drawPieces(document.getElementById("chessboard"), drawChessboard.piece_position)
 
         var caselle_colorate = new Array();
-        var caselle_corrette = [D7, F7, H7, D5, H5, D3, F3, H3]
+        var caselle_corrette = ["D7", "F7", "H7", "D5", "H5", "D3", "F3", "H3"]
 
         drawChessboard.handleMouseDown_casella = function (e) {
             var elem = e.currentTarget;
@@ -61,7 +60,7 @@ class Gioco11b {
 
         window.procedi = function (btn) {
             btn.disabled = true;
-            var points = 0
+            var points = 0;
             for (var i in caselle_colorate) {
                 if (caselle_corrette.includes(caselle_colorate[i])) {
                     points += 1;
@@ -71,7 +70,7 @@ class Gioco11b {
             }
             window.myalert("Punti", "Hai guadaganto " + points + " punti.");
             window.updatePoints(points);
-            punti = window.getPoints();
+            window.punti = window.getPoints();
             clearInterval(maketimer.myt);
             maketimer.sec = 0;
             document.getElementById("gobtn").disabled = true;

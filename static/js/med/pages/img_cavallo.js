@@ -1,5 +1,6 @@
 import { DrawChessboard as DrawChessboardClass } from "../../drawchessboardnewnew.js";
 
+/* global $ */
 class ImgCavallo {
     constructor() { }
     start() {
@@ -14,11 +15,11 @@ class ImgCavallo {
 
         drawChessboard.drawPieces(document.getElementById("chessboard"), drawChessboard.piece_position)
 
-        var cas = [E7]
+        var cas = ["E7"]
 
-        for (var i in cas) {
-            var elem = $("#" + cas[i])[0]
-            var div = document.createElement("div");
+        for (let i in cas) {
+            let elem = $("#" + cas[i])[0]
+            let div = document.createElement("div");
             div.style.background = "red"
             div.style.borderRadius = "50%"
             div.style.position = "absolute"
@@ -29,10 +30,10 @@ class ImgCavallo {
             div.style.zIndex = "1";
             elem.appendChild(div);
         }
-        cas = [D6, D7]
-        for (var i in cas) {
-            var elem = $("#" + cas[i])[0]
-            var div = document.createElement("div");
+        cas = ["D6", "D7"]
+        for (let i in cas) {
+            let elem = $("#" + cas[i])[0]
+            let div = document.createElement("div");
             div.style.background = "rgba(255,0,0,0.5)";
             div.style.borderRadius = "50%"
             div.style.position = "absolute"

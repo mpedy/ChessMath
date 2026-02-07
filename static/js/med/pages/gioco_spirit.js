@@ -22,13 +22,13 @@ class GiocoSpirit {
         drawChessboard.drawChessboard(document.getElementById("chessboard"))
 
         drawChessboard.piece_position = {
-            D5: "Knight.svg",
+            "D5": "Knight.svg",
         }
 
         drawChessboard.drawPieces(document.getElementById("chessboard"), drawChessboard.piece_position)
 
         var caselle_colorate = new Array();
-        var caselle_corrette = [B4, B6, C3, C7, E3, E7, F4, F6]
+        var caselle_corrette = ["B4", "B6", "C3", "C7", "E3", "E7", "F4", "F6"]
 
         drawChessboard.handleMouseDown_casella = function (e) {
             var elem = e.currentTarget;

@@ -3,8 +3,8 @@ import { ImgGioco } from "../../common/ImgGioco.js";
 class ImgGioco10 extends ImgGioco {
     constructor() {
         super(
-            { D5: "Bishop.svg" },
-            [C4, C6, E4, E6]
+            { "D5": "Bishop.svg" },
+            ["C4", "C6", "E4", "E6"]
         );
     }
 }
