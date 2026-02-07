@@ -1,6 +1,7 @@
 import { MakeTimerClass } from "../Utility/Maketimer.js"
 import { getQuiz } from "../Utility/MyUI.js"
 
+/* global $ */
 class LicQuiz {
     constructor(name) {
         this.name = name;
