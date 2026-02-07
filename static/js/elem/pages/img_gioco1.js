@@ -1,6 +1,6 @@
 import { DrawChessboard as DrawChessboardClass } from "../../drawchessboardnewnew.js";
 
-class Page19 {
+class ImgGioco1 {
     constructor() { }
     start() {
         var drawChessboard = new DrawChessboardClass()
@@ -13,7 +13,7 @@ class Page19 {
 
         drawChessboard.drawPieces(document.getElementById("chessboard"), drawChessboard.piece_position)
 
-        var cas = [C5, E5, D4, D6]
+        var cas = [C5, B5, A5, E5, F5, G5, H5, D4, D3, D2, D1, D6, D7, D8]
 
         for (var i in cas) {
             var elem = $("#" + cas[i])[0]
@@ -28,9 +28,10 @@ class Page19 {
             div.style.zIndex = "1";
             elem.appendChild(div);
         }
+
         drawChessboard.handleMouseDown_casella = function () { }
         drawChessboard.handleMouseDown_image = function () { }
     }
 }
-const page19 = new Page19();
-export { page19 };
+const img_gioco1 = new ImgGioco1();
+export { img_gioco1 };

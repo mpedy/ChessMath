@@ -1,8 +1,8 @@
-import { DrawChessboard as DrawChessboardClass } from "../../drawchessboardnewnew.js";
-import { MakeTimerClass } from "../../maketimernew.js"
 import { pieceMove } from "../../movePiecesnew.js";
+import { MakeTimerClass } from "../../maketimernew.js"
+import { DrawChessboard as DrawChessboardClass } from "../../drawchessboardnewnew.js";
 
-class Page30 {
+class Gioco2 {
     constructor() { }
     start() {
         var drawChessboard = new DrawChessboardClass()
@@ -13,52 +13,47 @@ class Page30 {
             drawChessboard.handleMouseDown_casella = function () { }
             drawChessboard.handleMouseDown_image = function () { }
             $("#ricomincia").prop("disabled", true);
-            window.procedi()
+            if (maketimer.expired) {
+                window.procedi()
+            }
         }
 
         drawChessboard.drawChessboard(document.getElementById("chessboard"))
 
         drawChessboard.piece_position = {
-            A4: "Bishop.svg",
-            A2: "obstacle.svg",
-            D8: "obstacle.svg",
-            D6: "obstacle.svg",
-            D4: "obstacle.svg",
-            D2: "obstacle.svg",
-            F5: "obstacle.svg",
-            F7: "obstacle.svg",
+            E2: "Rook.svg"
         }
 
         drawChessboard.drawPieces(document.getElementById("chessboard"), drawChessboard.piece_position)
 
         var caselle_colorate = new Array();
-        var caselle_corrette = [A5, B5, C5, E5, F5, G5, H5, D4, D3, D2, D1]
 
         window.enlighted = "";
 
         var moving_pieces = {
-            "Bishop": A4
+            "Rook": E2
         }
+
         var moving_piece = "";
         var possible_moves = new Array();
         var obstacles = ["rock-golem-1", "rock-golem", "obstacle"]
-        var end_position = H7;
+        var end_position = B7;
         var number_of_moves = 0;
-        var show_possible_moves = false;
+        var show_possible_moves = true;
 
         window.ricomincia = function () {
             $("#chessboard").html("")[0].style = ""
             drawChessboard.drawChessboard(document.getElementById("chessboard"));
             drawChessboard.drawPieces(document.getElementById("chessboard"), drawChessboard.piece_position);
             moving_pieces = {
-                "Bishop": A4
+                "Rook": E2
             }
             window.enlighted = ""
             window.enlight(end_position, "orange", true);
             number_of_moves = 0;
-            $("#number_of_moves").html(number_of_moves);
             possible_moves = new Array();
             caselle_colorate = new Array();
+            $("#number_of_moves").html(number_of_moves);
         }
 
         drawChessboard.handleMouseDown_casella = function (e) {
@@ -91,7 +86,7 @@ class Page30 {
             window.reset();
             drawChessboard.drawPieces(document.getElementById("chessboard"), lst);
             moving_pieces[piece] = _to;
-            number_of_moves += dist(from, _to);
+            number_of_moves += window.dist(from, _to);
             $("#number_of_moves").html(number_of_moves);
             if (_to == end_position) {
                 window.goal_reached()
@@ -143,10 +138,10 @@ class Page30 {
         window.calculatePossibleMoves = function (casella, type) {
             possible_moves = new Array();
             switch (type) {
-                case "Bishop": {
+                case "Rook": {
                     var x = casella.charCodeAt(0) - 65 + 1;
                     var y = parseInt(casella[1]);
-                    possible_moves = pieceMove.moveBishop(casella, x, y);
+                    possible_moves = pieceMove.moveRook(casella, x, y);
                 }
                     break;
             }
@@ -189,6 +184,7 @@ class Page30 {
                     $(this).dialog("close");
                     clearInterval(maketimer.myt);
                     maketimer.sec = 0;
+                    maketimer.expired = false
                     $(this).remove();
                     punti -= number_of_moves;
                     window.myalert("Punti", "Il tuo punteggio è di " + punti + " punti!");
@@ -212,5 +208,5 @@ class Page30 {
 
     }
 }
-const page30 = new Page30();
-export { page30 };
+const gioco2 = new Gioco2();
+export { gioco2 };

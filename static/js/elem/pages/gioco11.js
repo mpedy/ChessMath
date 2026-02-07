@@ -1,9 +1,10 @@
 import { DrawChessboard as DrawChessboardClass } from "../../drawchessboardnewnew.js";
 import { MakeTimerClass } from "../../maketimernew.js"
 
-class Page20 {
+class Gioco11 {
     constructor() { }
     start() {
+
         var drawChessboard = new DrawChessboardClass()
         var maketimer = new MakeTimerClass()
 
@@ -17,16 +18,17 @@ class Page20 {
                 window.procedi(document.getElementById("gobtn"))
             }
         }
+
         drawChessboard.drawChessboard(document.getElementById("chessboard"))
 
         drawChessboard.piece_position = {
-            D5: "Rook.svg",
+            F5: "Bishop.svg",
         }
 
         drawChessboard.drawPieces(document.getElementById("chessboard"), drawChessboard.piece_position)
 
         var caselle_colorate = new Array();
-        var caselle_corrette = [D3, D7, C4, C6, B5, E4, E6, F5]
+        var caselle_corrette = [D7, F7, H7, D5, H5, D3, F3, H3]
 
         drawChessboard.handleMouseDown_casella = function (e) {
             var elem = e.currentTarget;
@@ -59,7 +61,7 @@ class Page20 {
 
         window.procedi = function (btn) {
             btn.disabled = true;
-            var points = 0;
+            var points = 0
             for (var i in caselle_colorate) {
                 if (caselle_corrette.includes(caselle_colorate[i])) {
                     points += 1;
@@ -70,15 +72,14 @@ class Page20 {
             window.myalert("Risultato", "Hai guadagnato " + points + " punti.");
             window.updatePoints(points);
             punti = window.getPoints();
-            clearInterval(maketimer.myt)
+            clearInterval(maketimer.myt);
             maketimer.sec = 0;
             document.getElementById("gobtn").disabled = true;
             document.getElementById("reset").disabled = true;
             drawChessboard.handleMouseDown_casella = function () { }
             drawChessboard.handleMouseDown_image = function () { }
         }
-
     }
 }
-const page20 = new Page20();
-export { page20 };
+const gioco11 = new Gioco11();
+export { gioco11 };

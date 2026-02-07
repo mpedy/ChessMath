@@ -1,8 +1,7 @@
 import { DrawChessboard as DrawChessboardClass } from "../../drawchessboardnewnew.js";
 import { MakeTimerClass } from "../../maketimernew.js"
 
-
-class Page22 {
+class Gioco5 {
     constructor() { }
     start() {
 
@@ -19,16 +18,17 @@ class Page22 {
                 window.procedi(document.getElementById("gobtn"))
             }
         }
+
         drawChessboard.drawChessboard(document.getElementById("chessboard"))
 
         drawChessboard.piece_position = {
-            D5: "Bishop.svg",
+            D5: "Rook.svg",
         }
 
         drawChessboard.drawPieces(document.getElementById("chessboard"), drawChessboard.piece_position)
 
         var caselle_colorate = new Array();
-        var caselle_corrette = [A2, A8, B3, B7, C4, C6, E4, E6, F3, F7, G2, G8, H1]
+        var caselle_corrette = [D6, E5, D4, C5]
 
         drawChessboard.handleMouseDown_casella = function (e) {
             var elem = e.currentTarget;
@@ -69,18 +69,17 @@ class Page22 {
                     points -= 1;
                 }
             }
-            window.myalert("Risultato", "Hai guadaganto " + points + " punti.");
+            window.myalert("Risultato", "Hai guadagnato " + points + " punti.");
             window.updatePoints(points);
             punti = window.getPoints();
-            clearInterval(maketimer.myt);
+            clearInterval(maketimer.myt)
             maketimer.sec = 0;
             document.getElementById("gobtn").disabled = true;
             document.getElementById("reset").disabled = true;
             drawChessboard.handleMouseDown_casella = function () { }
             drawChessboard.handleMouseDown_image = function () { }
         }
-
     }
 }
-const page22 = new Page22();
-export { page22 };
+const gioco5 = new Gioco5();
+export { gioco5 };

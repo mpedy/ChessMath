@@ -1,10 +1,9 @@
 import { DrawChessboard as DrawChessboardClass } from "../../drawchessboardnewnew.js";
 import { MakeTimerClass } from "../../maketimernew.js"
 
-class Page18 {
+class Gioco1 {
     constructor() { }
     start() {
-
         var drawChessboard = new DrawChessboardClass()
         var maketimer = new MakeTimerClass()
 
@@ -22,13 +21,13 @@ class Page18 {
         drawChessboard.drawChessboard(document.getElementById("chessboard"))
 
         drawChessboard.piece_position = {
-            D5: "Rook.svg",
+            D5: "Rook.svg"
         }
 
         drawChessboard.drawPieces(document.getElementById("chessboard"), drawChessboard.piece_position)
 
         var caselle_colorate = new Array();
-        var caselle_corrette = [D6, E5, D4, C5]
+        var caselle_corrette = [C5, B5, A5, E5, F5, G5, H5, D4, D3, D2, D1, D6, D7, D8]
 
         drawChessboard.handleMouseDown_casella = function (e) {
             var elem = e.currentTarget;
@@ -49,6 +48,8 @@ class Page18 {
                 div.style.zIndex = "1";
                 elem.appendChild(div);
             }
+            e.preventDefault();
+            e.stopPropagation();
         }
 
         window.reset = function () {
@@ -69,10 +70,10 @@ class Page18 {
                     points -= 1;
                 }
             }
-            window.myalert("Risultato", "Hai guadagnato " + points + " punti.");
-            window.updatePoints(points);
-            punti = window.getPoints();
-            clearInterval(maketimer.myt)
+            myalert("Risultato", "Hai guadaganto " + points + " punti.");
+            updatePoints(points);
+            punti = getPoints();
+            clearInterval(maketimer.myt);
             maketimer.sec = 0;
             document.getElementById("gobtn").disabled = true;
             document.getElementById("reset").disabled = true;
@@ -81,5 +82,5 @@ class Page18 {
         }
     }
 }
-const page18 = new Page18();
-export { page18 };
+const gioco1 = new Gioco1();
+export { gioco1 };

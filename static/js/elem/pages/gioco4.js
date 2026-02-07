@@ -2,7 +2,7 @@ import { pieceMove } from "../../movePiecesnew.js";
 import { MakeTimerClass } from "../../maketimernew.js"
 import { DrawChessboard as DrawChessboardClass } from "../../drawchessboardnewnew.js";
 
-class Page15 {
+class Gioco4 {
     constructor() { }
     start() {
         var drawChessboard = new DrawChessboardClass()
@@ -21,16 +21,16 @@ class Page15 {
         drawChessboard.drawChessboard(document.getElementById("chessboard"))
 
         drawChessboard.piece_position = {
-            A2: "Rook.svg",
-            D4: "obstacle.svg",
-            E5: "obstacle.svg",
-            F6: "obstacle.svg",
-            G7: "obstacle.svg",
-            H3: "obstacle.svg",
+            D5: "Rook.svg",
+            A1: "obstacle.svg",
+            D6: "obstacle.svg",
+            F4: "obstacle.svg",
             B7: "obstacle.svg",
-            A8: "obstacle.svg",
-            C6: "obstacle.svg",
-            G3: "obstacle.svg"
+            B4: "obstacle.svg",
+            B5: "obstacle.svg",
+            C7: "obstacle.svg",
+            B6: "obstacle.svg",
+            C6: "obstacle.svg"
         }
 
         drawChessboard.drawPieces(document.getElementById("chessboard"), drawChessboard.piece_position)
@@ -41,13 +41,12 @@ class Page15 {
         window.enlighted = "";
 
         var moving_pieces = {
-            "Rook": A2
+            "Rook": D5
         }
-
         var moving_piece = "";
         var possible_moves = new Array();
         var obstacles = ["rock-golem-1", "rock-golem", "obstacle"]
-        var end_position = H7;
+        var end_position = A8;
         var number_of_moves = 0;
         var show_possible_moves = false;
 
@@ -56,7 +55,7 @@ class Page15 {
             drawChessboard.drawChessboard(document.getElementById("chessboard"));
             drawChessboard.drawPieces(document.getElementById("chessboard"), drawChessboard.piece_position);
             moving_pieces = {
-                "Rook": A2
+                "Rook": D5
             }
             window.enlighted = ""
             window.enlight(end_position, "orange", true);
@@ -71,6 +70,8 @@ class Page15 {
             //console.log(elem)
             var casella = elem.getAttribute("casella");
             if (possible_moves.includes(casella)) {
+                //possible_moves.splice(possible_moves.indexOf(casella),1);
+                //elem.removeChild(elem.children[elem.childElementCount-1]);
                 window.move(moving_piece, elem.id);
                 moving_piece = "";
                 possible_moves = new Array();
@@ -215,7 +216,8 @@ class Page15 {
             drawChessboard.handleMouseDown_image = function () { }
             $("#ricomincia").prop("disabled", true);
         }
+
     }
 }
-const page15 = new Page15();
-export { page15 };
+const gioco4 = new Gioco4();
+export { gioco4 };

@@ -1,6 +1,6 @@
 import { DrawChessboard as DrawChessboardClass } from "../../drawchessboardnewnew.js";
 
-class Page21 {
+class ImgGioco6 {
     constructor() { }
     start() {
         var drawChessboard = new DrawChessboardClass()
@@ -32,5 +32,5 @@ class Page21 {
         drawChessboard.handleMouseDown_image = function () { }
     }
 }
-const page21 = new Page21();
-export { page21 };
+const img_gioco6 = new ImgGioco6();
+export { img_gioco6 };

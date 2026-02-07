@@ -2,7 +2,7 @@ import { DrawChessboard as DrawChessboardClass } from "../../drawchessboardnewne
 import { getQuiz } from "../../myui.js"
 import { MakeTimerClass } from "../../maketimernew.js"
 
-class Page26 {
+class Quiz11 {
     constructor() { }
     start() {
         var maketimer = new MakeTimerClass()
@@ -32,5 +32,5 @@ class Page26 {
         getQuiz();
     }
 }
-const page26 = new Page26();
-export { page26 };
+const quiz11 = new Quiz11();
+export { quiz11 };

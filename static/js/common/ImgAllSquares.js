@@ -1,7 +1,6 @@
-import { DrawChessboard as DrawChessboardClass } from "../../drawchessboardnewnew.js";
-import { MakeTimerClass } from "../../maketimernew.js"
+import { DrawChessboard as DrawChessboardClass } from "../drawchessboardnewnew.js";
 
-class Page36 {
+class ImgAllSquares {
     constructor() { }
     start() {
 
@@ -44,5 +43,5 @@ class Page36 {
         }
     }
 }
-const page36 = new Page36();
-export { page36 };
+const img_allsquares = new ImgAllSquares();
+export { img_allsquares };

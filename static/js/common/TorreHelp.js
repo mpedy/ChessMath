@@ -1,6 +1,6 @@
-import { DrawChessboard as DrawChessboardClass } from "../../drawchessboardnewnew.js";
+import { DrawChessboard as DrawChessboardClass } from "../drawchessboardnewnew.js";
 
-class Page6 {
+class TorreHelp {
     constructor() { }
     start() {
         var drawChessboard = new DrawChessboardClass()
@@ -22,5 +22,5 @@ class Page6 {
         drawChessboard.handleMouseDown_image = function () { }
     }
 }
-const page6 = new Page6();
-export { page6 };
+const torre_help = new TorreHelp();
+export { torre_help };

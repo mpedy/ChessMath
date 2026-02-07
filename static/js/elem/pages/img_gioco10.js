@@ -1,6 +1,6 @@
 import { DrawChessboard as DrawChessboardClass } from "../../drawchessboardnewnew.js";
 
-class Page33 {
+class ImgGioco10 {
     constructor() { }
     start() {
         var drawChessboard = new DrawChessboardClass()
@@ -33,5 +33,5 @@ class Page33 {
 
     }
 }
-const page33 = new Page33();
-export { page33 };
+const img_gioco10 = new ImgGioco10();
+export { img_gioco10 };

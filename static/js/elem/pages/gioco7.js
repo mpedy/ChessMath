@@ -1,9 +1,11 @@
 import { DrawChessboard as DrawChessboardClass } from "../../drawchessboardnewnew.js";
 import { MakeTimerClass } from "../../maketimernew.js"
 
-class Page7 {
+
+class Gioco7 {
     constructor() { }
     start() {
+
         var drawChessboard = new DrawChessboardClass()
         var maketimer = new MakeTimerClass()
 
@@ -17,17 +19,16 @@ class Page7 {
                 window.procedi(document.getElementById("gobtn"))
             }
         }
-
         drawChessboard.drawChessboard(document.getElementById("chessboard"))
 
         drawChessboard.piece_position = {
-            D5: "Rook.svg"
+            D5: "Bishop.svg",
         }
 
         drawChessboard.drawPieces(document.getElementById("chessboard"), drawChessboard.piece_position)
 
         var caselle_colorate = new Array();
-        var caselle_corrette = [C5, B5, A5, E5, F5, G5, H5, D4, D3, D2, D1, D6, D7, D8]
+        var caselle_corrette = [A2, A8, B3, B7, C4, C6, E4, E6, F3, F7, G2, G8, H1]
 
         drawChessboard.handleMouseDown_casella = function (e) {
             var elem = e.currentTarget;
@@ -48,8 +49,6 @@ class Page7 {
                 div.style.zIndex = "1";
                 elem.appendChild(div);
             }
-            e.preventDefault();
-            e.stopPropagation();
         }
 
         window.reset = function () {
@@ -70,9 +69,9 @@ class Page7 {
                     points -= 1;
                 }
             }
-            myalert("Risultato", "Hai guadaganto " + points + " punti.");
-            updatePoints(points);
-            punti = getPoints();
+            window.myalert("Risultato", "Hai guadaganto " + points + " punti.");
+            window.updatePoints(points);
+            punti = window.getPoints();
             clearInterval(maketimer.myt);
             maketimer.sec = 0;
             document.getElementById("gobtn").disabled = true;
@@ -80,7 +79,8 @@ class Page7 {
             drawChessboard.handleMouseDown_casella = function () { }
             drawChessboard.handleMouseDown_image = function () { }
         }
+
     }
 }
-const page7 = new Page7();
-export { page7 };
+const gioco7 = new Gioco7();
+export { gioco7 };

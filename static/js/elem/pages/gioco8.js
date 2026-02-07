@@ -1,10 +1,11 @@
-import { pieceMove } from "../../movePiecesnew.js";
-import { MakeTimerClass } from "../../maketimernew.js"
 import { DrawChessboard as DrawChessboardClass } from "../../drawchessboardnewnew.js";
+import { MakeTimerClass } from "../../maketimernew.js"
+import { pieceMove } from "../../movePiecesnew.js";
 
-class Page14 {
+class Gioco8 {
     constructor() { }
     start() {
+
         var drawChessboard = new DrawChessboardClass()
         var maketimer = new MakeTimerClass()
 
@@ -13,31 +14,38 @@ class Page14 {
             drawChessboard.handleMouseDown_casella = function () { }
             drawChessboard.handleMouseDown_image = function () { }
             $("#ricomincia").prop("disabled", true);
-            if (maketimer.expired) {
-                window.procedi()
-            }
+            window.procedi()
         }
 
         drawChessboard.drawChessboard(document.getElementById("chessboard"))
 
         drawChessboard.piece_position = {
-            E2: "Rook.svg"
+            A2: "Bishop.svg",
+            D4: "obstacle.svg",
+            E5: "obstacle.svg",
+            F6: "obstacle.svg",
+            G7: "obstacle.svg",
+            H3: "obstacle.svg",
+            B7: "obstacle.svg",
+            A8: "obstacle.svg",
+            C6: "obstacle.svg",
+            G3: "obstacle.svg"
         }
 
         drawChessboard.drawPieces(document.getElementById("chessboard"), drawChessboard.piece_position)
 
         var caselle_colorate = new Array();
+        var caselle_corrette = [A5, B5, C5, E5, F5, G5, H5, D4, D3, D2, D1]
 
         window.enlighted = "";
 
         var moving_pieces = {
-            "Rook": E2
+            "Bishop": A2
         }
-
         var moving_piece = "";
         var possible_moves = new Array();
         var obstacles = ["rock-golem-1", "rock-golem", "obstacle"]
-        var end_position = B7;
+        var end_position = H7;
         var number_of_moves = 0;
         var show_possible_moves = true;
 
@@ -46,14 +54,14 @@ class Page14 {
             drawChessboard.drawChessboard(document.getElementById("chessboard"));
             drawChessboard.drawPieces(document.getElementById("chessboard"), drawChessboard.piece_position);
             moving_pieces = {
-                "Rook": E2
+                "Bishop": A2
             }
             window.enlighted = ""
             window.enlight(end_position, "orange", true);
             number_of_moves = 0;
+            $("#number_of_moves").html(number_of_moves);
             possible_moves = new Array();
             caselle_colorate = new Array();
-            $("#number_of_moves").html(number_of_moves);
         }
 
         drawChessboard.handleMouseDown_casella = function (e) {
@@ -138,10 +146,10 @@ class Page14 {
         window.calculatePossibleMoves = function (casella, type) {
             possible_moves = new Array();
             switch (type) {
-                case "Rook": {
+                case "Bishop": {
                     var x = casella.charCodeAt(0) - 65 + 1;
                     var y = parseInt(casella[1]);
-                    possible_moves = pieceMove.moveRook(casella, x, y);
+                    possible_moves = pieceMove.moveBishop(casella, x, y);
                 }
                     break;
             }
@@ -205,8 +213,7 @@ class Page14 {
             drawChessboard.handleMouseDown_image = function () { }
             $("#ricomincia").prop("disabled", true);
         }
-
     }
 }
-const page14 = new Page14();
-export { page14 };
+const gioco8 = new Gioco8();
+export { gioco8 };

@@ -2,7 +2,7 @@ import { DrawChessboard as DrawChessboardClass } from "../../drawchessboardnewne
 import { getQuiz } from "../../myui.js"
 import { MakeTimerClass } from "../../maketimernew.js"
 
-class Page28 {
+class Quiz12 {
     constructor() { }
     start() {
 
@@ -11,10 +11,10 @@ class Page28 {
 
         drawChessboard.drawChessboard($("#chessboard")[0])
 
-        drawChessboard.drawPieces($("#chessboard")[0], { D5: "Bishop.svg" })
+        drawChessboard.drawPieces($("#chessboard")[0], { D6: "Bishop.svg" })
 
         window.enlighted = "";
-        window.enlight(E5, "orange", true)
+        window.enlight(F6, "orange", true)
         window.can_answer = true
         maketimer.stopTimerFunction = function (pressed) {
             try {
@@ -33,5 +33,5 @@ class Page28 {
         getQuiz();
     }
 }
-const page28 = new Page28();
-export { page28 };
+const quiz12 = new Quiz12();
+export { quiz12 };
