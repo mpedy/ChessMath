@@ -65,8 +65,7 @@ class PieceMove {
                 if (y + i >= dim || window.obstacles.includes($("#" + newcasella).children()[0].getAttribute("data-type"))) {
                     break;
                 }
-            } catch (errore) {
-                console.error(errore)
+            } catch {
                 continue;
             }
         }
@@ -80,8 +79,7 @@ class PieceMove {
                 if (y - i <= 1 || window.obstacles.includes($("#" + newcasella).children()[0].getAttribute("data-type"))) {
                     break;
                 }
-            } catch (errore) {
-                console.error(errore)
+            } catch {
                 continue;
             }
         }
@@ -97,8 +95,7 @@ class PieceMove {
                 if (x + i >= dim || window.obstacles.includes($("#" + newcasella).children()[0].getAttribute("data-type"))) {
                     break;
                 }
-            } catch (errore) {
-                console.error(errore)
+            } catch {
                 continue;
             }
         }
@@ -114,8 +111,7 @@ class PieceMove {
                 if (x - i <= 1 || window.obstacles.includes($("#" + newcasella).children()[0].getAttribute("data-type"))) {
                     break;
                 }
-            } catch (errore) {
-                console.error(errore)
+            } catch {
                 continue;
             }
         }
@@ -133,7 +129,7 @@ class PieceMove {
                     if (window.obstacles.includes($("#" + newcasella).children()[0].getAttribute("data-type"))) {
                         break;
                     }
-                } catch (errore) { console.error(errore) }
+                } catch { }
                 if (($("#" + newcasella).children().length == 0 || !window.obstacles.includes($("#" + newcasella).children()[0].getAttribute("data-type")))) {
                     possible_moves.push(newcasella)
                 }
@@ -150,7 +146,7 @@ class PieceMove {
                     if (window.obstacles.includes($("#" + newcasella).children()[0].getAttribute("data-type"))) {
                         break;
                     }
-                } catch (errore) { console.error(errore) }
+                } catch { }
                 if (($("#" + newcasella).children().length == 0 || !window.obstacles.includes($("#" + newcasella).children()[0].getAttribute("data-type")))) {
                     possible_moves.push(newcasella)
                 }
@@ -166,7 +162,7 @@ class PieceMove {
                     if (window.obstacles.includes($("#" + newcasella).children()[0].getAttribute("data-type"))) {
                         break;
                     }
-                } catch (errore) { console.error(errore) }
+                } catch { }
                 if (($("#" + newcasella).children().length == 0 || !window.obstacles.includes($("#" + newcasella).children()[0].getAttribute("data-type")))) {
                     possible_moves.push(newcasella)
                 }
@@ -182,7 +178,7 @@ class PieceMove {
                     if (window.obstacles.includes($("#" + newcasella).children()[0].getAttribute("data-type"))) {
                         break;
                     }
-                } catch (errore) { console.error(errore) }
+                } catch { }
                 if (($("#" + newcasella).children().length == 0 || !window.obstacles.includes($("#" + newcasella).children()[0].getAttribute("data-type")))) {
                     possible_moves.push(newcasella)
                 }
@@ -274,8 +270,7 @@ class PieceMove {
                 if (window.obstacles.includes($("#" + newcasella).children()[0].getAttribute("data-type"))) {
                     break;
                 }
-            } catch (errore) {
-                console.error(errore);
+            } catch {
                 continue;
             }
         }
@@ -295,8 +290,7 @@ class PieceMove {
                 if (window.obstacles.includes($("#" + newcasella).children()[0].getAttribute("data-type"))) {
                     break;
                 }
-            } catch (errore) {
-                console.error(errore)
+            } catch {
                 continue;
             }
         }
@@ -312,8 +306,7 @@ class PieceMove {
                 if (window.obstacles.includes($("#" + newcasella).children()[0].getAttribute("data-type"))) {
                     break;
                 }
-            } catch (errore) {
-                console.error(errore)
+            } catch {
                 continue;
             }
         }
@@ -333,8 +326,7 @@ class PieceMove {
                 if (window.obstacles.includes($("#" + newcasella).children()[0].getAttribute("data-type"))) {
                     break;
                 }
-            } catch (errore) {
-                console.error(errore);
+            } catch {
                 continue;
             }
         }
@@ -359,7 +351,7 @@ class PieceMove {
                 if (window.obstacles.includes($("#" + newcasella).children()[0].getAttribute("data-type"))) {
                     break;
                 }
-            } catch (errore) { console.error(errore) }
+            } catch { }
             if (($("#" + newcasella).children().length == 0 || !window.obstacles.includes($("#" + newcasella).children()[0].getAttribute("data-type")))) {
                 possible_moves.push(newcasella)
             }
@@ -381,7 +373,7 @@ class PieceMove {
                 if (window.obstacles.includes($("#" + newcasella).children()[0].getAttribute("data-type"))) {
                     break;
                 }
-            } catch (errore) { console.error(errore) }
+            } catch { }
             if (($("#" + newcasella).children().length == 0 || !window.obstacles.includes($("#" + newcasella).children()[0].getAttribute("data-type")))) {
                 possible_moves.push(newcasella)
             }
@@ -395,7 +387,7 @@ class PieceMove {
                 if (window.obstacles.includes($("#" + newcasella).children()[0].getAttribute("data-type"))) {
                     break;
                 }
-            } catch (errore) { console.error(errore) }
+            } catch { }
             if (($("#" + newcasella).children().length == 0 || !window.obstacles.includes($("#" + newcasella).children()[0].getAttribute("data-type")))) {
                 possible_moves.push(newcasella)
             }
@@ -413,7 +405,7 @@ class PieceMove {
                 if (window.obstacles.includes($("#" + newcasella).children()[0].getAttribute("data-type"))) {
                     break;
                 }
-            } catch (errore) { console.error(errore) }
+            } catch { }
             if (($("#" + newcasella).children().length == 0 || !window.obstacles.includes($("#" + newcasella).children()[0].getAttribute("data-type")))) {
                 possible_moves.push(newcasella)
             }

@@ -6,9 +6,8 @@ export var myconfirm = function (title, text, yes_btn, no_btn, f1, f2, closable)
 		if (closable == undefined) {
 			closable = true;
 		}
-	} catch (errore) {
+	} catch {
 		closable = true;
-		console.error(errore);
 	}
 	window.updatePoints(0);
 	var div = document.createElement("div");
@@ -37,9 +36,8 @@ window.myconfirm_2b = function (title, text, yes_btn, no_btn, f1, f2, closable) 
 		if (closable == undefined) {
 			closable = true;
 		}
-	} catch (errore) {
+	} catch {
 		closable = true;
-		console.error(errore);
 	}
 	var _f2 = function () {
 		f2.apply(this, arguments);
@@ -111,26 +109,22 @@ window.enlight = function (casella, color, end_pos) {
 		if (color == undefined) {
 			color = "yellow";
 		}
-	} catch (errore) {
+	} catch {
 		color = "yellow";
-		console.error(errore);
 	}
 	try {
 		if (end_pos == undefined) {
 			end_pos = false;
 		}
-	} catch (errore) {
+	} catch {
 		end_pos = false;
-		console.error(errore);
 	}
 	try {
 		if (window.enlighted == casella) {
 			return;
 		}
 		window.enlighted = casella;
-	} catch (errore) {
-		console.error(errore);
-	}
+	} catch { }
 	var elem = document.getElementById(casella);
 	if (elem.childElementCount > 1) {
 		elem.removeChild(elem.children[elem.childElementCount - 1]);
@@ -160,17 +154,15 @@ window.enwrite = function (casella, txt, txt_color, bck_color) {
 		if (txt_color == undefined) {
 			txt_color = "white";
 		}
-	} catch (errore) {
+	} catch {
 		txt_color = "white";
-		console.error(errore);
 	}
 	try {
 		if (bck_color == undefined) {
 			bck_color = "yellow";
 		}
-	} catch (errore) {
+	} catch {
 		bck_color = "yellow";
-		console.error(errore);
 	}
 	var elem = document.getElementById(casella);
 	if (elem.childElementCount > 1) {

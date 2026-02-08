@@ -22,9 +22,8 @@ class Quiz8 {
                 if (pressed == undefined) {
                     pressed = false;
                 }
-            } catch (errore) {
+            } catch {
                 pressed = false;
-                console.error(errore);
             }
             if (!pressed) {
                 window.myalert("Tempo esaurito!", "E' scaduto il tempo!");
