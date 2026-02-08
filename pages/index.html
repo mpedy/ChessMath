@@ -160,32 +160,6 @@
 			window.onbeforeunload = function () { }
 			window.location.href = "/"
 		};
-		/*var timeinv = setInterval(
-				function(){
-					$.ajax(
-						{
-							url: "page_"+codice,
-							async: false,
-							success: function(res_page){
-								if(page != res_page["page"]){
-									page = res_page["page"];
-									$.ajax(
-										{
-											url: "getpage_"+page,
-											async: false,
-											success: function(result){
-												clearInterval(window.myt);
-												$("#mydialog_opened").dialog("close").remove();
-												$("#content_page").html(result)
-											}
-										})
-								}
-							}, error: function(err){
-								window.onbeforeunload= function(){}
-								window.location.href="/"
-							}
-						})
-				},3000);*/
 	</script>
 	<style>
 		img {

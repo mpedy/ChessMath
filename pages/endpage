@@ -4,7 +4,4 @@
 	window.location.href="/end"
 </script>
 	<!--<h1 style="margin-top: 40%">Ciao a presto!</h1>-->
-	<script>
-	clearInterval(timeinv)
-	</script>
 </div>
