@@ -9,5 +9,5 @@ class ImgGiocoSpirit extends ImgGioco {
     }
 }
 
-const img_gioco_spirit = new ImgGiocoSpirit();
+var img_gioco_spirit = new ImgGiocoSpirit();
 export { img_gioco_spirit };

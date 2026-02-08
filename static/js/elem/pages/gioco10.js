@@ -81,5 +81,5 @@ class Gioco10 {
 
     }
 }
-const gioco10 = new Gioco10();
+var gioco10 = new Gioco10();
 export { gioco10 };

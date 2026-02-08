@@ -3,5 +3,5 @@ class Endpage {
     start() {
     }
 }
-const endpage = new Endpage();
+var endpage = new Endpage();
 export { endpage };

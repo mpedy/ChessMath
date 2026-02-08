@@ -53,6 +53,6 @@ class Medie extends Prototipo {
     }
 }
 
-const medie = new Medie();
+var medie = new Medie();
 
 export { medie };

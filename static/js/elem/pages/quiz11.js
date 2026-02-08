@@ -33,5 +33,5 @@ class Quiz11 {
         getQuiz();
     }
 }
-const quiz11 = new Quiz11();
+var quiz11 = new Quiz11();
 export { quiz11 };

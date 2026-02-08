@@ -23,5 +23,5 @@ class Gioco12b_soluzione {
     }
 }
 
-const gioco12b_soluzione = new Gioco12b_soluzione();
+var gioco12b_soluzione = new Gioco12b_soluzione();
 export { gioco12b_soluzione };

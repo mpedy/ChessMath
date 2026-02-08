@@ -51,6 +51,6 @@ class Elementari extends Prototipo {
     }
 }
 
-const elementari = new Elementari();
+var elementari = new Elementari();
 
 export { elementari };

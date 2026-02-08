@@ -196,5 +196,5 @@ class GiocoTrainingToro {
     }
 }
 
-const gioco_training_toro = new GiocoTrainingToro();
+var gioco_training_toro = new GiocoTrainingToro();
 export { gioco_training_toro };

@@ -30,7 +30,7 @@ export class DrawChessboard {
         elem.setAttribute("height", w)
         w = _w - 40;
         w = Math.min(w, 600 - 40)
-        const squareSize = parseInt(w / 8);
+        var squareSize = parseInt(w / 8);
         var boardTopx = 20;
         var boardTopy = 20;
         elem.setAttribute("data-square-size", squareSize);
@@ -61,7 +61,7 @@ export class DrawChessboard {
         this.elem.style.padding = "20px";
         w = _w - 40;
         w = Math.min(w, 600 - 40)
-        const squareSize = parseInt(w / 8);
+        var squareSize = parseInt(w / 8);
         var boardTopx = 20;
         var boardTopy = 20;
         this.elem.setAttribute("data-square-size", squareSize);
@@ -166,7 +166,7 @@ export class DrawChessboard {
         elem.setAttribute("height", w)
         w = _w - 40;
         w = Math.min(w, 600 - 40)
-        const squareSize = parseInt(w / dim);
+        var squareSize = parseInt(w / dim);
         var boardTopx = 20;
         var boardTopy = 20;
         elem.setAttribute("data-square-size", squareSize);
@@ -193,7 +193,7 @@ export class DrawChessboard {
         elem.style.padding = "20px";
         w = _w - 40;
         w = Math.min(w, 600 - 40)
-        const squareSize = parseInt(w / dim);
+        var squareSize = parseInt(w / dim);
         var boardTopx = 20;
         var boardTopy = 20;
         elem.setAttribute("data-square-size", squareSize);
@@ -201,8 +201,8 @@ export class DrawChessboard {
         elem.setAttribute("data-boardtop-y", boardTopy);
         elem.setAttribute("data-number-caselle", dim)
 
-        for (let i = 0; i < dim; i++) {
-            for (let j = 0; j < dim; j++) {
+        for (var i = 0; i < dim; i++) {
+            for (var j = 0; j < dim; j++) {
                 var div = document.createElement("div")
                 div.style.background = ((i + j) % 2 == 0) ? "#eeeed2" : "#769656";
                 div.style.width = squareSize + "px";
@@ -226,7 +226,7 @@ export class DrawChessboard {
             }
         }
         var css_str = "<style>";
-        for (let i = 0; i < dim; i++) {
+        for (var i = 0; i < dim; i++) {
             css_str = css_str + "div#A" + (i + 1) + ":before{content:\"" + (i + 1) + "\"; position: absolute; top: " + (squareSize / 2 - 5) + "px; left: -14px;font-size: 12px;}";
             css_str = css_str + "div#" + String.fromCharCode(i + 65) + "1:after{content:\"" + String.fromCharCode(i + 65) + "\"; position: absolute; top: 100%;font-size: 12px;margin:auto;}";
         }

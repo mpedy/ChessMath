@@ -3,5 +3,5 @@ class Classifica {
     start() {
     }
 }
-const classifica = new Classifica();
+var classifica = new Classifica();
 export { classifica };

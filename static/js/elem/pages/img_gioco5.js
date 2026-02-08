@@ -33,5 +33,5 @@ class ImgGioco5 {
         drawChessboard.handleMouseDown_image = function () { }
     }
 }
-const img_gioco5 = new ImgGioco5();
+var img_gioco5 = new ImgGioco5();
 export { img_gioco5 };

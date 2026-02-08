@@ -7,5 +7,5 @@ class ScacchieraVuota {
         drawChessboard.drawChessboard(document.getElementById("chessboard"));
     }
 }
-const scacchiera_vuota = new ScacchieraVuota();
+var scacchiera_vuota = new ScacchieraVuota();
 export { scacchiera_vuota };

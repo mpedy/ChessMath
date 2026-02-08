@@ -9,5 +9,5 @@ class ImgGioco5 extends ImgGioco {
     }
 }
 
-const img_gioco5 = new ImgGioco5();
+var img_gioco5 = new ImgGioco5();
 export { img_gioco5 };

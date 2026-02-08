@@ -37,5 +37,5 @@ class ImgGioco15 {
     }
 }
 
-const img_gioco15 = new ImgGioco15();
+var img_gioco15 = new ImgGioco15();
 export { img_gioco15 };

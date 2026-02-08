@@ -75,5 +75,5 @@ class BattagliaNavale {
     }
 }
 
-const battaglia_navale = new BattagliaNavale();
+var battaglia_navale = new BattagliaNavale();
 export { battaglia_navale };

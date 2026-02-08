@@ -110,5 +110,5 @@ class GiocoSpirit {
     }
 }
 
-const gioco_spirit = new GiocoSpirit();
+var gioco_spirit = new GiocoSpirit();
 export { gioco_spirit };

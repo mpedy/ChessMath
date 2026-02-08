@@ -23,5 +23,5 @@ class TorreHelp {
         drawChessboard.handleMouseDown_image = function () { }
     }
 }
-const torre_help = new TorreHelp();
+var torre_help = new TorreHelp();
 export { torre_help };

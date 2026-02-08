@@ -103,12 +103,12 @@ class Gioco19 {
             pmoves.flat()
             var pmoves_king = window.calculatePossibleMoves(KINGB.casella, KINGB.tipo);
             var pmoves_king_excluded = new Array();
-            for (let i in pmoves_king) {
+            for (var i in pmoves_king) {
                 if (pmoves.includes(pmoves_king[i])) {
                     pmoves_king_excluded.push(pmoves_king[i])
                 }
             }
-            for (let i in pmoves_king_excluded) {
+            for (var i in pmoves_king_excluded) {
                 pmoves_king.splice(pmoves_king.indexOf(pmoves_king_excluded[i]), 1)
             }
             if (pmoves_king.length == 0) {
@@ -148,26 +148,26 @@ class Gioco19 {
             var pmoves = new Array();
             switch (type) {
                 case "Rook": {
-                    let x = casella.charCodeAt(0) - 65 + 1;
-                    let y = parseInt(casella[1]);
+                    var x = casella.charCodeAt(0) - 65 + 1;
+                    var y = parseInt(casella[1]);
                     pmoves = pieceMove.moveRook(casella, x, y);
                 }
                     break;
                 case "King": {
-                    let x = casella.charCodeAt(0) - 65 + 1;
-                    let y = parseInt(casella[1]);
+                    var x = casella.charCodeAt(0) - 65 + 1;
+                    var y = parseInt(casella[1]);
                     pmoves = pieceMove.moveKing(casella, x, y);
                 }
                     break;
             }
-            for (let i in drawChessboard.pieces) {
+            for (var i in drawChessboard.pieces) {
                 if (pmoves.indexOf(drawChessboard.pieces[i].casella) >= 0) {
                     pmoves.splice(pmoves.indexOf(drawChessboard.pieces[i].casella), 1)
                 }
             }
             //console.log(possible_moves);
             if (show_possible_moves) {
-                for (let i in pmoves) {
+                for (var i in pmoves) {
                     var elem = document.getElementById(pmoves[i]);
                     caselle_colorate.push(pmoves[i]);
                     var div = document.createElement("div");
@@ -231,5 +231,5 @@ class Gioco19 {
     }
 }
 
-const gioco19 = new Gioco19();
+var gioco19 = new Gioco19();
 export { gioco19 };

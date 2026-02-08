@@ -16,10 +16,10 @@ class ImgCavallo {
         drawChessboard.drawPieces(document.getElementById("chessboard"), drawChessboard.piece_position)
 
         var cas = ["E7"]
-
-        for (let i in cas) {
-            let elem = $("#" + cas[i])[0]
-            let div = document.createElement("div");
+        var i;
+        for (i in cas) {
+            var elem = $("#" + cas[i])[0]
+            var div = document.createElement("div");
             div.style.background = "red"
             div.style.borderRadius = "50%"
             div.style.position = "absolute"
@@ -31,9 +31,9 @@ class ImgCavallo {
             elem.appendChild(div);
         }
         cas = ["D6", "D7"]
-        for (let i in cas) {
-            let elem = $("#" + cas[i])[0]
-            let div = document.createElement("div");
+        for (i in cas) {
+            var elem = $("#" + cas[i])[0]
+            var div = document.createElement("div");
             div.style.background = "rgba(255,0,0,0.5)";
             div.style.borderRadius = "50%"
             div.style.position = "absolute"
@@ -50,5 +50,5 @@ class ImgCavallo {
     }
 }
 
-const img_cavallo = new ImgCavallo();
+var img_cavallo = new ImgCavallo();
 export { img_cavallo };

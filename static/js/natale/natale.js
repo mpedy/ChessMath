@@ -64,6 +64,6 @@ class Natale extends Prototipo {
 }
 
 
-const natale = new Natale();
+var natale = new Natale();
 
 export { natale };

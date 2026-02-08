@@ -9,5 +9,5 @@ class ImgRegina extends ImgGioco {
     }
 }
 
-const img_regina = new ImgRegina();
+var img_regina = new ImgRegina();
 export { img_regina };

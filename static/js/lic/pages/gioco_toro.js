@@ -208,5 +208,5 @@ class GiocoToro {
     }
 }
 
-const gioco_toro = new GiocoToro();
+var gioco_toro = new GiocoToro();
 export { gioco_toro };

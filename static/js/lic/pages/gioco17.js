@@ -59,10 +59,10 @@ class Gioco17 {
             possible_moves = pieceMove.moveRook(casella, x, y);
             var pm = possible_moves;
             possible_moves = pieceMove.moveBishop(casella, x, y);
-            for (let i = 0; i < pm.length; i++) {
+            for (var i = 0; i < pm.length; i++) {
                 possible_moves.push(pm[i]);
             }
-            for (let i = 0; i < possible_moves.length; i++) {
+            for (var i = 0; i < possible_moves.length; i++) {
                 var c = document.getElementById(possible_moves[i]);
                 if (c == undefined) {
                     continue;
@@ -121,5 +121,5 @@ class Gioco17 {
     }
 }
 
-const gioco17 = new Gioco17();
+var gioco17 = new Gioco17();
 export { gioco17 };

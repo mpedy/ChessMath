@@ -56,7 +56,7 @@ class PieceMove {
         var possible_moves = new Array();
         var dim = parseInt(document.getElementById("chessboard").getAttribute("data-number-caselle"));
         var newcasella;
-        for (let i = 1; i < dim + 1; i++) {//up
+        for (var i = 1; i < dim + 1; i++) {//up
             newcasella = casella[0] + (y + i)
             if (y + i < dim + 1 && ($("#" + newcasella).children().length == 0 || !window.obstacles.includes($("#" + newcasella).children()[0].getAttribute("data-type")))) {
                 possible_moves.push(newcasella)
@@ -69,7 +69,7 @@ class PieceMove {
                 continue;
             }
         }
-        for (let i = 1; i < dim + 1; i++) {//down
+        for (var i = 1; i < dim + 1; i++) {//down
             //console.log("Down: "+(y-i));
             newcasella = casella[0] + (y - i)
             if (y - i > 0 && ($("#" + newcasella).children().length == 0 || !window.obstacles.includes($("#" + newcasella).children()[0].getAttribute("data-type")))) {
@@ -83,7 +83,7 @@ class PieceMove {
                 continue;
             }
         }
-        for (let i = 1; i < dim + 1; i++) {//dx
+        for (var i = 1; i < dim + 1; i++) {//dx
             //console.log("Dx: "+(x+i));
             newcasella = String.fromCharCode(65 + x + i - 1) + y
             //console.log("Newcasella: "+newcasella)
@@ -99,7 +99,7 @@ class PieceMove {
                 continue;
             }
         }
-        for (let i = 1; i < dim + 1; i++) {//sx
+        for (var i = 1; i < dim + 1; i++) {//sx
             //console.log("Sx: "+(x-i));
             newcasella = String.fromCharCode(65 + x - i - 1) + y
             //console.log("Newcasella: "+newcasella)
@@ -122,7 +122,7 @@ class PieceMove {
         var possible_moves = new Array();
         var dim = parseInt(document.getElementById("chessboard").getAttribute("data-number-caselle"));
         var newcasella;
-        for (let i = 1; i < dim + 1; i++) {//sx up
+        for (var i = 1; i < dim + 1; i++) {//sx up
             if (x - i > 0 && y + i < dim + 1) {
                 newcasella = String.fromCharCode(x - i + 65 - 1) + (y + i)
                 try {
@@ -138,7 +138,7 @@ class PieceMove {
                 break;
             }
         }
-        for (let i = 1; i < dim + 1; i++) {//sx down
+        for (var i = 1; i < dim + 1; i++) {//sx down
             //console.log("Down: "+(y-i));
             if (x - i > 0 && y - i > 0) {
                 newcasella = String.fromCharCode(x - i + 65 - 1) + (y - i)
@@ -154,7 +154,7 @@ class PieceMove {
                 break;
             }
         }
-        for (let i = 1; i < dim + 1; i++) {//dx up
+        for (var i = 1; i < dim + 1; i++) {//dx up
             //console.log("Dx: "+(x+i));
             if (x + i < dim + 1 && y + i < dim + 1) {
                 newcasella = String.fromCharCode(x + i + 65 - 1) + (y + i)
@@ -170,7 +170,7 @@ class PieceMove {
                 break;
             }
         }
-        for (let i = 1; i < dim + 1; i++) {//dx down
+        for (var i = 1; i < dim + 1; i++) {//dx down
             //console.log("Sx: "+(x-i));
             if (x + i < dim + 1 && y - i > 0) {
                 newcasella = String.fromCharCode(x + i + 65 - 1) + (y - i)
@@ -258,7 +258,7 @@ class PieceMove {
         var possible_moves = new Array();
         var dim = parseInt(document.getElementById("chessboard").getAttribute("data-number-caselle"));
         var newcasella;
-        for (let i = 1; i < dim * 2 + 1; i++) {//up
+        for (var i = 1; i < dim * 2 + 1; i++) {//up
             newcasella = casella[0] + ((y + i - 1) % dim + 1)
             if (newcasella == casella) {
                 break;
@@ -274,7 +274,7 @@ class PieceMove {
                 continue;
             }
         }
-        for (let i = 1; i < dim * 2 + 1; i++) {//down
+        for (var i = 1; i < dim * 2 + 1; i++) {//down
             var _y = y - i;
             while (_y <= 0) {
                 _y += dim;
@@ -294,7 +294,7 @@ class PieceMove {
                 continue;
             }
         }
-        for (let i = 1; i < dim * 2 + 1; i++) {//dx
+        for (var i = 1; i < dim * 2 + 1; i++) {//dx
             newcasella = String.fromCharCode(65 + ((x + i - 1) % dim + 1) - 1) + y
             if (newcasella == casella) {
                 break;
@@ -310,7 +310,7 @@ class PieceMove {
                 continue;
             }
         }
-        for (let i = 1; i < dim * 2 + 1; i++) {//sx
+        for (var i = 1; i < dim * 2 + 1; i++) {//sx
             var _x = x - i
             while (_x <= 0) {
                 _x += dim;
@@ -338,8 +338,8 @@ class PieceMove {
         var possible_moves = new Array();
         var dim = parseInt(document.getElementById("chessboard").getAttribute("data-number-caselle"));
         var newcasella;
-        for (let i = 1; i < 2 * dim + 1; i++) {//sx up
-            let _x = x - i
+        for (var i = 1; i < 2 * dim + 1; i++) {//sx up
+            var _x = x - i
             while (_x <= 0) {
                 _x += dim;
             }
@@ -356,12 +356,12 @@ class PieceMove {
                 possible_moves.push(newcasella)
             }
         }
-        for (let i = 1; i < dim + 1; i++) {//sx down
-            let _x = x - i
+        for (var i = 1; i < dim + 1; i++) {//sx down
+            var _x = x - i
             while (_x <= 0) {
                 _x += dim;
             }
-            let _y = y - i
+            var _y = y - i
             while (_y <= 0) {
                 _y += dim;
             }
@@ -378,7 +378,7 @@ class PieceMove {
                 possible_moves.push(newcasella)
             }
         }
-        for (let i = 1; i < dim + 1; i++) {//dx up
+        for (var i = 1; i < dim + 1; i++) {//dx up
             newcasella = String.fromCharCode(65 + ((x + i - 1) % dim + 1) - 1) + ((y + i - 1) % dim + 1)
             if (newcasella == casella) {
                 break;
@@ -392,8 +392,8 @@ class PieceMove {
                 possible_moves.push(newcasella)
             }
         }
-        for (let i = 1; i < dim + 1; i++) {//dx down
-            let _y = y - i
+        for (var i = 1; i < dim + 1; i++) {//dx down
+            var _y = y - i
             while (_y <= 0) {
                 _y += dim;
             }

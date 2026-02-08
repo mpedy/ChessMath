@@ -63,6 +63,6 @@ class Liceo extends Prototipo {
 }
 
 
-const liceo = new Liceo();
+var liceo = new Liceo();
 
 export { liceo };

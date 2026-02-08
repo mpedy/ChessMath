@@ -46,7 +46,8 @@ class Gioco16 {
         }
 
         window.reset = function () {
-            for (let i in caselle_colorate) {
+            var i;
+            for (i in caselle_colorate) {
                 var elem = document.getElementById(caselle_colorate[i])
                 elem.removeChild(elem.children[elem.childElementCount - 1]);
             }
@@ -59,10 +60,10 @@ class Gioco16 {
             possible_moves = pieceMove.moveRook(casella, x, y);
             var pm = possible_moves;
             possible_moves = pieceMove.moveBishop(casella, x, y);
-            for (let i = 0; i < pm.length; i++) {
+            for (i = 0; i < pm.length; i++) {
                 possible_moves.push(pm[i]);
             }
-            for (let i = 0; i < possible_moves.length; i++) {
+            for (i = 0; i < possible_moves.length; i++) {
                 var c = document.getElementById(possible_moves[i]);
                 if (c == undefined) {
                     continue;
@@ -121,5 +122,5 @@ class Gioco16 {
     }
 }
 
-const gioco16 = new Gioco16();
+var gioco16 = new Gioco16();
 export { gioco16 };

@@ -3,5 +3,5 @@ class Attesa {
     start() {
     }
 }
-const attesa = new Attesa();
+var attesa = new Attesa();
 export { attesa };

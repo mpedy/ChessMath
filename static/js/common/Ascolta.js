@@ -2,6 +2,6 @@ class Ascolta{
 	constructor() { }
     start() {}
 }
-const ascolta = new Ascolta();
+var ascolta = new Ascolta();
 
 export { ascolta };
