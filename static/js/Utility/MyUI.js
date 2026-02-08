@@ -31,6 +31,8 @@ export var myconfirm = function (title, text, yes_btn, no_btn, f1, f2, closable)
 	$(div).dialog("open");
 }
 
+window.myconfirm = myconfirm;
+
 window.myconfirm_2b = function (title, text, yes_btn, no_btn, f1, f2, closable) {
 	try {
 		if (closable == undefined) {
