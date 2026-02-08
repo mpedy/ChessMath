@@ -42,7 +42,7 @@ class MovingGame {
         var show_possible_moves = this.show_possible_moves
 
         window.ricomincia = function () {
-            $("#chessboard").html("")[0].style = ""
+            $("#chessboard").html("")[0].style.cssText = ""
             drawChessboard.drawChessboard(document.getElementById("chessboard"));
             drawChessboard.drawPieces(document.getElementById("chessboard"), drawChessboard.piece_position);
             this.moving_pieces = this.moving_pieces_initial;

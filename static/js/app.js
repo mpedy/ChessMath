@@ -44,4 +44,5 @@ class App {
     }
 }
 
-window.app = new App();
+var app = new App();
+window.app = app;

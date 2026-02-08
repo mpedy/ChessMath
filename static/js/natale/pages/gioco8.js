@@ -51,7 +51,7 @@ class Gioco8 {
         var show_possible_moves = false;
 
         window.ricomincia = function () {
-            $("#chessboard").html("")[0].style = ""
+            $("#chessboard").html("")[0].style.cssText = ""
             drawChessboard.drawChessboard(document.getElementById("chessboard"));
             drawChessboard.drawPieces(document.getElementById("chessboard"), drawChessboard.piece_position);
             moving_pieces = {

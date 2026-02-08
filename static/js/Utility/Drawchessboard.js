@@ -152,7 +152,7 @@ export class DrawChessboard {
         for (var i in cas) {
             var elem = $("#" + cas[i])[0]
             var div = document.createElement("div");
-            div.style = style
+            div.style.cssText = style
             div.style.borderRadius = "2px"
             elem.appendChild(div);
         }
