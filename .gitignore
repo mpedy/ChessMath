@@ -10,3 +10,4 @@ chiavi/
 .DS_Store
 node_modules/
 **/.env
+static/dist/*
