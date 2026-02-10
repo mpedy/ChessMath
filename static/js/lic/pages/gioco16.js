@@ -20,13 +20,13 @@ class Gioco16 {
                 window.procedi(document.getElementById("gobtn"))
             }
         }
-
-        drawChessboard.drawChessboard_bis(document.getElementById("chessboard"), 4)
+        var dim_queens = 4;
+        drawChessboard.drawChessboard_bis(document.getElementById("chessboard"), dim_queens)
 
         var caselle_colorate = new Array();
         var possible_moves = new Array();
 
-        drawChessboard.handleMouseDown_casella = function (e) {
+        var handleMouseDown_casella = function (e) {
             var elem = e.currentTarget;
             var casella = elem.getAttribute("casella");
             if (caselle_colorate.includes(casella)) {
@@ -44,6 +44,8 @@ class Gioco16 {
                 elem.appendChild(img);
             }
         }
+
+        drawChessboard.handleMouseDown_casella = handleMouseDown_casella;
 
         window.reset = function () {
             var i;
@@ -79,6 +81,7 @@ class Gioco16 {
 
         window.procedi = function (btn) {
             btn.disabled = true;
+            var correct_answer = false;
             var points = 0;
             if (maketimer.sec > 0) {
                 var chess = document.getElementById("chessboard");
@@ -88,10 +91,11 @@ class Gioco16 {
                         queens_position.push(chess.children[i].id);
                     }
                 }
-                if (queens_position.length != 4) {
+                if (queens_position.length != dim_queens) {
                     window.myalert("Attenzione", "Hai inserito " + queens_position.length + " regine");
-                    maketimer.sec = 0
-                    maketimer.expired = false
+                    maketimer.pauseTimer();
+                    // maketimer.sec = 0
+                    // maketimer.expired = false
                 } else {
                     var okpos = 0;
                     for (var q = 0; q < queens_position.length; q++) {
@@ -103,20 +107,41 @@ class Gioco16 {
                     }
                     if (okpos == 0 && maketimer.sec > 0) {
                         points = 50;
+                        if (maketimer.time_restarted > 0){
+                            points = parseInt(points / (maketimer.time_restarted + 1));
+                        }
                         window.myalert("Risposta Corretta", "Hai guadagnato " + points + " punti");
-                        maketimer.sec = 0
-                        maketimer.expired = false
+                        correct_answer = true;
+                        maketimer.pauseTimer();
+                        // maketimer.sec = 0
+                        // maketimer.expired = false
                     }
                 }
             }
             window.updatePoints(points);
             window.punti = window.getPoints();
             clearInterval(maketimer.myt);
-            maketimer.sec = 0;
+            // maketimer.sec = 0;
+            maketimer.pauseTimer();
             document.getElementById("gobtn").disabled = true;
             document.getElementById("reset").disabled = true;
             drawChessboard.handleMouseDown_casella = function () { }
             drawChessboard.handleMouseDown_image = function () { }
+            if (!correct_answer){
+                var gobtn = document.getElementById("gobtn");
+                gobtn.disabled = false;
+                gobtn.innerText = "Ritenta";
+                gobtn.classList.add("retrybtn");
+                gobtn.onclick = function(){
+                    document.getElementById("reset").disabled = false;
+                    gobtn.innerText = "Conferma";
+                    gobtn.classList.remove("retrybtn");
+                    gobtn.setAttribute("onclick", "procedi(this)");
+                    drawChessboard.handleMouseDown_casella = handleMouseDown_casella;
+                    window.reset();
+                    maketimer.restartTimer();
+                }
+            }
         }
 
     }

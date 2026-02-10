@@ -39,6 +39,9 @@
 #gobtn::before {
     background-image: url("/static/img/confirm_icon.svg");
 }
+#gobtn.retrybtn::before {
+    background-image: url("/static/img/restart_icon.svg");
+}
 #reset::before {
     background-image: url("/static/img/eraser_icon.svg");
 }
