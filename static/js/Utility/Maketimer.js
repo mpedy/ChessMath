@@ -5,51 +5,68 @@ export class MakeTimerClass {
 		this.myt;
 		this.expired = true
 		this.hash;
+		this.clessidra;
+		this.totsec = 0;
+		this.txt;
+		this.time_restarted = 0;
 	}
 	calculateHash() {
 		return window.codice + "_" + window.page
 	}
 	maketimer = function (elem) {
+		elem.innerHTML = "";
 		this.hash = this.calculateHash()
 		var timer = elem
-		var totsec = parseInt(timer.getAttribute("data-second"))
+		this.totsec = parseInt(timer.getAttribute("data-second"))
 		var height = timer.getAttribute("data-height") || "50px";
 		var width = timer.getAttribute("data-width") || "100%";
-		this.sec = totsec
-		var txt = document.createElement("span")
-		txt.innerText = "Tempo rimanente: " + this.sec + " secondi"
-		txt.style.margin = "40px"
-		txt.style.fontSize = "16px"
-		timer.appendChild(txt)
+		this.sec = this.totsec
+		this.txt = document.createElement("span")
+		this.txt.innerText = "Tempo rimanente: " + this.sec + " secondi"
+		this.txt.style.margin = "40px"
+		this.txt.style.fontSize = "16px"
+		timer.appendChild(this.txt)
 		var box = document.createElement("div")
 		box.style.width = width
 		box.style.height = height
 		box.style.background = "black"
 		box.style.position = "relative"
 		box.style.margin = "auto"
-		var clessidra = document.createElement("div")
-		clessidra.style.width = "100%"
-		clessidra.style.height = "100%"
-		clessidra.style.background = "white"
-		clessidra.style.position = "absolute"
-		box.appendChild(clessidra)
+		this.clessidra = document.createElement("div")
+		this.clessidra.style.width = "100%"
+		this.clessidra.style.height = "100%"
+		this.clessidra.style.background = "white"
+		this.clessidra.style.position = "absolute"
+		box.appendChild(this.clessidra)
 		box.style.border = "2px solid white"
 		timer.appendChild(box)
-		this.myt = setInterval(() => {
-			this.sec -= 1;
-			console.log("active", this.hash)
-			if (this.calculateHash() != this.hash) {
-				clearInterval(this.myt)
+		this.myt = this.startTimer();
+	}
+	startTimer() {
+		var self = this;
+		return setInterval(function(){
+			self.sec -= 1;
+			console.log("active", self.hash)
+			if (self.calculateHash() != self.hash) {
+				clearInterval(self.myt)
 				return
 			}
-			if (this.sec <= 0) {
-				clearInterval(this.myt);
-				clessidra.style.width = "0px";
-				this.stopTimerFunction();
+			if (self.sec <= 0) {
+				clearInterval(self.myt);
+				self.clessidra.style.width = "0px";
+				self.stopTimerFunction();
 			} else {
-				clessidra.style.width = (this.sec * 100 / totsec) + "%";
+				self.clessidra.style.width = (self.sec * 100 / self.totsec) + "%";
 			}
-			txt.innerText = "Tempo rimanente: " + this.sec + " secondi"
+			self.txt.innerText = "Tempo rimanente: " + self.sec + " secondi"
 		}, 1000)
+	}
+	pauseTimer() {
+		clearInterval(this.myt);
+	}
+	restartTimer() {
+		this.expired = false;
+		this.maketimer(document.getElementsByClassName("timer")[0]);
+		this.time_restarted += 1;
 	}
 }
