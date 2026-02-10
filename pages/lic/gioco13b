@@ -3,7 +3,9 @@
 <div>
 	<div style="background: black;">Mosse: <span id="number_of_moves">0</span></div>
 	<div class="timer" data-second="120" data-height="20px" data-width="80%"></div>
-	<button style="border-radius: 10px; display: block; margin: 30px auto 15px auto; padding: 5px;" id="ricomincia" onclick="ricomincia()" >Ricomincia</button>
+	<!-- <button style="border-radius: 10px; display: block; margin: 30px auto 15px auto; padding: 5px;" id="ricomincia" onclick="ricomincia()" >Ricomincia</button> -->
 </div>
-
+<div id="controls_container">
+	<button id="ricomincia" onclick="window.ricomincia()" >Ricomincia</button>
+</div>
 <!-- <script src="/static/js/dist/lic/gioco13b.js"></script> -->

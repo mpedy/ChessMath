@@ -1,0 +1,48 @@
+#controls_container {
+    position: absolute;
+    position: fixed;
+    bottom: 0px;
+    width: 100%;
+    /* background-color: #ddd; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 6%;
+    margin-bottom: 10px;
+}
+
+#ricomincia, #gobtn, #reset {
+    height: 100%;
+    border: 3px solid black;
+    background-color: white;
+    padding: 0px 20px;
+    position: relative;
+    border-radius: 20px;
+    background: linear-gradient(0deg, #aaa, white);
+    margin: 0px 5px;
+}
+
+#ricomincia::before, #gobtn::before, #reset::before {
+    width: 15px;
+    height: 15px;
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 10px;
+    content: "";
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+#ricomincia::before {
+    background-image: url("/static/img/restart_icon.svg");
+}
+#gobtn::before {
+    background-image: url("/static/img/confirm_icon.svg");
+}
+#reset::before {
+    background-image: url("/static/img/eraser_icon.svg");
+}
+
+#ricomincia[disabled]::before, #gobtn[disabled]::before, #reset[disabled]::before {
+    filter: contrast(0);
+}
