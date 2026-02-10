@@ -1,3 +1,4 @@
+venvl/
 venv/
 env/
 statvenv/
@@ -8,3 +9,4 @@ linux_env/
 chiavi/
 .DS_Store
 node_modules/
+**/.env
