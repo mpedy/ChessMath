@@ -8,6 +8,7 @@ from starlette.middleware import Middleware
 from starlette.endpoints import HTTPEndpoint, WebSocketEndpoint
 from starlette.websockets import WebSocket
 import threading
+import json
 
 
 # per esportare da DB:
@@ -41,18 +42,21 @@ opt = GameOptions()
 websockets = []
 lock = threading.Lock()
 
+manifest = json.load(open("static/dist/manifest.json","r", encoding="utf-8"))
+
 templates = Jinja2Templates(directory="pages")
 
 async def welcome(request):
-    return HTMLResponse(open('pages/welcome',"r",encoding="utf-8").read())
+    return templates.TemplateResponse('welcome', {"request":request, "manifest": manifest})
+    #return HTMLResponse(open('pages/welcome',"r",encoding="utf-8").read())
 
 async def mainRoute(request):
     global opt
     try:
         uuid = request.path_params["uuid"]
         if uuid == "Animatore":
-            return templates.TemplateResponse('index.html', {"request":request, "nome": "Animatore", "codice": opt.codice})
-        return templates.TemplateResponse('index.html', {"request":request, "nome": opt.UUID_NAME[uuid], "codice": opt.codice})
+            return templates.TemplateResponse('index.html', {"request":request, "nome": "Animatore", "codice": opt.codice, "manifest": manifest})
+        return templates.TemplateResponse('index.html', {"request":request, "nome": opt.UUID_NAME[uuid], "codice": opt.codice, "manifest": manifest})
     except Exception as e:
         print("Errore in mainRoute con request: ",str(request))
     return RedirectResponse("/")
@@ -223,7 +227,8 @@ async def reset(request):
     return PlainTextResponse("ok")
 
 async def endGame(request):
-    return HTMLResponse(open("pages/end","r",encoding="utf-8").read())
+    return templates.TemplateResponse("end", {"request": request, "manifest": manifest})
+    #return HTMLResponse(open("pages/end","r",encoding="utf-8").read())
 
 async def addPoints(request):
     global opt
@@ -275,13 +280,18 @@ async def getAnswered(request):
         return JSONResponse({"perc":-1, "page":opt.page, "error": "Ancora nessuno ha risposto","lista":0})
 
 async def anim(request):
-    return templates.TemplateResponse("anim_key", {"request": request, "errore": """<div id="error_msg_anim"></div>"""})
+    return templates.TemplateResponse("anim_key", {"request": request, "errore": """<div id="error_msg_anim"></div>""", "manifest": manifest})
 
 async def onerror(request, exc):
     print("Errore")
     print(exc)
     print("Errore gestito: ",exc.detail)
     return RedirectResponse("/anim",status_code=301)
+
+async def refresh(request):
+    global manifest
+    manifest = json.load(open("static/dist/manifest.json","r", encoding="utf-8"))
+    return PlainTextResponse("ok")
 
 class MyWebSocket(WebSocketEndpoint):
     import typing
@@ -356,6 +366,7 @@ routes=[
     Route("/getAnswered", getAnswered),
     WebSocketRoute("/ws/{cod:int}_{name:str}", MyWebSocket),
     Route("/anim",anim),#ok
+    Route("/refresh", refresh),
     Mount('/static', app=StaticFiles(directory='static'), name="static"),#ok
 ]
 

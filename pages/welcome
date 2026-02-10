@@ -8,9 +8,9 @@
 	<link rel="icon" type="image/png" href="static/img/favicon.png">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 	<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
-	<link rel="stylesheet" href="static/css/style.css">
+	<link rel="stylesheet" href="{{ manifest['css'] }}">
 	<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
-	<script src="/static/js/dist/welcome.js"></script>
+	<script src="{{ manifest['js'] }}"></script>
 </head>
 <body>
 	<div id="background">
