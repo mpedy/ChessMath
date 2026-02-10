@@ -93,7 +93,33 @@ export class DrawChessboard {
                 this.elem.appendChild(div)
             }
         }
-        $('<style>' +
+        var sty = document.createElement("style");
+        sty.id = "chessboard_style";
+        sty.innerHTML = `
+            div#A8:before{content:"8"; position: absolute; top: ${(squareSize / 2 - 5)}px; left: -14px;font-size: 12px;}
+            div#A7:before{content:"7"; position: absolute; top: ${(squareSize / 2 - 5)}px; left: -14px;font-size: 12px;}
+            div#A6:before{content:"6"; position: absolute; top: ${(squareSize / 2 - 5)}px; left: -14px;font-size: 12px;}
+            div#A5:before{content:"5"; position: absolute; top: ${(squareSize / 2 - 5)}px; left: -14px;font-size: 12px;}
+            div#A4:before{content:"4"; position: absolute; top: ${(squareSize / 2 - 5)}px; left: -14px;font-size: 12px;}
+            div#A3:before{content:"3"; position: absolute; top: ${(squareSize / 2 - 5)}px; left: -14px;font-size: 12px;}
+            div#A2:before{content:"2"; position: absolute; top: ${(squareSize / 2 - 5)}px; left: -14px;font-size: 12px;}
+            div#A1:before{content:"1"; position: absolute; top: ${(squareSize / 2 - 5)}px; left: -14px;font-size: 12px;}
+
+            div#A1:after{content:"A"; position: absolute; top: 100%;font-size: 12px;margin:auto;}
+            div#B1:after{content:"B"; position: absolute; top: 100%;font-size: 12px;margin:auto;}
+            div#C1:after{content:"C"; position: absolute; top: 100%;font-size: 12px;margin:auto;}
+            div#D1:after{content:"D"; position: absolute; top: 100%;font-size: 12px;margin:auto;}
+            div#E1:after{content:"E"; position: absolute; top: 100%;font-size: 12px;margin:auto;}
+            div#F1:after{content:"F"; position: absolute; top: 100%;font-size: 12px;margin:auto;}
+            div#G1:after{content:"G"; position: absolute; top: 100%;font-size: 12px;margin:auto;}
+            div#H1:after{content:"H"; position: absolute; top: 100%;font-size: 12px;margin:auto;}`;
+        var chessboardStyle = document.getElementById("chessboard_style");
+        if(!chessboardStyle){
+            document.head.appendChild(sty);
+        }else{
+            chessboardStyle.innerHTML = sty.innerHTML;
+        }
+        /*$('<style>' +
             'div#A8:before{content:"' + 8 + '"; position: absolute; top: ' + (squareSize / 2 - 5) + 'px; left: -14px;font-size: 12px;}' +
             'div#A7:before{content:"' + 7 + '"; position: absolute; top: ' + (squareSize / 2 - 5) + 'px; left: -14px;font-size: 12px;}' +
             'div#A6:before{content:"' + 6 + '"; position: absolute; top: ' + (squareSize / 2 - 5) + 'px; left: -14px;font-size: 12px;}' +
@@ -112,7 +138,7 @@ export class DrawChessboard {
             'div#G1:after{content:"G"; position: absolute; top: 100%;font-size: 12px;margin:auto;}' +
             'div#H1:after{content:"H"; position: absolute; top: 100%;font-size: 12px;margin:auto;}' +
 
-            '</style>').appendTo('head');
+            '</style>').appendTo('head');*/
         boardTopy += this.elem.getClientRects()[0].top;
         boardTopx += this.elem.getClientRects()[0].left;
     }
