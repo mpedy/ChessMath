@@ -5,33 +5,38 @@ import { DrawChessboard as DrawChessboardClass } from "./Drawchessboard.js";
 /* global $ */
 class DrawGame {
     constructor({
-        piece_position,
-        caselle_corrette
+        piece_position = {},
+        caselle_corrette = [],
+        with_timer = true
     }) {
         this.piece_position = piece_position;
         this.caselle_corrette = caselle_corrette;
+        this.with_timer = with_timer;
     }
     start() {
         var self = this;
         var drawChessboard = new DrawChessboardClass()
-        var maketimer = new MakeTimerClass()
+        if (this.with_timer) {
+            var maketimer = new MakeTimerClass()
 
-        maketimer.maketimer(document.getElementsByClassName("timer")[0]);
-        maketimer.stopTimerFunction = function () {
-            var dis = document.getElementById("gobtn").disabled;
-            document.getElementById("gobtn").disabled = true;
-            document.getElementById("reset").disabled = true;
-            drawChessboard.handleMouseDown_casella = function () { }
-            if (!dis) {
-                window.procedi(document.getElementById("gobtn"))
+            maketimer.maketimer(document.getElementsByClassName("timer")[0]);
+            maketimer.stopTimerFunction = function () {
+                var dis = document.getElementById("gobtn").disabled;
+                document.getElementById("gobtn").disabled = true;
+                document.getElementById("reset").disabled = true;
+                drawChessboard.handleMouseDown_casella = function () { }
+                if (!dis) {
+                    window.procedi(document.getElementById("gobtn"))
+                }
             }
         }
 
         drawChessboard.drawChessboard(document.getElementById("chessboard"))
 
-        drawChessboard.piece_position = this.piece_position;
-
-        drawChessboard.drawPieces(document.getElementById("chessboard"), drawChessboard.piece_position)
+        if (Object.keys(this.piece_position).length > 0) {
+            drawChessboard.piece_position = this.piece_position;
+            drawChessboard.drawPieces(document.getElementById("chessboard"), drawChessboard.piece_position)
+        }
 
         var caselle_colorate = new Array();
 
