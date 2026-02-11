@@ -108,6 +108,8 @@ async function buildCSS() {
 
 async function main() {
     ensureDir(OUTDIR);
+    ensureDir(OUTDIR+"/js");
+    ensureDir(OUTDIR+"/css");
 
     // pulisci vecchi app.* e style.* (solo dentro static/dist)
     cleanOld([
