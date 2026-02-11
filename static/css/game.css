@@ -20,6 +20,7 @@
     border-radius: 20px;
     background: linear-gradient(0deg, #aaa, white);
     margin: 0px 5px;
+    color: black;
 }
 
 #ricomincia::before, #gobtn::before, #reset::before {
