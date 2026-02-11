@@ -1,22 +1,34 @@
-import { pieceMove } from "./movePiecesnew.js";
-import { MakeTimerClass } from "./maketimernew.js"
-import { DrawChessboard as DrawChessboardClass } from "./drawchessboardnewnew.js";
+import { pieceMove } from "./MovePieces.js";
+import { MakeTimerClass } from "./Maketimer.js";
+import { DrawChessboard as DrawChessboardClass } from "./Drawchessboard.js";
 
 /* global $ */
 class MovingGame {
-    constructor(piece_position, moving_pieces, end_position, show_possible_moves) {
+    constructor({
+        piece_position,
+        moving_pieces,
+        end_position,
+        show_possible_moves,
+        with_timer = false,
+        toro = false
+    }) {
         this.piece_position = piece_position;
         this.moving_pieces = moving_pieces;
-        this.moving_pieces_initial = moving_pieces;
+        this.moving_pieces_initial = {...moving_pieces};
         this.end_position = end_position;
         this.show_possible_moves = show_possible_moves;
+        this.with_timer = with_timer;
+        this.toro = toro;
     }
     start() {
+        var self = this;
         var drawChessboard = new DrawChessboardClass()
         var maketimer = new MakeTimerClass()
-
-        maketimer.maketimer(document.getElementsByClassName("timer")[0]);
+        if(this.with_timer) {
+            maketimer.maketimer(document.getElementsByClassName("timer")[0]);
+        }
         maketimer.stopTimerFunction = function () {
+            debugger;
             drawChessboard.handleMouseDown_casella = function () { }
             drawChessboard.handleMouseDown_image = function () { }
             $("#ricomincia").prop("disabled", true);
@@ -36,34 +48,38 @@ class MovingGame {
         window.enlighted = "";
 
         var moving_piece = "";
-        var possible_moves = new Array();
+        window.possible_moves = new Array();
         var end_position = this.end_position
         var number_of_moves = 0;
         var show_possible_moves = this.show_possible_moves
 
         window.ricomincia = function () {
+            debugger;
             $("#chessboard").html("")[0].style.cssText = ""
             drawChessboard.drawChessboard(document.getElementById("chessboard"));
             drawChessboard.drawPieces(document.getElementById("chessboard"), drawChessboard.piece_position);
-            this.moving_pieces = this.moving_pieces_initial;
+            self.moving_pieces = {...self.moving_pieces_initial};
             window.enlighted = ""
-            window.enlight(end_position, "orange", true);
+            if(end_position != null) {
+                window.enlight(end_position, "orange", true);
+            }
             number_of_moves = 0;
-            possible_moves = new Array();
-            caselle_colorate = new Array();
             $("#number_of_moves").html(number_of_moves);
+            window.possible_moves = new Array();
+            caselle_colorate = new Array();
         }
 
         drawChessboard.handleMouseDown_casella = function (e) {
+            debugger;
             var elem = e.currentTarget;
             //console.log(elem)
             var casella = elem.getAttribute("casella");
-            if (possible_moves.includes(casella)) {
+            if (window.possible_moves.includes(casella)) {
                 window.move(moving_piece, elem.id);
                 moving_piece = "";
-                possible_moves = new Array();
-                e.preventDefault();
+                window.possible_moves = new Array();
                 e.stopPropagation();
+                e.preventDefault();
             } else {
                 //console.log("non sposto" + moving_piece)
             }
@@ -83,7 +99,7 @@ class MovingGame {
             lst[_to] = piece + ".svg";
             window.reset();
             drawChessboard.drawPieces(document.getElementById("chessboard"), lst);
-            this.moving_pieces[piece] = _to;
+            self.moving_pieces[piece] = _to;
             number_of_moves += window.dist(from, _to);
             $("#number_of_moves").html(number_of_moves);
             if (_to == end_position) {
@@ -107,9 +123,12 @@ class MovingGame {
             return d;
         }
 
-        window.enlight(end_position, "orange", true);
+        if(end_position != null) {
+            window.enlight(end_position, "orange", true);
+        }
 
         drawChessboard.handleMouseDown_image = function (e) {
+            debugger;
             //console.log(e.currentTarget);
             var elem = e.currentTarget;
             var casella = elem.getAttribute("data-casella");
@@ -119,14 +138,13 @@ class MovingGame {
                 return;
             }
             var can_move = false;
-            for (var i in this.moving_pieces) {
-                if (i == type && this.moving_pieces[i] == casella) {
+            for (var i in self.moving_pieces) {
+                if (i == type && self.moving_pieces[i] == casella) {
                     can_move = true;
-                    moving_piece = i + ";" + this.moving_pieces[i];
+                    moving_piece = i + ";" + self.moving_pieces[i];
                     break;
                 }
             }
-            //console.log("Can Move? "+can_move)
             if (can_move) {
                 window.calculatePossibleMoves(casella, type);
                 window.enlight(casella, "orange");
@@ -134,20 +152,25 @@ class MovingGame {
         }
 
         window.calculatePossibleMoves = function (casella, type) {
-            possible_moves = new Array();
+            debugger;
+            var x = casella.charCodeAt(0) - 65 + 1;
+            var y = parseInt(casella[1]);
+            window.possible_moves = new Array();
             switch (type) {
                 case "Rook": {
-                    var x = casella.charCodeAt(0) - 65 + 1;
-                    var y = parseInt(casella[1]);
-                    possible_moves = pieceMove.moveRook(casella, x, y);
-                }
-                    break;
+                    window.possible_moves = self.toro ? pieceMove.toro_moveRook(casella, x, y) : pieceMove.moveRook(casella, x, y);
+                } break;
+                case "Bishop": {
+                    window.possible_moves = self.toro ? pieceMove.toro_moveBishop(casella, x, y) : pieceMove.moveBishop(casella, x, y);
+                } break;
+                case "Knight": {
+                    window.possible_moves = self.toro ? pieceMove.toro_moveKnight(casella, x, y) : pieceMove.moveKnight(casella, x, y);
+                } break;
             }
-            //console.log(possible_moves);
             if (show_possible_moves) {
-                for (var i in possible_moves) {
-                    var elem = document.getElementById(possible_moves[i]);
-                    caselle_colorate.push(possible_moves[i]);
+                for (var i in window.possible_moves) {
+                    var elem = document.getElementById(window.possible_moves[i]);
+                    caselle_colorate.push(window.possible_moves[i]);
                     var div = document.createElement("div");
                     div.style.background = "blue";
                     div.style.borderRadius = "50%";
@@ -187,6 +210,7 @@ class MovingGame {
                     window.punti -= number_of_moves;
                     window.myalert("Punti", "Il tuo punteggio è di " + window.punti + " punti!");
                     window.updatePoints(-number_of_moves);
+                    debugger;
                     drawChessboard.handleMouseDown_casella = function () { }
                     drawChessboard.handleMouseDown_image = function () { }
                     $("#ricomincia").prop("disabled", true);
@@ -199,6 +223,7 @@ class MovingGame {
             window.myalert("Punti", "Il tuo punteggio è " + window.punti + ".");
             maketimer.sec = 0;
             window.updatePoints(-number_of_moves);
+            debugger;
             drawChessboard.handleMouseDown_casella = function () { }
             drawChessboard.handleMouseDown_image = function () { }
             $("#ricomincia").prop("disabled", true);
