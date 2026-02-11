@@ -19,7 +19,7 @@ var gioco_toro1 = new MovingGame({
     moving_pieces: { "Bishop": "H8" },
     end_position: "C3",
     show_possible_moves: false,
-    with_timer: false,
+    with_timer: true,
     toro: true
 })
 

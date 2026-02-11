@@ -19,7 +19,7 @@ var gioco_toro = new MovingGame({
     moving_pieces: { "Rook": "H8" },
     end_position: "C3",
     show_possible_moves: false,
-    with_timer: false,
+    with_timer: true,
     toro: true
 })
 

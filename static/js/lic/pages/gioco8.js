@@ -16,6 +16,7 @@ var gioco8 = new MovingGame({
     moving_pieces: { "Bishop": "A2" },
     end_position: "H7",
     show_possible_moves: false,
+    with_timer: true,
 })
 
 export { gioco8 };

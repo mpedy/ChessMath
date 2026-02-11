@@ -18,6 +18,7 @@ var gioco14 = new MovingGame({
     moving_pieces: { "Knight": "G2" },
     end_position: "A8",
     show_possible_moves: false,
+    with_timer: true,
 })
 
 export { gioco14 };

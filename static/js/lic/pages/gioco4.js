@@ -16,6 +16,7 @@ var gioco4 = new MovingGame({
     moving_pieces: { "Rook": "D5" },
     end_position: "A8",
     show_possible_moves: false,
+    with_timer: true,
 })
 
 export { gioco4 };
