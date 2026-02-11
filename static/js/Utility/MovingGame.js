@@ -8,7 +8,7 @@ class MovingGame {
         piece_position,
         moving_pieces,
         end_position,
-        show_possible_moves,
+        show_possible_moves = false,
         with_timer = false,
         toro = false
     }) {
