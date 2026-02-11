@@ -49,3 +49,7 @@
 #ricomincia[disabled]::before, #gobtn[disabled]::before, #reset[disabled]::before {
     filter: contrast(0);
 }
+button#gobtn.retrybtn {
+    background-color: yellow;
+    background: linear-gradient(0deg, #ffff00, #ffffaa);
+}
