@@ -1,7 +1,9 @@
-from starlette.middleware.authentication import AuthenticationMiddleware
+import base64
+import binascii
+#from starlette.middleware.authentication import AuthenticationMiddleware
 from starlette.authentication import (
-    AuthenticationBackend, AuthenticationError, SimpleUser, UnauthenticatedUser,
-    AuthCredentials, requires
+    AuthenticationBackend, AuthenticationError, SimpleUser, #UnauthenticatedUser,
+    AuthCredentials#, requires
 )
 
 class BasicAuthBackend(AuthenticationBackend):
@@ -30,6 +32,7 @@ class BasicAuthBackend(AuthenticationBackend):
                 return
             decoded = base64.b64decode(credentials).decode("ascii")
         except (ValueError, UnicodeDecodeError, binascii.Error) as exc:
+            print("Errore nella decodifica delle credenziali: ",exc)
             raise AuthenticationError('Invalid basic auth credentials')
 
         username, _, password = decoded.partition(":")

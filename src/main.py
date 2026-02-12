@@ -1,14 +1,13 @@
 import json
 from starlette.applications import Starlette
-from starlette.responses import JSONResponse, HTMLResponse, Response, RedirectResponse, PlainTextResponse
+from starlette.responses import JSONResponse, HTMLResponse, RedirectResponse, PlainTextResponse#, Response
 from starlette.routing import Mount, Route, WebSocketRoute
 from starlette.staticfiles import StaticFiles
 from starlette.templating import Jinja2Templates
 from starlette.middleware import Middleware
-from starlette.endpoints import HTTPEndpoint, WebSocketEndpoint
+from starlette.endpoints import WebSocketEndpoint#, HTTPEndpoint
 from starlette.websockets import WebSocket
 import threading
-import json
 
 
 # per esportare da DB:
@@ -26,6 +25,9 @@ from .customMiddleware import CustomHeaderMiddleware
 from .HTTPSMiddleware import HTTPSRedirectMiddleware
 #from .DBConnection import DBConnection
 
+from .paths import allpages
+from .GameOptions import GameOptions
+
 middleware = []
 
 PROD = 0
@@ -34,9 +36,6 @@ if PROD == 1:
 elif PROD == 2:
     middleware = [Middleware(CustomHeaderMiddleware)]
 
-
-from .paths import allpages
-from .GameOptions import GameOptions
 
 opt = GameOptions()
 websockets = []
@@ -58,7 +57,7 @@ async def mainRoute(request):
             return templates.TemplateResponse('index.html', {"request":request, "nome": "Animatore", "codice": opt.codice, "manifest": manifest})
         return templates.TemplateResponse('index.html', {"request":request, "nome": opt.UUID_NAME[uuid], "codice": opt.codice, "manifest": manifest})
     except Exception as e:
-        print("Errore in mainRoute con request: ",str(request))
+        print("Errore in mainRoute con request: ",str(request), str(e))
     return RedirectResponse("/")
 
 async def gotoPage(request):
@@ -103,8 +102,8 @@ async def setPage(request):
             opt.Answered = {}
             opt.Answered[opt.page] = []
         arr = allpages[opt.percorso]
-        l = len(arr)
-        res = [arr[opt.page-1] if opt.page-1 in range(0,l) else None, arr[opt.page] if opt.page in range(0,l) else None, arr[opt.page+1] if opt.page+1 in range(0,l) else None]
+        len_array = len(arr)
+        res = [arr[opt.page-1] if opt.page-1 in range(0,len_array) else None, arr[opt.page] if opt.page in range(0,len_array) else None, arr[opt.page+1] if opt.page+1 in range(0,len_array) else None]
         await notifyAllWS()
         return JSONResponse({"status":"ok","prev":res[0],"current":res[1],"next":res[2]})
     else:
@@ -203,7 +202,7 @@ async def addNome(request):
             while indiceDelNomeDaAggiungere >=0:
                 indiceDelNomeDaAggiungere = opt.allNames.index(nomeDaAggiungere+"-"+str(numDiNomiUguali))
                 numDiNomiUguali+=1
-    except Exception as e:
+    except Exception:
         nomeFinale = nomeDaAggiungere
         if numDiNomiUguali > 0:
             nomeFinale+="-"+str(numDiNomiUguali)
@@ -245,13 +244,13 @@ async def addPoints(request):
                     if len(websockets)-2 == 0:
                         await ws["ws"].send_json({"perc": -1, "page": opt.page, "error": "Ancora nessuno in lista", "lista":0})
                     try:
-                        l = len(opt.Answered[opt.page])
+                        numerator = len(opt.Answered[opt.page])
                         l_tot = len(websockets) - 2 ## Tolgo l'animatore, una per l'iframe e un'altra per la console
                         if l_tot != 0:
-                            await ws["ws"].send_json({"perc": l/l_tot*100, "page": opt.page, "error": "", "lista":l_tot})
+                            await ws["ws"].send_json({"perc": numerator/l_tot*100, "page": opt.page, "error": "", "lista":l_tot})
                         else:
                             await ws["ws"].send_json({"perc": -1, "page": opt.page, "error": "Ancora nessuno in lista","lista":0})
-                    except Exception as e:
+                    except Exception:
                         await ws["ws"].send_json({"perc":-1, "page":opt.page, "error": "Ancora nessuno ha risposto","lista":0})
                     break
     return PlainTextResponse("ok")
@@ -270,13 +269,13 @@ async def getAnswered(request):
     if len(opt.allNames) == 0:
         return JSONResponse({"perc": -1, "page": opt.page, "error": "Ancora nessuno in lista", "lista":0})
     try:
-        l = len(opt.Answered[opt.page])
+        numerator = len(opt.Answered[opt.page])
         l_tot = len(opt.allNames) ## Tolgo l'animatore
         if l_tot != 0:
-            return JSONResponse({"perc": l/l_tot*100, "page": opt.page, "error": "", "lista":len(opt.allNames)})
+            return JSONResponse({"perc": numerator/l_tot*100, "page": opt.page, "error": "", "lista":len(opt.allNames)})
         else:
             return JSONResponse({"perc": -1, "page": opt.page, "error": "Ancora nessuno in lista","lista":0})
-    except Exception as e:
+    except Exception:
         return JSONResponse({"perc":-1, "page":opt.page, "error": "Ancora nessuno ha risposto","lista":0})
 
 async def anim(request):
@@ -323,13 +322,13 @@ class MyWebSocket(WebSocketEndpoint):
             if len(opt.allNames) == 0:
                 await websocket.send_json({"perc": -1, "page": opt.page, "error": "Ancora nessuno in lista", "lista":0})
             try:
-                l = len(opt.Answered[opt.page])
+                numerator = len(opt.Answered[opt.page])
                 l_tot = len(websockets) - 2 ## Tolgo l'animatore, una websocket per l'iframe e un'altra per la console
                 if l_tot != 0:
-                    await websocket.send_json({"perc": l/l_tot*100, "page": opt.page, "error": "", "lista":l_tot})
+                    await websocket.send_json({"perc": numerator/l_tot*100, "page": opt.page, "error": "", "lista":l_tot})
                 else:
                     await websocket.send_json({"perc": -1, "page": opt.page, "error": "Ancora nessuno in lista","lista":0})
-            except Exception as e:
+            except Exception:
                 await websocket.send_json({"perc":-1, "page":opt.page, "error": "Ancora nessuno ha risposto","lista":0})
         await websocket.send_text(json.dumps({"pagina": opt.page, "path": opt.percorso.split("_")[1]}))
         return await super().on_receive(websocket, data)

@@ -27,7 +27,7 @@ class GameOptions():
         self.codice = int(random()*100000 % 990+1)
         self.page = 0
         self.percorso = "path_3"
-        setPageCode = 123111321
+        self.setPageCode = 123111321
 
     def reset(self):
         self.UUID_NAME = {}

@@ -1,4 +1,4 @@
-import time
+#import time
 from locust import HttpUser, task
 import random
 from websockets.sync.client import connect

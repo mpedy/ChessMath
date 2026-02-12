@@ -22,7 +22,7 @@ class DBConnection:
             self.conn = None
             print("Errore in connessione: "+str(e))
     def openCursor(self):
-        if(self.conn != None):
+        if self.conn is not None:
             self.cursor = self.conn.cursor()
     def openConnectionAndCursor(self):
         self.openConnection()
@@ -35,7 +35,7 @@ class DBConnection:
         self.cursor.close()
         self.conn.close()
     def executeAndFetchall(self, query):
-        if(self.cursor != None):
+        if self.cursor is not None:
             try:
                 self.cursor.execute(query)
                 return self.cursor.fetchall()

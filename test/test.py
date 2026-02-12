@@ -11,5 +11,5 @@ while True:
 		time.sleep(0.5)
 		print(time.time()-start)
 		exit()
-	except Exception as e:
+	except Exception:
 		time.sleep(0.100)

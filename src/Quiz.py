@@ -9,7 +9,7 @@ class Quiz:
         self.corretta = ""
         self.id = -1
         self.tempo = -1
-        if d != None:
+        if d is not None:
             self.id = d["quizid"]
             self.domanda = d["domanda"]
             self.risposta = d["risposta"]

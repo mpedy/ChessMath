@@ -25,8 +25,8 @@ class Forking():
         self.loop = True
 
 f = Forking()
-index = -1;
-maximum = -1;
+index = -1
+maximum = -1
 all_v = list()
 
 def loop_in_thread(loop):
