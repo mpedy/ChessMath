@@ -8,3 +8,6 @@ build:
 
 run:
 	@./server_start_py
+
+check:
+	ruff check
