@@ -38,6 +38,7 @@ div#background{
 #gobtn{
 	background: lightgray;
 	font-size: 4vw;
+	background: linear-gradient(0deg, #008d00, #40ff40);
 }
 #reset{
 	background: lightgray;
