@@ -28,7 +28,6 @@ class MovingGame {
             maketimer.maketimer(document.getElementsByClassName("timer")[0]);
         }
         maketimer.stopTimerFunction = function () {
-            debugger;
             drawChessboard.handleMouseDown_casella = function () { }
             drawChessboard.handleMouseDown_image = function () { }
             $("#ricomincia").prop("disabled", true);
@@ -54,7 +53,6 @@ class MovingGame {
         var show_possible_moves = this.show_possible_moves
 
         window.ricomincia = function () {
-            debugger;
             $("#chessboard").html("")[0].style.cssText = ""
             drawChessboard.drawChessboard(document.getElementById("chessboard"));
             drawChessboard.drawPieces(document.getElementById("chessboard"), drawChessboard.piece_position);
@@ -70,7 +68,6 @@ class MovingGame {
         }
 
         drawChessboard.handleMouseDown_casella = function (e) {
-            debugger;
             var elem = e.currentTarget;
             //console.log(elem)
             var casella = elem.getAttribute("casella");
@@ -128,7 +125,6 @@ class MovingGame {
         }
 
         drawChessboard.handleMouseDown_image = function (e) {
-            debugger;
             //console.log(e.currentTarget);
             var elem = e.currentTarget;
             var casella = elem.getAttribute("data-casella");
@@ -152,7 +148,6 @@ class MovingGame {
         }
 
         window.calculatePossibleMoves = function (casella, type) {
-            debugger;
             var x = casella.charCodeAt(0) - 65 + 1;
             var y = parseInt(casella[1]);
             window.possible_moves = new Array();
@@ -210,7 +205,6 @@ class MovingGame {
                     window.punti -= number_of_moves;
                     window.myalert("Punti", "Il tuo punteggio è di " + window.punti + " punti!");
                     window.updatePoints(-number_of_moves);
-                    debugger;
                     drawChessboard.handleMouseDown_casella = function () { }
                     drawChessboard.handleMouseDown_image = function () { }
                     $("#ricomincia").prop("disabled", true);
@@ -223,7 +217,6 @@ class MovingGame {
             window.myalert("Punti", "Il tuo punteggio è " + window.punti + ".");
             maketimer.sec = 0;
             window.updatePoints(-number_of_moves);
-            debugger;
             drawChessboard.handleMouseDown_casella = function () { }
             drawChessboard.handleMouseDown_image = function () { }
             $("#ricomincia").prop("disabled", true);
