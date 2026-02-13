@@ -22,6 +22,8 @@
     background: linear-gradient(0deg, #aaa, white);
     margin: 0px 5px;
     color: black;
+    display: inline-flex;
+    align-items: center;
 }
 
 #ricomincia::before, #gobtn::before, #reset::before {
@@ -33,6 +35,17 @@
     content: "";
     background-size: contain;
     background-repeat: no-repeat;
+}
+
+#reset{
+	background: lightgray;
+    background: linear-gradient(0deg, #aa0000, #ff4444);
+	font-size: 4vw;
+}
+#ricomincia{
+	background: lightgray;
+    background: linear-gradient(0deg, #aa0000, #ff4444);
+	font-size: 4vw;
 }
 
 #ricomincia::before {
@@ -54,4 +67,8 @@
 button#gobtn.retrybtn {
     background-color: yellow;
     background: linear-gradient(0deg, #ffff00, #ffffaa);
+}
+button[disabled]{
+    background: lightgray !important;
+    color: gray !important;
 }
