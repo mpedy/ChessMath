@@ -53,6 +53,19 @@ async function buildJS() {
     const rel = jsOut;
     const hash = rel.match(/app\.(.+)\.js$/)[1];
     await buildBabel_2015(hash);
+    await esbuild.build({
+        entryPoints: [`static/dist/js/app.${hash}.js`],
+        bundle: true,
+        minify: true,
+        sourcemap: true,
+        target: ["es2015"],//, ...ESBuildTargets],
+        format: "iife",
+        outdir: OUTDIR+"/js",
+        metafile: true,
+        //metafile: "static/dist/meta.json",
+        write: true,
+        allowOverwrite: true,
+    });
     return { js: rel };
 }
 
