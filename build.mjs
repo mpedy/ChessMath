@@ -5,7 +5,7 @@ import fs from "node:fs";
 import path from "node:path";
 import { bundle as lightningBundle, browserslistToTargets } from "lightningcss";
 import browserslist from "browserslist";
-import browserslistToEsbuild from "./browserslistToEsbuild.mjs";
+//import browserslistToEsbuild from "./browserslistToEsbuild.mjs";
 
 const OUTDIR = "static/dist";
 
@@ -28,13 +28,13 @@ function shortHash(buf) {
 }
 //esbuild static/js/app.js --bundle --minify --sourcemap --target=es2015 --format=iife --outfile=static/js/app.dist.tmp2015.js
 async function buildJS() {
-    const ESBuildTargets = browserslistToEsbuild();
+    //const ESBuildTargets = browserslistToEsbuild();
     const result = await esbuild.build({
         entryPoints: ["static/js/app.js"],
         bundle: true,
         minify: true,
         sourcemap: true,
-        target: ["es2015", ...ESBuildTargets],
+        target: ["es2015"],//, ...ESBuildTargets],
         format: "iife",
         outdir: OUTDIR+"/js",
         entryNames: "app.[hash]",
