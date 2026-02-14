@@ -5,6 +5,7 @@ import fs from "node:fs";
 import path from "node:path";
 import { bundle as lightningBundle, browserslistToTargets } from "lightningcss";
 import browserslist from "browserslist";
+import browserslistToEsbuild from "./browserslistToEsbuild.mjs";
 
 const OUTDIR = "static/dist";
 
@@ -27,12 +28,13 @@ function shortHash(buf) {
 }
 //esbuild static/js/app.js --bundle --minify --sourcemap --target=es2015 --format=iife --outfile=static/js/app.dist.tmp2015.js
 async function buildJS() {
+    const ESBuildTargets = browserslistToEsbuild();
     const result = await esbuild.build({
         entryPoints: ["static/js/app.js"],
         bundle: true,
         minify: true,
         sourcemap: true,
-        target: ["es2015"],
+        target: ["es2015", ...ESBuildTargets],
         format: "iife",
         outdir: OUTDIR+"/js",
         entryNames: "app.[hash]",
@@ -58,7 +60,7 @@ async function buildJS() {
 async function buildBabel_2015(hash) {
     const { exec } = await import("child_process");
     return new Promise((resolve, reject) => {
-        exec(`npx babel static/dist/js/app.${hash}.js --out-file static/dist/js/app.${hash}.js --presets=@babel/preset-env --plugins=./myplugin__define_var.cjs --minified --source-maps`, (error, stdout, stderr) => {
+        exec(`npx babel static/dist/js/app.${hash}.js --out-file static/dist/js/app.${hash}.js --plugins=./myplugin__define_var.cjs --minified --source-maps`, (error, stdout, stderr) => {
             if (error) {
                 reject(error);
             } else {
@@ -70,7 +72,7 @@ async function buildBabel_2015(hash) {
 
 //esbuild static/styles.css --bundle --minify --sourcemap --target=chrome58,firefox57,safari11 --outdir=static/dist --entry-names=style.[hash] --metafile=static/dist/meta_css.json
 async function buildCSS() {
-    const targets = browserslistToTargets(browserslist());
+    const LightningCSStargets = browserslistToTargets(browserslist());
     //const targets = browserslistToTargets(browserslist("> 2%, not dead")); // :contentReference[oaicite:3]{index=3}
     /*const targets = {
         chrome: 58,
@@ -86,7 +88,7 @@ async function buildCSS() {
         bundle: true,
         minify: true,
         sourceMap: true,
-        targets,
+        LightningCSStargets,
         outdir: OUTDIR+"/css",
         entryNames: "style.[hash]",
         metafile: true,
