@@ -95,7 +95,11 @@ export class DrawChessboard {
         }
         var sty = document.createElement("style");
         sty.id = "chessboard_style";
-        sty.innerHTML = `
+        sty.innerHTML = "";
+        for(var i=1; i<=8; i++){
+            sty.innerHTML += `div#A${i}:before{content:"${i}"; position: absolute; top: ${(squareSize / 2 - 5)}px; left: -14px;font-size: 12px;top:50%;transform:translate(0,-50%);}`
+            sty.innerHTML += `div#${String.fromCharCode(65+i-1)}1:after{content:"${String.fromCharCode(65+i-1)}"; position: absolute; top: 100%;font-size: 12px;margin:auto;transform:translate(-50%,25%);}`
+        }/*`
             div#A8:before{content:"8"; position: absolute; top: ${(squareSize / 2 - 5)}px; left: -14px;font-size: 12px;}
             div#A7:before{content:"7"; position: absolute; top: ${(squareSize / 2 - 5)}px; left: -14px;font-size: 12px;}
             div#A6:before{content:"6"; position: absolute; top: ${(squareSize / 2 - 5)}px; left: -14px;font-size: 12px;}
@@ -112,7 +116,7 @@ export class DrawChessboard {
             div#E1:after{content:"E"; position: absolute; top: 100%;font-size: 12px;margin:auto;}
             div#F1:after{content:"F"; position: absolute; top: 100%;font-size: 12px;margin:auto;}
             div#G1:after{content:"G"; position: absolute; top: 100%;font-size: 12px;margin:auto;}
-            div#H1:after{content:"H"; position: absolute; top: 100%;font-size: 12px;margin:auto;}`;
+            div#H1:after{content:"H"; position: absolute; top: 100%;font-size: 12px;margin:auto;}`;*/
         var chessboardStyle = document.getElementById("chessboard_style");
         if(!chessboardStyle){
             document.head.appendChild(sty);

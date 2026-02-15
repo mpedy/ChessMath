@@ -1,0 +1,115 @@
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 600 600" style="height: 90vh;">
+    <g id="background">
+        <rect x="0" y="0" width="600" height="600" style="background-color: black"></rect>
+    </g>
+    <g id="row_8">
+        <rect x="20" y="20" width="70" height="70" class="white"></rect>
+        <rect x="90" y="20" width="70" height="70" class="black"></rect>
+        <rect x="160" y="20" width="70" height="70" class="white"></rect>
+        <rect x="230" y="20" width="70" height="70" class="black"></rect>
+        <rect x="300" y="20" width="70" height="70" class="white"></rect>
+        <rect x="370" y="20" width="70" height="70" class="black"></rect>
+        <rect x="440" y="20" width="70" height="70" class="white"></rect>
+        <rect x="510" y="20" width="70" height="70" class="black"></rect>
+    </g>
+    <g id="row_7">
+        <rect x="20" y="90" width="70" height="70" class="black"></rect>
+        <rect x="90" y="90" width="70" height="70" class="white"></rect>
+        <rect x="160" y="90" width="70" height="70" class="black"></rect>
+        <rect x="230" y="90" width="70" height="70" class="white"></rect>
+        <rect x="300" y="90" width="70" height="70" class="black"></rect>
+        <rect x="370" y="90" width="70" height="70" class="white"></rect>
+        <rect x="440" y="90" width="70" height="70" class="black"></rect>
+        <rect x="510" y="90" width="70" height="70" class="white"></rect>
+    </g>
+    <g id="row_6">
+        <rect x="20" y="160" width="70" height="70" class="white"></rect>
+        <rect x="90" y="160" width="70" height="70" class="black"></rect>
+        <rect x="160" y="160" width="70" height="70" class="white"></rect>
+        <rect x="230" y="160" width="70" height="70" class="black"></rect>
+        <rect x="300" y="160" width="70" height="70" class="white"></rect>
+        <rect x="370" y="160" width="70" height="70" class="black"></rect>
+        <rect x="440" y="160" width="70" height="70" class="white"></rect>
+        <rect x="510" y="160" width="70" height="70" class="black"></rect>
+    </g>
+    <g id="row_5">
+        <rect x="20" y="230" width="70" height="70" class="black"></rect>
+        <rect x="90" y="230" width="70" height="70" class="white"></rect>
+        <rect x="160" y="230" width="70" height="70" class="black"></rect>
+        <rect x="230" y="230" width="70" height="70" class="white"></rect>
+        <rect x="300" y="230" width="70" height="70" class="black"></rect>
+        <rect x="370" y="230" width="70" height="70" class="white"></rect>
+        <rect x="440" y="230" width="70" height="70" class="black"></rect>
+        <rect x="510" y="230" width="70" height="70" class="white"></rect>
+    </g>
+    <g id="row_4">
+        <rect x="20" y="300" width="70" height="70" class="white"></rect>
+        <rect x="90" y="300" width="70" height="70" class="black"></rect>
+        <rect x="160" y="300" width="70" height="70" class="white"></rect>
+        <rect x="230" y="300" width="70" height="70" class="black"></rect>
+        <rect x="300" y="300" width="70" height="70" class="white"></rect>
+        <rect x="370" y="300" width="70" height="70" class="black"></rect>
+        <rect x="440" y="300" width="70" height="70" class="white"></rect>
+        <rect x="510" y="300" width="70" height="70" class="black"></rect>
+    </g>
+    <g id="row_3">
+        <rect x="20" y="370" width="70" height="70" class="black"></rect>
+        <rect x="90" y="370" width="70" height="70" class="white"></rect>
+        <rect x="160" y="370" width="70" height="70" class="black"></rect>
+        <rect x="230" y="370" width="70" height="70" class="white"></rect>
+        <rect x="300" y="370" width="70" height="70" class="black"></rect>
+        <rect x="370" y="370" width="70" height="70" class="white"></rect>
+        <rect x="440" y="370" width="70" height="70" class="black"></rect>
+        <rect x="510" y="370" width="70" height="70" class="white"></rect>
+    </g>
+    <g id="row_2">
+        <rect x="20" y="440" width="70" height="70" class="white"></rect>
+        <rect x="90" y="440" width="70" height="70" class="black"></rect>
+        <rect x="160" y="440" width="70" height="70" class="white"></rect>
+        <rect x="230" y="440" width="70" height="70" class="black"></rect>
+        <rect x="300" y="440" width="70" height="70" class="white"></rect>
+        <rect x="370" y="440" width="70" height="70" class="black"></rect>
+        <rect x="440" y="440" width="70" height="70" class="white"></rect>
+        <rect x="510" y="440" width="70" height="70" class="black"></rect>
+    </g>
+    <g id="row_1">
+        <rect x="20" y="510" width="70" height="70" class="black"></rect>
+        <rect x="90" y="510" width="70" height="70" class="white"></rect>
+        <rect x="160" y="510" width="70" height="70" class="black"></rect>
+        <rect x="230" y="510" width="70" height="70" class="white"></rect>
+        <rect x="300" y="510" width="70" height="70" class="black"></rect>
+        <rect x="370" y="510" width="70" height="70" class="white"></rect>
+        <rect x="440" y="510" width="70" height="70" class="black"></rect>
+        <rect x="510" y="510" width="70" height="70" class="white"></rect>
+    </g>
+    <g id="texts">
+        <text x="10" y="60">8</text>
+        <text x="10" y="130">7</text>
+        <text x="10" y="200">6</text>
+        <text x="10" y="270">5</text>
+        <text x="10" y="340">4</text>
+        <text x="10" y="410">3</text>
+        <text x="10" y="480">2</text>
+        <text x="10" y="550">1</text>
+        <text x="55" y="595">A</text>
+        <text x="125" y="595">B</text>
+        <text x="195" y="595">C</text>
+        <text x="265" y="595">D</text>
+        <text x="335" y="595">E</text>
+        <text x="405" y="595">F</text>
+        <text x="475" y="595">G</text>
+        <text x="545" y="595">H</text>
+    </g>
+    <style>
+        .black{
+            fill: rgb(118, 150, 86);
+        }
+        .white{
+            fill: rgb(238, 238, 210);
+        }
+        text{
+            fill: white;
+            text-anchor: middle;
+        }
+    </style>
+</svg>
