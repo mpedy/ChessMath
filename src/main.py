@@ -8,6 +8,7 @@ from starlette.middleware import Middleware
 from starlette.endpoints import WebSocketEndpoint#, HTTPEndpoint
 from starlette.websockets import WebSocket
 import threading
+import os
 
 
 # per esportare da DB:
@@ -30,7 +31,7 @@ from .GameOptions import GameOptions
 
 middleware = []
 
-PROD = 0
+PROD = int(os.getenv("PROD", "0"))
 if PROD == 1:
     middleware = [Middleware(HTTPSRedirectMiddleware)]
 elif PROD == 2:
