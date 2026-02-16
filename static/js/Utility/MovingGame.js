@@ -13,8 +13,9 @@ class MovingGame {
         toro = false
     }) {
         this.piece_position = piece_position;
+        this.piece_position_initial = { ...piece_position };
         this.moving_pieces = moving_pieces;
-        this.moving_pieces_initial = {...moving_pieces};
+        this.moving_pieces_initial = { ...moving_pieces };
         this.end_position = end_position;
         this.show_possible_moves = show_possible_moves;
         this.with_timer = with_timer;
@@ -22,9 +23,9 @@ class MovingGame {
     }
     start() {
         var self = this;
-        var drawChessboard = new DrawChessboardClass()
+        var drawChessboard = new DrawChessboardClass(document.getElementById("chessboard"))
         var maketimer = new MakeTimerClass()
-        if(this.with_timer) {
+        if (this.with_timer) {
             maketimer.maketimer(document.getElementsByClassName("timer")[0]);
         }
         maketimer.stopTimerFunction = function () {
@@ -36,11 +37,11 @@ class MovingGame {
             }
         }
 
-        drawChessboard.drawChessboard(document.getElementById("chessboard"))
+        drawChessboard.drawChessboard()
 
         drawChessboard.piece_position = this.piece_position;
 
-        drawChessboard.drawPieces(document.getElementById("chessboard"), drawChessboard.piece_position)
+        drawChessboard.drawPieces();
 
         var caselle_colorate = new Array();
 
@@ -54,11 +55,12 @@ class MovingGame {
 
         window.ricomincia = function () {
             $("#chessboard").html("")[0].style.cssText = ""
-            drawChessboard.drawChessboard(document.getElementById("chessboard"));
-            drawChessboard.drawPieces(document.getElementById("chessboard"), drawChessboard.piece_position);
-            self.moving_pieces = {...self.moving_pieces_initial};
+            drawChessboard.drawChessboard();
+            drawChessboard.piece_position = { ...self.piece_position_initial };
+            drawChessboard.drawPieces();
+            self.moving_pieces = { ...self.moving_pieces_initial };
             window.enlighted = ""
-            if(end_position != null) {
+            if (end_position != null) {
                 window.enlight(end_position, "orange", true);
             }
             number_of_moves = 0;
@@ -95,7 +97,7 @@ class MovingGame {
             var lst = new Object();
             lst[_to] = piece + ".svg";
             window.reset();
-            drawChessboard.drawPieces(document.getElementById("chessboard"), lst);
+            drawChessboard.drawPieces(lst);
             self.moving_pieces[piece] = _to;
             number_of_moves += window.dist(from, _to);
             $("#number_of_moves").html(number_of_moves);
@@ -120,7 +122,7 @@ class MovingGame {
             return d;
         }
 
-        if(end_position != null) {
+        if (end_position != null) {
             window.enlight(end_position, "orange", true);
         }
 

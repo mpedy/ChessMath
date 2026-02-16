@@ -6,11 +6,11 @@ import { getQuiz } from "../../Utility/MyUI.js";
 class Quiz14 {
     constructor() { }
     start() {
+        var drawChessboard = new DrawChessboardClass($("#chessboard")[0])
+        drawChessboard.drawChessboard()
 
-        var drawChessboard = new DrawChessboardClass()
         var maketimer = new MakeTimerClass()
 
-        drawChessboard.drawChessboard($("#chessboard")[0])
         window.enlighted = "";
         window.enlight("C3", "orange", true);
         window.enlight("F5", "orange", true);

@@ -4,15 +4,9 @@ import { DrawChessboard as DrawChessboardClass } from "../../Utility/Drawchessbo
 class ImgGioco6 {
     constructor() { }
     start() {
-        var drawChessboard = new DrawChessboardClass()
-
-        drawChessboard.drawChessboard(document.getElementById("chessboard"))
-
-        drawChessboard.piece_position = {
-            "D5": "Rook.svg",
-        }
-
-        drawChessboard.drawPieces(document.getElementById("chessboard"), drawChessboard.piece_position)
+        var drawChessboard = new DrawChessboardClass(document.getElementById("chessboard"))
+        drawChessboard.drawChessboard()
+        drawChessboard.drawPieces({ "D5": "Rook.svg" })
 
         var cas = ["D3", "D7", "C4", "C6", "B5", "E4", "E6", "F5"]
 

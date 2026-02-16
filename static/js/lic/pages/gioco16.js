@@ -6,7 +6,7 @@ class Gioco16 {
     constructor() { }
     start() {
 
-        var drawChessboard = new DrawChessboardClass()
+        var drawChessboard = new DrawChessboardClass(document.getElementById("chessboard"))
         var maketimer = new MakeTimerClass()
         maketimer.maketimer(document.getElementsByClassName("timer")[0]);
         maketimer.stopTimerFunction = function () {
@@ -21,7 +21,7 @@ class Gioco16 {
             }
         }
         var dim_queens = 4;
-        drawChessboard.drawChessboard(document.getElementById("chessboard"), dim_queens)
+        drawChessboard.drawChessboard(dim_queens)
 
         var caselle_colorate = new Array();
         var possible_moves = new Array();
@@ -107,7 +107,7 @@ class Gioco16 {
                     }
                     if (okpos == 0 && maketimer.sec > 0) {
                         points = 50;
-                        if (maketimer.time_restarted > 0){
+                        if (maketimer.time_restarted > 0) {
                             points = parseInt(points / (maketimer.time_restarted + 1));
                         }
                         window.myalert("Risposta Corretta", "Hai guadagnato " + points + " punti");
@@ -127,12 +127,12 @@ class Gioco16 {
             document.getElementById("reset").disabled = true;
             drawChessboard.handleMouseDown_casella = function () { }
             drawChessboard.handleMouseDown_image = function () { }
-            if (!correct_answer){
+            if (!correct_answer) {
                 var gobtn = document.getElementById("gobtn");
                 gobtn.disabled = false;
                 gobtn.innerText = "Ritenta";
                 gobtn.classList.add("retrybtn");
-                gobtn.onclick = function(){
+                gobtn.onclick = function () {
                     document.getElementById("reset").disabled = false;
                     gobtn.innerText = "Conferma";
                     gobtn.classList.remove("retrybtn");

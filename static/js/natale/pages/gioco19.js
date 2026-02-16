@@ -7,7 +7,7 @@ class Gioco19 {
     constructor() { }
     start() {
 
-        var drawChessboard = new DrawChessboardClass()
+        var drawChessboard = new DrawChessboardClass(document.getElementById("chessboard"))
         //var maketimer = new MakeTimerClass()
         var ROOK1 = new PieceClass("Rook", "A1", "Rook.svg");
         var ROOK2 = new PieceClass("Rook", "H1", "Rook.svg");
@@ -16,7 +16,7 @@ class Gioco19 {
         var Party = [ROOK1, ROOK2]
         //var Enemies = [KINGB]
 
-        drawChessboard.drawChessboard(document.getElementById("chessboard"))
+        drawChessboard.drawChessboard()
 
 
         drawChessboard.piece_position = {}
@@ -24,7 +24,7 @@ class Gioco19 {
         drawChessboard.piece_position[ROOK2.casella] = ROOK2.immagine
         drawChessboard.piece_position[KINGB.casella] = KINGB.immagine
 
-        drawChessboard.drawPieces(document.getElementById("chessboard"), drawChessboard.piece_position)
+        drawChessboard.drawPieces()
 
         var caselle_colorate = new Array();
 
@@ -36,20 +36,21 @@ class Gioco19 {
         // moving_pieces[KINGB.tipo] = KINGB.casella
 
         // var moving_piece = "";
-         var possible_moves = new Array();
+        var possible_moves = new Array();
         var number_of_moves = 0;
         var show_possible_moves = false;
 
         window.ricomincia = function () {
             $("#chessboard").html("")[0].style.cssText = ""
-            drawChessboard.drawChessboard(document.getElementById("chessboard"));
-            drawChessboard.drawPieces(document.getElementById("chessboard"), drawChessboard.piece_position);
-            ROOK1.selected = false;
-            ROOK2.selected = false;
-            KINGB.selected = false;
-            ROOK1.casella = ROOK1._casella;
-            ROOK2.casella = ROOK2._casella;
-            KINGB.casella = KINGB._casella;
+            drawChessboard.drawChessboard();
+            ROOK1.reset();
+            ROOK2.reset();
+            KINGB.reset();
+            drawChessboard.piece_position = {}
+            drawChessboard.piece_position[ROOK1.casella] = ROOK1.immagine
+            drawChessboard.piece_position[ROOK2.casella] = ROOK2.immagine
+            drawChessboard.piece_position[KINGB.casella] = KINGB.immagine
+            drawChessboard.drawPieces();
             window.enlighted = "";
             number_of_moves = 0;
             $("#number_of_moves").html(number_of_moves);

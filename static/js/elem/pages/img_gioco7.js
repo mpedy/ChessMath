@@ -5,15 +5,9 @@ class ImgGioco7 {
     constructor() { }
     start() {
 
-        var drawChessboard = new DrawChessboardClass()
-
-        drawChessboard.drawChessboard(document.getElementById("chessboard"))
-
-        drawChessboard.piece_position = {
-            "D5": "Bishop.svg",
-        }
-
-        drawChessboard.drawPieces(document.getElementById("chessboard"), drawChessboard.piece_position)
+        var drawChessboard = new DrawChessboardClass(document.getElementById("chessboard"))
+        drawChessboard.drawChessboard()
+        drawChessboard.drawPieces({ "D5": "Bishop.svg" })
 
         var cas = ["A2", "A8", "B3", "B7", "C4", "C6", "E4", "E6", "F3", "F7", "G2", "G8", "H1"]
 

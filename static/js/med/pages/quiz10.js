@@ -6,12 +6,12 @@ import { getQuiz } from "../../Utility/MyUI.js"
 class Quiz10 {
     constructor() { }
     start() {
-        var drawChessboard = new DrawChessboardClass()
+        var drawChessboard = new DrawChessboardClass($("#chessboard")[0])
+        drawChessboard.drawChessboard()
+        drawChessboard.drawPieces({ "D6": "Bishop.svg" })
+
         var maketimer = new MakeTimerClass()
 
-        drawChessboard.drawChessboard($("#chessboard")[0])
-
-        drawChessboard.drawPieces($("#chessboard")[0], { "D6": "Bishop.svg" })
         window.enlighted = ""
         window.enlight("E6", "orange", true)
         window.can_answer = true

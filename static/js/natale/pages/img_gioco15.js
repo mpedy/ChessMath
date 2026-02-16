@@ -4,9 +4,8 @@ class ImgGioco15 {
     constructor() { }
     start() {
 
-        var drawChessboard = new DrawChessboardClass()
-        drawChessboard.drawChessboard(document.getElementById("chessboard"))
-
+        var drawChessboard = new DrawChessboardClass(document.getElementById("chessboard"))
+        drawChessboard.drawChessboard()
         drawChessboard.piece_position = {
             "H8": "Knight.svg",
             "G8": "obstacle.svg",
@@ -22,8 +21,7 @@ class ImgGioco15 {
             "D1": "obstacle.svg",
             "D3": "obstacle.svg"
         }
-
-        drawChessboard.drawPieces(document.getElementById("chessboard"), drawChessboard.piece_position)
+        drawChessboard.drawPieces()
 
         window.enlighted = "";
 

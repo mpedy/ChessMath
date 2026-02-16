@@ -15,7 +15,7 @@ class DrawGame {
     }
     start() {
         var self = this;
-        var drawChessboard = new DrawChessboardClass()
+        var drawChessboard = new DrawChessboardClass(document.getElementById("chessboard"))
         if (this.with_timer) {
             var maketimer = new MakeTimerClass()
 
@@ -31,11 +31,11 @@ class DrawGame {
             }
         }
 
-        drawChessboard.drawChessboard(document.getElementById("chessboard"))
+        drawChessboard.drawChessboard()
 
         if (Object.keys(this.piece_position).length > 0) {
             drawChessboard.piece_position = this.piece_position;
-            drawChessboard.drawPieces(document.getElementById("chessboard"), drawChessboard.piece_position)
+            drawChessboard.drawPieces();
         }
 
         var caselle_colorate = new Array();

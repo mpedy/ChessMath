@@ -7,6 +7,10 @@ class PieceClass {
         this.possible_moves = new Array();
         this.selected = false
     }
+    reset() {
+        this.casella = this._casella;
+        this.selected = false;
+    }
 }
 
 export { PieceClass };

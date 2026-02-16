@@ -1,12 +1,16 @@
 /* global $ */
 export class DrawChessboard {
-    constructor() {
+    constructor(elem) {
         this.handleMouseDown_casella = function () { }
         this.handleMouseDown_image = function () { }
         this.casella;
         this.piece_position;
         this.pieces = new Array()
         this.createObstacles();
+        if (elem == undefined) {
+            throw new Error("L'elemento non è definito: " + elem)
+        }
+        this.elem = elem;
     }
     createObstacles() {
         window.obstacles = ["rock-golem-1", "rock-golem", "obstacle"]
@@ -42,12 +46,9 @@ export class DrawChessboard {
         }
     }
 
-    drawChessboard = function (elem, dim = 8) {
-        if (this.elem == undefined) {
-            this.elem = elem
-        }
+    drawChessboard = function (dim = 8) {
         var _redraw = () => {
-            this.redraw.apply(this, [elem, dim])
+            this.redraw.apply(this, [this.elem, dim])
         }
         window.addEventListener("resize", _redraw)
         var _w = Math.min(window.innerWidth, window.outerWidth == 0 ? window.innerWidth : window.outerWidth)
@@ -109,21 +110,24 @@ export class DrawChessboard {
         boardTopy += this.elem.getClientRects()[0].top;
         boardTopx += this.elem.getClientRects()[0].left;
     }
-    drawPieces = function (elem, lst) {
-        //var squareSize = parseInt(elem.getAttribute("data-square-size"));
-        //var boardTopx = parseInt(elem.getAttribute("data-boardtop-x"));
-        //var boardTopy = parseInt(elem.getAttribute("data-boardtop-y"));
-        for (var i in lst) {
+    drawPieces = function (lst = undefined) {
+        if (lst != undefined) {
+            this.piece_position = lst;
+        }
+        if (this.piece_position == undefined) {
+            throw new Error("La posizione dei pezzi non è definita")
+        }
+        for (var i in this.piece_position) {
             this.casella = i.toUpperCase();
             var image = new Image();
-            image.src = "static/img/" + lst[i]
+            image.src = "static/img/" + this.piece_position[i]
             image.style.width = "100%"
             image.style.zIndex = "2"
             image.style.position = "absolute"
             image.style.left = "0"
             image.style.top = "0"
             image.setAttribute("data-casella", this.casella)
-            image.setAttribute("data-type", lst[i].replace(".svg", ""))
+            image.setAttribute("data-type", this.piece_position[i].replace(".svg", ""))
             document.getElementById(this.casella).appendChild(image)
             if ("ontouchstart" in document) {
                 image.addEventListener("touchstart", (e) => {

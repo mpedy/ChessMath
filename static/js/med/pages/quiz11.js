@@ -6,12 +6,12 @@ import { getQuiz } from "../../Utility/MyUI.js"
 class Quiz11 {
     constructor() { }
     start() {
-        var drawChessboard = new DrawChessboardClass()
+        var drawChessboard = new DrawChessboardClass($("#chessboard")[0])
+        drawChessboard.drawChessboard()
+        drawChessboard.drawPieces({ D5: "Bishop.svg" })
+
         var maketimer = new MakeTimerClass()
 
-        drawChessboard.drawChessboard($("#chessboard")[0])
-
-        drawChessboard.drawPieces($("#chessboard")[0], { D5: "Bishop.svg" })
         window.can_answer = true
         maketimer.stopTimerFunction = function (pressed) {
             try {

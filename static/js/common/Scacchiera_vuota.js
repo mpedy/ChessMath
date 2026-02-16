@@ -3,8 +3,8 @@ import { DrawChessboard as DrawChessboardClass } from "../Utility/Drawchessboard
 class ScacchieraVuota {
     constructor() { }
     start() {
-        var drawChessboard = new DrawChessboardClass()
-        drawChessboard.drawChessboard(document.getElementById("chessboard"));
+        var drawChessboard = new DrawChessboardClass(document.getElementById("chessboard"));
+        drawChessboard.drawChessboard();
     }
 }
 var scacchiera_vuota = new ScacchieraVuota();

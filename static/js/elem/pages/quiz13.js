@@ -6,13 +6,11 @@ import { MakeTimerClass } from "../../Utility/Maketimer.js"
 class Quiz13 {
     constructor() { }
     start() {
+        var drawChessboard = new DrawChessboardClass($("#chessboard")[0])
+        drawChessboard.drawChessboard()
+        drawChessboard.drawPieces({ "D5": "Bishop.svg" })
 
         var maketimer = new MakeTimerClass()
-        var drawChessboard = new DrawChessboardClass()
-
-        drawChessboard.drawChessboard($("#chessboard")[0])
-
-        drawChessboard.drawPieces($("#chessboard")[0], { "D5": "Bishop.svg" })
 
         window.enlighted = "";
         window.enlight("E5", "orange", true)

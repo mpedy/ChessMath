@@ -4,14 +4,9 @@ class Gioco12bSoluzione {
     constructor() { }
     start() {
 
-        var drawChessboard = new DrawChessboardClass()
-        drawChessboard.drawChessboard(document.getElementById("chessboard"))
-
-        drawChessboard.piece_position = {
-            "D5": "Knight.svg",
-        }
-
-        drawChessboard.drawPieces(document.getElementById("chessboard"), drawChessboard.piece_position)
+        var drawChessboard = new DrawChessboardClass(document.getElementById("chessboard"))
+        drawChessboard.drawChessboard()
+        drawChessboard.drawPieces({ "D5": "Knight.svg" })
 
         window.enlighted = "";
 

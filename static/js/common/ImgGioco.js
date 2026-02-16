@@ -8,13 +8,9 @@ class ImgGioco {
     }
     start() {
 
-        var drawChessboard = new DrawChessboardClass()
-
-        drawChessboard.drawChessboard(document.getElementById("chessboard"))
-
-        drawChessboard.piece_position = this.piece_position;
-
-        drawChessboard.drawPieces(document.getElementById("chessboard"), drawChessboard.piece_position)
+        var drawChessboard = new DrawChessboardClass(document.getElementById("chessboard"))
+        drawChessboard.drawChessboard()
+        drawChessboard.drawPieces(this.piece_position)
 
         for (var i in this.cas) {
             var elem = $("#" + this.cas[i])[0]

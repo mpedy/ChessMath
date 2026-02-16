@@ -6,12 +6,12 @@ import { MakeTimerClass } from "../../Utility/Maketimer.js"
 class Quiz14 {
     constructor() { }
     start() {
+        var drawChessboard = new DrawChessboardClass($("#chessboard")[0])
+        drawChessboard.drawChessboard()
+        drawChessboard.drawPieces({ D5: "Bishop.svg" })
+
         var maketimer = new MakeTimerClass()
-        var drawChessboard = new DrawChessboardClass()
 
-        drawChessboard.drawChessboard($("#chessboard")[0])
-
-        drawChessboard.drawPieces($("#chessboard")[0], { D5: "Bishop.svg" })
         window.can_answer = true
         maketimer.stopTimerFunction = function (pressed) {
             try {

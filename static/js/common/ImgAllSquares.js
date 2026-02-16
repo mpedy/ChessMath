@@ -5,12 +5,9 @@ class ImgAllSquares {
     constructor() { }
     start() {
 
-        var drawChessboard = new DrawChessboardClass()
-
-        drawChessboard.drawChessboard(document.getElementById("chessboard"))
-
-        drawChessboard.drawPieces(document.getElementById("chessboard"),
-            { "F5": "Bishop.svg", "C5": "Rook.svg" })
+        var drawChessboard = new DrawChessboardClass(document.getElementById("chessboard"))
+        drawChessboard.drawChessboard()
+        drawChessboard.drawPieces({ "F5": "Bishop.svg", "C5": "Rook.svg" })
 
         var cas = ["D7", "F7", "H7", "D5", "H5", "D3", "F3", "H3"]
         var i;

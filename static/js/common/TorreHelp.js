@@ -4,9 +4,9 @@ import { DrawChessboard as DrawChessboardClass } from "../Utility/Drawchessboard
 class TorreHelp {
     constructor() { }
     start() {
-        var drawChessboard = new DrawChessboardClass()
-        drawChessboard.drawChessboard(document.getElementById("chessboard"))
-        drawChessboard.drawPieces(document.getElementById("chessboard"), { "E4": "Rook.svg" })
+        var drawChessboard = new DrawChessboardClass(document.getElementById("chessboard"))
+        drawChessboard.drawChessboard()
+        drawChessboard.drawPieces({ "E4": "Rook.svg" })
         var au = document.createElement("img")
         au.src = "static/img/arrow-up.svg"
         $("#E5").append(au)

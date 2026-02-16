@@ -6,7 +6,7 @@ class Gioco16 {
     constructor() { }
     start() {
 
-        var drawChessboard = new DrawChessboardClass()
+        var drawChessboard = new DrawChessboardClass(document.getElementById("chessboard"))
         var maketimer = new MakeTimerClass()
         maketimer.maketimer(document.getElementsByClassName("timer")[0]);
         maketimer.stopTimerFunction = function () {
@@ -21,7 +21,7 @@ class Gioco16 {
             }
         }
 
-        drawChessboard.drawChessboard(document.getElementById("chessboard"), 4)
+        drawChessboard.drawChessboard(4)
 
         var caselle_colorate = new Array();
         var possible_moves = new Array();
