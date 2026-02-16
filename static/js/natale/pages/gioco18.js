@@ -22,7 +22,7 @@ class Gioco18 {
             }
         }
         var dim_queens = 12;
-        drawChessboard.drawChessboard_bis(document.getElementById("chessboard"), dim_queens)
+        drawChessboard.drawChessboard(document.getElementById("chessboard"), dim_queens)
 
         var caselle_colorate = new Array();
 

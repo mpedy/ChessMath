@@ -17,7 +17,7 @@ export class DrawChessboard {
     handleClick_image = function (event) {
         return this.handleMouseDown_image(event)
     }
-    redraw = function (elem) {
+    redraw = function (elem, dim = 8) {
         if (this.elem == undefined) {
             this.elem = elem;
         }
@@ -30,7 +30,7 @@ export class DrawChessboard {
         elem.setAttribute("height", w)
         w = _w - 40;
         w = Math.min(w, 600 - 40)
-        var squareSize = parseInt(w / 8);
+        var squareSize = parseInt(w / dim);
         var boardTopx = 20;
         var boardTopy = 20;
         elem.setAttribute("data-square-size", squareSize);
@@ -42,12 +42,12 @@ export class DrawChessboard {
         }
     }
 
-    drawChessboard = function (elem) {
+    drawChessboard = function (elem, dim = 8) {
         if (this.elem == undefined) {
             this.elem = elem
         }
         var _redraw = () => {
-            this.redraw.apply(this, [elem])
+            this.redraw.apply(this, [elem, dim])
         }
         window.addEventListener("resize", _redraw)
         var _w = Math.min(window.innerWidth, window.outerWidth == 0 ? window.innerWidth : window.outerWidth)
@@ -61,24 +61,24 @@ export class DrawChessboard {
         this.elem.style.padding = "20px";
         w = _w - 40;
         w = Math.min(w, 600 - 40)
-        var squareSize = parseInt(w / 8);
+        var squareSize = parseInt(w / dim);
         var boardTopx = 20;
         var boardTopy = 20;
         this.elem.setAttribute("data-square-size", squareSize);
         this.elem.setAttribute("data-boardtop-x", boardTopx);
         this.elem.setAttribute("data-boardtop-y", boardTopy);
-        this.elem.setAttribute("data-number-caselle", 8)
+        this.elem.setAttribute("data-number-caselle", dim)
 
-        for (var i = 0; i < 8; i++) {
-            for (var j = 0; j < 8; j++) {
+        for (var i = 0; i < dim; i++) {
+            for (var j = 0; j < dim; j++) {
                 var div = document.createElement("div")
                 div.style.background = ((i + j) % 2 == 0) ? "#eeeed2" : "#769656";
                 div.style.width = squareSize + "px";
                 div.style.height = squareSize + "px";
                 div.style.display = "inline-block";
                 div.style.position = "relative"
-                div.setAttribute("casella", String.fromCharCode(65 + j) + "" + (8 - i))
-                div.id = String.fromCharCode(65 + j) + "" + (8 - i)
+                div.setAttribute("casella", String.fromCharCode(65 + j) + "" + (dim - i))
+                div.id = String.fromCharCode(65 + j) + "" + (dim - i)
                 if ("ontouchstart" in document) {
                     div.addEventListener("touchstart", (e) => {
                         //this.handleMouseDown_casella(e);
@@ -96,53 +96,16 @@ export class DrawChessboard {
         var sty = document.createElement("style");
         sty.id = "chessboard_style";
         sty.innerHTML = "";
-        for(var i=1; i<=8; i++){
+        for (var i = 1; i <= dim; i++) {
             sty.innerHTML += `div#A${i}:before{content:"${i}"; position: absolute; top: ${(squareSize / 2 - 5)}px; left: -14px;font-size: 12px;top:50%;transform:translate(0,-50%);}`
-            sty.innerHTML += `div#${String.fromCharCode(65+i-1)}1:after{content:"${String.fromCharCode(65+i-1)}"; position: absolute; top: 100%;font-size: 12px;margin:auto;transform:translate(-50%,25%);}`
-        }/*`
-            div#A8:before{content:"8"; position: absolute; top: ${(squareSize / 2 - 5)}px; left: -14px;font-size: 12px;}
-            div#A7:before{content:"7"; position: absolute; top: ${(squareSize / 2 - 5)}px; left: -14px;font-size: 12px;}
-            div#A6:before{content:"6"; position: absolute; top: ${(squareSize / 2 - 5)}px; left: -14px;font-size: 12px;}
-            div#A5:before{content:"5"; position: absolute; top: ${(squareSize / 2 - 5)}px; left: -14px;font-size: 12px;}
-            div#A4:before{content:"4"; position: absolute; top: ${(squareSize / 2 - 5)}px; left: -14px;font-size: 12px;}
-            div#A3:before{content:"3"; position: absolute; top: ${(squareSize / 2 - 5)}px; left: -14px;font-size: 12px;}
-            div#A2:before{content:"2"; position: absolute; top: ${(squareSize / 2 - 5)}px; left: -14px;font-size: 12px;}
-            div#A1:before{content:"1"; position: absolute; top: ${(squareSize / 2 - 5)}px; left: -14px;font-size: 12px;}
-
-            div#A1:after{content:"A"; position: absolute; top: 100%;font-size: 12px;margin:auto;}
-            div#B1:after{content:"B"; position: absolute; top: 100%;font-size: 12px;margin:auto;}
-            div#C1:after{content:"C"; position: absolute; top: 100%;font-size: 12px;margin:auto;}
-            div#D1:after{content:"D"; position: absolute; top: 100%;font-size: 12px;margin:auto;}
-            div#E1:after{content:"E"; position: absolute; top: 100%;font-size: 12px;margin:auto;}
-            div#F1:after{content:"F"; position: absolute; top: 100%;font-size: 12px;margin:auto;}
-            div#G1:after{content:"G"; position: absolute; top: 100%;font-size: 12px;margin:auto;}
-            div#H1:after{content:"H"; position: absolute; top: 100%;font-size: 12px;margin:auto;}`;*/
+            sty.innerHTML += `div#${String.fromCharCode(65 + i - 1)}1:after{content:"${String.fromCharCode(65 + i - 1)}"; position: absolute; top: 100%;font-size: 12px;margin:auto;transform:translate(-50%,25%);}`
+        }
         var chessboardStyle = document.getElementById("chessboard_style");
-        if(!chessboardStyle){
+        if (!chessboardStyle) {
             document.head.appendChild(sty);
-        }else{
+        } else {
             chessboardStyle.innerHTML = sty.innerHTML;
         }
-        /*$('<style>' +
-            'div#A8:before{content:"' + 8 + '"; position: absolute; top: ' + (squareSize / 2 - 5) + 'px; left: -14px;font-size: 12px;}' +
-            'div#A7:before{content:"' + 7 + '"; position: absolute; top: ' + (squareSize / 2 - 5) + 'px; left: -14px;font-size: 12px;}' +
-            'div#A6:before{content:"' + 6 + '"; position: absolute; top: ' + (squareSize / 2 - 5) + 'px; left: -14px;font-size: 12px;}' +
-            'div#A5:before{content:"' + 5 + '"; position: absolute; top: ' + (squareSize / 2 - 5) + 'px; left: -14px;font-size: 12px;}' +
-            'div#A4:before{content:"' + 4 + '"; position: absolute; top: ' + (squareSize / 2 - 5) + 'px; left: -14px;font-size: 12px;}' +
-            'div#A3:before{content:"' + 3 + '"; position: absolute; top: ' + (squareSize / 2 - 5) + 'px; left: -14px;font-size: 12px;}' +
-            'div#A2:before{content:"' + 2 + '"; position: absolute; top: ' + (squareSize / 2 - 5) + 'px; left: -14px;font-size: 12px;}' +
-            'div#A1:before{content:"' + 1 + '"; position: absolute; top: ' + (squareSize / 2 - 5) + 'px; left: -14px;font-size: 12px;}' +
-
-            'div#A1:after{content:"A"; position: absolute; top: 100%;font-size: 12px;margin:auto;}' +
-            'div#B1:after{content:"B"; position: absolute; top: 100%;font-size: 12px;margin:auto;}' +
-            'div#C1:after{content:"C"; position: absolute; top: 100%;font-size: 12px;margin:auto;}' +
-            'div#D1:after{content:"D"; position: absolute; top: 100%;font-size: 12px;margin:auto;}' +
-            'div#E1:after{content:"E"; position: absolute; top: 100%;font-size: 12px;margin:auto;}' +
-            'div#F1:after{content:"F"; position: absolute; top: 100%;font-size: 12px;margin:auto;}' +
-            'div#G1:after{content:"G"; position: absolute; top: 100%;font-size: 12px;margin:auto;}' +
-            'div#H1:after{content:"H"; position: absolute; top: 100%;font-size: 12px;margin:auto;}' +
-
-            '</style>').appendTo('head');*/
         boardTopy += this.elem.getClientRects()[0].top;
         boardTopx += this.elem.getClientRects()[0].left;
     }
@@ -186,83 +149,5 @@ export class DrawChessboard {
             div.style.borderRadius = "2px"
             elem.appendChild(div);
         }
-    }
-    redraw_bis = function (elem, dim) {
-        var _w = Math.min(window.innerWidth, window.outerWidth == 0 ? window.innerWidth : window.outerWidth)
-        var w = Math.min(_w, 600)
-        elem.style.height = w + "px";
-        elem.style.width = w + "px";
-        elem.setAttribute("width", w)
-        elem.setAttribute("height", w)
-        w = _w - 40;
-        w = Math.min(w, 600 - 40)
-        var squareSize = parseInt(w / dim);
-        var boardTopx = 20;
-        var boardTopy = 20;
-        elem.setAttribute("data-square-size", squareSize);
-        elem.setAttribute("data-boardtop-x", boardTopx);
-        elem.setAttribute("data-boardtop-y", boardTopy);
-        for (var i = 0; i < elem.childElementCount; i++) {
-            elem.children[i].style.width = squareSize + "px";
-            elem.children[i].style.height = squareSize + "px";
-        }
-    }
-    drawChessboard_bis = function (elem, dim) {
-        var _redraw = function () {
-            this.redraw_bis.apply(this, [elem, dim])
-        }
-        window.addEventListener("resize", _redraw)
-        var _w = Math.min(window.innerWidth, window.outerWidth == 0 ? window.innerWidth : window.outerWidth)
-        var w = Math.min(_w, 600)
-        elem.style.background = "black";
-        elem.style.height = w + "px";
-        elem.style.width = w + "px";
-        elem.style.margin = "auto";
-        elem.setAttribute("width", w)
-        elem.setAttribute("height", w)
-        elem.style.padding = "20px";
-        w = _w - 40;
-        w = Math.min(w, 600 - 40)
-        var squareSize = parseInt(w / dim);
-        var boardTopx = 20;
-        var boardTopy = 20;
-        elem.setAttribute("data-square-size", squareSize);
-        elem.setAttribute("data-boardtop-x", boardTopx);
-        elem.setAttribute("data-boardtop-y", boardTopy);
-        elem.setAttribute("data-number-caselle", dim)
-
-        for (var i = 0; i < dim; i++) {
-            for (var j = 0; j < dim; j++) {
-                var div = document.createElement("div")
-                div.style.background = ((i + j) % 2 == 0) ? "#eeeed2" : "#769656";
-                div.style.width = squareSize + "px";
-                div.style.height = squareSize + "px";
-                div.style.display = "inline-block";
-                div.style.position = "relative"
-                div.setAttribute("casella", String.fromCharCode(65 + j) + "" + (dim - i))
-                div.id = String.fromCharCode(65 + j) + "" + (dim - i)
-                if ("ontouchstart" in document) {
-                    div.addEventListener("touchstart", (e) => {
-                        //this.handleMouseDown_casella(e);
-                        this.handleClick_casella(e)
-                    });
-                } else {
-                    $(div).mousedown((e) => {
-                        //this.handleMouseDown_casella(e);
-                        this.handleClick_casella(e)
-                    });
-                }
-                elem.appendChild(div)
-            }
-        }
-        var css_str = "<style>";
-        for (var i = 0; i < dim; i++) {
-            css_str = css_str + "div#A" + (i + 1) + ":before{content:\"" + (i + 1) + "\"; position: absolute; top: " + (squareSize / 2 - 5) + "px; left: -14px;font-size: 12px;}";
-            css_str = css_str + "div#" + String.fromCharCode(i + 65) + "1:after{content:\"" + String.fromCharCode(i + 65) + "\"; position: absolute; top: 100%;font-size: 12px;margin:auto;}";
-        }
-        css_str = css_str + "</style>";
-        $(css_str).appendTo("head");
-        boardTopy += elem.getClientRects()[0].top;
-        boardTopx += elem.getClientRects()[0].left;
     }
 }

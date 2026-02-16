@@ -21,7 +21,7 @@ class Gioco16 {
             }
         }
 
-        drawChessboard.drawChessboard_bis(document.getElementById("chessboard"), 4)
+        drawChessboard.drawChessboard(document.getElementById("chessboard"), 4)
 
         var caselle_colorate = new Array();
         var possible_moves = new Array();

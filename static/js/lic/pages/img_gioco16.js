@@ -6,7 +6,7 @@ class ImgGioco16 {
 
         var drawChessboard = new DrawChessboardClass()
 
-        drawChessboard.drawChessboard_bis(document.getElementById("chessboard"), 4)
+        drawChessboard.drawChessboard(document.getElementById("chessboard"), 4)
 
         drawChessboard.piece_position = {
             A2: "Queen.svg",

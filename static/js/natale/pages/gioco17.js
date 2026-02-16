@@ -21,7 +21,7 @@ class Gioco17 {
             }
         }
         var dim_queens = 8;
-        drawChessboard.drawChessboard_bis(document.getElementById("chessboard"), dim_queens)
+        drawChessboard.drawChessboard(document.getElementById("chessboard"), dim_queens)
 
         var caselle_colorate = new Array();
         var possible_moves = new Array();
