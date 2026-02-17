@@ -125,6 +125,7 @@
 	<div style="float: right; width: 50%; height: 100%; padding-top: 100px">
 		<div>
 			<div style="display: flex; justify-content: center; align-items: center; margin-bottom: 100px;">
+				<button style="margin: auto; display: block; padding: 16px; border-radius: 10px;" onclick="fetch('/refresh').then( () => document.querySelector('iframe').contentDocument.location.reload())">Refresh</button>
 				<button style="margin: auto; display: block; padding: 16px; border-radius: 10px;" onclick="newGame()">Nuova partita</button>
 				<button style="margin: auto; display: block; padding: 16px; border-radius: 10px;" onclick="updateCode()">Aggiorna Codice</button>
 				<div style="margin: auto; display: block;">
