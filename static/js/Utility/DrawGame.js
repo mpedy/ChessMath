@@ -7,11 +7,13 @@ class DrawGame {
     constructor({
         piece_position = {},
         caselle_corrette = [],
-        with_timer = true
+        with_timer = true,
+        chessboard_dim = 8
     }) {
         this.piece_position = piece_position;
         this.caselle_corrette = caselle_corrette;
         this.with_timer = with_timer;
+        this.chessboard_dim = chessboard_dim;
     }
     start() {
         var self = this;
@@ -31,7 +33,7 @@ class DrawGame {
             }
         }
 
-        drawChessboard.drawChessboard()
+        drawChessboard.drawChessboard(this.chessboard_dim);
 
         if (Object.keys(this.piece_position).length > 0) {
             drawChessboard.piece_position = this.piece_position;
