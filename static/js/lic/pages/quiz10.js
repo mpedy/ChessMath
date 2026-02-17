@@ -6,7 +6,6 @@ import { getQuiz } from "../../Utility/MyUI.js";
 class Quiz10 {
     constructor() { }
     start() {
-
         var drawChessboard = new DrawChessboardClass($("#chessboard")[0])
         drawChessboard.drawChessboard()
         drawChessboard.drawPieces({ D6: "Bishop.svg" })
