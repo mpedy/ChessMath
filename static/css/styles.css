@@ -99,3 +99,13 @@ span#question {
 #chessboard{
 	font-size: 0px;
 }
+.transition-stopped{
+	opacity: 0 !important;
+	top: -20px !important;
+}
+.transitioning-img{
+	transition: all 1s ease-out;
+	position: absolute;
+	top: 0px;
+	left: 0px;
+}
