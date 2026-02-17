@@ -225,6 +225,10 @@ def getPath5():
     return [
         LISTEN,
         "pages/alien/earth",
+        "pages/alien/gioco1",
+        "pages/alien/gioco2",
+        "pages/alien/gioco3",
+        "pages/alien/gioco4",
         "pages/alien/alien1",
         "pages/alien/alien2",
         "pages/classifica",

@@ -1,0 +1,9 @@
+<span id="title" style="padding: 10px">Segna tutte le caselle in cui il Cavallo può andare con una mossa</span>
+<div id="chessboard"></div>
+<div>
+	<div class="timer" data-second="60" data-height="20px" data-width="80%"></div>
+</div>
+<div id="controls_container">
+	<button id="gobtn" onclick="procedi(this)">Conferma</button>
+	<button id="reset" onclick="reset()" >Cancella tutto</button>
+</div>

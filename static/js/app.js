@@ -2,6 +2,7 @@ import { elementari } from "./elem/elementari.js";
 import { medie } from "./med/medie.js";
 import { liceo } from "./lic/liceo.js";
 import { natale } from "./natale/natale.js";
+import { alien } from "./alien/alien.js";
 
 class App {
     constructor() {
@@ -9,6 +10,7 @@ class App {
         this.medie = medie;
         this.liceo = liceo;
         this.natale = natale;
+        this.alien = alien;
         this.currentGame = null;
         this.path = "";
     }
@@ -29,6 +31,10 @@ class App {
         } else if (this.path.includes("natale") || this.path == 4) {
             if (this.currentGame != this.natale) {
                 this.loadGame(this.natale)
+            }
+        } else if (this.path.includes("alien") || this.path == 5) {
+            if (this.currentGame != this.alien) {
+                this.loadGame(this.alien);
             }
         }
     }
