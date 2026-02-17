@@ -1,0 +1,264 @@
+<html>
+<head>
+	<style>
+	*{
+		margin: 0;
+		padding: 0;
+		box-sizing: border-box;
+	}
+	body{
+		background: rgba(15,15,15,0.7);
+	}
+	span[page]{
+		cursor: pointer;
+	}
+	</style>
+	<link rel="icon" type="image/svg+xml" href="static/img/favicon.svg">
+	<link rel="icon" type="image/png" href="static/img/favicon.png">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+	<script src="static/js/pureknob.js"></script>
+	<script type="text/javascript">
+	var url = window.location.origin
+	var page = 0;
+	var nxt = function(p){
+		if(p<0){
+			return
+		}
+		fetch(url+"/setpage_"+p+"_"+(123111321)).then(res => res.json()).then(
+			function(txt){
+				var current =  txt["current"] == null ? "" : txt["current"].substr(txt["current"].lastIndexOf("/")+1);
+				var prev = txt["prev"] == null ? "" : txt["prev"].substr(txt["prev"].lastIndexOf("/")+1);
+				var next = txt["next"] == null ? "" : txt["next"].substr(txt["next"].lastIndexOf("/")+1);
+				$("#step").text(current)
+				$("#before_step").text(prev)
+				$("#next_step").text(next)
+				$("span[page='"+p+"']").css("background-color", "cornflowerblue").css("color", "black");
+				$("span[page][page!='"+p+"']").each(function () {$(this).css("background-color", "").css("color", "white")});
+			})
+	}
+	var upt = function(){fetch(url+"/updateQuest")}
+	var changepath = function(p){
+		fetch(url+"/setpath_"+p).then(res=>res.json()).then(res=>{
+			window.allpages = []
+			for(var i=0; i<res.length; i++){
+				window.allpages.push(res[i].substring(res[i].lastIndexOf("/")+1))
+			}
+			updateAllPages()
+			page = 0;
+			nxt(0)
+			if(p==1){
+				document.body.style.backgroundColor = "rgba(55,0,0,0.5)"
+			}else if(p==2){
+				document.body.style.backgroundColor = "rgba(0,55,0,0.5)"
+			}else if(p==3){
+				document.body.style.backgroundColor = "rgba(0,0,55,0.5)"
+			}else if(p==4){
+				document.body.style.backgroundColor = "rgba(155,55,0,0.5)"
+			}
+		})
+	}
+	var getpage = function(){fetch(url+"/page").then(res => res.json()).then(res=> console.log(res["page"]))}
+	setLevel = function(a){
+		changepath(a.value)
+	}
+	changepath(3);
+	nxt(0);
+	newGame = function(){
+		fetch(url+"/reset").then(window.location.reload());
+	}
+	updateCode = function(){
+		fetch(url+"/getcodice").then(res => res.text()).then(res => $("#codice").text(res))
+	}
+	updateQuest = function(){
+		fetch(url+"/updateQuest").then(res => res.text())
+	}
+	verificaAnimatore = function(){
+		var cod_anim = $("#codice_accesso").val()
+		if( cod_anim == "1324354321"){
+			$("#error_msg_anim").css({"display":"none"})
+			$("#blocked").toggle()
+			$.ajax({url: "reset"})
+		}else{
+			$("#error_msg_anim").css({"display":"inherit"})
+		}
+	}
+	const knob = pureknob.createKnob(150, 150);
+
+	// Set properties.
+	knob.setProperty('angleStart', -0.75 * Math.PI);
+	knob.setProperty('angleEnd', 0.75 * Math.PI);
+	knob.setProperty('colorFG', '#88ff88');
+	knob.setProperty('trackWidth', 0.4);
+	knob.setProperty('valMin', 0);
+	knob.setProperty('valMax', 100);
+
+	// Set initial value.
+	knob.setValue(0);
+
+	// Create element node.
+	const node = knob.node();
+	var ws = new WebSocket("/ws/<%=codice%>_Animatore-console")
+	ws.onmessage = function(msg){
+		console.log(msg)
+		populateKnob(JSON.parse(msg.data))
+	}
+
+	var populateKnob = function(data){
+		var perc= parseInt(data["perc"])
+		var p = data["page"]
+		var err = data["error"]
+		var lista = data["lista"]
+		if(err.length==0){
+			$("#knoberror").text("");
+			knob.setValue(perc);
+			$("#lista_utenti").text(lista);
+		}else{
+			$("#knoberror").text(err);
+		}
+	}
+	
+/*	var percentuagePolling = setInterval(
+		function(){
+			$.ajax(
+				{
+					url: "getAnswered",
+					async: true,
+					success: function(res_page){
+						populateKnob(res_page);
+					}
+				})
+		},3000);*/
+	
+	/*var updateQuest = setInterval(function(){
+		$.ajax({
+			url: "updateQuest",
+			async: true
+		})
+	}, 5000);*/
+	var iframeWidth = 3;
+	var screenorientation = 1;
+	var adaptIframe = function(){
+		var ifr = document.getElementsByTagName("iframe")[0]
+		switch(iframeWidth){
+			case 0: ifr.style.transform= "scale(0.5)"; break;
+			case 1: ifr.style.transform= "scale(0.58)"; break;
+			case 2: ifr.style.transform= "scale(0.64)"; break;
+			case 3: ifr.style.transform= "scale(0.75)"; break;
+			case 4: ifr.style.transform= "scale(0.82)"; break;
+			case 5: ifr.style.transform= "scale(0.90)"; break;
+			case 6: ifr.style.transform= "scale(1)"; break;
+		}
+	}
+	var enlarge_iframe = function(){
+		iframeWidth = Math.min(iframeWidth+1,5)
+		adaptIframe()
+	}
+	var disenlarge_iframe = function(){
+		iframeWidth = Math.max(iframeWidth-1,0)
+		adaptIframe()
+	}
+	var rovescia = function(){
+		var ifr = document.getElementsByTagName("iframe")[0]
+		if(screenorientation==1){
+			screenorientation = -1;
+		}else{
+			screenorientation = 1;
+		}
+		if(screenorientation==-1){
+			ifr.style.width = "1024px";
+			ifr.style.height ="768px";
+		}else{
+			ifr.style.width = "320px";
+			ifr.style.height ="640px";
+		}
+	}
+	</script>
+</head>
+<body>
+	<div style="float: left; width: 50%;">
+		<div style="margin-left: 20px;margin-top: 10px;">
+			<button style="padding: 10px; vertical-align: middle;" onclick="enlarge_iframe()">+</button>
+			<button style="padding: 10px; vertical-align: middle;" onclick="disenlarge_iframe()">-</button>
+			<button style="padding: 10px; vertical-align: middle;" onclick="rovescia()"><img src="/static/img/rotating-phone.svg" width="50"></img></button>
+		</div>
+		<iframe style="width: 320px; height: 640px; display: block; margin: auto; transform: scale(0.75);/*-ms-zoom: 0.75;-moz-transform: scale(0.75);-moz-transform-origin: top center;-o-transform: scale(0.75);-o-transform-origin: top center;-webkit-transform: scale(0.75);-webkit-transform-origin: top center;*/"></iframe>
+		<script type="text/javascript">
+			document.getElementsByTagName("iframe")[0].src = url+"/game_Animatore";
+		</script>
+	</div>
+	<div style="float: right; width: 50%; height: 100%; padding-top: 100px">
+		<div>
+			<button style="display: block; padding: 16px; border-radius: 10px;background-color: #ff0000bb;color: white; font-weight: bold; border: 2px solid black;" onclick="newGame()">Nuova partita</button>
+			<div style="display: flex; justify-content: center; align-items: center;">
+				<div style="display: block;">
+					<span style="color: white; margin-right: 10px;">Codice:</span><button style="padding: 16px; border-radius: 10px; font-size: 18px;" id="codice"><%=codice%></button>
+				</div>
+				<button style="display: block; padding: 16px; border-radius: 10px;" onclick="updateCode()">Aggiorna Codice</button>
+			</div>
+			<button style="display: block; padding: 10px; border-radius: 10px;" onclick="updateQuest()">Aggiorna Domande</button>
+			<div style="display: flex; justify-content: center; align-items: center; margin-bottom: 30px;">
+				<select style="padding: 10px; border-radius: 10px; font-size: 22px;" onchange="setLevel(this)">
+					<option value=1>Livello A - Elementari</option>
+					<option value=2>Livello B - Medie</option>
+					<option value=3 selected>Livello C - Liceo</option>
+					<option value=4>Livello D - Natale</option>
+				</select>
+			</div>
+			<div style="display: flex; justify-content: center; align-items: center;">
+				<button style="border-radius: 10px; flex-grow: 1; margin: 0px 20px; padding: 10px;background: lightblue;" onclick="page=Math.max(0,page-1); nxt(page);">Torna indietro</button>
+				<button style="border-radius: 10px; flex-grow: 1; margin: 0px 20px; padding: 10px;background: red; display: none;">STOP!</button>
+				<button style="border-radius: 10px; flex-grow: 1; margin: 0px 20px; padding: 10px;background: lightgreen;" onclick="page++; nxt(page);">Vai avanti</button>
+			</div>
+			<div id="allpages" style="display: flex; justify-content: space-between; flex-wrap: wrap; background-color: #333; padding: 10px; border-radius: 10px;margin-right: 20px;margin-top: 20px;"></div>
+			<!--<div style="display: flex; color: white; margin: auto; justify-content: center; width: 600px;align-items: center; margin-top: 30px;">
+				<span style="padding: 10px; background: white;color: black; border-radius: 10px;">Step attuale:</span>
+				<span style="flex-grow: 1; text-align: center; margin: 0px 12px;" id="before_step"></span>
+				<h2 style="flex-grow: 1; text-align: center; font-size: 40px; margin: 0px 20px;" id="step">STOP</h2>
+				<span style="flex-grow: 1; text-align: center;margin: 0px 12px;" id="next_step"></span>
+			</div>-->
+			<div style="position: absolute; top: 0px; right: 30px;">
+				<div style="display: flex; color: white; margin: auto; justify-content: center;align-items: center; margin-top: 30px;">
+					<div>Utenti loggati: <span id="lista_utenti"></span></div>
+				</div>
+				<div style="display: flex; color: white; margin: auto; justify-content: center;align-items: center; margin-top: 30px;">
+					<div id="knobparent"></div>
+					<div id="knoberror"></div>
+				</div>
+			</div>
+			<script type="text/javascript">	
+			// Add Knob it to the DOM.
+			const elem = document.getElementById('knobparent');
+			elem.appendChild(node);
+
+			updateAllPages = function(){
+				var elem = document.getElementById("allpages")
+				elem.innerHTML = "";
+				for(var i=0; i<window.allpages.length; i++){
+					var p = document.createElement("div")
+					p.setAttribute("page",i);
+					p.style.width = "20%";
+					p.style.height = "40px";
+					p.style.display = "flex";
+					p.style.justifyContent = "start";
+					p.style.alignItems = "center";
+					var span= document.createElement("span")
+					span.innerText = window.allpages[i];
+					span.setAttribute("page",i)
+					span.style.padding="7px 5px";
+					span.style.borderRadius = "10px";
+					span.style.color="white";
+					span.addEventListener("click", function(){
+						page = parseInt(this.getAttribute("page"))
+						nxt(page)
+					})
+					p.appendChild(span)
+					elem.appendChild(p)
+				}
+			}
+		</script>
+		</div>
+	</div>
+</body>
+</html>

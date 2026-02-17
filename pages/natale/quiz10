@@ -1,0 +1,11 @@
+<div id="quiz">
+	<span id="title"></span>
+	<span id="question"></span>
+	<div id="chessboard"></div>
+	<ul id="answers">
+	</ul>
+</div>
+<style>
+	
+</style>
+<!-- <script src="/static/js/dist/natale/quiz10.js"></script> -->

@@ -1,0 +1,8 @@
+<div>
+	<img src="static/img/Earth.png" width="100%" class="transitioning-img transition-stopped" />
+</div>
+<script>
+    setTimeout(function () {
+        document.getElementsByClassName("transitioning-img")[0].classList.toggle("transition-stopped");
+    }, 100);
+</script>

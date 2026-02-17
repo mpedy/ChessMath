@@ -1,0 +1,15 @@
+{
+    "plugins": [
+        ["./myplugin__define_var.cjs", {"addVar": false, "useWindow": true}]
+    ],
+    "presets": [
+        [
+            "@babel/preset-env",
+            {
+                "useBuiltIns": "usage",
+                "corejs": "2",
+                "debug": true
+            }
+        ]
+    ]
+}

@@ -8,140 +8,16 @@
 	<link rel="icon" type="image/png" href="static/img/favicon.png">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 	<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
-	<link rel="stylesheet" href="static/css/style.css">
+	<!--<link rel="stylesheet" href="static/css/style.css">-->
+	<link rel="stylesheet" href="{{ manifest['css'] }}">
 	<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
-	<script src="static/js/maketimer.js"></script>
+	<!--<script src="static/js/maketimer.js"></script>
 	<script src="static/js/drawchessboardnew.js"></script>
 	<script src="static/js/myui.js"></script>
 	<script src="static/js/movePieces.js"></script>
-	<script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.js?version=4.8.0&features=Array.prototype.includes"></script>
+	<script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.js?version=4.8.0&features=Array.prototype.includes"></script>-->
 	<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/3.11.2/modernizr.min.js"></script>-->
-	<script src="static/js/my_modernizr.js"></script>
-
-	<script>
-		alert(document.documentElement.classList)
-		/*
-		* DA SCOMMENTARE
-		*/
-		window.onbeforeunload = function () { return "Your work will be lost."; };
-		document.addEventListener("beforeunload", function (e) {
-			alert("Stai uscendo dal gioco! Perderai tutti i dati non salvati");
-		});
-		/**/
-		/**
-		* DA COMMENTARE!!
-		**/
-		/*var nxt = function(p){
-			fetch(window.location.origin+"/setpage_"+p+"_123111321").then(res => res.text().then(txt=>console.log(txt)))
-		}
-		var upt = function(){fetch(window.location.origin+"/updateQuest")}
-		var changepath = function(p){fetch(window.location.origin+"/setpath_"+p)}*/
-		var codice = {{ codice }}
-		var nome = "{{ nome }}"
-		var page = 0;
-		var socket = new WebSocket("ws"+window.location.protocol.replace("http","")+"//"+window.location.host+"/ws/" + codice+"_"+nome);
-
-		socket.onopen = function (event) {
-			console.log("WebSocket connection opened: ", event);
-			socket.send("getpage")
-		};
-
-		socket.onmessage = function (event) {
-			console.log("WebSocket message received: ", event.data);
-			try {
-				var data = JSON.parse(event.data)
-				if (data.hasOwnProperty("pagina")) {
-					page = data["pagina"]
-					$.ajax(
-						{
-							url: "getpage_" + page,
-							async: false,
-							success: function (result) {
-								clearInterval(window.myt);
-								$("#mydialog_opened").dialog("close").remove();
-								$("#content_page").html(result)
-							}
-						})
-				}
-			} catch (err) {
-
-			}
-		};
-
-		socket.onclose = function (event) {
-			console.log("WebSocket connection closed: ", event);
-			window.onbeforeunload= function(){}
-			window.location.href="/"
-		};
-
-		socket.onerror = function (error) {
-			console.error("WebSocket error: ", error);
-			window.onbeforeunload= function(){}
-			window.location.href="/"
-		};
-	/*var timeinv = setInterval(
-			function(){
-				$.ajax(
-					{
-						url: "page_"+codice,
-						async: false,
-						success: function(res_page){
-							if(page != res_page["page"]){
-								page = res_page["page"];
-								$.ajax(
-									{
-										url: "getpage_"+page,
-										async: false,
-										success: function(result){
-											clearInterval(window.myt);
-											$("#mydialog_opened").dialog("close").remove();
-											$("#content_page").html(result)
-										}
-									})
-							}
-						}, error: function(err){
-							window.onbeforeunload= function(){}
-							window.location.href="/"
-						}
-					})
-			},3000);*/
-	</script>
-</head>
-
-<body style="height: 100%;">
-	<div id="header"
-		style="position: absolute; width: 100%; background: #33261D; display: inline-block; padding: 5px 10px;">
-		<div style="float: left;">
-			<img id="meeple" style="width: 18px; vertical-align: bottom;">
-			<script type="text/javascript">
-				var mp = parseInt(Math.random() * 1000 % 5 + 1)
-				$("#meeple")[0].src = "static/img/meeple-" + mp + ".svg"
-			</script>
-			<div style="color: #E07A5F; display: inline;" id="name">{{ nome }}</div>
-		</div>
-		<div style="float: right; font-family: Digital; letter-spacing: 3px; color: #E4572E" id="points">0</div>
-	</div>
-	<div id="background">
-		<div id="content_page" style="position: relative;text-align: center; width: 100%;">
-			<div style="/*height: 100%;*/">
-				<h1 style="margin-top: 40%">Ascolta l'animatore</h1>
-			</div>
-		</div>
-	</div>
-	<div style="display: none">
-		<img id="piece_Pawn" src="static/img/Pawn.svg" />
-		<img id="piece_Pawn_B" src="static/img/Pawn_B.svg" />
-		<img id="piece_Bishop" src="static/img/Bishop.svg" />
-		<img id="piece_Bishop_B" src="static/img/Bishop_B.svg" />
-		<img id="piece_Rook" src="static/img/Rook.svg" />
-		<img id="piece_Rook_B" src="static/img/Rook_B.svg" />
-		<img id="piece_King" src="static/img/King.svg" />
-		<img id="piece_King_B" src="static/img/King_B.svg" />
-		<img id="piece_Queen" src="static/img/Queen.svg" />
-		<img id="piece_Queen_B" src="static/img/Queen_B.svg" />
-		<img id="piece_Knight" src="static/img/Knight.svg" />
-		<img id="piece_Knight_B" src="static/img/Knight_B.svg" />
-	</div>
+	<!--<script src="static/js/my_modernizr.js"></script>-->
 	<script type="text/javascript">
 		var punti = 0;
 		var A1 = "A1"
@@ -216,6 +92,115 @@
 		var H7 = "H7"
 		var H8 = "H8"
 	</script>
+	<script src="{{ manifest['js'] }}"></script>
+
+	<script>
+		/*
+		* DA SCOMMENTARE
+		*/
+		window.onbeforeunload = function () { return "Your work will be lost."; };
+		document.addEventListener("beforeunload", function (e) {
+			alert("Stai uscendo dal gioco! Perderai tutti i dati non salvati");
+		});
+		/**/
+		/**
+		* DA COMMENTARE!!
+		**/
+		/*var nxt = function(p){
+			fetch(window.location.origin+"/setpage_"+p+"_123111321").then(res => res.text().then(txt=>console.log(txt)))
+		}
+		var upt = function(){fetch(window.location.origin+"/updateQuest")}
+		var changepath = function(p){fetch(window.location.origin+"/setpath_"+p)}*/
+		var codice = {{ codice }}
+		var nome = "{{ nome }}"
+		var page = 0;
+		var socket = new WebSocket("ws" + window.location.protocol.replace("http", "") + "//" + window.location.host + "/ws/" + codice + "_" + nome);
+
+		socket.onopen = function (event) {
+			console.log("WebSocket connection opened: ", event);
+			socket.send("getpage")
+		};
+
+		socket.onmessage = function (event) {
+			console.log("WebSocket message received: ", event.data);
+			try {
+				var data = JSON.parse(event.data)
+				if (data.hasOwnProperty("pagina")) {
+					page = data["pagina"]
+					if (data.hasOwnProperty("path")) {
+						app.setPath(data["path"]);
+					}
+					$.ajax(
+						{
+							url: "getpage_" + page,
+							async: true,
+							success: function (result) {
+								clearInterval(window.myt);
+								$("#mydialog_opened").dialog("close").remove();
+								$("#content_page").html(result)
+								app.currentGame.setPage(parseInt(page))
+							}
+						})
+				} else if (data.hasOwnProperty("path")) {
+					app.setPath(data["path"]);
+				}
+			} catch (err) {
+
+			}
+		};
+
+		socket.onclose = function (event) {
+			console.log("WebSocket connection closed: ", event);
+			window.onbeforeunload = function () { }
+			window.location.href = "/"
+		};
+
+		socket.onerror = function (error) {
+			console.error("WebSocket error: ", error);
+			window.onbeforeunload = function () { }
+			window.location.href = "/"
+		};
+	</script>
+	<style>
+		img {
+			max-width: 100%;
+		}
+	</style>
+</head>
+
+<body style="height: 100%;">
+	<div id="header">
+		<div id="player_name" style="float: left;">
+			<img id="meeple" style="width: 18px; vertical-align: bottom;">
+			<script type="text/javascript">
+				var mp = parseInt(Math.random() * 1000 % 5 + 1)
+				$("#meeple")[0].src = "static/img/meeple-" + mp + ".svg"
+			</script>
+			<div style="color: #E07A5F; display: inline;" id="name">{{ nome }}</div>
+		</div>
+		<div id="points">0</div>
+	</div>
+	<div id="background">
+		<div id="content_page" style="position: relative;text-align: center; width: 100%;">
+			<div>
+				<h1 style="margin-top: 40%">Ascolta l'animatore</h1>
+			</div>
+		</div>
+	</div>
+	<div style="display: none">
+		<img id="piece_Pawn" src="static/img/Pawn.svg" />
+		<img id="piece_Pawn_B" src="static/img/Pawn_B.svg" />
+		<img id="piece_Bishop" src="static/img/Bishop.svg" />
+		<img id="piece_Bishop_B" src="static/img/Bishop_B.svg" />
+		<img id="piece_Rook" src="static/img/Rook.svg" />
+		<img id="piece_Rook_B" src="static/img/Rook_B.svg" />
+		<img id="piece_King" src="static/img/King.svg" />
+		<img id="piece_King_B" src="static/img/King_B.svg" />
+		<img id="piece_Queen" src="static/img/Queen.svg" />
+		<img id="piece_Queen_B" src="static/img/Queen_B.svg" />
+		<img id="piece_Knight" src="static/img/Knight.svg" />
+		<img id="piece_Knight_B" src="static/img/Knight_B.svg" />
+	</div>
 </body>
 
 </html>

@@ -1,0 +1,204 @@
+[
+    {
+        "quizid": "1",
+        "risposta": [
+            "Rosso",
+            "Blu",
+            "Verde",
+            "Giallo"
+        ],
+        "punteggio": "10",
+        "domanda": "Quale percorso è il più breve per la Torre per arrivare alla casella segnata?",
+        "corretta": "Verde",
+        "tempo": "30"
+    },
+    {
+        "quizid": "2",
+        "risposta": [
+            "7",
+            "3",
+            "10",
+            "11"
+        ],
+        "punteggio": "10",
+        "domanda": "Quante caselle è lungo il percorso più breve?",
+        "corretta": "11",
+        "tempo": "20"
+    },
+    {
+        "quizid": "3",
+        "risposta": [
+            "allineati",
+            "equidistanti da un'asse",
+            "equidistanti da un centro",
+            "equidistanti da due punti"
+        ],
+        "punteggio": "10",
+        "domanda": "Una circonferenza è l'insieme dei punti:",
+        "corretta": "equidistanti da un centro",
+        "tempo": "30"
+    },
+    {
+        "quizid": "4",
+        "risposta": [
+            "1",
+            "2",
+            "4",
+            "Non ci può arrivare"
+        ],
+        "punteggio": "10",
+        "domanda": "Quante caselle è distante la casella segnata?",
+        "corretta": "2",
+        "tempo": "30"
+    },
+    {
+        "quizid": "5",
+        "risposta": [
+            "1",
+            "2",
+            "4",
+            "Non ci può arrivare"
+        ],
+        "punteggio": "10",
+        "domanda": "Quante caselle è distante la casella segnata?",
+        "corretta": "2",
+        "tempo": "30"
+    },
+    {
+        "quizid": "6",
+        "risposta": [
+            "1",
+            "2",
+            "4",
+            "Non ci può arrivare"
+        ],
+        "punteggio": "10",
+        "domanda": "Quante caselle è distante la casella segnata?",
+        "corretta": "Non ci può arrivare",
+        "tempo": "40"
+    },
+    {
+        "quizid": "7",
+        "risposta": [
+            "1",
+            "6",
+            "4",
+            "Infinite"
+        ],
+        "punteggio": "10",
+        "domanda": "Da quante caselle è composta la circonferenza di raggio 1?",
+        "corretta": "4",
+        "tempo": "30"
+    },
+    {
+        "quizid": "8",
+        "risposta": [
+            "1",
+            "infinita",
+            "2",
+            "3"
+        ],
+        "punteggio": "10",
+        "domanda": "Qual è la distanza dell'Alfiere dalla casella evidenziata?",
+        "corretta": "2",
+        "tempo": "20"
+    },
+    {
+        "quizid": "9",
+        "risposta": [
+            "1",
+            "2",
+            "3",
+            "infinita"
+        ],
+        "punteggio": "10",
+        "domanda": "Qual è la distanza dell'Alfiere dalla casella evidenziata?",
+        "corretta": "2",
+        "tempo": "60"
+    },
+    {
+        "quizid": "10",
+        "risposta": [
+            "1",
+            "infinita",
+            "2",
+            "3"
+        ],
+        "punteggio": "10",
+        "domanda": "Qual è la distanza dell'Alfiere dalla casella evidenziata?",
+        "corretta": "infinita",
+        "tempo": "50"
+    },
+    {
+        "quizid": "11",
+        "risposta": [
+            "8",
+            "4",
+            "infinite",
+            "2"
+        ],
+        "punteggio": "10",
+        "domanda": "Da quante caselle è composta la circonferenza di raggio 1?",
+        "corretta": "4",
+        "tempo": "50"
+    },
+    {
+        "quizid": "12",
+        "risposta": [
+            "1",
+            "8",
+            "64",
+            "infinita"
+        ],
+        "punteggio": "10",
+        "domanda": "Se i bordi della scacchiera fossero comunicanti, con una mossa quale distanza può percorrere il Cavallo?",
+        "corretta": "1",
+        "tempo": "50"
+    },
+    {
+        "quizid": "13",
+        "risposta": [
+            "Sì",
+            "No"
+        ],
+        "punteggio": "5",
+        "domanda": "Secondo te è possibile inventarsi altre pedine che si muovono in modi ancora più strani?",
+        "corretta": "Sì",
+        "tempo": "30"
+    },
+    {
+        "quizid": "14",
+        "risposta": [
+            "Torre",
+            "Alfiere",
+            "Cavallo",
+            "Regina"
+        ],
+        "punteggio": "20",
+        "domanda": "Per quale pedina la distanza fra le caselle evidenziate è maggiore?",
+        "corretta": "Alfiere",
+        "tempo": "30"
+    },
+    {
+        "quizid": "15",
+        "risposta": [
+            "Sì",
+            "No"
+        ],
+        "punteggio": "5",
+        "domanda": "Secondo te è possibile inventarsi altre pedine che si muovono in modi ancora più strani?",
+        "corretta": "Sì",
+        "tempo": "30"
+    },
+    {
+        "quizid": "15",
+        "risposta": [
+            "Sì",
+            "No"
+        ],
+        "punteggio": "5",
+        "domanda": "Secondo te è possibile inventarsi altre pedine che si muovono in modi ancora più strani?",
+        "corretta": "Sì",
+        "tempo": "30"
+    }
+]

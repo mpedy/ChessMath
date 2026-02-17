@@ -162,8 +162,83 @@ def getPath3():
         "pages/endpage"
     ]
 
+def getPath4():
+    return [
+        LISTEN,
+        "pages/natale/ascolta_torre",
+        "pages/natale/img_gioco1",
+        "pages/natale/quiz1",
+        "pages/natale/quiz2",
+        "pages/natale/img_1",
+        "pages/natale/gioco2",
+        "pages/natale/gioco4",
+        "pages/natale/quiz7",
+        LISTEN,
+        "pages/natale/gioco5",
+        "pages/natale/img_gioco5",
+        "pages/natale/gioco6",
+        "pages/natale/img_gioco6",
+        "pages/ascolta_alfiere", ## Alfiere
+        "pages/natale/img_gioco7",
+        "pages/natale/gioco8",
+        "pages/natale/quiz8",
+        "pages/natale/quiz9",
+        "pages/natale/quiz10",
+        LISTEN,
+        "pages/natale/quiz11",
+        "pages/natale/img_gioco10",
+        "pages/natale/gioco11b",
+        "pages/natale/img_gioco11b",
+        "pages/natale/img_allsquare",
+        "pages/ascolta_cavallo",# CAVALLO
+        "pages/natale/img_cavallo",
+        "pages/natale/gioco_spirit",
+        "pages/natale/img_spirit",
+        "pages/natale/gioco13b",
+        "pages/natale/gioco13b_soluzione",
+        "pages/natale/gioco12b",
+        "pages/natale/gioco12b_soluzione",
+        "pages/natale/gioco14",
+        "pages/natale/gioco15",
+        "pages/natale/img_gioco15",
+        "pages/ascolta_regina",
+        "pages/natale/img_regina",
+        "pages/natale/gioco16",
+        "pages/natale/img_gioco16",
+        "pages/natale/gioco17",
+        #"pages/natale/gioco18",
+        "pages/natale/gioco19",
+        LISTEN,
+        "pages/natale/gioco_training_toro",
+        "pages/natale/gioco_toro",
+        "pages/natale/gioco_toro1",
+        "pages/natale/gioco_toro2",
+        LISTEN, ## da fare da qui in avanti per i quiz
+        "pages/natale/quiz14",
+        #LISTEN,
+        #"pages/natale/quiz16",
+        "pages/classifica",
+        "pages/endpage"
+    ]
+
+def getPath5():
+    return [
+        LISTEN,
+        "pages/alien/earth",
+        "pages/alien/gioco1",
+        "pages/alien/gioco2",
+        "pages/alien/gioco3",
+        "pages/alien/gioco4",
+        "pages/alien/alien1",
+        "pages/alien/alien2",
+        "pages/classifica",
+        "pages/endpage"
+    ]
+
 allpages = {
     "path_1": getPath1(),
     "path_2": getPath2(),
-    "path_3" : getPath3()
+    "path_3" : getPath3(),
+    "path_4": getPath4(),
+    "path_5": getPath5()
 }

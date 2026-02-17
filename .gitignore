@@ -1,7 +1,13 @@
+venvl/
+venv/
 env/
+statvenv/
 *mp4
 *gif
 __pycache__/
 linux_env/
 chiavi/
 .DS_Store
+node_modules/
+**/.env
+static/dist/*

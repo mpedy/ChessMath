@@ -1,20 +1,3 @@
 <span id="title" style="padding: 10px; display: block;">Direzioni possibili per la Torre</span>
 <div id="chessboard"></div>
-<script type="text/javascript">
-drawChessboard(document.getElementById("chessboard"))
-drawPieces(document.getElementById("chessboard"),{E4: "Rook.svg"})
-var au = document.createElement("img")
-au.src="static/img/arrow-up.svg"
-$("#E5").append(au)
-var al = document.createElement("img")
-al.src="static/img/arrow-left.svg"
-$("#D4").append(al)
-var ar = document.createElement("img")
-ar.src="static/img/arrow-right.svg"
-$("#F4").append(ar)
-var ad = document.createElement("img")
-ad.src="static/img/arrow-down.svg"
-$("#E3").append(ad)
-handleMouseDown_casella = function(){}
-handleMouseDown_image = function(){}
-</script>
+<!--<script src="/static/js/dist/common/torre_help.js"></script>-->

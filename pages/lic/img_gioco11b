@@ -2,32 +2,4 @@
 	Risposta corretta:
 </div>
 <div id="chessboard"></div>
-<script type="text/javascript">
-
-drawChessboard(document.getElementById("chessboard"))
-
-piece_position={
-	F5: "Bishop.svg",
-}
-
-drawPieces(document.getElementById("chessboard"),piece_position)
-
-var cas = [D7,F7,H7,D5,H5,D3,F3,H3]
-
-for(var i in cas){
-	var elem = $("#"+cas[i])[0]
-	var div = document.createElement("div");
-	div.style.background="red"
-    div.style.borderRadius="50%"
-    div.style.position="absolute"
-    div.style.left="10%"
-    div.style.top="10%"
-    div.style.width="80%"
-    div.style.height="80%"
-    div.style.zIndex="1";
-	elem.appendChild(div);
-}
-handleMouseDown_casella = function(){}
-handleMouseDown_image = function(){}
-
-</script>
+<!-- <script src="/static/js/dist/lic/img_gioco11b.js"></script> -->

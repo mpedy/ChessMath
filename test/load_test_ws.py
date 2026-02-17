@@ -1,7 +1,11 @@
-import time
+#import time
 import json
+from dotenv import dotenv_values
+
 from locust import task
 from locust_plugins.users import SocketIOUser
+
+config = dotenv_values()
 
 
 class MySocketIOUser(SocketIOUser):
@@ -10,7 +14,7 @@ class MySocketIOUser(SocketIOUser):
     def my_task(self):
         self.my_value = None
 
-        self.connect(f"ws://ec2-54-195-9-131.eu-west-1.compute.amazonaws.com/ws/853_ciao{self.k}")
+        self.connect(f"{config['ip1']}{self.k}")
         self.k = self.k+1
 
         # example of subscribe
@@ -27,4 +31,4 @@ class MySocketIOUser(SocketIOUser):
         self.my_value = json.loads(message)["my_value"]
 
     if __name__ == "__main__":
-        host = "http://ec2-54-195-9-131.eu-west-1.compute.amazonaws.com/"
+        host = config['ip2']

@@ -1,0 +1,5 @@
+<div style="padding: 10px; display: block;">
+	Una mossa della Regina:
+</div>
+<div id="chessboard"></div>
+<!-- <script src="/static/js/dist/natale/img_regina.js"></script> -->

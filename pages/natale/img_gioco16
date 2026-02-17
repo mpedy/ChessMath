@@ -1,0 +1,5 @@
+<div style="padding: 10px; display: block;">
+	Una possibile soluzione:
+</div>
+<div id="chessboard"></div>
+<!-- <script src="/static/js/dist/natale/img_gioco16.js"></script> -->

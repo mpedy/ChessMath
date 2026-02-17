@@ -1,0 +1,202 @@
+[
+    {
+        "quizid": "1",
+        "risposta": [
+            "Rosso",
+            "Blu",
+            "Verde",
+            "Giallo"
+        ],
+        "punteggio": "10",
+        "domanda": "L'aula è vuota e devi arrivare alla porta. Non hai ancora mangiato la merenda e hai pochissime energie. Quale percorso scegli tra i 4 indicati?",
+        "corretta": "Blu",
+        "tempo": "30"
+    },
+    {
+        "quizid": "2",
+        "risposta": [
+            "Rosso",
+            "Blu",
+            "Verde",
+            "Giallo"
+        ],
+        "punteggio": "10",
+        "domanda": "Tra i seguenti quale percorso scegli? Ricordati che hai poche energie!",
+        "corretta": "Verde",
+        "tempo": "20"
+    },
+    {
+        "quizid": "3",
+        "risposta": [
+            "Sì",
+            "No"
+        ],
+        "punteggio": "5",
+        "domanda": "Se l'aula fosse 10 volte più grande, la distanza tra te e la porta sarebbe la stessa?",
+        "corretta": "No",
+        "tempo": "30"
+    },
+    {
+        "quizid": "4",
+        "risposta": [
+            "Rosso",
+            "Blu",
+            "Verde",
+            "Giallo"
+        ],
+        "punteggio": "10",
+        "domanda": "Qual è il percorso possibile per la Torre per raggiungere la casella colorata?",
+        "corretta": "Verde",
+        "tempo": "30"
+    },
+    {
+        "quizid": "5",
+        "risposta": [
+            "Rosso",
+            "Blu",
+            "Verde",
+            "Giallo"
+        ],
+        "punteggio": "10",
+        "domanda": "Quale percorso è il più breve per la Torre per arrivare alla casella colorata?",
+        "corretta": "Blu",
+        "tempo": "30"
+    },
+    {
+        "quizid": "6",
+        "risposta": [
+            "2",
+            "7",
+            "8",
+            "11"
+        ],
+        "punteggio": "10",
+        "domanda": "Quante caselle è lungo il percorso più breve?",
+        "corretta": "11",
+        "tempo": "40"
+    },
+    {
+        "quizid": "7",
+        "risposta": [
+            "Sì",
+            "No"
+        ],
+        "punteggio": "5",
+        "domanda": "Se la scacchiera fosse 10 volte più grande la distanza tra la Torre e la casella colorata sarebbe maggiore?",
+        "corretta": "No",
+        "tempo": "30"
+    },
+    {
+        "quizid": "8",
+        "risposta": [
+            "A",
+            "B",
+            "C",
+            "D"
+        ],
+        "punteggio": "10",
+        "domanda": "Quale delle seguenti figure è una circonferenza?",
+        "corretta": "B",
+        "tempo": "20"
+    },
+    {
+        "quizid": "9",
+        "risposta": [
+            "Rosso",
+            "Blu",
+            "Verde",
+            "Giallo"
+        ],
+        "punteggio": "10",
+        "domanda": "Qual è il percorso possibile per l'Alfiere per raggiungere la casella evidenziata?",
+        "corretta": "Giallo",
+        "tempo": "60"
+    },
+    {
+        "quizid": "10",
+        "risposta": [
+            "Rosso",
+            "Blu",
+            "Verde",
+            "Giallo"
+        ],
+        "punteggio": "10",
+        "domanda": "Qual è il percorso più breve per l'Alfiere per raggiungere la casella evidenziata?",
+        "corretta": "Rosso",
+        "tempo": "50"
+    },
+    {
+        "quizid": "11",
+        "risposta": [
+            "1",
+            "2",
+            "4",
+            "Non ci può arrivare"
+        ],
+        "punteggio": "10",
+        "domanda": "Quante caselle è distante la casella evidenziata?",
+        "corretta": "2",
+        "tempo": "50"
+    },
+    {
+        "quizid": "12",
+        "risposta": [
+            "1",
+            "2",
+            "4",
+            "Non ci può arrivare"
+        ],
+        "punteggio": "10",
+        "domanda": "Quante caselle è distante la casella evidenziata?",
+        "corretta": "2",
+        "tempo": "50"
+    },
+    {
+        "quizid": "13",
+        "risposta": [
+            "1",
+            "2",
+            "4",
+            "Non ci può arrivare"
+        ],
+        "punteggio": "10",
+        "domanda": "Quante caselle è distante la casella evidenziata?",
+        "corretta": "Non ci può arrivare",
+        "tempo": "30"
+    },
+    {
+        "quizid": "14",
+        "risposta": [
+            "1",
+            "6",
+            "4",
+            "Infinite"
+        ],
+        "punteggio": "10",
+        "domanda": "Da quante caselle è composta la circonferenza di raggio 1?",
+        "corretta": "4",
+        "tempo": "30"
+    },
+    {
+        "quizid": "15",
+        "risposta": [
+            "Sì",
+            "No"
+        ],
+        "punteggio": "5",
+        "domanda": "Se cambiamo il modo di misurare la distanza, cambiamo la geometria?",
+        "corretta": "Sì",
+        "tempo": "30"
+    },
+    {
+        "quizid": "16",
+        "risposta": [
+            "Sì",
+            "No"
+        ],
+        "punteggio": "5",
+        "domanda": "Secondo te è possibile inventarsi altre pedine che si muovono in modi ancora più strani?",
+        "corretta": "Sì",
+        "tempo": "30"
+    }
+]

@@ -1,13 +1,14 @@
 import json
 from starlette.applications import Starlette
-from starlette.responses import JSONResponse, HTMLResponse, Response, RedirectResponse
+from starlette.responses import JSONResponse, HTMLResponse, RedirectResponse, PlainTextResponse#, Response
 from starlette.routing import Mount, Route, WebSocketRoute
 from starlette.staticfiles import StaticFiles
 from starlette.templating import Jinja2Templates
 from starlette.middleware import Middleware
-from starlette.endpoints import HTTPEndpoint, WebSocketEndpoint
+from starlette.endpoints import WebSocketEndpoint#, HTTPEndpoint
 from starlette.websockets import WebSocket
 import threading
+import os
 
 
 # per esportare da DB:
@@ -22,46 +23,52 @@ from datetime import datetime
 #import binascii
 
 from .customMiddleware import CustomHeaderMiddleware
-from .httpsMiddleware import HTTPSRedirectMiddleware
+from .HTTPSMiddleware import HTTPSRedirectMiddleware
 #from .DBConnection import DBConnection
+
+from .paths import allpages
+from .GameOptions import GameOptions
 
 middleware = []
 
-PROD = 0
+PROD = int(os.getenv("PROD", "0"))
 if PROD == 1:
     middleware = [Middleware(HTTPSRedirectMiddleware)]
 elif PROD == 2:
     middleware = [Middleware(CustomHeaderMiddleware)]
 
 
-from .paths import allpages
-from .GameOptions import GameOptions
-
 opt = GameOptions()
 websockets = []
 lock = threading.Lock()
 
+manifest = json.load(open("static/dist/manifest.json","r", encoding="utf-8"))
+
 templates = Jinja2Templates(directory="pages")
 
 async def welcome(request):
-    return HTMLResponse(open('pages/welcome',"r",encoding="utf-8").read())
+    return templates.TemplateResponse('welcome', {"request":request, "manifest": manifest})
+    #return HTMLResponse(open('pages/welcome',"r",encoding="utf-8").read())
 
 async def mainRoute(request):
     global opt
     try:
         uuid = request.path_params["uuid"]
         if uuid == "Animatore":
-            return templates.TemplateResponse('index.html', {"request":request, "nome": "Animatore", "codice": opt.codice})
-        return templates.TemplateResponse('index.html', {"request":request, "nome": opt.UUID_NAME[uuid], "codice": opt.codice})
+            return templates.TemplateResponse('index.html', {"request":request, "nome": "Animatore", "codice": opt.codice, "manifest": manifest})
+        return templates.TemplateResponse('index.html', {"request":request, "nome": opt.UUID_NAME[uuid], "codice": opt.codice, "manifest": manifest})
     except Exception as e:
-        print("Errore in mainRoute con request: ",str(request))
+        print("Errore in mainRoute con request: ",str(request), str(e))
     return RedirectResponse("/")
 
 async def gotoPage(request):
     global opt
     opt.page = request.path_params['page']
     try:
-        return HTMLResponse(open(allpages[opt.percorso][opt.page], encoding="utf-8").read())
+        return HTMLResponse(open(allpages[opt.percorso][opt.page], encoding="utf-8").read(),headers={
+            "X-PATH": opt.percorso,
+            "X-PAGENAME": allpages[opt.percorso][opt.page]
+        })
     except Exception as e:
         return HTMLResponse(f"""<div> Errore: {e} """)
 
@@ -79,7 +86,10 @@ async def notifyAllWS():
     global websockets
     for ws in websockets:
         if ws["cod"] == opt.codice:
-            await ws["ws"].send_text(json.dumps({"pagina": opt.page}))
+            if ws["name"] != "Animatore-console":
+                await ws["ws"].send_text(json.dumps({"pagina": opt.page}))
+            else:
+                await ws["ws"].send_json({"perc": 0, "page": opt.page, "error": "","lista":(len(websockets)-2)})
 
 
 
@@ -93,37 +103,30 @@ async def setPage(request):
             opt.Answered = {}
             opt.Answered[opt.page] = []
         arr = allpages[opt.percorso]
-        l = len(arr)
-        res = [arr[opt.page-1] if opt.page-1 in range(0,l) else None, arr[opt.page] if opt.page in range(0,l) else None, arr[opt.page+1] if opt.page+1 in range(0,l) else None]
+        len_array = len(arr)
+        res = [arr[opt.page-1] if opt.page-1 in range(0,len_array) else None, arr[opt.page] if opt.page in range(0,len_array) else None, arr[opt.page+1] if opt.page+1 in range(0,len_array) else None]
         await notifyAllWS()
         return JSONResponse({"status":"ok","prev":res[0],"current":res[1],"next":res[2]})
     else:
-        return Response("Errore: codice non valido");
+        return PlainTextResponse("Errore: codice non valido")
 
 def fetchQuiz(path: str):
     global opt
-    #dbConn = DBConnection()
-    #dbConn.openConnectionAndCursor()
-    #res = dbConn.executeAndFetchall("select quizid, tipo, json_agg(test) from chessmath."+path+" group by quizid, tipo order by quizid, tipo desc;")
-    #dbConn.closeConnectionAndCursor()
-    #print("RES prima")
-    #print(res, type(res[0]))
-    with open(f"Domande/{path}","r", encoding="utf-8") as f:
+    with open(f"src/Domande/{path}","r", encoding="utf-8") as f:
         import json
         domande = json.load(f)
-        res = []
-        for d in domande:
-            res.append((d['quizid'],d['tipo'],d['value']))
-    #print("RES dopo")
-    #print(res)
-    return res
+    return domande
+        #res = []
+        #for d in domande:
+        #    res.append((d['quizid'],d['tipo'],d['value']))
+    #return res
 
 async def updateQuest(request):
     global opt
     opt.MyQuiz = []
     res = fetchQuiz(opt.percorso)
     opt.obtainNewQuiz(res)
-    return Response("ok")
+    return PlainTextResponse("ok")
 
 async def setPath(request):
     global opt
@@ -131,7 +134,12 @@ async def setPath(request):
     opt.page = 0
     res = fetchQuiz(opt.percorso)
     opt.obtainNewQuiz(res)
-    return Response("ok")
+    for ws in websockets:
+        if ws["cod"] == opt.codice:
+            if ws["name"] != "Animatore-console":
+                await ws["ws"].send_text(json.dumps({"path": str(request.path_params['path'])}))
+        
+    return PlainTextResponse("ok")
 
 async def getquiz(request):
     global opt
@@ -141,7 +149,7 @@ async def getquiz(request):
         return opt.MyQuiz[quizid-1].json()
     except Exception as e:
         print("Errore in getquiz: ",opt.page, opt.MyQuiz,": "+str(e))
-        return Response("Errore")
+        return PlainTextResponse("Errore")
 
 
 async def startup_task():
@@ -152,16 +160,16 @@ async def startup_task():
 async def settacodice(request):
     global opt
     opt.codice = request.path_params["codice"]
-    return Response("ok")
+    return PlainTextResponse("ok")
 
 async def verificacodice(request):
     global opt
     cod = request.path_params["codice"]
     if cod == opt.codice:
-        return Response("ok")
+        return PlainTextResponse("ok")
     else:
         print("Il codice non è valido")
-        return Response("ko",status_code=401)
+        return PlainTextResponse("ko",status_code=401)
 
 
 async def getanimpage(request):
@@ -180,10 +188,11 @@ async def getanimpage(request):
 
 async def getcodice(request):
     global opt
-    return Response(str(opt.codice))
+    return PlainTextResponse(str(opt.codice))
 
 async def addNome(request):
     global opt
+    global websockets
     nomeDaAggiungere = request.path_params["nome"]
     numDiNomiUguali = 0
     nomeFinale = ""
@@ -194,13 +203,17 @@ async def addNome(request):
             while indiceDelNomeDaAggiungere >=0:
                 indiceDelNomeDaAggiungere = opt.allNames.index(nomeDaAggiungere+"-"+str(numDiNomiUguali))
                 numDiNomiUguali+=1
-    except Exception as e:
+    except Exception:
         nomeFinale = nomeDaAggiungere
         if numDiNomiUguali > 0:
             nomeFinale+="-"+str(numDiNomiUguali)
         opt.allNames.append(nomeFinale)
+        for ws in websockets:
+            if ws["cod"] == opt.codice and ws["name"] == "Animatore-console":
+                await ws["ws"].send_json({"perc": 0, "error": "", "lista": (len(websockets)-2)})
+                break
     uuid = opt.generaUuid(nomeFinale)
-    return Response(uuid)
+    return PlainTextResponse(uuid)
 
 async def reset(request):
     global opt
@@ -211,13 +224,15 @@ async def reset(request):
         ws_all = copy.copy(websockets)
         for ws in ws_all:
             await ws["ws"].close()
-    return Response("ok")
+    return PlainTextResponse("ok")
 
 async def endGame(request):
-    return HTMLResponse(open("pages/end","r",encoding="utf-8").read())
+    return templates.TemplateResponse("end", {"request": request, "manifest": manifest})
+    #return HTMLResponse(open("pages/end","r",encoding="utf-8").read())
 
 async def addPoints(request):
     global opt
+    global websockets
     nome = request.path_params["nome"]
     punti = int(request.path_params["pt"])
     if nome != "Animatore":
@@ -225,7 +240,21 @@ async def addPoints(request):
         opt.Classifica_ordered = sorted(opt.Classifica.items(), key=lambda x: x[1], reverse=True)
         if nome not in opt.Answered[opt.page]:
             opt.Answered[opt.page].append(nome)
-    return Response("ok")
+            for ws in websockets:
+                if ws["cod"] == opt.codice and ws["name"] == "Animatore-console":
+                    if len(websockets)-2 == 0:
+                        await ws["ws"].send_json({"perc": -1, "page": opt.page, "error": "Ancora nessuno in lista", "lista":0})
+                    try:
+                        numerator = len(opt.Answered[opt.page])
+                        l_tot = len(websockets) - 2 ## Tolgo l'animatore, una per l'iframe e un'altra per la console
+                        if l_tot != 0:
+                            await ws["ws"].send_json({"perc": numerator/l_tot*100, "page": opt.page, "error": "", "lista":l_tot})
+                        else:
+                            await ws["ws"].send_json({"perc": -1, "page": opt.page, "error": "Ancora nessuno in lista","lista":0})
+                    except Exception:
+                        await ws["ws"].send_json({"perc":-1, "page":opt.page, "error": "Ancora nessuno ha risposto","lista":0})
+                    break
+    return PlainTextResponse("ok")
 
 async def getClassifica(request):
     global opt
@@ -241,23 +270,28 @@ async def getAnswered(request):
     if len(opt.allNames) == 0:
         return JSONResponse({"perc": -1, "page": opt.page, "error": "Ancora nessuno in lista", "lista":0})
     try:
-        l = len(opt.Answered[opt.page])
+        numerator = len(opt.Answered[opt.page])
         l_tot = len(opt.allNames) ## Tolgo l'animatore
         if l_tot != 0:
-            return JSONResponse({"perc": l/l_tot*100, "page": opt.page, "error": "", "lista":len(opt.allNames)})
+            return JSONResponse({"perc": numerator/l_tot*100, "page": opt.page, "error": "", "lista":len(opt.allNames)})
         else:
             return JSONResponse({"perc": -1, "page": opt.page, "error": "Ancora nessuno in lista","lista":0})
-    except Exception as e:
+    except Exception:
         return JSONResponse({"perc":-1, "page":opt.page, "error": "Ancora nessuno ha risposto","lista":0})
 
 async def anim(request):
-    return templates.TemplateResponse("anim_key", {"request": request, "errore": """<div id="error_msg_anim"></div>"""})
+    return templates.TemplateResponse("anim_key", {"request": request, "errore": """<div id="error_msg_anim"></div>""", "manifest": manifest})
 
 async def onerror(request, exc):
     print("Errore")
     print(exc)
     print("Errore gestito: ",exc.detail)
     return RedirectResponse("/anim",status_code=301)
+
+async def refresh(request):
+    global manifest
+    manifest = json.load(open("static/dist/manifest.json","r", encoding="utf-8"))
+    return PlainTextResponse("ok")
 
 class MyWebSocket(WebSocketEndpoint):
     import typing
@@ -267,6 +301,10 @@ class MyWebSocket(WebSocketEndpoint):
         global websockets
         if websocket.path_params["cod"] == opt.codice:
             websockets.append({"cod": websocket.path_params["cod"], "name": websocket.path_params["name"], "ws": websocket})
+            if websocket.path_params["name"] != "Animatore-console":
+                for ws in websockets:
+                    if ws["cod"]== opt.codice and ws["name"] == "Animatore-console":
+                        await ws["ws"].send_json({"perc": 0, "error": "", "lista": (len(websockets)-2)})
         return await super().on_connect(websocket)
     
     async def on_disconnect(self, websocket: WebSocket, close_code: int) -> None:
@@ -281,7 +319,19 @@ class MyWebSocket(WebSocketEndpoint):
     
     async def on_receive(self, websocket: WebSocket, data: typing.Any) -> None:
         global opt
-        await websocket.send_text(json.dumps({"pagina": opt.page}))
+        if data == "get_answered":
+            if len(opt.allNames) == 0:
+                await websocket.send_json({"perc": -1, "page": opt.page, "error": "Ancora nessuno in lista", "lista":0})
+            try:
+                numerator = len(opt.Answered[opt.page])
+                l_tot = len(websockets) - 2 ## Tolgo l'animatore, una websocket per l'iframe e un'altra per la console
+                if l_tot != 0:
+                    await websocket.send_json({"perc": numerator/l_tot*100, "page": opt.page, "error": "", "lista":l_tot})
+                else:
+                    await websocket.send_json({"perc": -1, "page": opt.page, "error": "Ancora nessuno in lista","lista":0})
+            except Exception:
+                await websocket.send_json({"perc":-1, "page":opt.page, "error": "Ancora nessuno ha risposto","lista":0})
+        await websocket.send_text(json.dumps({"pagina": opt.page, "path": opt.percorso.split("_")[1]}))
         return await super().on_receive(websocket, data)
     
     async def notify_all(self, data):
@@ -294,38 +344,30 @@ class MyWebSocket(WebSocketEndpoint):
                 index = index - 1
             else:
                 await ws["ws"].send_text(data)
-    
-#async def startWebSocket(ws: WebSocket):
-#    print("PATH PARAMS: ", ws.path_params["cod"])
-#    if ws.path_params["cod"] == opt.codice:
-#        await ws.accept()
-#        while True:
-#            await ws.send_text("Ti leggo")
-#    return Response("OK")
 
 routes=[
-    Route("/", welcome),
-    Route("/game_{uuid:str}",mainRoute),
-    Route("/getpage_{page:int}",gotoPage),
-    Route("/page_{cod:int}", returnPage),
-    Route("/setpage_{page:int}_{code:int}",setPage),
-    Route("/setpath_{path:int}",setPath),
-    Route("/getquiz",getquiz),
-    Route("/updateQuest",updateQuest),
-    Route("/verificacodice_{codice:int}", verificacodice),
-    Route("/settacodice_{codice:int}", settacodice),
-    Route("/getcodice", getcodice),
-    Route("/inseriscinome_{nome:str}", addNome),
-    Route("/animatore", getanimpage, methods=["POST"]),
-    Route("/reset", reset),
-    Route("/end",endGame),
+    Route("/", welcome), #ok
+    Route("/game_{uuid:str}",mainRoute),#ok
+    Route("/getpage_{page:int}",gotoPage),#ok
+    Route("/page_{cod:int}", returnPage), #deprecato
+    Route("/setpage_{page:int}_{code:int}",setPage),#ok
+    Route("/setpath_{path:int}",setPath),#ok
+    Route("/getquiz",getquiz),#ok
+    Route("/updateQuest",updateQuest),#ok
+    Route("/verificacodice_{codice:int}", verificacodice),#ok
+    Route("/settacodice_{codice:int}", settacodice),#ok
+    Route("/getcodice", getcodice),#ok
+    Route("/inseriscinome_{nome:str}", addNome),#ok
+    Route("/animatore", getanimpage, methods=["POST"]),#ok
+    Route("/reset", reset),#ok
+    Route("/end",endGame),#ok
     Route("/addPoints_{nome:str}_{pt:str}", addPoints),
-    Route("/getClassifica_{position:int}", getClassifica),
+    Route("/getClassifica_{position:int}", getClassifica),#
     Route("/getAnswered", getAnswered),
     WebSocketRoute("/ws/{cod:int}_{name:str}", MyWebSocket),
-
-    Route("/anim",anim),
-    Mount('/static', app=StaticFiles(directory='static', packages=['bootstrap4']), name="static"),
+    Route("/anim",anim),#ok
+    Route("/refresh", refresh),
+    Mount('/static', app=StaticFiles(directory='static'), name="static"),#ok
 ]
 
 app = Starlette(routes=routes, on_startup=[startup_task], middleware=middleware, exception_handlers={405: onerror})

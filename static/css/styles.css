@@ -1,0 +1,111 @@
+@import url("header.css");
+@import url("game.css");
+
+@font-face{
+	font-family: 'Digital';
+	src: url('../../fonts/digital-7.mono.ttf') format('truetype');
+}
+*{
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+body{
+	/*background: url('static/img/background.jpg') center center;*/
+	background-color: #33261D;
+}
+div#background{
+	background: rgba(0,0,0,0.5);
+	min-width: 100%;
+	min-height: 100vh;
+	/*padding: 50px;*/
+	color: white;
+	font-size: 20px;
+	display: flex;
+	justify-content: center;
+	padding-top: 40px;
+}
+@media only screen and (min-width: 600px) {
+	#background > #content_page{
+		max-width: 640px;
+	}
+}
+@media only screen and (max-width: 600px){
+	#background > #content_page > #title{
+		font-size: 14px;
+	}
+}
+#gobtn{
+	background: lightgray;
+	font-size: 4vw;
+	background: linear-gradient(0deg, #008d00, #40ff40);
+}
+
+#quiz{
+	height: 100%;
+	display: inline-block;
+}
+
+#answers{
+	height: initial !important;
+}
+
+#answers > li{
+	float: left;
+	width: 49%;
+}
+#answers > li > div{
+	margin: 10px;
+}
+
+.b{
+	font-weight: bold;
+	margin: 10px 0;
+}
+.ui-dialog-titlebar{
+	background: #e4572e !important;
+}
+.ui-dialog{
+	background: #ff8e72 !important;
+}
+.ui-dialog-buttonset{
+	width: 100%;
+}
+.ui-dialog-buttonpane{
+	background: #ff8e72 !important;
+}
+button[type='button']{
+	background: #f08700;
+	color: white;
+	float: right;
+}
+button[type='button']:first-child{
+	float: left;
+}
+.no-close .ui-dialog-titlebar-close {display: none }
+.risposta{
+	padding: 5px;
+	border-radius: 10px;
+	background: orange;
+	color: black;
+}
+.risposta.disabled{
+	background: darkgray;
+}
+span#question {
+   	padding: 20px 15px;
+   	display: block;
+}
+#chessboard{
+	font-size: 0px;
+}
+.transition-stopped{
+	opacity: 0 !important;
+	top: -20px !important;
+}
+.transitioning-img{
+	transition: all 1s ease-out;
+	position: absolute;
+	top: 0px;
+	left: 0px;
+}

@@ -1,0 +1,32 @@
+{
+  "private": true,
+  "devDependencies": {
+    "@babel/cli": "^7.25.9",
+    "@babel/core": "^7.26.0",
+    "@babel/preset-env": "^7.26.0",
+    "@eslint/js": "^9.39.2",
+    "babel-loader": "^9.2.1",
+    "esbuild": "^0.27.2",
+    "eslint": "^9.39.2",
+    "globals": "^17.3.0",
+    "lightningcss": "^1.31.1",
+    "webpack": "^5.96.1",
+    "webpack-cli": "^5.1.4"
+  },
+  "scripts": {
+    "2015": "npm run js_2015 && npm run babel_2015 && npm run clean",
+    "bundle": "webpack --config webpack.config.js",
+    "bundle-prod": "webpack --env=production=true --config webpack.config.js",
+    "start": "node src/index.cjs",
+    "js": "esbuild static/js/app.js --bundle --minify --sourcemap --target=es2017 --outfile=static/js/app.dist.js",
+    "js_2015": "esbuild static/js/app.js --bundle --minify --sourcemap --target=es2015 --format=iife --outfile=static/js/app.dist.tmp2015.js",
+    "babel_2015": "babel static/js/app.dist.tmp2015.js --out-file static/js/app.dist.js --presets=@babel/preset-env --plugins=./myplugin__define_var.cjs --minified --source-maps",
+    "lint": "eslint",
+    "clean": "del static\\js\\app.dist.tmp2015*"
+  },
+  "dependencies": {
+    "core-js": "^2.6.12",
+    "ejs": "^3.1.10",
+    "ws": "^8.18.0"
+  }
+}

@@ -8,38 +8,9 @@
 	<link rel="icon" type="image/png" href="static/img/favicon.png">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 	<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
-	<link rel="stylesheet" href="static/css/style.css">
+	<link rel="stylesheet" href="{{ manifest['css'] }}">
 	<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
-	<script src="static/js/myui.js"></script>
-	<script src="static/js/movePieces.js"></script>
-	<script>
-	sendCodice = function(){
-		var code = $("#codice").val();
-		var nome = $("#nome").val();
-		if(nome.length<3){
-			myalert("Attenzione","Inserire un nome di almeno 3 caratteri")
-			return;
-		}
-		$.ajax({
-			url: "verificacodice_"+code,
-			async: false,
-			success: function(res_page){
-				$.ajax(
-					{
-						url: "inseriscinome_"+nome,
-						async: false,
-						success: function(result){
-							nome = result;
-							window.location.href="/game_"+nome;
-						}
-					})
-				},
-			error: function(err){
-				myalert("Attenzione!","Il codice inserito non è corretto");
-			}
-		})
-	}
-	</script>
+	<script src="{{ manifest['js'] }}"></script>
 </head>
 <body>
 	<div id="background">

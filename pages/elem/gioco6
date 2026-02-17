@@ -2,85 +2,14 @@
 <div id="chessboard"></div>
 <div>
 	<div class="timer" data-second="90" data-height="20px" data-width="80%"></div>
-	<div style="margin: 10px; display: inline-table;">
+	<!-- <div style="margin: 10px; display: inline-table;">
 		<button style="border-radius: 10px; display: block; margin: 0px 15px; padding: 5px; float: left;" id="gobtn" onclick="procedi(this)">Conferma</button>
 		<button style="border-radius: 10px; display: block; margin: 0px 15px; padding: 5px; float: left;"id="reset" onclick="reset()" >Cancella tutto</button>
-	</div>
-	<script type="text/javascript">
-	maketimer(document.getElementsByClassName("timer")[0]);
-	stopTimerFunction = function(){
-		var dis = document.getElementById("gobtn").disabled;
-		document.getElementById("gobtn").disabled = true;
-		document.getElementById("reset").disabled = true;
-		handleMouseDown_casella = function(){}
-		if(!dis){
-			procedi(document.getElementById("gobtn"))
-		}
-	}
-	</script>
+	</div> -->
+</div>
+<div id="controls_container">
+	<button id="gobtn" onclick="procedi(this)">Conferma</button>
+	<button id="reset" onclick="reset()" >Cancella tutto</button>
 </div>
 
-<script type="text/javascript">
-
-drawChessboard(document.getElementById("chessboard"))
-
-piece_position={
-	D5: "Rook.svg",
-}
-
-drawPieces(document.getElementById("chessboard"),piece_position)
-
-var caselle_colorate = new Array();
-var caselle_corrette = [D3,D7,C4,C6,B5,E4,E6,F5]
-
-handleMouseDown_casella = function(e){
-    var elem = e.currentTarget;
-    casella = elem.getAttribute("casella");
-    if(caselle_colorate.includes(casella)){
-    	caselle_colorate.splice(caselle_colorate.indexOf(casella),1);
-    	elem.removeChild(elem.children[elem.childElementCount-1]);
-    }else{
-    	caselle_colorate.push(casella);
-    	var div = document.createElement("div");
-    	div.style.background="red"
-    	div.style.borderRadius="50%"
-    	div.style.position="absolute"
-    	div.style.left="10%"
-    	div.style.top="10%"
-    	div.style.width="80%"
-    	div.style.height="80%"
-    	div.style.zIndex="1";
-    	elem.appendChild(div);
-    }
-}
-
-reset = function(){
-	for(var i in caselle_colorate){
-		var elem = document.getElementById(caselle_colorate[i])
-		elem.removeChild(elem.children[elem.childElementCount-1]);
-	}
-	caselle_colorate = new Array();
-}
-
-procedi = function(btn){
-	btn.disabled = true;
-	var points = 0;
-	for(var i in caselle_colorate){
-		if(caselle_corrette.includes(caselle_colorate[i])){
-			points+=1;
-		}else{
-			points-=1;
-		}
-	}
-	myalert("Risultato","Hai guadagnato "+points+" punti.");
-	updatePoints(points);
-	punti = getPoints();
-	clearInterval(window.myt)
-	sec = 0;
-	document.getElementById("gobtn").disabled = true;
-	document.getElementById("reset").disabled = true;
-	handleMouseDown_casella = function(){}
-	handleMouseDown_image = function(){}
-}
-
-</script>
+<!-- <script src="/static/js/dist/elem/gioco6.js"></script> -->

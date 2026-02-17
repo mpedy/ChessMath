@@ -1,0 +1,12 @@
+<div id="title">Muovi l'Alfiere verso il punto evidenziato nel minor numero di caselle</div>
+<div id="chessboard"></div>
+<div>
+	<div style="background: black;">Caselle: <span id="number_of_moves">0</span></div>
+	<div class="timer" data-second="40" data-height="20px" data-width="80%"></div>
+	<!-- <button style="border-radius: 10px; display: block; margin: 30px auto 15px auto; padding: 5px;" id="ricomincia" onclick="ricomincia()" >Ricomincia</button> -->
+</div>
+<div id="controls_container">
+	<button id="ricomincia" onclick="window.ricomincia()" >Ricomincia</button>
+</div>
+
+<!-- <script src="/static/js/dist/natale/gioco8.js"></script> -->
