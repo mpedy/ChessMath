@@ -1,5 +1,6 @@
 import { MakeTimerClass } from "./Maketimer";
 
+/* eslint no-empty: "off" */
 /* global $ */
 export var myconfirm = function (title, text, yes_btn, no_btn, f1, f2, closable) {
 	try {

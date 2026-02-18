@@ -104,12 +104,12 @@ class Gioco19 {
             pmoves.flat()
             var pmoves_king = window.calculatePossibleMoves(KINGB.casella, KINGB.tipo);
             var pmoves_king_excluded = new Array();
-            for (var i in pmoves_king) {
+            for (let i in pmoves_king) {
                 if (pmoves.includes(pmoves_king[i])) {
                     pmoves_king_excluded.push(pmoves_king[i])
                 }
             }
-            for (var i in pmoves_king_excluded) {
+            for (let i in pmoves_king_excluded) {
                 pmoves_king.splice(pmoves_king.indexOf(pmoves_king_excluded[i]), 1)
             }
             if (pmoves_king.length == 0) {
@@ -147,28 +147,26 @@ class Gioco19 {
 
         window.calculatePossibleMoves = function (casella, type) {
             var pmoves = new Array();
+            var x = casella.charCodeAt(0) - 65 + 1;
+            var y = parseInt(casella[1]);
             switch (type) {
                 case "Rook": {
-                    var x = casella.charCodeAt(0) - 65 + 1;
-                    var y = parseInt(casella[1]);
                     pmoves = pieceMove.moveRook(casella, x, y);
                 }
                     break;
                 case "King": {
-                    var x = casella.charCodeAt(0) - 65 + 1;
-                    var y = parseInt(casella[1]);
                     pmoves = pieceMove.moveKing(casella, x, y);
                 }
                     break;
             }
-            for (var i in drawChessboard.pieces) {
+            for (let i in drawChessboard.pieces) {
                 if (pmoves.indexOf(drawChessboard.pieces[i].casella) >= 0) {
                     pmoves.splice(pmoves.indexOf(drawChessboard.pieces[i].casella), 1)
                 }
             }
             //console.log(possible_moves);
             if (show_possible_moves) {
-                for (var i in pmoves) {
+                for (let i in pmoves) {
                     var elem = document.getElementById(pmoves[i]);
                     caselle_colorate.push(pmoves[i]);
                     var div = document.createElement("div");

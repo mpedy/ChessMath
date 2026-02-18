@@ -12,8 +12,8 @@ class ImgCavallo {
         var cas = ["E7"]
         var i;
         for (i in cas) {
-            var elem = $("#" + cas[i])[0]
-            var div = document.createElement("div");
+            let elem = $("#" + cas[i])[0]
+            let div = document.createElement("div");
             div.style.background = "red"
             div.style.borderRadius = "50%"
             div.style.position = "absolute"
@@ -26,8 +26,8 @@ class ImgCavallo {
         }
         cas = ["D6", "D7"]
         for (i in cas) {
-            var elem = $("#" + cas[i])[0]
-            var div = document.createElement("div");
+            let elem = $("#" + cas[i])[0]
+            let div = document.createElement("div");
             div.style.background = "rgba(255,0,0,0.5)";
             div.style.borderRadius = "50%"
             div.style.position = "absolute"

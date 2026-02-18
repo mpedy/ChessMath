@@ -2,7 +2,6 @@ import { MakeTimerClass } from "./Maketimer.js"
 import { DrawChessboard as DrawChessboardClass } from "./Drawchessboard.js";
 
 
-/* global $ */
 class DrawGame {
     constructor({
         piece_position = {},

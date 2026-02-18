@@ -1,3 +1,4 @@
+/* eslint-disable */
 /**
  * Per informazioni guarda qui, è un tool di monitoraggio remoto di errori: invia i messaggi di console.log/err/... ad un server remoto
  * https://github.com/kurdin/console-remote

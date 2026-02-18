@@ -70,8 +70,8 @@ export class DrawChessboard {
         this.elem.setAttribute("data-boardtop-y", boardTopy);
         this.elem.setAttribute("data-number-caselle", dim)
 
-        for (var i = 0; i < dim; i++) {
-            for (var j = 0; j < dim; j++) {
+        for (let i = 0; i < dim; i++) {
+            for (let j = 0; j < dim; j++) {
                 var div = document.createElement("div")
                 div.style.background = ((i + j) % 2 == 0) ? "#eeeed2" : "#769656";
                 div.style.width = squareSize + "px";
@@ -97,7 +97,7 @@ export class DrawChessboard {
         var sty = document.createElement("style");
         sty.id = "chessboard_style";
         sty.innerHTML = "";
-        for (var i = 1; i <= dim; i++) {
+        for (let i = 1; i <= dim; i++) {
             sty.innerHTML += `div#A${i}:before{content:"${i}"; position: absolute; top: ${(squareSize / 2 - 5)}px; left: -14px;font-size: 12px;top:50%;transform:translate(0,-50%);}`
             sty.innerHTML += `div#${String.fromCharCode(65 + i - 1)}1:after{content:"${String.fromCharCode(65 + i - 1)}"; position: absolute; top: 100%;font-size: 12px;margin:auto;transform:translate(-50%,25%);}`
         }
