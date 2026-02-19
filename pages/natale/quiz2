@@ -1,11 +1,7 @@
 <div id="quiz">
 	<span id="title"></span>
 	<span id="question"></span>
-	<img src="static/img/torre2.png"/>
+	<img src="static/img/torre2.png" />
 	<ul id="answers">
 	</ul>
 </div>
-<style>
-	
-</style>
-<!-- <script src="/static/js/dist/natale/quiz.js"></script> -->
