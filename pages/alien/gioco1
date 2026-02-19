@@ -5,5 +5,5 @@
 </div>
 <div id="controls_container">
 	<button id="gobtn" onclick="procedi(this)">Conferma</button>
-	<button id="reset" onclick="reset()" >Cancella tutto</button>
+	<button id="reset" onclick="reset()">Cancella tutto</button>
 </div>
