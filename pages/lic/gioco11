@@ -2,14 +2,8 @@
 <div id="chessboard"></div>
 <div>
 	<div class="timer" data-second="60" data-height="20px" data-width="80%"></div>
-	<!-- <div style="margin: 10px; display: inline-table;">
-		<button style="border-radius: 10px; display: block; margin: 0px 15px; padding: 5px; float: left;" id="gobtn" onclick="procedi(this)">Conferma</button>
-		<button style="border-radius: 10px; display: block; margin: 0px 15px; padding: 5px; float: left;"id="reset" onclick="reset()" >Cancella tutto</button>
-	</div> -->
 </div>
 <div id="controls_container">
 	<button id="gobtn" onclick="procedi(this)">Conferma</button>
 	<button id="reset" onclick="reset()">Cancella tutto</button>
 </div>
-
-<!-- <script src="/static/js/dist/lic/gioco11.js"></script> -->
