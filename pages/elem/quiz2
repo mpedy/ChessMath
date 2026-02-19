@@ -1,8 +1,7 @@
 <div id="quiz">
 	<span id="title"></span>
 	<span id="question"></span>
-	<img src="static/img/quiz2.png" width="100%"/>
+	<img src="static/img/quiz2.png" width="100%" />
 	<ul id="answers">
 	</ul>
 </div>
-<!--<script src="/static/js/dist/elem/quiz.js"></script>-->

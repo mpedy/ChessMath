@@ -1,12 +1,10 @@
-<div id="title" style="padding: 10px; display: block;">Muovi la Torre verso il punto evidenziato percorrendo il minor numero di caselle possibile</div>
+<div id="title" style="padding: 10px; display: block;">
+	Muovi la Torre verso il punto evidenziato percorrendo il minor numero di caselle possibile</div>
 <div id="chessboard"></div>
 <div>
 	<div style="background: black;">Caselle: <span id="number_of_moves">0</span></div>
 	<div class="timer" data-second="60" data-height="20px" data-width="80%"></div>
-	<!-- <button style="border-radius: 10px; display: block; margin: 30px auto 15px auto; padding: 5px;" id="ricomincia" onclick="ricomincia()" >Ricomincia</button> -->
 </div>
 <div id="controls_container">
-	<button id="ricomincia" onclick="window.ricomincia()" >Ricomincia</button>
+	<button id="ricomincia" onclick="window.ricomincia()">Ricomincia</button>
 </div>
-
-<!-- <script src="/static/js/dist/elem/gioco2.js"></script> -->
