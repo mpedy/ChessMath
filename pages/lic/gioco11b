@@ -1,7 +1,7 @@
-<span id="title" style="padding: 10px">Segna tutte le caselle a distanza 2 dall'Alfiere</span>
+<span id="title" style="padding: 10px">Segna tutte le caselle appartenenti alla circonferenza di raggio 2 con centro l'Alfiere</span>
 <div id="chessboard"></div>
 <div>
-	<div class="timer" data-second="60" data-height="20px" data-width="80%"></div>
+	<div class="timer" data-second="30" data-height="20px" data-width="80%"></div>
 </div>
 <div id="controls_container">
 	<button id="gobtn" onclick="procedi(this)">Conferma</button>

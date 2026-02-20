@@ -201,12 +201,13 @@ class MovingGame {
                 }, function () {
                     $(this).dialog("close");
                     clearInterval(maketimer.myt);
+                    var gamePoints = (20 - 2*number_of_moves) + maketimer.sec
+                    window.punti += gamePoints;
                     maketimer.sec = 0;
                     maketimer.expired = false
                     $(this).remove();
-                    window.punti -= number_of_moves;
                     window.myalert("Punti", "Il tuo punteggio è di " + window.punti + " punti!");
-                    window.updatePoints(-number_of_moves);
+                    window.updatePoints(gamePoints);
                     drawChessboard.handleMouseDown_casella = function () { }
                     drawChessboard.handleMouseDown_image = function () { }
                     $("#ricomincia").prop("disabled", true);
@@ -215,10 +216,10 @@ class MovingGame {
 
         window.procedi = function () {
             window.punti = window.getPoints();
-            window.punti -= number_of_moves;
+            //window.punti -= number_of_moves;
             window.myalert("Punti", "Il tuo punteggio è " + window.punti + ".");
             maketimer.sec = 0;
-            window.updatePoints(-number_of_moves);
+            //window.updatePoints(-number_of_moves);
             drawChessboard.handleMouseDown_casella = function () { }
             drawChessboard.handleMouseDown_image = function () { }
             $("#ricomincia").prop("disabled", true);

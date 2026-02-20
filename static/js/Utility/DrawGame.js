@@ -81,6 +81,7 @@ class DrawGame {
                     points -= 1;
                 }
             }
+            points = points + maketimer.sec;
             window.myalert("Punti", "Hai guadagnato " + points + " punti.");
             window.updatePoints(points);
             window.punti = window.getPoints();

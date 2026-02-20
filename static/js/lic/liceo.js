@@ -1,6 +1,7 @@
 import { Prototipo } from "../common/Prototipo.js";
 import { ascolta } from "../common/Ascolta.js";
 import { attesa } from "../common/Attesa.js";
+import { battaglia_navale } from "../common/BattagliaNavale.js";
 import { LicQuiz } from "./LicQuiz.js";
 import { classifica } from "../common/Classifica.js";
 import { endpage } from "../common/Endpage.js";
@@ -11,11 +12,14 @@ import { img_allsquares } from "../common/ImgAllSquares.js";
 
 import { img_gioco1 } from "./pages/img_gioco1.js";
 import { gioco2 } from "./pages/gioco2.js";
+import { gioco3 } from "./pages/gioco3.js";
 import { gioco4 } from "./pages/gioco4.js";
 import { gioco5 } from "./pages/gioco5.js";
 import { img_gioco5 } from "./pages/img_gioco5.js";
 import { gioco6 } from "./pages/gioco6.js";
 import { img_gioco6 } from "./pages/img_gioco6.js";
+import { gioco6bis } from "./pages/gioco6bis.js";
+import { img_gioco6bis } from "./pages/img_gioco6bis.js";
 import { img_gioco7 } from "./pages/img_gioco7.js";
 import { gioco8 } from "./pages/gioco8.js";
 import { quiz8 } from "./pages/quiz8.js";
@@ -25,6 +29,8 @@ import { quiz11 } from "./pages/quiz11.js";
 import { img_gioco10 } from "./pages/img_gioco10.js";
 import { gioco11b } from "./pages/gioco11b.js";
 import { img_gioco11b } from "./pages/img_gioco11b.js";
+import { gioco11b_bis } from "./pages/gioco11b_bis.js";
+import { img_gioco11b_bis } from "./pages/img_gioco11b_bis.js";
 import { img_cavallo } from "./pages/img_cavallo.js";
 import { gioco_spirit } from "./pages/gioco_spirit.js";
 import { img_spirit } from "./pages/img_spirit.js";
@@ -44,15 +50,18 @@ import { gioco_training_toro } from "./pages/gioco_training_toro.js";
 import { gioco_toro } from "./pages/gioco_toro.js";
 import { gioco_toro1 } from "./pages/gioco_toro1.js";
 import { gioco_toro2 } from "./pages/gioco_toro2.js";
+import { gioco_toro3 } from "./pages/gioco_toro3.js";
+import { img_gioco_toro3 } from "./pages/img_gioco_toro3.js";
 
 
 class Liceo extends Prototipo {
     constructor() {
         super();
-        this.pages = [attesa, ascolta, img_gioco1, new LicQuiz("quiz1"), new LicQuiz("quiz2"), ascolta, gioco2, gioco4, new LicQuiz("quiz7"), ascolta,
-            gioco5, img_gioco5, gioco6, img_gioco6, ascolta, img_gioco7, gioco8, quiz8, quiz9, quiz10, ascolta,
-            quiz11, img_gioco10, gioco11b, img_gioco11b, img_allsquares, ascolta, img_cavallo, gioco_spirit, img_spirit, gioco13b, gioco13b_soluzione, gioco12b, gioco12b_soluzione, gioco14, gioco15, img_gioco15, ascolta, img_regina, gioco16, img_gioco16, gioco17, ascolta,
-            gioco_training_toro, gioco_toro, gioco_toro1, gioco_toro2, ascolta, quiz14,
+        this.pages = [attesa, battaglia_navale, ascolta, img_gioco1, new LicQuiz("quiz1"), new LicQuiz("quiz2"), ascolta, gioco2, gioco3, gioco4, new LicQuiz("quiz7"), ascolta,
+            gioco5, img_gioco5, gioco6, img_gioco6, ascolta, gioco6bis, img_gioco6bis, ascolta, img_gioco7, gioco8, quiz8, quiz9, quiz10,
+            quiz11, img_gioco10, gioco11b, img_gioco11b, img_allsquares, gioco11b_bis, img_gioco11b_bis,
+            ascolta, img_cavallo, gioco_spirit, img_spirit, gioco13b, gioco13b_soluzione, gioco12b, gioco12b_soluzione, gioco14, gioco15, img_gioco15, ascolta, img_regina, gioco16, img_gioco16, gioco17, ascolta,
+            gioco_training_toro, gioco_toro, gioco_toro1, gioco_toro2, gioco_toro3, img_gioco_toro3, ascolta, quiz14,
             classifica, endpage];
     }
     setPage(index) {

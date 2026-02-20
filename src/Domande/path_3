@@ -10,7 +10,7 @@
         "punteggio": "10",
         "domanda": "Quale percorso è il più breve per la Torre per arrivare alla casella segnata?",
         "corretta": "Verde",
-        "tempo": "30"
+        "tempo": "20"
     },
     {
         "quizid": "2",
@@ -23,7 +23,7 @@
         "punteggio": "10",
         "domanda": "Quante caselle è lungo il percorso più breve?",
         "corretta": "11",
-        "tempo": "20"
+        "tempo": "30"
     },
     {
         "quizid": "3",
@@ -114,7 +114,7 @@
         "punteggio": "10",
         "domanda": "Qual è la distanza dell'Alfiere dalla casella evidenziata?",
         "corretta": "2",
-        "tempo": "60"
+        "tempo": "20"
     },
     {
         "quizid": "10",
@@ -127,7 +127,7 @@
         "punteggio": "10",
         "domanda": "Qual è la distanza dell'Alfiere dalla casella evidenziata?",
         "corretta": "infinita",
-        "tempo": "50"
+        "tempo": "20"
     },
     {
         "quizid": "11",
@@ -140,7 +140,7 @@
         "punteggio": "10",
         "domanda": "Da quante caselle è composta la circonferenza di raggio 1?",
         "corretta": "4",
-        "tempo": "50"
+        "tempo": "20"
     },
     {
         "quizid": "12",

@@ -48,8 +48,7 @@ class Gioco16 {
         drawChessboard.handleMouseDown_casella = handleMouseDown_casella;
 
         window.reset = function () {
-            var i;
-            for (i in caselle_colorate) {
+            for (var i in caselle_colorate) {
                 var elem = document.getElementById(caselle_colorate[i])
                 elem.removeChild(elem.children[elem.childElementCount - 1]);
             }

@@ -1,4 +1,6 @@
-<span id="title" style="padding: 10px">Segna tutte le caselle appartenenti al cerchio di raggio 2 con centro la Torre</span>
+<span id="title" style="padding: 10px">
+	Segna tutte le caselle in cui il Cavallo può andare con una mossa su una scacchiera toroidale
+</span>
 <div id="chessboard"></div>
 <div>
 	<div class="timer" data-second="60" data-height="20px" data-width="80%"></div>
