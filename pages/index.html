@@ -138,7 +138,7 @@
 								clearInterval(window.myt);
 								$("#mydialog_opened").dialog("close").remove();
 								$("#content_page").html(result)
-								app.currentGame.setPage(parseInt(page))
+								app.currentGame.setPage.bind(app.currentGame)(parseInt(page))
 							}
 						})
 				} else if (data.hasOwnProperty("path")) {
