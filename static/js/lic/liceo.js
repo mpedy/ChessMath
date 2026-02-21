@@ -1,4 +1,4 @@
-import { Prototipo } from "../common/Prototipo.js";
+import { PrototipoStory } from "../common/PrototipoStory.js";
 import { ascolta } from "../common/Ascolta.js";
 import { attesa } from "../common/Attesa.js";
 import { battaglia_navale } from "../common/BattagliaNavale.js";
@@ -54,7 +54,7 @@ import { gioco_toro3 } from "./pages/gioco_toro3.js";
 import { img_gioco_toro3 } from "./pages/img_gioco_toro3.js";
 
 
-class Liceo extends Prototipo {
+class Liceo extends PrototipoStory {
     constructor() {
         super();
         this.pages = [attesa, battaglia_navale, ascolta, img_gioco1, new LicQuiz("quiz1"), new LicQuiz("quiz2"), ascolta, gioco2, gioco3, gioco4, ascolta, new LicQuiz("quiz7"),
@@ -65,6 +65,9 @@ class Liceo extends Prototipo {
             classifica, endpage];
     }
     setPage(index) {
+        if (this.currentPage && this.currentPage.dismount) {
+            this.currentPage.dismount();
+        }
         this.currentPageIndex = index;
         this.currentPage = this.pages[index];
         this.currentPage.start();

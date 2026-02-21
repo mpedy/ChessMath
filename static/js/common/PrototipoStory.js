@@ -1,7 +1,7 @@
-class Prototipo {
+class PrototipoStory {
     constructor() {}
     dismount(){}
     mount(){}
 }
 
-export { Prototipo };
+export { PrototipoStory };

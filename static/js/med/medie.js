@@ -1,4 +1,4 @@
-import { Prototipo } from "../common/Prototipo.js";
+import { PrototipoStory } from "../common/PrototipoStory.js";
 import { ascolta } from "../common/Ascolta.js";
 import { attesa } from "../common/Attesa.js";
 import { Quiz } from "../common/Quiz.js";
@@ -37,7 +37,7 @@ import { gioco12b_soluzione } from "./pages/gioco12b_soluzione.js";
 import { quiz14 } from "./pages/quiz14.js";
 
 
-class Medie extends Prototipo {
+class Medie extends PrototipoStory {
     constructor() {
         super();
         this.pages = [attesa, new Quiz("quiz1"), ascolta, new Quiz("quiz2"), scacchiera_vuota, ascolta, torre_help, gioco1, img_gioco1, new Quiz("quiz3"), new Quiz("quiz4"), new Quiz("quiz5"), new Quiz("quiz6"), attesa, gioco2, gioco4, new Quiz("quiz7"), ascolta,
@@ -47,6 +47,9 @@ class Medie extends Prototipo {
             classifica, endpage];
     }
     setPage(index) {
+        if (this.currentPage && this.currentPage.dismount) {
+            this.currentPage.dismount();
+        }
         this.currentPageIndex = index;
         this.currentPage = this.pages[index];
         this.currentPage.start();

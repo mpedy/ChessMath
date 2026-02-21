@@ -1,4 +1,4 @@
-import { Prototipo } from "../common/Prototipo.js";
+import { PrototipoStory } from "../common/PrototipoStory.js";
 import { ascolta } from "../common/Ascolta.js";
 import { attesa } from "../common/Attesa.js";
 import { Quiz } from "../common/Quiz.js";
@@ -36,7 +36,7 @@ import { gioco11 } from "./pages/gioco11.js";
 import { img_gioco11 } from "./pages/img_gioco11.js";
 import { img_allsquares } from "../common/ImgAllSquares.js";
 
-class Elementari extends Prototipo {
+class Elementari extends PrototipoStory {
     constructor() {
         super();
         this.pages = [attesa, new Quiz("quiz1"), new Quiz("quiz2"), ascolta, new Quiz("quiz3"), scacchiera_vuota, battaglia_navale, ascolta, torre_help, gioco1, img_gioco1, new Quiz("quiz4"), new Quiz("quiz5"), new Quiz("quiz6"), new Quiz("quiz7"), attesa,
@@ -45,6 +45,9 @@ class Elementari extends Prototipo {
             quiz14, gioco10, img_gioco10, gioco11, img_gioco11, img_allsquares, new Quiz("quiz15"), ascolta, new Quiz("quiz16"), classifica, endpage];
     }
     setPage(index) {
+        if (this.currentPage && this.currentPage.dismount) {
+            this.currentPage.dismount();
+        }
         this.currentPageIndex = index;
         this.currentPage = this.pages[index];
         this.currentPage.start();
