@@ -1,6 +1,6 @@
 <span id="title" style="padding: 10px; display: block;">Seleziona le caselle A3, E8, F4, B5</span>
 <div id="chessboard"></div>
-<div>
+<div class="timer_container">
 	<div class="timer" data-second="30" data-height="20px" data-width="80%"></div>
 </div>
 <div id="controls_container">

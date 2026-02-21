@@ -24,7 +24,9 @@
     background-image: linear-gradient(0deg, #aaa, white);
     margin: 0px 5px;
     color: black;
-    display: inline-flex;
+    /*display: inline-flex;*/
+    min-height: 50px;
+    display: inline-block;
     align-items: center;
 }
 
@@ -41,16 +43,25 @@
     background-repeat: no-repeat;
 }
 
+#gobtn{
+	background: lightgray;
+	background: linear-gradient(0deg, #008d00, #40ff40);
+    font-size: 4vw;
+    font-size: 16px;
+}
+
 #reset {
     background-color: lightgray;
     background-image: linear-gradient(0deg, #aa0000, #ff4444);
     font-size: 4vw;
+    font-size: 16px;
 }
 
 #ricomincia {
     background-color: lightgray;
     background-image: linear-gradient(0deg, #aa0000, #ff4444);
     font-size: 4vw;
+    font-size: 16px;
 }
 
 #ricomincia::before {

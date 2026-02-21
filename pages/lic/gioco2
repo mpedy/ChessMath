@@ -1,7 +1,7 @@
 <div id="title">Muovi la Torre verso il punto evidenziato percorrendo il minor numero di caselle possibile</div>
 <div id="chessboard"></div>
-<div>
-	<div style="background: black;">Caselle: <span id="number_of_moves">0</span></div>
+<div class="timer_container">
+	<div class="caselle_div">Caselle: <span id="number_of_moves">0</span></div>
 	<div class="timer" data-second="30" data-height="20px" data-width="80%"></div>
 </div>
 <div id="controls_container">
