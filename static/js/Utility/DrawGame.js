@@ -81,7 +81,11 @@ class DrawGame {
                     points -= 1;
                 }
             }
-            points = points + maketimer.sec;
+            if(caselle_colorate.length == 0){
+                points = 0;
+            }else{
+                points = points*5 + maketimer.sec;
+            }
             window.myalert("Punti", "Hai guadagnato " + points + " punti.");
             window.updatePoints(points);
             window.punti = window.getPoints();
