@@ -3,10 +3,11 @@ import { medie } from "./med/medie.js";
 import { liceo } from "./lic/liceo.js";
 import { natale } from "./natale/natale.js";
 import { alien } from "./alien/alien.js";
-import { globalVars } from "./Utility/GlobalVars.js";
+import { init as globalInit } from "./Utility/GlobalVars.js";
 
 class App {
     constructor() {
+        globalInit();
         this.elementari = elementari;
         this.medie = medie;
         this.liceo = liceo;

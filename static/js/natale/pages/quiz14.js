@@ -1,4 +1,3 @@
-import { MakeTimerClass } from "../../Utility/Maketimer.js"
 import { DrawChessboard as DrawChessboardClass } from "../../Utility/Drawchessboard.js";
 import { getQuiz } from "../../Utility/MyUI.js";
 import { PrototipoGame } from "../../common/PrototipoGame.js";

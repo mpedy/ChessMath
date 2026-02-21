@@ -1,5 +1,4 @@
 import { PrototipoGame } from "../common/PrototipoGame.js";
-import { MakeTimerClass } from "../Utility/Maketimer.js"
 import { getQuiz } from "../Utility/MyUI.js"
 
 /* global $ */
