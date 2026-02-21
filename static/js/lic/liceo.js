@@ -57,7 +57,7 @@ import { img_gioco_toro3 } from "./pages/img_gioco_toro3.js";
 class Liceo extends Prototipo {
     constructor() {
         super();
-        this.pages = [attesa, battaglia_navale, ascolta, img_gioco1, new LicQuiz("quiz1"), new LicQuiz("quiz2"), ascolta, gioco2, gioco3, gioco4, new LicQuiz("quiz7"), ascolta,
+        this.pages = [attesa, battaglia_navale, ascolta, img_gioco1, new LicQuiz("quiz1"), new LicQuiz("quiz2"), ascolta, gioco2, gioco3, gioco4, ascolta, new LicQuiz("quiz7"),
             gioco5, img_gioco5, gioco6, img_gioco6, ascolta, gioco6bis, img_gioco6bis, ascolta, img_gioco7, gioco8, quiz8, quiz9, quiz10,
             quiz11, img_gioco10, gioco11b, img_gioco11b, img_allsquares, gioco11b_bis, img_gioco11b_bis,
             ascolta, img_cavallo, gioco_spirit, img_spirit, gioco13b, gioco13b_soluzione, gioco12b, gioco12b_soluzione, gioco14, gioco15, img_gioco15, ascolta, img_regina, gioco16, img_gioco16, gioco17, ascolta,
