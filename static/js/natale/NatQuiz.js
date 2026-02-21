@@ -1,15 +1,16 @@
+import { PrototipoGame } from "../common/PrototipoGame.js";
 import { MakeTimerClass } from "../Utility/Maketimer.js"
 import { getQuiz } from "../Utility/MyUI.js"
 
 /* global $ */
-class NatQuiz {
+class NatQuiz extends PrototipoGame {
     constructor(name) {
+        super();
         this.name = name;
     }
     start() {
-        var maketimer = new MakeTimerClass()
         window.can_answer = true
-        maketimer.stopTimerFunction = function (pressed) {
+        this.maketimer.stopTimerFunction = function (pressed) {
             try {
                 if (pressed == undefined) {
                     pressed = false;
@@ -23,7 +24,7 @@ class NatQuiz {
             window.can_answer = false
             $(".risposta").toggleClass("disabled")
         }
-        getQuiz(maketimer);
+        getQuiz(this.maketimer);
     }
 }
 
