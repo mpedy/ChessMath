@@ -1,21 +1,21 @@
 import { DrawChessboard as DrawChessboardClass } from "../../Utility/Drawchessboard.js";
 import { getQuiz } from "../../Utility/MyUI.js"
-import { MakeTimerClass } from "../../Utility/Maketimer.js"
+import { PrototipoGame } from "../../common/PrototipoGame.js";
 
 /* global $ */
-class Quiz13 {
-    constructor() { }
+class Quiz13 extends PrototipoGame {
+    constructor() {
+        super();
+    }
     start() {
         var drawChessboard = new DrawChessboardClass($("#chessboard")[0])
         drawChessboard.drawChessboard()
         drawChessboard.drawPieces({ "D5": "Bishop.svg" })
 
-        var maketimer = new MakeTimerClass()
-
         window.enlighted = "";
         window.enlight("E5", "orange", true)
         window.can_answer = true
-        maketimer.stopTimerFunction = function (pressed) {
+        this.maketimer.stopTimerFunction = function (pressed) {
             try {
                 if (pressed == undefined) {
                     pressed = false;
@@ -29,7 +29,7 @@ class Quiz13 {
             window.can_answer = false
             $(".risposta").toggleClass("disabled")
         }
-        getQuiz();
+        getQuiz(this.maketimer);
     }
 }
 var quiz13 = new Quiz13();
