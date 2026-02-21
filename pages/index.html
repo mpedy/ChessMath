@@ -93,7 +93,23 @@
 		var H8 = "H8"
 	</script>
 	<script src="{{ manifest['js'] }}"></script>
-
+	{% if debug_script %}
+	<script>
+		window.onerror = function(message, source, lineno, colno, error) {
+			console.error("Error: " + message + " at " + source + ":" + lineno + ":" + colno);
+			if (error && error.stack) {
+				console.error("Stack trace:", error.stack);
+			}
+		};
+		window.WeinreServerURL=`http://${window.location.hostname}:8080/`;
+		window.WeinreServerId='anonymous';
+		var s = document.createElement('script');
+		s.src = "static/js/weinre.dist.js";
+		s.onerror = function() { alert("Impossibile caricare Weinre! Controlla connessione/IP"); };
+		s.onload = function() { alert("Script Weinre caricato correttamente"); };
+		document.head.appendChild(s);
+	</script>
+	{% endif %}
 	<script>
 		/*
 		* DA SCOMMENTARE

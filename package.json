@@ -11,7 +11,8 @@
     "globals": "^17.3.0",
     "lightningcss": "^1.31.1",
     "webpack": "^5.96.1",
-    "webpack-cli": "^5.1.4"
+    "webpack-cli": "^5.1.4",
+    "weinre": "^3.0.0"
   },
   "scripts": {
     "2015": "npm run js_2015 && npm run babel_2015 && npm run clean",

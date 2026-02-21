@@ -37,6 +37,7 @@ if PROD == 1:
 elif PROD == 2:
     middleware = [Middleware(CustomHeaderMiddleware)]
 
+REMOTE_DEBUG_WEINRE = int(os.getenv("REMOTE_DEBUG_WEINRE", "0"))
 
 opt = GameOptions()
 websockets = []
@@ -47,7 +48,7 @@ manifest = json.load(open("static/dist/manifest.json","r", encoding="utf-8"))
 templates = Jinja2Templates(directory="pages")
 
 async def welcome(request):
-    return templates.TemplateResponse('welcome', {"request":request, "manifest": manifest})
+    return templates.TemplateResponse('welcome', {"request":request, "manifest": manifest, "debug_script": REMOTE_DEBUG_WEINRE})
     #return HTMLResponse(open('pages/welcome',"r",encoding="utf-8").read())
 
 async def mainRoute(request):
@@ -55,8 +56,8 @@ async def mainRoute(request):
     try:
         uuid = request.path_params["uuid"]
         if uuid == "Animatore":
-            return templates.TemplateResponse('index.html', {"request":request, "nome": "Animatore", "codice": opt.codice, "manifest": manifest})
-        return templates.TemplateResponse('index.html', {"request":request, "nome": opt.UUID_NAME[uuid], "codice": opt.codice, "manifest": manifest})
+            return templates.TemplateResponse('index.html', {"request":request, "nome": "Animatore", "codice": opt.codice, "manifest": manifest, "debug_script": REMOTE_DEBUG_WEINRE})
+        return templates.TemplateResponse('index.html', {"request":request, "nome": opt.UUID_NAME[uuid], "codice": opt.codice, "manifest": manifest, "debug_script": REMOTE_DEBUG_WEINRE})
     except Exception as e:
         print("Errore in mainRoute con request: ",str(request), str(e))
     return RedirectResponse("/")
