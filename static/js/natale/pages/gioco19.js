@@ -1,12 +1,14 @@
+import { PrototipoGame } from "../../common/PrototipoGame.js";
 import { DrawChessboard as DrawChessboardClass } from "../../Utility/Drawchessboard.js";
 import { pieceMove } from "../../Utility/MovePieces.js";
 import { PieceClass } from "../../Utility/PieceClass.js";
 
 /* global $ */
-class Gioco19 {
-    constructor() { }
+class Gioco19 extends PrototipoGame {
+    constructor() {
+        super();
+    }
     start() {
-
         var drawChessboard = new DrawChessboardClass(document.getElementById("chessboard"))
         //var maketimer = new MakeTimerClass()
         var ROOK1 = new PieceClass("Rook", "A1", "Rook.svg");

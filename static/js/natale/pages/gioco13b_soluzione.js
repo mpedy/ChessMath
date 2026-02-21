@@ -1,9 +1,11 @@
+import { PrototipoGame } from "../../common/PrototipoGame.js";
 import { DrawChessboard as DrawChessboardClass } from "../../Utility/Drawchessboard.js";
 
-class Gioco13bSoluzione {
-    constructor() { }
+class Gioco13bSoluzione extends PrototipoGame {
+    constructor() {
+        super();
+    }
     start() {
-
         var drawChessboard = new DrawChessboardClass(document.getElementById("chessboard"))
         drawChessboard.drawChessboard()
         drawChessboard.drawPieces({ "A2": "Knight.svg" })
@@ -13,7 +15,6 @@ class Gioco13bSoluzione {
         window.enwrite("C3", 1, "white", "rgb(200,0,0)")
         window.enwrite("B5", 2, "white", "rgb(200,0,0)")
         window.enwrite("D6", 3, "black", "yellow")
-
     }
 }
 

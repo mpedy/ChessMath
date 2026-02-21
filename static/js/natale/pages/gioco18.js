@@ -1,21 +1,21 @@
-import { MakeTimerClass } from "../../Utility/Maketimer.js"
 import { DrawChessboard as DrawChessboardClass } from "../../Utility/Drawchessboard.js";
 import { pieceMove } from "../../Utility/MovePieces.js";
+import { PrototipoGame } from "../../common/PrototipoGame.js";
 
-class Gioco18 {
-    constructor() { }
+class Gioco18 extends PrototipoGame {
+    constructor() {
+        super();
+    }
     start() {
-
         var drawChessboard = new DrawChessboardClass(document.getElementById("chessboard"))
-        var maketimer = new MakeTimerClass()
 
-        maketimer.maketimer(document.getElementsByClassName("timer")[0]);
-        maketimer.stopTimerFunction = function () {
+        this.maketimer.maketimer(document.getElementsByClassName("timer")[0]);
+        this.maketimer.stopTimerFunction = function () {
             // var dis = document.getElementById("gobtn").disabled;
             document.getElementById("gobtn").disabled = true;
             document.getElementById("reset").disabled = true;
             drawChessboard.handleMouseDown_casella = function () { }
-            if (maketimer.expired) {
+            if (this.maketimer.expired) {
                 window.myalert("Tempo scaduto", "Il tuo punteggio è " + window.getPoints())
             } else {
                 window.procedi(document.getElementById("gobtn"))
@@ -93,8 +93,8 @@ class Gioco18 {
                 }
                 if (queens_position.length != dim_queens) {
                     window.myalert("Attenzione", "Hai inserito " + queens_position.length + " regine");
-                    maketimer.sec = 0
-                    maketimer.expired = false
+                    this.maketimer.sec = 0
+                    this.maketimer.expired = false
                 } else {
                     var okpos = 0;
                     for (var q = 0; q < queens_position.length; q++) {
@@ -107,15 +107,15 @@ class Gioco18 {
                     if (okpos == 0 && window.sec > 0) {
                         points = 50;
                         window.myalert("Risposta Corretta", "Hai guadagnato " + points + " punti");
-                        maketimer.sec = 0
-                        maketimer.expired = false
+                        this.maketimer.sec = 0
+                        this.maketimer.expired = false
                     }
                 }
             }
             window.updatePoints(points);
             window.punti = window.getPoints();
-            clearInterval(maketimer.myt);
-            maketimer.sec = 0;
+            clearInterval(this.maketimer.myt);
+            this.maketimer.sec = 0;
             document.getElementById("gobtn").disabled = true;
             document.getElementById("reset").disabled = true;
             drawChessboard.handleMouseDown_casella = function () { }
