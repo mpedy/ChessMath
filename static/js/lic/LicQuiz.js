@@ -1,15 +1,15 @@
-import { MakeTimerClass } from "../Utility/Maketimer.js"
+import { PrototipoGame } from "../common/PrototipoGame.js";
 import { getQuiz } from "../Utility/MyUI.js"
 
 /* global $ */
-class LicQuiz {
+class LicQuiz extends PrototipoGame {
     constructor(name) {
+        super();
         this.name = name;
     }
     start() {
-        var maketimer = new MakeTimerClass()
         window.can_answer = true
-        maketimer.stopTimerFunction = function (pressed) {
+        this.maketimer.stopTimerFunction = function (pressed) {
             try {
                 if (pressed == undefined) {
                     pressed = false;
@@ -23,7 +23,7 @@ class LicQuiz {
             window.can_answer = false
             $(".risposta").toggleClass("disabled")
         }
-        getQuiz(maketimer);
+        getQuiz(this.maketimer);
     }
 }
 

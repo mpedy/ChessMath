@@ -10,6 +10,9 @@ export class MakeTimerClass {
 		this.txt;
 		this.time_restarted = 0;
 	}
+	clearTimer() {
+		clearInterval(this.myt);
+	}
 	calculateHash() {
 		return window.codice + "_" + window.page
 	}

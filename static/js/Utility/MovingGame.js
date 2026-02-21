@@ -1,9 +1,9 @@
 import { pieceMove } from "./MovePieces.js";
-import { MakeTimerClass } from "./Maketimer.js";
 import { DrawChessboard as DrawChessboardClass } from "./Drawchessboard.js";
+import { PrototipoGame } from "../common/PrototipoGame.js";
 
 /* global $ */
-class MovingGame {
+class MovingGame extends PrototipoGame {
     constructor({
         piece_position,
         moving_pieces,
@@ -12,6 +12,7 @@ class MovingGame {
         with_timer = false,
         toro = false
     }) {
+        super();
         this.piece_position = piece_position;
         this.piece_position_initial = { ...piece_position };
         this.moving_pieces = moving_pieces;
@@ -24,15 +25,14 @@ class MovingGame {
     start() {
         var self = this;
         var drawChessboard = new DrawChessboardClass(document.getElementById("chessboard"))
-        var maketimer = new MakeTimerClass()
         if (this.with_timer) {
-            maketimer.maketimer(document.getElementsByClassName("timer")[0]);
+            this.maketimer.maketimer(document.getElementsByClassName("timer")[0]);
         }
-        maketimer.stopTimerFunction = function () {
+        this.maketimer.stopTimerFunction = function () {
             drawChessboard.handleMouseDown_casella = function () { }
             drawChessboard.handleMouseDown_image = function () { }
             $("#ricomincia").prop("disabled", true);
-            if (maketimer.expired) {
+            if (this.maketimer.expired) {
                 window.procedi()
             }
         }
@@ -200,11 +200,11 @@ class MovingGame {
                     $(this).remove();
                 }, function () {
                     $(this).dialog("close");
-                    clearInterval(maketimer.myt);
-                    var gamePoints = (20 - 2*number_of_moves) + maketimer.sec
+                    clearInterval(this.maketimer.myt);
+                    var gamePoints = (20 - 2 * number_of_moves) + this.maketimer.sec
                     window.punti += gamePoints;
-                    maketimer.sec = 0;
-                    maketimer.expired = false
+                    this.maketimer.sec = 0;
+                    this.maketimer.expired = false
                     $(this).remove();
                     window.myalert("Punti", "Il tuo punteggio è di " + window.punti + " punti!");
                     window.updatePoints(gamePoints);
@@ -218,7 +218,7 @@ class MovingGame {
             window.punti = window.getPoints();
             //window.punti -= number_of_moves;
             window.myalert("Punti", "Il tuo punteggio è " + window.punti + ".");
-            maketimer.sec = 0;
+            this.maketimer.sec = 0;
             //window.updatePoints(-number_of_moves);
             drawChessboard.handleMouseDown_casella = function () { }
             drawChessboard.handleMouseDown_image = function () { }

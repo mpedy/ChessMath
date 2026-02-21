@@ -1,14 +1,15 @@
-import { MakeTimerClass } from "./Maketimer.js"
 import { DrawChessboard as DrawChessboardClass } from "./Drawchessboard.js";
+import { PrototipoGame } from "../common/PrototipoGame.js";
 
 
-class DrawGame {
+class DrawGame extends PrototipoGame {
     constructor({
         piece_position = {},
         caselle_corrette = [],
         with_timer = true,
         chessboard_dim = 8
     }) {
+        super();
         this.piece_position = piece_position;
         this.caselle_corrette = caselle_corrette;
         this.with_timer = with_timer;
@@ -18,10 +19,8 @@ class DrawGame {
         var self = this;
         var drawChessboard = new DrawChessboardClass(document.getElementById("chessboard"))
         if (this.with_timer) {
-            var maketimer = new MakeTimerClass()
-
-            maketimer.maketimer(document.getElementsByClassName("timer")[0]);
-            maketimer.stopTimerFunction = function () {
+            this.maketimer.maketimer(document.getElementsByClassName("timer")[0]);
+            this.maketimer.stopTimerFunction = function () {
                 var dis = document.getElementById("gobtn").disabled;
                 document.getElementById("gobtn").disabled = true;
                 document.getElementById("reset").disabled = true;
@@ -84,13 +83,13 @@ class DrawGame {
             if(caselle_colorate.length == 0){
                 points = 0;
             }else{
-                points = points*5 + maketimer.sec;
+                points = points*5 + this.maketimer.sec;
             }
             window.myalert("Punti", "Hai guadagnato " + points + " punti.");
             window.updatePoints(points);
             window.punti = window.getPoints();
-            clearInterval(maketimer.myt)
-            maketimer.sec = 0;
+            clearInterval(this.maketimer.myt)
+            this.maketimer.sec = 0;
             document.getElementById("gobtn").disabled = true;
             document.getElementById("reset").disabled = true;
             drawChessboard.handleMouseDown_casella = function () { }

@@ -1,7 +1,10 @@
 import { DrawChessboard as DrawChessboardClass } from "../../Utility/Drawchessboard.js";
+import { PrototipoGame } from "../../common/PrototipoGame.js";
 
-class Gioco13bSoluzione {
-    constructor() { }
+class Gioco13bSoluzione extends PrototipoGame {
+    constructor() {
+        super();
+    }
     start() {
 
         var drawChessboard = new DrawChessboardClass(document.getElementById("chessboard"))

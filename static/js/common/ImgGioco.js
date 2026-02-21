@@ -1,8 +1,10 @@
 import { DrawChessboard as DrawChessboardClass } from "../Utility/Drawchessboard.js";
+import { PrototipoGame } from "./PrototipoGame.js";
 
 /* global $ */
-class ImgGioco {
+class ImgGioco extends PrototipoGame {
     constructor(piece_position, cas) {
+        super();
         this.piece_position = piece_position;
         this.cas = cas;
     }
