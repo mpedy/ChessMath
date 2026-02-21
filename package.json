@@ -23,7 +23,8 @@
     "js_2015": "esbuild static/js/app.js --bundle --minify --sourcemap --target=es2015 --format=iife --outfile=static/js/app.dist.tmp2015.js",
     "babel_2015": "babel static/js/app.dist.tmp2015.js --out-file static/js/app.dist.js --presets=@babel/preset-env --plugins=./myplugin__define_var.cjs --minified --source-maps",
     "lint": "eslint",
-    "clean": "del static\\js\\app.dist.tmp2015*"
+    "clean": "del static\\js\\app.dist.tmp2015*",
+    "build_weinre": "esbuild static/js/weinre.js --bundle --minify --sourcemap --target=es5 --format=iife --outfile=static/js/weinre.dist.js"
   },
   "dependencies": {
     "core-js": "^2.6.12",
