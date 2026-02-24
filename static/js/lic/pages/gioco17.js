@@ -17,7 +17,7 @@ class Gioco17 extends PrototipoGame {
     start() {
         var drawChessboard = new DrawChessboardClass(document.getElementById("chessboard"))
         this.maketimer.maketimer(document.getElementsByClassName("timer")[0]);
-        this.maketimer.stopTimerFunction = function () {
+        this.maketimer.stopTimerFunction = () => {
             // var dis = document.getElementById("gobtn").disabled;
             document.getElementById("gobtn").disabled = true;
             document.getElementById("reset").disabled = true;
@@ -34,7 +34,7 @@ class Gioco17 extends PrototipoGame {
         var caselle_colorate = new Array();
         var possible_moves = new Array();
 
-        var handleMouseDown_casella = function (e) {
+        var handleMouseDown_casella = (e) => {
             var elem = e.currentTarget;
             var casella = elem.getAttribute("casella");
             if (caselle_colorate.includes(casella)) {
@@ -55,7 +55,7 @@ class Gioco17 extends PrototipoGame {
 
         drawChessboard.handleMouseDown_casella = handleMouseDown_casella;
 
-        window.reset = function () {
+        window.reset = () => {
             for (var i in caselle_colorate) {
                 var elem = document.getElementById(caselle_colorate[i])
                 elem.removeChild(elem.children[elem.childElementCount - 1]);
@@ -63,7 +63,7 @@ class Gioco17 extends PrototipoGame {
             caselle_colorate = new Array();
         }
 
-        window.controllaRegine = function (casella) {
+        window.controllaRegine = (casella) => {
             var x = casella.charCodeAt(0) - 65 + 1;
             var y = parseInt(casella[1]);
             possible_moves = pieceMove.moveRook(casella, x, y);
