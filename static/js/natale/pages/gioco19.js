@@ -6,7 +6,14 @@ import { PieceClass } from "../../Utility/PieceClass.js";
 /* global $ */
 class Gioco19 extends PrototipoGame {
     constructor() {
-        super();
+        super(`<div id="title">Cattura il Re</div>
+<div id="chessboard"></div>
+<div>
+	<div style="background: black;">Mosse: <span id="number_of_moves">0</span></div>
+</div>
+<div id="controls_container">
+	<button id="ricomincia" onclick="window.ricomincia()">Ricomincia</button>
+</div>`);
     }
     start() {
         var drawChessboard = new DrawChessboardClass(document.getElementById("chessboard"))
@@ -42,7 +49,7 @@ class Gioco19 extends PrototipoGame {
         var number_of_moves = 0;
         var show_possible_moves = false;
 
-        window.ricomincia = function () {
+        window.ricomincia = () => {
             $("#chessboard").html("")[0].style.cssText = ""
             drawChessboard.drawChessboard();
             ROOK1.reset();
@@ -60,7 +67,7 @@ class Gioco19 extends PrototipoGame {
             caselle_colorate = new Array();
         }
 
-        drawChessboard.handleMouseDown_casella = function (e) {
+        drawChessboard.handleMouseDown_casella = (e) => {
             var elem = e.currentTarget;
             //console.log(elem)
             var casella = elem.getAttribute("casella");
@@ -86,15 +93,15 @@ class Gioco19 extends PrototipoGame {
             }
         }
 
-        window.move = function (piece, dest) {
+        window.move = (piece, dest) => {
             document.getElementById(piece.casella).innerHTML = ""
             var lst = new Object()
             lst[dest] = piece.immagine
-            drawChessboard.drawPieces(document.getElementById("chessboard"), lst)
+            drawChessboard.drawPieces(lst)
             piece.casella = dest
         }
 
-        window.enemyTurn = function () {
+        window.enemyTurn = () => {
             var pmoves = []
             for (var party in Party) {
                 pmoves.push(Party[party].casella)
@@ -129,7 +136,7 @@ class Gioco19 extends PrototipoGame {
             return 1;
         }
 
-        drawChessboard.handleMouseDown_image = function (e) {
+        drawChessboard.handleMouseDown_image = (e) => {
             //console.log(e.currentTarget);
             var elem = e.currentTarget;
             var casella = elem.getAttribute("data-casella");
@@ -147,7 +154,7 @@ class Gioco19 extends PrototipoGame {
             }
         }
 
-        window.calculatePossibleMoves = function (casella, type) {
+        window.calculatePossibleMoves = (casella, type) => {
             var pmoves = new Array();
             var x = casella.charCodeAt(0) - 65 + 1;
             var y = parseInt(casella[1]);
@@ -187,7 +194,7 @@ class Gioco19 extends PrototipoGame {
         }
 
 
-        window.reset = function () {
+        window.reset = () => {
             for (var i in caselle_colorate) {
                 var elem = document.getElementById(caselle_colorate[i])
                 elem.removeChild(elem.children[elem.childElementCount - 1]);
@@ -195,7 +202,7 @@ class Gioco19 extends PrototipoGame {
             caselle_colorate = new Array();
         }
 
-        window.goal_reached = function () {
+        window.goal_reached = () => {
             window.punti = window.getPoints();
             window.myconfirm_2b("Obiettivo raggiunto", "Hai percorso " + number_of_moves + " caselle. Vuoi riprovare?", "sì", "no",
                 function () {
@@ -217,7 +224,7 @@ class Gioco19 extends PrototipoGame {
                 }, false);
         }
 
-        window.procedi = function () {
+        window.procedi = () => {
             window.punti = window.getPoints();
             window.punti += (50 - number_of_moves);
             window.myalert("Punti", "Il tuo punteggio è " + window.punti + ".");

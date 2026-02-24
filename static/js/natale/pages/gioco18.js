@@ -4,13 +4,21 @@ import { PrototipoGame } from "../../common/PrototipoGame.js";
 
 class Gioco18 extends PrototipoGame {
     constructor() {
-        super();
+        super(`<span id="title" style="padding: 10px">Piazza 8 regine sulla scacchiera in modo tale che non si guardino mai</span>
+<div id="chessboard"></div>
+<div>
+	<div class="timer" data-second="120" data-height="20px" data-width="80%"></div>
+</div>
+<div id="controls_container">
+	<button id="gobtn" onclick="procedi(this)">Conferma</button>
+	<button id="reset" onclick="reset()">Cancella tutto</button>
+</div>`);
     }
     start() {
         var drawChessboard = new DrawChessboardClass(document.getElementById("chessboard"))
 
         this.maketimer.maketimer(document.getElementsByClassName("timer")[0]);
-        this.maketimer.stopTimerFunction = function () {
+        this.maketimer.stopTimerFunction = () => {
             // var dis = document.getElementById("gobtn").disabled;
             document.getElementById("gobtn").disabled = true;
             document.getElementById("reset").disabled = true;
@@ -26,7 +34,7 @@ class Gioco18 extends PrototipoGame {
 
         var caselle_colorate = new Array();
 
-        drawChessboard.handleMouseDown_casella = function (e) {
+        drawChessboard.handleMouseDown_casella = (e) => {
             var elem = e.currentTarget;
             var casella = elem.getAttribute("casella");
             if (caselle_colorate.includes(casella)) {
@@ -45,7 +53,7 @@ class Gioco18 extends PrototipoGame {
             }
         }
 
-        window.reset = function () {
+        window.reset = () => {
             for (var i in caselle_colorate) {
                 var elem = document.getElementById(caselle_colorate[i])
                 elem.removeChild(elem.children[elem.childElementCount - 1]);
@@ -53,7 +61,7 @@ class Gioco18 extends PrototipoGame {
             caselle_colorate = new Array();
         }
 
-        window.controllaRegine = function (casella) {
+        window.controllaRegine = (casella) => {
             var x = casella.charCodeAt(0) - 65 + 1;
             var str = ""
             for (let i = 1; i < casella.length; i++) {
@@ -80,7 +88,7 @@ class Gioco18 extends PrototipoGame {
 
         }
 
-        window.procedi = function (btn) {
+        window.procedi = (btn) => {
             btn.disabled = true;
             var points = 0;
             if (window.sec > 0) {

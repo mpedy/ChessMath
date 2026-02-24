@@ -4,7 +4,10 @@ import { DrawChessboard as DrawChessboardClass } from "../../Utility/Drawchessbo
 /* global $ */
 class ImgCavallo extends PrototipoGame {
     constructor() {
-        super();
+        super(`<div style="padding: 10px; display: block;">
+	Una mossa del Cavallo:
+</div>
+<div id="chessboard"></div>`);
     }
     start() {
 

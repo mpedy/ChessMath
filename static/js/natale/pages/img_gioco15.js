@@ -3,7 +3,10 @@ import { DrawChessboard as DrawChessboardClass } from "../../Utility/Drawchessbo
 
 class ImgGioco15 extends PrototipoGame {
     constructor() {
-        super();
+        super(`<div style="padding: 10px; display: block;">
+	Una possibile soluzione:
+</div>
+<div id="chessboard"></div>`);
     }
     start() {
 

@@ -1,11 +1,10 @@
-import { PrototipoGame } from "../common/PrototipoGame.js";
+import { PrototipoQuiz } from "../common/PrototipoQuiz.js";
 import { getQuiz } from "../Utility/MyUI.js"
 
 /* global $ */
-class NatQuiz extends PrototipoGame {
-    constructor(name) {
-        super();
-        this.name = name;
+class NatQuiz extends PrototipoQuiz {
+    constructor(name, options, img_source = undefined) {
+        super(name, options, img_source);
     }
     start() {
         window.can_answer = true

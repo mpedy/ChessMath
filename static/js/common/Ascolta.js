@@ -26,4 +26,4 @@ var ascolta_regina = new Ascolta(`<div>
 	<img src="static/img/Queen.svg" style="width: 60%"/>
 </div>`)
 
-export { ascolta_animatore, ascolta_torre, ascolta_alfiere, ascolta_cavallo, ascolta_regina };
+export { ascolta_animatore, ascolta_torre, ascolta_alfiere, ascolta_cavallo, ascolta_regina, Ascolta };

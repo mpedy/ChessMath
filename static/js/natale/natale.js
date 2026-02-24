@@ -1,5 +1,5 @@
 import { PrototipoStory } from "../common/PrototipoStory.js";
-import { ascolta_animatore, ascolta_torre, ascolta_alfiere, ascolta_cavallo, ascolta_regina } from "../common/Ascolta.js";
+import { ascolta_animatore,  ascolta_alfiere, ascolta_cavallo, ascolta_regina, Ascolta } from "../common/Ascolta.js";
 import { NatQuiz } from "./NatQuiz.js";
 import { classifica } from "../common/Classifica.js";
 import { endpage } from "../common/Endpage.js";
@@ -45,6 +45,15 @@ import { gioco_toro } from "./pages/gioco_toro.js";
 import { gioco_toro1 } from "./pages/gioco_toro1.js";
 import { gioco_toro2 } from "./pages/gioco_toro2.js";
 
+var ascolta_torre = new Ascolta(`<div>
+	<h1 style="margin-top: 40%">E' NATALE - Ascolta l'animatore</h1>
+	<img src="static/img/tree.svg" style="width: 60%" />
+</div>`)
+
+var quiz1 = new NatQuiz("quiz1","title.question.img.answers", "static/img/torre1.png");
+var quiz2 = new NatQuiz("quiz2","title.question.img.answers", "static/img/torre2.png");
+var quiz7 = new NatQuiz("quiz7","title.question.answers");
+
 
 class Natale extends PrototipoStory {
     constructor() {
@@ -53,18 +62,18 @@ class Natale extends PrototipoStory {
             ascolta_animatore,
             ascolta_torre,
             img_gioco1,
-            new NatQuiz("quiz1"),
-            new NatQuiz("quiz2"),
+            quiz1,
+            quiz2,
             ascolta_animatore,
             gioco2,
             gioco4,
-            new NatQuiz("quiz7"),
+            quiz7,
             ascolta_animatore,
             gioco5,
             img_gioco5,
             gioco6,
             img_gioco6,
-            ascolta_animatore,
+            ascolta_alfiere,
             img_gioco7,
             gioco8,
             quiz8,
@@ -76,7 +85,7 @@ class Natale extends PrototipoStory {
             gioco11b,
             img_gioco11b,
             img_allsquares,
-            ascolta_animatore,
+            ascolta_cavallo,
             img_cavallo,
             gioco_spirit,
             img_spirit,
@@ -87,7 +96,7 @@ class Natale extends PrototipoStory {
             gioco14,
             gioco15,
             img_gioco15,
-            ascolta_animatore,
+            ascolta_regina,
             img_regina,
             gioco16,
             img_gioco16,

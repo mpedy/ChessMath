@@ -3,7 +3,10 @@ import { DrawChessboard as DrawChessboardClass } from "../../Utility/Drawchessbo
 
 class Gioco13bSoluzione extends PrototipoGame {
     constructor() {
-        super();
+        super(`<div style="padding: 10px; display: block;">
+	Una possibile soluzione:
+</div>
+<div id="chessboard"></div>`);
     }
     start() {
         var drawChessboard = new DrawChessboardClass(document.getElementById("chessboard"))
