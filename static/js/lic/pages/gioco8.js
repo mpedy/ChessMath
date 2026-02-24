@@ -17,6 +17,9 @@ var gioco8 = new MovingGame({
     end_position: "H7",
     show_possible_moves: false,
     with_timer: true,
+    title: "Muovi l'Alfiere verso il punto evidenziato nel minor numero di caselle",
+    time: 30,
+    label_moves: "Caselle"
 })
 
 export { gioco8 };

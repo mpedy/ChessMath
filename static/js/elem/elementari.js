@@ -1,6 +1,5 @@
 import { PrototipoStory } from "../common/PrototipoStory.js";
-import { ascolta } from "../common/Ascolta.js";
-import { attesa } from "../common/Attesa.js";
+import { ascolta_animatore, ascolta_torre, ascolta_alfiere } from "../common/Ascolta.js";
 import { Quiz } from "../common/Quiz.js";
 import { classifica } from "../common/Classifica.js";
 import { endpage } from "../common/Endpage.js";
@@ -39,10 +38,54 @@ import { img_allsquares } from "../common/ImgAllSquares.js";
 class Elementari extends PrototipoStory {
     constructor() {
         super();
-        this.pages = [attesa, new Quiz("quiz1"), new Quiz("quiz2"), ascolta, new Quiz("quiz3"), scacchiera_vuota, battaglia_navale, ascolta, torre_help, gioco1, img_gioco1, new Quiz("quiz4"), new Quiz("quiz5"), new Quiz("quiz6"), new Quiz("quiz7"), attesa,
-            gioco2, gioco3, gioco4, new Quiz("quiz8"), ascolta,
-            gioco5, img_gioco5, gioco6, img_gioco6, ascolta, gioco7, img_gioco7, new Quiz("quiz9"), new Quiz("quiz10"), quiz11, quiz12, quiz13, gioco8, gioco9, ascolta,
-            quiz14, gioco10, img_gioco10, gioco11, img_gioco11, img_allsquares, new Quiz("quiz15"), ascolta, new Quiz("quiz16"), classifica, endpage];
+        this.pages = [
+            ascolta_animatore,
+            new Quiz("quiz1"),
+            new Quiz("quiz2"),
+            ascolta_animatore,
+            new Quiz("quiz3"),
+            scacchiera_vuota,
+            battaglia_navale,
+            ascolta_torre,
+            torre_help,
+            gioco1,
+            img_gioco1,
+            new Quiz("quiz4"),
+            new Quiz("quiz5"),
+            new Quiz("quiz6"),
+            new Quiz("quiz7"),
+            ascolta_animatore,
+            gioco2,
+            gioco3,
+            gioco4,
+            new Quiz("quiz8"),
+            ascolta_animatore,
+            gioco5,
+            img_gioco5,
+            gioco6,
+            img_gioco6,
+            ascolta_alfiere,
+            gioco7,
+            img_gioco7,
+            new Quiz("quiz9"),
+            new Quiz("quiz10"),
+            quiz11,
+            quiz12,
+            quiz13,
+            gioco8,
+            gioco9,
+            ascolta_animatore,
+            quiz14,
+            gioco10,
+            img_gioco10,
+            gioco11,
+            img_gioco11,
+            img_allsquares,
+            new Quiz("quiz15"),
+            ascolta_animatore,
+            new Quiz("quiz16"),
+            classifica,
+            endpage];
     }
     setPage(index) {
         if (this.currentPage && this.currentPage.dismount) {
@@ -50,6 +93,9 @@ class Elementari extends PrototipoStory {
         }
         this.currentPageIndex = index;
         this.currentPage = this.pages[index];
+        if (this.currentPage && this.currentPage.mount) {
+            this.currentPage.mount();
+        }
         this.currentPage.start();
     }
 }

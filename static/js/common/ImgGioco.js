@@ -3,10 +3,14 @@ import { PrototipoGame } from "./PrototipoGame.js";
 
 /* global $ */
 class ImgGioco extends PrototipoGame {
-    constructor(piece_position, cas) {
-        super();
+    constructor(piece_position, cas, title = "Risposta corretta:") {
+        super(`<div style="padding: 10px; display: block;">
+	${title}
+</div>
+<div id="chessboard"></div>`);
         this.piece_position = piece_position;
         this.cas = cas;
+        this.title = title;
     }
     start() {
 

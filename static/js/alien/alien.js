@@ -1,7 +1,6 @@
 import { PrototipoStory } from "../common/PrototipoStory.js";
 
-import { attesa } from "../common/Attesa.js";
-import { ascolta } from "../common/Ascolta.js";
+import { ascolta_animatore, ascolta_torre, ascolta_alfiere, ascolta_cavallo, ascolta_regina } from "../common/Ascolta.js";
 import { classifica } from "../common/Classifica.js";
 import { endpage } from "../common/Endpage.js";
 
@@ -13,7 +12,7 @@ import { gioco4 } from "./pages/gioco4.js";
 class Alien extends PrototipoStory {
     constructor() {
         super();
-        this.pages = [attesa, ascolta, gioco1, gioco2, gioco3, gioco4, ascolta, ascolta, classifica, endpage];
+        this.pages = [ascolta_animatore, ascolta_torre, gioco1, gioco2, gioco3, gioco4, ascolta_alfiere, ascolta_regina, classifica, endpage];
     }
     setPage(index) {
         if (this.currentPage && this.currentPage.dismount) {
@@ -21,6 +20,9 @@ class Alien extends PrototipoStory {
         }
         this.currentPageIndex = index;
         this.currentPage = this.pages[index];
+        if (this.currentPage && this.currentPage.mount) {
+            this.currentPage.mount();
+        }
         this.currentPage.start();
     }
 }

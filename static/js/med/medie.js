@@ -1,6 +1,5 @@
 import { PrototipoStory } from "../common/PrototipoStory.js";
-import { ascolta } from "../common/Ascolta.js";
-import { attesa } from "../common/Attesa.js";
+import { ascolta_animatore, ascolta_torre, ascolta_alfiere, ascolta_cavallo } from "../common/Ascolta.js";
 import { Quiz } from "../common/Quiz.js";
 import { classifica } from "../common/Classifica.js";
 import { endpage } from "../common/Endpage.js";
@@ -40,11 +39,56 @@ import { quiz14 } from "./pages/quiz14.js";
 class Medie extends PrototipoStory {
     constructor() {
         super();
-        this.pages = [attesa, new Quiz("quiz1"), ascolta, new Quiz("quiz2"), scacchiera_vuota, ascolta, torre_help, gioco1, img_gioco1, new Quiz("quiz3"), new Quiz("quiz4"), new Quiz("quiz5"), new Quiz("quiz6"), attesa, gioco2, gioco4, new Quiz("quiz7"), ascolta,
-            gioco5, img_gioco5, gioco6, img_gioco6, ascolta, gioco7, img_gioco7, gioco8, quiz8, quiz9, quiz10, ascolta,
-            quiz11, img_gioco10, gioco11b, img_gioco11, img_allsquares, ascolta, img_cavallo, gioco_spirit, img_gioco_spirit, gioco13b, gioco13b_soluzione, gioco12b, gioco12b_soluzione, ascolta,
-            quiz14, ascolta, new Quiz("quiz16"),
-            classifica, endpage];
+        this.pages = [
+            ascolta_animatore,
+            new Quiz("quiz1"),
+            ascolta_animatore,
+            new Quiz("quiz2"),
+            scacchiera_vuota,
+            ascolta_torre,
+            torre_help,
+            gioco1,
+            img_gioco1,
+            new Quiz("quiz3"),
+            new Quiz("quiz4"),
+            new Quiz("quiz5"),
+            new Quiz("quiz6"),
+            ascolta_animatore,
+            gioco2,
+            gioco4,
+            new Quiz("quiz7"),
+            ascolta_animatore,
+            gioco5,
+            img_gioco5,
+            gioco6,
+            img_gioco6,
+            ascolta_alfiere,
+            gioco7,
+            img_gioco7,
+            gioco8,
+            quiz8,
+            quiz9,
+            quiz10,
+            ascolta_animatore,
+            quiz11,
+            img_gioco10,
+            gioco11b,
+            img_gioco11,
+            img_allsquares,
+            ascolta_cavallo,
+            img_cavallo,
+            gioco_spirit,
+            img_gioco_spirit,
+            gioco13b,
+            gioco13b_soluzione,
+            gioco12b,
+            gioco12b_soluzione,
+            ascolta_animatore,
+            quiz14,
+            ascolta_animatore,
+            new Quiz("quiz16"),
+            classifica,
+            endpage];
     }
     setPage(index) {
         if (this.currentPage && this.currentPage.dismount) {
@@ -52,6 +96,9 @@ class Medie extends PrototipoStory {
         }
         this.currentPageIndex = index;
         this.currentPage = this.pages[index];
+        if (this.currentPage && this.currentPage.mount) {
+            this.currentPage.mount();
+        }
         this.currentPage.start();
     }
 }

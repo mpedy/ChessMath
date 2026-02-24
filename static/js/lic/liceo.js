@@ -1,7 +1,6 @@
 import { PrototipoStory } from "../common/PrototipoStory.js";
-import { ascolta } from "../common/Ascolta.js";
-import { attesa } from "../common/Attesa.js";
-import { battaglia_navale } from "../common/BattagliaNavale.js";
+import { ascolta_animatore, ascolta_torre, ascolta_alfiere, ascolta_cavallo, ascolta_regina } from "../common/Ascolta.js";
+import { battaglia_navale } from "./pages/BattagliaNavale.js";
 import { LicQuiz } from "./LicQuiz.js";
 import { classifica } from "../common/Classifica.js";
 import { endpage } from "../common/Endpage.js";
@@ -11,6 +10,7 @@ import { torre_help } from "../common/TorreHelp.js";*/
 import { img_allsquares } from "../common/ImgAllSquares.js";
 
 import { img_gioco1 } from "./pages/img_gioco1.js";
+import { img_1 } from "./pages/img_1.js";
 import { gioco2 } from "./pages/gioco2.js";
 import { gioco3 } from "./pages/gioco3.js";
 import { gioco4 } from "./pages/gioco4.js";
@@ -53,16 +53,75 @@ import { gioco_toro2 } from "./pages/gioco_toro2.js";
 import { gioco_toro3 } from "./pages/gioco_toro3.js";
 import { img_gioco_toro3 } from "./pages/img_gioco_toro3.js";
 
+var quiz1 = new LicQuiz("quiz1", "title.question.img.answers", "static/img/torre1.png");
+var quiz2 = new LicQuiz("quiz2", "title.question.img.answers", "static/img/torre2.png");
+var quiz7 = new LicQuiz("quiz7", "title.question.answers");
+
+
 
 class Liceo extends PrototipoStory {
     constructor() {
         super();
-        this.pages = [attesa, battaglia_navale, ascolta, img_gioco1, new LicQuiz("quiz1"), new LicQuiz("quiz2"), ascolta, gioco2, gioco3, gioco4, ascolta, new LicQuiz("quiz7"),
-            gioco5, img_gioco5, gioco6, img_gioco6, ascolta, gioco6bis, img_gioco6bis, ascolta, img_gioco7, gioco8, quiz8, quiz9, quiz10,
-            quiz11, img_gioco10, gioco11b, img_gioco11b, img_allsquares, gioco11b_bis, img_gioco11b_bis,
-            ascolta, img_cavallo, gioco_spirit, img_spirit, gioco13b, gioco13b_soluzione, gioco12b, gioco12b_soluzione, gioco14, gioco15, img_gioco15, ascolta, img_regina, gioco16, img_gioco16, gioco17, ascolta,
-            gioco_training_toro, gioco_toro, gioco_toro1, gioco_toro2, gioco_toro3, img_gioco_toro3, ascolta, quiz14,
-            classifica, endpage];
+        this.pages = [
+            ascolta_animatore,
+            battaglia_navale,
+            ascolta_torre,
+            img_gioco1,
+            quiz1,
+            quiz2,
+            img_1,
+            gioco2,
+            gioco3,
+            gioco4,
+            ascolta_animatore,
+            quiz7,
+            gioco5,
+            img_gioco5,
+            gioco6,
+            img_gioco6,
+            ascolta_animatore,
+            gioco6bis,
+            img_gioco6bis,
+            ascolta_alfiere,
+            img_gioco7,
+            gioco8,
+            quiz8,
+            quiz9,
+            quiz10,
+            quiz11,
+            img_gioco10,
+            gioco11b,
+            img_gioco11b,
+            img_allsquares,
+            gioco11b_bis,
+            img_gioco11b_bis,
+            ascolta_cavallo,
+            img_cavallo,
+            gioco_spirit,
+            img_spirit,
+            gioco13b,
+            gioco13b_soluzione,
+            gioco12b,
+            gioco12b_soluzione,
+            gioco14,
+            gioco15,
+            img_gioco15,
+            ascolta_regina,
+            img_regina,
+            gioco16,
+            img_gioco16,
+            gioco17,
+            ascolta_animatore,
+            gioco_training_toro,
+            gioco_toro,
+            gioco_toro1,
+            gioco_toro2,
+            gioco_toro3,
+            img_gioco_toro3,
+            ascolta_animatore,
+            quiz14,
+            classifica,
+            endpage];
     }
     setPage(index) {
         if (this.currentPage && this.currentPage.dismount) {
@@ -70,6 +129,9 @@ class Liceo extends PrototipoStory {
         }
         this.currentPageIndex = index;
         this.currentPage = this.pages[index];
+        if (this.currentPage && this.currentPage.mount) {
+            this.currentPage.mount();
+        }
         this.currentPage.start();
     }
 }

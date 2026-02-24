@@ -1,8 +1,14 @@
 import { DrawChessboard as DrawChessboardClass } from "../Utility/Drawchessboard.js";
+import { PrototipoGame } from "./PrototipoGame.js";
 
 /* global $ */
-class ImgAllSquares {
-    constructor() { }
+class ImgAllSquares extends PrototipoGame {
+    constructor() {
+        super(`<div style="padding: 10px; display: block;">
+	Le due circonferenze a confronto:
+</div>
+<div id="chessboard"></div>`);
+    }
     start() {
 
         var drawChessboard = new DrawChessboardClass(document.getElementById("chessboard"))

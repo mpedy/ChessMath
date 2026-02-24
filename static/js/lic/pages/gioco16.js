@@ -4,7 +4,15 @@ import { PrototipoGame } from "../../common/PrototipoGame.js";
 
 class Gioco16 extends PrototipoGame {
     constructor() {
-        super();
+        super(`<span id="title" style="padding: 10px">Piazza 4 Regine sulla scacchiera in modo tale che non si guardino mai</span>
+<div id="chessboard"></div>
+<div class="timer_container">
+	<div class="timer" data-second="90" data-height="20px" data-width="80%"></div>
+</div>
+<div id="controls_container">
+	<button id="gobtn" onclick="procedi(this)">Conferma</button>
+	<button id="reset" onclick="reset()">Cancella tutto</button>
+</div>`);
     }
     start() {
         var drawChessboard = new DrawChessboardClass(document.getElementById("chessboard"))
@@ -78,7 +86,7 @@ class Gioco16 extends PrototipoGame {
 
         }
 
-        window.procedi = function (btn) {
+        window.procedi = (btn) => {
             btn.disabled = true;
             var correct_answer = false;
             var points = 0;
@@ -131,7 +139,7 @@ class Gioco16 extends PrototipoGame {
                 gobtn.disabled = false;
                 gobtn.innerText = "Ritenta";
                 gobtn.classList.add("retrybtn");
-                gobtn.onclick = function () {
+                gobtn.onclick = () => {
                     document.getElementById("reset").disabled = false;
                     gobtn.innerText = "Conferma";
                     gobtn.classList.remove("retrybtn");

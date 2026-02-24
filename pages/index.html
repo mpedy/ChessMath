@@ -79,7 +79,7 @@
 							success: function (result) {
 								clearInterval(window.myt);
 								$("#mydialog_opened").dialog("close").remove();
-								$("#content_page").html(result)
+								//$("#content_page").html(result)
 								app.currentGame.setPage.bind(app.currentGame)(parseInt(page))
 							}
 						})

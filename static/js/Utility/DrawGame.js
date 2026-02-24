@@ -7,9 +7,20 @@ class DrawGame extends PrototipoGame {
         piece_position = {},
         caselle_corrette = [],
         with_timer = true,
-        chessboard_dim = 8
+        chessboard_dim = 8,
+        html = undefined,
+        title = "Draw Game",
+        time = 30,
     }) {
-        super();
+        super(html ? html : `<span id="title" style="padding: 10px; display: block;">${title}</span>
+<div id="chessboard"></div>
+<div class="timer_container">
+	<div class="timer" data-second="${time}" data-height="20px" data-width="80%"></div>
+</div>
+<div id="controls_container">
+	<button id="gobtn" onclick="procedi(this)">Conferma</button>
+	<button id="reset" onclick="reset()">Cancella tutto</button>
+</div>`);
         this.piece_position = piece_position;
         this.caselle_corrette = caselle_corrette;
         this.with_timer = with_timer;
@@ -70,7 +81,7 @@ class DrawGame extends PrototipoGame {
             caselle_colorate = new Array();
         }
 
-        window.procedi = function (btn) {
+        window.procedi = (btn) => {
             btn.disabled = true;
             var points = 0;
             for (var i in caselle_colorate) {
@@ -80,10 +91,10 @@ class DrawGame extends PrototipoGame {
                     points -= 1;
                 }
             }
-            if(caselle_colorate.length == 0){
+            if (caselle_colorate.length == 0) {
                 points = 0;
-            }else{
-                points = points*5 + this.maketimer.sec;
+            } else {
+                points = points * 5 + this.maketimer.sec;
             }
             window.myalert("Punti", "Hai guadagnato " + points + " punti.");
             window.updatePoints(points);

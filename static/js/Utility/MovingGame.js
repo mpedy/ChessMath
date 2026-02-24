@@ -10,9 +10,21 @@ class MovingGame extends PrototipoGame {
         end_position,
         show_possible_moves = false,
         with_timer = false,
-        toro = false
+        toro = false,
+        html = undefined,
+        title = "Moving Game",
+        time = 30,
+        label_moves = "Mosse"
     }) {
-        super();
+        super(html ? html : `<div id="title">${title}</div>
+<div id="chessboard"></div>
+<div class="timer_container">
+	<div class="caselle_div">${label_moves}: <span id="number_of_moves">0</span></div>
+	<div class="timer" data-second="${time}" data-height="20px" data-width="80%"></div>
+</div>
+<div id="controls_container">
+	<button id="ricomincia" onclick="window.ricomincia()">Ricomincia</button>
+</div>` );
         this.piece_position = piece_position;
         this.piece_position_initial = { ...piece_position };
         this.moving_pieces = moving_pieces;
@@ -191,7 +203,7 @@ class MovingGame extends PrototipoGame {
             caselle_colorate = new Array();
         }
 
-        window.goal_reached = function () {
+        window.goal_reached = () => {
             window.punti = window.getPoints();
             window.myconfirm_2b("Obiettivo raggiunto", "Hai percorso " + number_of_moves + " caselle. Vuoi riprovare?", "sì", "no",
                 function () {
@@ -200,11 +212,11 @@ class MovingGame extends PrototipoGame {
                     $(this).remove();
                 }, function () {
                     $(this).dialog("close");
-                    clearInterval(this.maketimer.myt);
-                    var gamePoints = (20 - 2 * number_of_moves) + this.maketimer.sec
+                    clearInterval(self.maketimer.myt);
+                    var gamePoints = (20 - 2 * number_of_moves) + self.maketimer.sec
                     window.punti += gamePoints;
-                    this.maketimer.sec = 0;
-                    this.maketimer.expired = false
+                    self.maketimer.sec = 0;
+                    self.maketimer.expired = false
                     $(this).remove();
                     window.myalert("Punti", "Il tuo punteggio è di " + window.punti + " punti!");
                     window.updatePoints(gamePoints);
@@ -214,7 +226,7 @@ class MovingGame extends PrototipoGame {
                 }, false);
         }
 
-        window.procedi = function () {
+        window.procedi = () => {
             window.punti = window.getPoints();
             //window.punti -= number_of_moves;
             window.myalert("Punti", "Il tuo punteggio è " + window.punti + ".");

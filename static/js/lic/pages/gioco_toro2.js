@@ -20,7 +20,10 @@ var gioco_toro2 = new MovingGame({
     end_position: "C3",
     show_possible_moves: false,
     with_timer: true,
-    toro: true
+    toro: true,
+    title: "Muovi il Cavallo verso il punto evidenziato nel minor numero di mosse sulla scacchiera toroidale",
+    time: 90,
+    label_moves: "Mosse"
 })
 
 export { gioco_toro2 };

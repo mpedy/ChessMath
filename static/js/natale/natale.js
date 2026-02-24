@@ -1,6 +1,5 @@
 import { PrototipoStory } from "../common/PrototipoStory.js";
-import { ascolta } from "../common/Ascolta.js";
-import { attesa } from "../common/Attesa.js";
+import { ascolta_animatore, ascolta_torre, ascolta_alfiere, ascolta_cavallo, ascolta_regina } from "../common/Ascolta.js";
 import { NatQuiz } from "./NatQuiz.js";
 import { classifica } from "../common/Classifica.js";
 import { endpage } from "../common/Endpage.js";
@@ -50,11 +49,59 @@ import { gioco_toro2 } from "./pages/gioco_toro2.js";
 class Natale extends PrototipoStory {
     constructor() {
         super();
-        this.pages = [attesa, ascolta, img_gioco1, new NatQuiz("quiz1"), new NatQuiz("quiz2"), ascolta, gioco2, gioco4, new NatQuiz("quiz7"), ascolta,
-            gioco5, img_gioco5, gioco6, img_gioco6, ascolta, img_gioco7, gioco8, quiz8, quiz9, quiz10, ascolta,
-            quiz11, img_gioco10, gioco11b, img_gioco11b, img_allsquares, ascolta, img_cavallo, gioco_spirit, img_spirit, gioco13b, gioco13b_soluzione, gioco12b, gioco12b_soluzione, gioco14, gioco15, img_gioco15, ascolta, img_regina, gioco16, img_gioco16, gioco17, gioco19, ascolta,
-            gioco_training_toro, gioco_toro, gioco_toro1, gioco_toro2, ascolta, quiz14,
-            classifica, endpage];
+        this.pages = [
+            ascolta_animatore,
+            ascolta_torre,
+            img_gioco1,
+            new NatQuiz("quiz1"),
+            new NatQuiz("quiz2"),
+            ascolta_animatore,
+            gioco2,
+            gioco4,
+            new NatQuiz("quiz7"),
+            ascolta_animatore,
+            gioco5,
+            img_gioco5,
+            gioco6,
+            img_gioco6,
+            ascolta_animatore,
+            img_gioco7,
+            gioco8,
+            quiz8,
+            quiz9,
+            quiz10,
+            ascolta_animatore,
+            quiz11,
+            img_gioco10,
+            gioco11b,
+            img_gioco11b,
+            img_allsquares,
+            ascolta_animatore,
+            img_cavallo,
+            gioco_spirit,
+            img_spirit,
+            gioco13b,
+            gioco13b_soluzione,
+            gioco12b,
+            gioco12b_soluzione,
+            gioco14,
+            gioco15,
+            img_gioco15,
+            ascolta_animatore,
+            img_regina,
+            gioco16,
+            img_gioco16,
+            gioco17,
+            gioco19,
+            ascolta_animatore,
+            gioco_training_toro,
+            gioco_toro,
+            gioco_toro1,
+            gioco_toro2,
+            ascolta_animatore,
+            quiz14,
+            classifica,
+            endpage];
     }
     setPage(index) {
         if (this.currentPage && this.currentPage.dismount) {
@@ -62,6 +109,9 @@ class Natale extends PrototipoStory {
         }
         this.currentPageIndex = index;
         this.currentPage = this.pages[index];
+        if (this.currentPage && this.currentPage.mount) {
+            this.currentPage.mount();
+        }
         this.currentPage.start();
     }
 }

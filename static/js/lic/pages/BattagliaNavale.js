@@ -1,10 +1,11 @@
-import { DrawGame } from "../Utility/DrawGame.js";
+import { DrawGame } from "../../Utility/DrawGame.js";
 
 var battaglia_navale = new DrawGame({
     piece_position: {},
     caselle_corrette: ["A3", "E8", "F4", "B5"],
     with_timer: true,
-    title: "Battaglia Navale"
+    title: "Seleziona le caselle A3, E8, F4, B5",
+    time: 30
 })
 
 export { battaglia_navale };

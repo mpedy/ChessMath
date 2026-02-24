@@ -1,11 +1,11 @@
 import { DrawChessboard as DrawChessboardClass } from "../../Utility/Drawchessboard.js";
 import { getQuiz } from "../../Utility/MyUI.js";
-import { PrototipoGame } from "../../common/PrototipoGame.js";
+import { PrototipoQuiz } from "../../common/PrototipoQuiz.js";
 
 /* global $ */
-class Quiz9 extends PrototipoGame {
+class Quiz9 extends PrototipoQuiz {
     constructor() {
-        super();
+        super("quiz9", "title.question.chessboard.answers");
     }
     start() {
         var drawChessboard = new DrawChessboardClass($("#chessboard")[0])

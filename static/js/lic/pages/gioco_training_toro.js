@@ -11,8 +11,15 @@ var gioco_training_toro = new MovingGame({
     end_position: null,
     show_possible_moves: true,
     with_timer: false,
-    toro: true
-}
-)
+    toro: true,
+    html: `<div id="title">Prova la scacchiera toroidale</div>
+<div id="chessboard"></div>
+<div class="timer_container">
+	<div class="caselle_div">Mosse: <span id="number_of_moves">0</span></div>
+</div>
+<div id="controls_container">
+	<button id="ricomincia" onclick="window.ricomincia()">Ricomincia</button>
+</div>`
+})
 
 export { gioco_training_toro };

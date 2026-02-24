@@ -3,7 +3,10 @@ import { PrototipoGame } from "../../common/PrototipoGame.js";
 
 class Gioco12bSoluzione extends PrototipoGame {
     constructor() {
-        super();
+        super(`<div style="padding: 10px; display: block;">
+	Una possibile soluzione:
+</div>
+<div id="chessboard"></div>`);
     }
     start() {
 
