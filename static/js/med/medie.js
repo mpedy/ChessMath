@@ -1,6 +1,6 @@
 import { PrototipoStory } from "../common/PrototipoStory.js";
 import { ascolta_animatore, ascolta_torre, ascolta_alfiere, ascolta_cavallo } from "../common/Ascolta.js";
-import { Quiz } from "../common/Quiz.js";
+import { MedQuiz } from "./MedQuiz.js";
 import { classifica } from "../common/Classifica.js";
 import { endpage } from "../common/Endpage.js";
 
@@ -34,6 +34,16 @@ import { gioco13b_soluzione } from "./pages/gioco13b_soluzione.js";
 import { gioco12b } from "./pages/gioco12b.js";
 import { gioco12b_soluzione } from "./pages/gioco12b_soluzione.js";
 import { quiz14 } from "./pages/quiz14.js";
+import { img_1 } from "./pages/img_1.js";
+
+var quiz1 = new MedQuiz("quiz1", "title.question.img.answers", "static/img/quiz1.png");
+var quiz2 = new MedQuiz("quiz2", "title.question.answers");
+var quiz3 = new MedQuiz("quiz3", "title.question.img.answers", "static/img/torre1.png");
+var quiz4 = new MedQuiz("quiz4", "title.question.img.answers", "static/img/torre2.png");
+var quiz5 = new MedQuiz("quiz5", "title.question.img.answers", "static/img/torre3.png");
+var quiz6 = new MedQuiz("quiz6", "title.question.answers");
+var quiz7 = new MedQuiz("quiz7", "title.question.answers");
+var quiz16 = new MedQuiz("quiz16", "title.question.answers");
 
 
 class Medie extends PrototipoStory {
@@ -41,22 +51,22 @@ class Medie extends PrototipoStory {
         super();
         this.pages = [
             ascolta_animatore,
-            new Quiz("quiz1"),
+            quiz1,
             ascolta_animatore,
-            new Quiz("quiz2"),
+            quiz2,
             scacchiera_vuota,
             ascolta_torre,
             torre_help,
             gioco1,
             img_gioco1,
-            new Quiz("quiz3"),
-            new Quiz("quiz4"),
-            new Quiz("quiz5"),
-            new Quiz("quiz6"),
-            ascolta_animatore,
+            quiz3,
+            quiz4,
+            quiz5,
+            quiz6,
+            img_1,//ascolta_animatore?
             gioco2,
             gioco4,
-            new Quiz("quiz7"),
+            quiz7,
             ascolta_animatore,
             gioco5,
             img_gioco5,
@@ -86,7 +96,7 @@ class Medie extends PrototipoStory {
             ascolta_animatore,
             quiz14,
             ascolta_animatore,
-            new Quiz("quiz16"),
+            quiz16,
             classifica,
             endpage];
     }

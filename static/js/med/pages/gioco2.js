@@ -7,7 +7,10 @@ var gioco2 = new MovingGame({
     moving_pieces: { "Rook": "E2"},
     end_position: "A8",
     show_possible_moves: false,
-    with_timer: true
+    with_timer: true,
+    title: "Muovi la Torre verso il punto evidenziato percorrendo il minor numero di caselle possibile",
+    time: 120,
+    label_moves: "Caselle"
 })
 
 export { gioco2 };
