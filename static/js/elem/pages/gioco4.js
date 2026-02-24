@@ -18,7 +18,10 @@ var gioco4 = new MovingGame({
     },
     end_position: "A8",
     show_possible_moves: false,
-    with_timer: true
+    with_timer: true,
+    title: "Muovi la Torre verso il punto evidenziato nel minor numero di caselle",
+    time: 120,
+    label_moves: "Caselle"
 });
 
 export { gioco4 };

@@ -1,7 +1,8 @@
 import { DrawChessboard as DrawChessboardClass } from "../Utility/Drawchessboard.js";
+import { ImgGioco } from "./ImgGioco.js";
 
-class ScacchieraVuota {
-    constructor() { }
+class ScacchieraVuota extends ImgGioco {
+    constructor() { super();}
     start() {
         var drawChessboard = new DrawChessboardClass(document.getElementById("chessboard"));
         drawChessboard.drawChessboard();

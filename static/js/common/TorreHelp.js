@@ -1,8 +1,9 @@
 import { DrawChessboard as DrawChessboardClass } from "../Utility/Drawchessboard.js";
+import { ImgGioco } from "./ImgGioco.js";
 
 /* global $ */
-class TorreHelp {
-    constructor() { }
+class TorreHelp extends ImgGioco {
+    constructor() { super(); }
     start() {
         var drawChessboard = new DrawChessboardClass(document.getElementById("chessboard"))
         drawChessboard.drawChessboard()

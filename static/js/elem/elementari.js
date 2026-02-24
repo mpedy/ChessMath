@@ -1,12 +1,12 @@
 import { PrototipoStory } from "../common/PrototipoStory.js";
 import { ascolta_animatore, ascolta_torre, ascolta_alfiere } from "../common/Ascolta.js";
-import { Quiz } from "../common/Quiz.js";
+import { ElemQuiz } from "./ElemQuiz.js";
 import { classifica } from "../common/Classifica.js";
 import { endpage } from "../common/Endpage.js";
 
 
 import { scacchiera_vuota } from "../common/Scacchiera_vuota.js";
-import { battaglia_navale } from "../common/BattagliaNavale.js";
+import { battaglia_navale } from "./pages/BattagliaNavale.js";
 import { torre_help } from "../common/TorreHelp.js";
 import { gioco1 } from "./pages/gioco1.js";
 import { img_gioco1 } from "./pages/img_gioco1.js";
@@ -34,31 +34,45 @@ import { img_gioco10 } from "./pages/img_gioco10.js";
 import { gioco11 } from "./pages/gioco11.js";
 import { img_gioco11 } from "./pages/img_gioco11.js";
 import { img_allsquares } from "../common/ImgAllSquares.js";
+import { img_1 } from "./pages/img_1.js";
+
+var quiz1 = new ElemQuiz("quiz1", "title.question.img.answers", "static/img/quiz1.png");
+var quiz2 = new ElemQuiz("quiz2", "title.question.img.answers", "static/img/quiz2.png");
+var quiz3 = new ElemQuiz("quiz3", "title.question.answers");
+var quiz4 = new ElemQuiz("quiz4", "title.question.img.answers", "static/img/torre1.png");
+var quiz5 = new ElemQuiz("quiz5", "title.question.img.answers", "static/img/torre2.png");
+var quiz6 = new ElemQuiz("quiz6", "title.question.img.answers", "static/img/torre3.png");
+var quiz7 = new ElemQuiz("quiz7", "title.question.img.answers", "static/img/torre3.png");
+var quiz8 = new ElemQuiz("quiz8", "title.question.img.answers", "static/img/otto8.png");
+var quiz9 = new ElemQuiz("quiz9", "title.question.img.answers", "static/img/alfiere1.png");
+var quiz10 = new ElemQuiz("quiz10", "title.question.img.answers", "static/img/alfiere2.png");
+var quiz15 = new ElemQuiz("quiz15", "title.question.answers");
+var quiz16 = new ElemQuiz("quiz16", "title.question.answers");
 
 class Elementari extends PrototipoStory {
     constructor() {
         super();
         this.pages = [
             ascolta_animatore,
-            new Quiz("quiz1"),
-            new Quiz("quiz2"),
+            quiz1,
+            quiz2,
             ascolta_animatore,
-            new Quiz("quiz3"),
+            quiz3,
             scacchiera_vuota,
             battaglia_navale,
             ascolta_torre,
             torre_help,
             gioco1,
             img_gioco1,
-            new Quiz("quiz4"),
-            new Quiz("quiz5"),
-            new Quiz("quiz6"),
-            new Quiz("quiz7"),
-            ascolta_animatore,
+            quiz4,
+            quiz5,
+            quiz6,
+            quiz7,
+            img_1,
             gioco2,
             gioco3,
             gioco4,
-            new Quiz("quiz8"),
+            quiz8,
             ascolta_animatore,
             gioco5,
             img_gioco5,
@@ -67,8 +81,8 @@ class Elementari extends PrototipoStory {
             ascolta_alfiere,
             gioco7,
             img_gioco7,
-            new Quiz("quiz9"),
-            new Quiz("quiz10"),
+            quiz9,
+            quiz10,
             quiz11,
             quiz12,
             quiz13,
@@ -81,9 +95,9 @@ class Elementari extends PrototipoStory {
             gioco11,
             img_gioco11,
             img_allsquares,
-            new Quiz("quiz15"),
+            quiz15,
             ascolta_animatore,
-            new Quiz("quiz16"),
+            quiz16,
             classifica,
             endpage];
     }
