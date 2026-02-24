@@ -36,6 +36,7 @@ class MovingGame extends PrototipoGame {
     }
     start() {
         var self = this;
+        this.moving_pieces = { ...this.moving_pieces_initial };
         var drawChessboard = new DrawChessboardClass(document.getElementById("chessboard"))
         if (this.with_timer) {
             this.maketimer.maketimer(document.getElementsByClassName("timer")[0]);
@@ -65,12 +66,12 @@ class MovingGame extends PrototipoGame {
         var number_of_moves = 0;
         var show_possible_moves = this.show_possible_moves
 
-        window.ricomincia = function () {
+        window.ricomincia = () => {
             $("#chessboard").html("")[0].style.cssText = ""
             drawChessboard.drawChessboard();
-            drawChessboard.piece_position = { ...self.piece_position_initial };
+            drawChessboard.piece_position = { ...this.piece_position_initial };
             drawChessboard.drawPieces();
-            self.moving_pieces = { ...self.moving_pieces_initial };
+            this.moving_pieces = { ...this.moving_pieces_initial };
             window.enlighted = ""
             if (end_position != null) {
                 window.enlight(end_position, "orange", true);
@@ -81,7 +82,7 @@ class MovingGame extends PrototipoGame {
             caselle_colorate = new Array();
         }
 
-        drawChessboard.handleMouseDown_casella = function (e) {
+        drawChessboard.handleMouseDown_casella = (e) => {
             var elem = e.currentTarget;
             //console.log(elem)
             var casella = elem.getAttribute("casella");
@@ -96,7 +97,7 @@ class MovingGame extends PrototipoGame {
             }
         }
 
-        window.move = function (moving_piece, casella) {
+        window.move = (moving_piece, casella) => {
             //console.log("sposto "+moving_piece+ " in "+casella);
             var piece = moving_piece.split(";")[0]
             var from = moving_piece.split(";")[1]
@@ -110,7 +111,7 @@ class MovingGame extends PrototipoGame {
             lst[_to] = piece + ".svg";
             window.reset();
             drawChessboard.drawPieces(lst);
-            self.moving_pieces[piece] = _to;
+            this.moving_pieces[piece] = _to;
             number_of_moves += window.dist(from, _to);
             $("#number_of_moves").html(number_of_moves);
             if (_to == end_position) {
@@ -138,7 +139,7 @@ class MovingGame extends PrototipoGame {
             window.enlight(end_position, "orange", true);
         }
 
-        drawChessboard.handleMouseDown_image = function (e) {
+        drawChessboard.handleMouseDown_image = (e) => {
             //console.log(e.currentTarget);
             var elem = e.currentTarget;
             var casella = elem.getAttribute("data-casella");
@@ -148,10 +149,10 @@ class MovingGame extends PrototipoGame {
                 return;
             }
             var can_move = false;
-            for (var i in self.moving_pieces) {
-                if (i == type && self.moving_pieces[i] == casella) {
+            for (var i in this.moving_pieces) {
+                if (i == type && this.moving_pieces[i] == casella) {
                     can_move = true;
-                    moving_piece = i + ";" + self.moving_pieces[i];
+                    moving_piece = i + ";" + this.moving_pieces[i];
                     break;
                 }
             }
