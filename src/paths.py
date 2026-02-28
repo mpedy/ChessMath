@@ -1,5 +1,6 @@
 LISTEN = "pages/ascolta"
 
+
 def getPath1():
     return [
         LISTEN,
@@ -9,7 +10,7 @@ def getPath1():
         "pages/elem/quiz3",
         "pages/elem/scacchiera_vuota",
         "pages/elem/battaglia_navale",
-        "pages/ascolta_torre", ## Torre
+        "pages/ascolta_torre",  # Torre
         "pages/torre_help",
         "pages/elem/gioco1",
         "pages/elem/img_gioco1",
@@ -27,7 +28,7 @@ def getPath1():
         "pages/elem/img_gioco5",
         "pages/elem/gioco6",
         "pages/elem/img_gioco6",
-        "pages/ascolta_alfiere",## Alfiere
+        "pages/ascolta_alfiere",  # Alfiere
         "pages/elem/gioco7",
         "pages/elem/img_gioco7",
         "pages/elem/quiz9",
@@ -51,6 +52,7 @@ def getPath1():
         "pages/endpage"
     ]
 
+
 def getPath2():
     return [
         LISTEN,
@@ -58,7 +60,7 @@ def getPath2():
         LISTEN,
         "pages/med/quiz2",
         "pages/elem/scacchiera_vuota",
-        "pages/ascolta_torre", ## Torre
+        "pages/ascolta_torre",  # Torre
         "pages/torre_help",
         "pages/med/gioco1",
         "pages/med/img_gioco1",
@@ -75,7 +77,7 @@ def getPath2():
         "pages/med/img_gioco5",
         "pages/med/gioco6",
         "pages/med/img_gioco6",
-        "pages/ascolta_alfiere", ## Alfiere
+        "pages/ascolta_alfiere",  # Alfiere
         "pages/med/gioco7",
         "pages/med/img_gioco7",
         "pages/med/gioco8",
@@ -88,7 +90,7 @@ def getPath2():
         "pages/med/gioco11b",
         "pages/med/img_gioco11b",
         "pages/elem/img_allsquare",
-        "pages/ascolta_cavallo",# CAVALLO
+        "pages/ascolta_cavallo",  # CAVALLO
         "pages/med/img_cavallo",
         "pages/med/gioco_spirit",
         "pages/med/img_spirit",
@@ -104,11 +106,13 @@ def getPath2():
         "pages/endpage"
     ]
 
+
 def getPath3():
     return [
         LISTEN,
         "pages/lic/battaglia_navale",
-        "pages/ascolta_torre",
+        "pages/transition_torre",
+        "pages/ascolta_torre",  # Torre
         "pages/lic/img_gioco1",
         "pages/lic/quiz1",
         "pages/lic/quiz2",
@@ -125,7 +129,8 @@ def getPath3():
         LISTEN,
         "pages/lic/gioco6bis",
         "pages/lic/img_gioco6bis",
-        "pages/ascolta_alfiere", ## Alfiere
+        "pages/transition_alfiere",
+        "pages/ascolta_alfiere",  # Alfiere
         "pages/lic/img_gioco7",
         "pages/lic/gioco8",
         "pages/lic/quiz8",
@@ -138,7 +143,8 @@ def getPath3():
         "pages/lic/img_allsquare",
         "pages/lic/gioco11b_bis",
         "pages/lic/img_gioco11b_bis",
-        "pages/ascolta_cavallo",# CAVALLO
+        "pages/transition_cavallo",
+        "pages/ascolta_cavallo",  # CAVALLO
         "pages/lic/img_cavallo",
         "pages/lic/gioco_spirit",
         "pages/lic/img_spirit",
@@ -149,12 +155,13 @@ def getPath3():
         "pages/lic/gioco14",
         "pages/lic/gioco15",
         "pages/lic/img_gioco15",
-        "pages/ascolta_regina",
+        "pages/transition_regina",
+        "pages/ascolta_regina",  # Regina
         "pages/lic/img_regina",
         "pages/lic/gioco16",
         "pages/lic/img_gioco16",
         "pages/lic/gioco17",
-        #"pages/lic/gioco18",
+        # "pages/lic/gioco18",
         LISTEN,
         "pages/lic/gioco_training_toro",
         "pages/lic/gioco_toro",
@@ -162,13 +169,14 @@ def getPath3():
         "pages/lic/gioco_toro2",
         "pages/lic/gioco_toro3",
         "pages/lic/img_gioco_toro3",
-        LISTEN, ## da fare da qui in avanti per i quiz
+        LISTEN,  # da fare da qui in avanti per i quiz
         "pages/lic/quiz14",
-        #LISTEN,
-        #"pages/lic/quiz16",
+        # LISTEN,
+        # "pages/lic/quiz16",
         "pages/classifica",
         "pages/endpage"
     ]
+
 
 def getPath4():
     return [
@@ -186,7 +194,7 @@ def getPath4():
         "pages/natale/img_gioco5",
         "pages/natale/gioco6",
         "pages/natale/img_gioco6",
-        "pages/ascolta_alfiere", ## Alfiere
+        "pages/ascolta_alfiere",  # Alfiere
         "pages/natale/img_gioco7",
         "pages/natale/gioco8",
         "pages/natale/quiz8",
@@ -198,7 +206,7 @@ def getPath4():
         "pages/natale/gioco11b",
         "pages/natale/img_gioco11b",
         "pages/natale/img_allsquare",
-        "pages/ascolta_cavallo",# CAVALLO
+        "pages/ascolta_cavallo",  # CAVALLO
         "pages/natale/img_cavallo",
         "pages/natale/gioco_spirit",
         "pages/natale/img_spirit",
@@ -214,20 +222,21 @@ def getPath4():
         "pages/natale/gioco16",
         "pages/natale/img_gioco16",
         "pages/natale/gioco17",
-        #"pages/natale/gioco18",
+        # "pages/natale/gioco18",
         "pages/natale/gioco19",
         LISTEN,
         "pages/natale/gioco_training_toro",
         "pages/natale/gioco_toro",
         "pages/natale/gioco_toro1",
         "pages/natale/gioco_toro2",
-        LISTEN, ## da fare da qui in avanti per i quiz
+        LISTEN,  # da fare da qui in avanti per i quiz
         "pages/natale/quiz14",
-        #LISTEN,
-        #"pages/natale/quiz16",
+        # LISTEN,
+        # "pages/natale/quiz16",
         "pages/classifica",
         "pages/endpage"
     ]
+
 
 def getPath5():
     return [
@@ -243,10 +252,11 @@ def getPath5():
         "pages/endpage"
     ]
 
+
 allpages = {
     "path_1": getPath1(),
     "path_2": getPath2(),
-    "path_3" : getPath3(),
+    "path_3": getPath3(),
     "path_4": getPath4(),
     "path_5": getPath5()
 }

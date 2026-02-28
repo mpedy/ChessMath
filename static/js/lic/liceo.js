@@ -1,5 +1,5 @@
 import { PrototipoStory } from "../common/PrototipoStory.js";
-import { ascolta_animatore, ascolta_torre, ascolta_alfiere, ascolta_cavallo, ascolta_regina } from "../common/Ascolta.js";
+import { ascolta_animatore, ascolta_torre, ascolta_alfiere, ascolta_cavallo, ascolta_regina, Ascolta } from "../common/Ascolta.js";
 import { battaglia_navale } from "./pages/BattagliaNavale.js";
 import { LicQuiz } from "./LicQuiz.js";
 import { classifica } from "../common/Classifica.js";
@@ -57,7 +57,41 @@ var quiz1 = new LicQuiz("quiz1", "title.question.img.answers", "static/img/torre
 var quiz2 = new LicQuiz("quiz2", "title.question.img.answers", "static/img/torre2.png");
 var quiz7 = new LicQuiz("quiz7", "title.question.answers");
 
+var transition_torre = new Ascolta(`<div>
+    <img src="static/img/torre.jpg" width="100%" class="transitioning-img transition-stopped" />
+</div>
+<script>
+    setTimeout(function () {
+        document.getElementsByClassName("transitioning-img")[0].classList.toggle("transition-stopped");
+    }, 100);
+</script>`);
 
+var transition_alfiere = new Ascolta(`<div>
+    <img src="static/img/alfiere.jpg" width="100%" class="transitioning-img transition-stopped" />
+</div>
+<script>
+    setTimeout(function () {
+        document.getElementsByClassName("transitioning-img")[0].classList.toggle("transition-stopped");
+    }, 100);
+</script>`);
+
+var transition_cavallo = new Ascolta(`<div>
+    <img src="static/img/cavallo.jpg" width="100%" class="transitioning-img transition-stopped" />
+</div>
+<script>
+    setTimeout(function () {
+        document.getElementsByClassName("transitioning-img")[0].classList.toggle("transition-stopped");
+    }, 100);
+</script>`);
+
+var transition_regina = new Ascolta(`<div>
+    <img src="static/img/regina.jpg" width="100%" class="transitioning-img transition-stopped" />
+</div>
+<script>
+    setTimeout(function () {
+        document.getElementsByClassName("transitioning-img")[0].classList.toggle("transition-stopped");
+    }, 100);
+</script>`);
 
 class Liceo extends PrototipoStory {
     constructor() {
@@ -65,6 +99,7 @@ class Liceo extends PrototipoStory {
         this.pages = [
             ascolta_animatore,
             battaglia_navale,
+            transition_torre,
             ascolta_torre,
             img_gioco1,
             quiz1,
@@ -82,6 +117,7 @@ class Liceo extends PrototipoStory {
             ascolta_animatore,
             gioco6bis,
             img_gioco6bis,
+            transition_alfiere,
             ascolta_alfiere,
             img_gioco7,
             gioco8,
@@ -95,6 +131,7 @@ class Liceo extends PrototipoStory {
             img_allsquares,
             gioco11b_bis,
             img_gioco11b_bis,
+            transition_cavallo,
             ascolta_cavallo,
             img_cavallo,
             gioco_spirit,
@@ -106,6 +143,7 @@ class Liceo extends PrototipoStory {
             gioco14,
             gioco15,
             img_gioco15,
+            transition_regina,
             ascolta_regina,
             img_regina,
             gioco16,
