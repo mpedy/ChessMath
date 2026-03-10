@@ -27,4 +27,4 @@ check:
 	ruff check
 
 venv:
-	@$(PY) -m venv venv
+	python -m venv venv
