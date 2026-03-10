@@ -56,6 +56,7 @@ export class MakeTimerClass {
 			}
 			if (self.sec <= 0) {
 				clearInterval(self.myt);
+				self.expired = true;
 				self.clessidra.style.width = "0px";
 				self.stopTimerFunction();
 			} else {

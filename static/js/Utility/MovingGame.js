@@ -41,7 +41,7 @@ class MovingGame extends PrototipoGame {
         if (this.with_timer) {
             this.maketimer.maketimer(document.getElementsByClassName("timer")[0]);
         }
-        this.maketimer.stopTimerFunction = function () {
+        this.maketimer.stopTimerFunction = () => {
             drawChessboard.handleMouseDown_casella = function () { }
             drawChessboard.handleMouseDown_image = function () { }
             $("#ricomincia").prop("disabled", true);
