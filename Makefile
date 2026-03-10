@@ -1,7 +1,17 @@
-PY=python
 NODE=node
+PY=python
+ifeq ($(OS),Windows_NT)
+    PY="venv/Scripts/python"
+else
+    PY="venv/bin/python"
+endif
 
 all: build
+
+init: venv package.json package-lock.json requirements.txt
+	npm ci
+	@$(PY) -m pip install --upgrade pip
+	@$(PY) -m pip install -r requirements.txt
 
 build:
 	@$(NODE) build.mjs
@@ -15,3 +25,6 @@ run_debug:
 
 check:
 	ruff check
+
+venv:
+	@$(PY) -m venv venv
