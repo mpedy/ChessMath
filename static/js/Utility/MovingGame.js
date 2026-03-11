@@ -14,12 +14,15 @@ class MovingGame extends PrototipoGame {
         html = undefined,
         title = "Moving Game",
         time = 30,
-        label_moves = "Mosse"
+        label_moves = "Mosse",
+        f_dist = undefined,
+        retry_message = (mvs) => `Hai percorso ${mvs} caselle. Vuoi riprovare?`,
+        calculate_score = (moves, time) => (20 - 2 * moves) + time
     }) {
         super(html ? html : `<div id="title">${title}</div>
 <div id="chessboard"></div>
 <div class="timer_container">
-	<div class="caselle_div">${label_moves}: <span id="number_of_moves">0</span></div>
+	${label_moves != false ? `<div class="caselle_div">${label_moves}: <span id="number_of_moves">0</span></div>` : ''}
 	<div class="timer" data-second="${time}" data-height="20px" data-width="80%"></div>
 </div>
 <div id="controls_container">
@@ -33,6 +36,25 @@ class MovingGame extends PrototipoGame {
         this.show_possible_moves = show_possible_moves;
         this.with_timer = with_timer;
         this.toro = toro;
+        this.f_dist = f_dist;
+        this.number_of_moves = 0;
+        this.retry_message = retry_message;
+        this.calculate_score = calculate_score;
+    }
+    dist(from, to) {
+        var x1 = from[1]
+        var x2 = to[1]
+        var y1 = from.charCodeAt(0) - 65 + 1
+        var y2 = to.charCodeAt(0) - 65 + 1
+        var d = 0;
+        if (x1 == x2) {
+            d = Math.abs(y2 - y1);
+            //console.log("Distanza: "+(y2-y1))
+        } else {
+            d = Math.abs(x2 - x1);
+            //console.log("Distanza: "+(x2-x1))
+        }
+        return d;
     }
     start() {
         var self = this;
@@ -63,7 +85,7 @@ class MovingGame extends PrototipoGame {
         var moving_piece = "";
         window.possible_moves = new Array();
         var end_position = this.end_position
-        var number_of_moves = 0;
+        this.number_of_moves = 0;
         var show_possible_moves = this.show_possible_moves
 
         window.ricomincia = () => {
@@ -76,8 +98,8 @@ class MovingGame extends PrototipoGame {
             if (end_position != null) {
                 window.enlight(end_position, "orange", true);
             }
-            number_of_moves = 0;
-            $("#number_of_moves").html(number_of_moves);
+            this.number_of_moves = 0;
+            $("#number_of_moves").html(this.number_of_moves);
             window.possible_moves = new Array();
             caselle_colorate = new Array();
         }
@@ -112,14 +134,20 @@ class MovingGame extends PrototipoGame {
             window.reset();
             drawChessboard.drawPieces(lst);
             this.moving_pieces[piece] = _to;
-            number_of_moves += window.dist(from, _to);
-            $("#number_of_moves").html(number_of_moves);
+            this.number_of_moves += window.dist(from, _to);
+            $("#number_of_moves").html(this.number_of_moves);
             if (_to == end_position) {
                 window.goal_reached()
             }
         }
 
-        window.dist = function (from, to) {
+        if(this.f_dist){
+            window.dist = this.f_dist;
+        }else{
+            window.dist = this.dist;
+        }
+
+        /*window.dist = function (from, to) {
             var x1 = from[1]
             var x2 = to[1]
             var y1 = from.charCodeAt(0) - 65 + 1
@@ -133,7 +161,7 @@ class MovingGame extends PrototipoGame {
                 //console.log("Distanza: "+(x2-x1))
             }
             return d;
-        }
+        }*/
 
         if (end_position != null) {
             window.enlight(end_position, "orange", true);
@@ -206,7 +234,7 @@ class MovingGame extends PrototipoGame {
 
         window.goal_reached = () => {
             window.punti = window.getPoints();
-            window.myconfirm_2b("Obiettivo raggiunto", "Hai percorso " + number_of_moves + " caselle. Vuoi riprovare?", "sì", "no",
+            window.myconfirm_2b("Obiettivo raggiunto", this.retry_message(this.number_of_moves), "sì", "no",
                 function () {
                     $(this).dialog("close");
                     window.ricomincia();
@@ -214,7 +242,7 @@ class MovingGame extends PrototipoGame {
                 }, function () {
                     $(this).dialog("close");
                     clearInterval(self.maketimer.myt);
-                    var gamePoints = (20 - 2 * number_of_moves) + self.maketimer.sec
+                    var gamePoints = self.calculate_score(self.number_of_moves, self.maketimer.sec )//(20 - 2 * this.number_of_moves) + self.maketimer.sec
                     window.punti += gamePoints;
                     self.maketimer.sec = 0;
                     self.maketimer.expired = false

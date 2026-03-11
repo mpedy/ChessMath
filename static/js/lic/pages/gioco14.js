@@ -21,7 +21,9 @@ var gioco14 = new MovingGame({
     with_timer: true,
     title: "Muovi il Cavallo verso il punto evidenziato nel minor numero di mosse",
     time: 60,
-    label_moves: "Mosse"
+    label_moves: "Mosse",
+    f_dist: function (from, to) { return 1;},
+    retry_message: (mvs) => `Hai effettuato ${mvs} moss${mvs>1?'e':'a'}. Vuoi riprovare?`,
 })
 
 export { gioco14 };

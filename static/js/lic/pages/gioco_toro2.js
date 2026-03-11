@@ -23,7 +23,9 @@ var gioco_toro2 = new MovingGame({
     toro: true,
     title: "Muovi il Cavallo verso il punto evidenziato nel minor numero di mosse sulla scacchiera toroidale",
     time: 90,
-    label_moves: "Mosse"
+    label_moves: "Mosse",
+    f_dist: function (from, to) { return 1; },
+    retry_message: (mvs) => `Hai effettuato ${mvs} moss${mvs>1?'e':'a'}. Vuoi riprovare?`,
 })
 
 export { gioco_toro2 };
