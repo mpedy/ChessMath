@@ -34,5 +34,5 @@ venv:
 docker:
 	docker build -t chessmath .
 
-docker_run: docker
+docker_run:
 	docker run -p 8000:8000 chessmath
