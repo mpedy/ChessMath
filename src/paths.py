@@ -129,6 +129,7 @@ def getPath3():
         LISTEN,
         "pages/lic/gioco6bis",
         "pages/lic/img_gioco6bis",
+        "pages/classifica",
         "pages/transition_alfiere",
         "pages/ascolta_alfiere",  # Alfiere
         "pages/lic/img_gioco7",
@@ -143,6 +144,7 @@ def getPath3():
         "pages/lic/img_allsquare",
         "pages/lic/gioco11b_bis",
         "pages/lic/img_gioco11b_bis",
+        "pages/classifica",
         "pages/transition_cavallo",
         "pages/ascolta_cavallo",  # CAVALLO
         "pages/lic/img_cavallo",
@@ -156,6 +158,7 @@ def getPath3():
         "pages/lic/gioco15",
         "pages/lic/img_gioco15",
         "pages/transition_regina",
+        "pages/classifica",
         "pages/ascolta_regina",  # Regina
         "pages/lic/img_regina",
         "pages/lic/gioco16",
