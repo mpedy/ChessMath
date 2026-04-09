@@ -13,5 +13,5 @@ class Img1 extends PrototipoGame {
     start() { }
 }
 
-var img_1 = new Img1("Diversi percorsi");
+var img_1 = new Img1("IMG Diversi percorsi");
 export { img_1 };

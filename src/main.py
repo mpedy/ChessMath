@@ -28,6 +28,9 @@ from .HTTPSMiddleware import HTTPSRedirectMiddleware
 
 from .paths import allpages
 from .GameOptions import GameOptions
+from .GameManager import GameManager, GameManagerOptions, Paths
+
+P_MANIFEST = json.loads(open("static/dist/pages/pages_manifest.json","r", encoding="utf-8").read())
 
 middleware = []
 
@@ -40,6 +43,7 @@ elif PROD == 2:
 REMOTE_DEBUG_WEINRE = int(os.getenv("REMOTE_DEBUG_WEINRE", "0"))
 
 opt = GameOptions()
+gameManager = GameManager(GameManagerOptions(percorso=Paths.LIC.value))
 websockets = []
 lock = threading.Lock()
 
@@ -103,7 +107,20 @@ async def setPage(request):
             opt.page = new_page
             opt.Answered = {}
             opt.Answered[opt.page] = []
-        arr = allpages[opt.percorso]
+        #arr = allpages[opt.percorso]
+        print("P_MANIFEST: ",P_MANIFEST)
+        percorso = opt.percorso.split("_")[1]
+        if percorso == "1":
+            percorso = "elem"
+        elif percorso == "2":
+            percorso = "med"
+        elif percorso == "3":
+            percorso = "lic"
+        elif percorso == "4":
+            percorso = "natale"
+        elif percorso == "5":
+            percorso = "alien"
+        arr = P_MANIFEST[percorso]
         len_array = len(arr)
         res = [arr[opt.page-1] if opt.page-1 in range(0,len_array) else None, arr[opt.page] if opt.page in range(0,len_array) else None, arr[opt.page+1] if opt.page+1 in range(0,len_array) else None]
         await notifyAllWS()
