@@ -50,7 +50,18 @@ class App {
             this.currentGame.mount();
         }
     }
+    listAllPages() {
+        return {
+            elem: this.elementari.listAllPages(),
+            med: this.medie.listAllPages(),
+            lic: this.liceo.listAllPages(),
+            natale: this.natale.listAllPages(),
+            alien: this.alien.listAllPages()
+        }
+    }
 }
 
 var app = new App();
 window.app = app;
+
+export { app };

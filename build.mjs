@@ -3,11 +3,45 @@ import esbuild from "esbuild";
 import crypto from "node:crypto";
 import fs from "node:fs";
 import path from "node:path";
+import { spawnSync } from "node:child_process";
 import { bundle as lightningBundle, browserslistToTargets } from "lightningcss";
 import browserslist from "browserslist";
 //import browserslistToEsbuild from "./browserslistToEsbuild.mjs";
 
 const OUTDIR = "static/dist";
+
+async function generatePagesJson() {
+    const outDir = path.join(OUTDIR, "pages");
+    ensureDir(outDir);
+
+    const tempScript = path.join(OUTDIR, "export-pages.cjs");
+
+    await esbuild.build({
+        entryPoints: ["static/js/ExportPath.js"],
+        bundle: true,
+        platform: "node",
+        format: "cjs",
+        target: ["node18"],
+        outfile: tempScript,
+        banner: {
+            js: "globalThis.window = globalThis.window || globalThis;",
+        },
+    });
+
+    const runResult = spawnSync(process.execPath, [tempScript], {
+        stdio: "inherit",
+        env: {
+            ...process.env,
+            EXPORT_PATH_OUTDIR: outDir,
+        },
+    });
+
+    if (runResult.status !== 0) {
+        throw new Error(`ExportPath build step failed with code ${runResult.status}`);
+    }
+
+    fs.unlinkSync(tempScript);
+}
 
 function ensureDir(dir) {
     fs.mkdirSync(dir, { recursive: true });
@@ -126,6 +160,7 @@ async function main() {
     ensureDir(OUTDIR);
     ensureDir(OUTDIR+"/js");
     ensureDir(OUTDIR+"/css");
+    ensureDir(OUTDIR+"/pages");
 
     // pulisci vecchi app.* e style.* (solo dentro static/dist)
     cleanOld([
@@ -141,6 +176,18 @@ async function main() {
     cleanOld([
         /^manifest\.json$/
     ], OUTDIR);
+
+    cleanOld([
+        /^pages_1_elementari\.json$/,
+        /^pages_2_medie\.json$/,
+        /^pages_3_liceo\.json$/,
+        /^pages_4_natale\.json$/,
+        /^pages_5_alien\.json$/,
+        /^pages_manifest\.json$/,
+    ], OUTDIR+"/pages");
+
+    console.log("Generating pages JSON...");
+    await generatePagesJson();
 
     console.log("Building JS...");
     const js = await buildJS();
