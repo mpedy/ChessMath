@@ -1,7 +1,0 @@
-<div id="quiz">
-	<span id="title"></span>
-	<span id="question"></span>
-	<br></br>
-	<ul id="answers">
-	</ul>
-</div>

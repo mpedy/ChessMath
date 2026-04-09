@@ -1,9 +1,0 @@
-<span id="title" style="padding: 10px">Quali sono le caselle che la Torre può raggiungere in una mossa?</span>
-<div id="chessboard"></div>
-<div class="timer_container">
-	<div class="timer" data-second="60" data-height="20px" data-width="80%"></div>
-</div>
-<div id="controls_container">
-	<button id="gobtn" onclick="procedi(this)">Conferma</button>
-	<button id="reset" onclick="reset()">Cancella tutto</button>
-</div>
