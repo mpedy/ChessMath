@@ -2,11 +2,11 @@ import { DrawChessboard as DrawChessboardClass } from "../../Utility/Drawchessbo
 import { PrototipoGame } from "../../common/PrototipoGame.js";
 
 class Gioco13bSoluzione extends PrototipoGame {
-    constructor() {
+    constructor(name = "Gioco13bSoluzione") {
         super(`<div style="padding: 10px; display: block;">
 	Una possibile soluzione:
 </div>
-<div id="chessboard"></div>`);
+<div id="chessboard"></div>`, name);
     }
     start() {
 
@@ -23,5 +23,5 @@ class Gioco13bSoluzione extends PrototipoGame {
     }
 }
 
-var gioco13b_soluzione = new Gioco13bSoluzione();
+var gioco13b_soluzione = new Gioco13bSoluzione("Soluzione");
 export { gioco13b_soluzione };

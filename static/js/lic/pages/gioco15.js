@@ -24,6 +24,7 @@ var gioco15 = new MovingGame({
     time: 90,
     f_dist: function (from, to) { return 1;},
     retry_message: (mvs) => `Hai effettuato ${mvs} moss${mvs>1?'e':'a'}. Vuoi riprovare?`,
+    name: "G Muovi Cavallo 4"
 })
 
 export { gioco15 };

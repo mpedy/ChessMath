@@ -4,8 +4,8 @@ import { PrototipoQuiz } from "../../common/PrototipoQuiz.js";
 
 /* global $ */
 class Quiz9 extends PrototipoQuiz {
-    constructor() {
-        super("quiz9", "title.question.chessboard.answers");
+    constructor(name = "quiz9") {
+        super(name, "title.question.chessboard.answers");
     }
     start() {
         var drawChessboard = new DrawChessboardClass($("#chessboard")[0])
@@ -33,5 +33,5 @@ class Quiz9 extends PrototipoQuiz {
     }
 }
 
-var quiz9 = new Quiz9();
+var quiz9 = new Quiz9("Q Alfiere distanza 2");
 export { quiz9 };

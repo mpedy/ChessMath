@@ -17,7 +17,8 @@ class MovingGame extends PrototipoGame {
         label_moves = "Mosse",
         f_dist = undefined,
         retry_message = (mvs) => `Hai percorso ${mvs} caselle. Vuoi riprovare?`,
-        calculate_score = (moves, time) => (20 - 2 * moves) + time
+        calculate_score = (moves, time) => (20 - 2 * moves) + time,
+        name = undefined
     }) {
         super(html ? html : `<div id="title">${title}</div>
 <div id="chessboard"></div>
@@ -27,7 +28,7 @@ class MovingGame extends PrototipoGame {
 </div>
 <div id="controls_container">
 	<button id="ricomincia" onclick="window.ricomincia()">Ricomincia</button>
-</div>` );
+</div>`, name );
         this.piece_position = piece_position;
         this.piece_position_initial = { ...piece_position };
         this.moving_pieces = moving_pieces;

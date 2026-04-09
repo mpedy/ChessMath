@@ -19,7 +19,8 @@ var gioco_training_toro = new MovingGame({
 </div>
 <div id="controls_container">
 	<button id="ricomincia" onclick="window.ricomincia()">Ricomincia</button>
-</div>`
+</div>`,
+    name: "G Training Toro"
 })
 
 export { gioco_training_toro };

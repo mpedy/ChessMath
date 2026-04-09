@@ -3,11 +3,11 @@ import { PrototipoGame } from "./PrototipoGame.js";
 
 /* global $ */
 class ImgAllSquares extends PrototipoGame {
-    constructor() {
+    constructor(name = "ImgAllSquares") {
         super(`<div style="padding: 10px; display: block;">
 	Le due circonferenze a confronto:
 </div>
-<div id="chessboard"></div>`);
+<div id="chessboard"></div>`, name);
     }
     start() {
 
@@ -48,5 +48,5 @@ class ImgAllSquares extends PrototipoGame {
     }
 }
 
-var img_allsquares = new ImgAllSquares();
+var img_allsquares = new ImgAllSquares("IMG AllSquares");
 export { img_allsquares };

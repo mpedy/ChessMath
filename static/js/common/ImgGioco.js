@@ -3,11 +3,11 @@ import { PrototipoGame } from "./PrototipoGame.js";
 
 /* global $ */
 class ImgGioco extends PrototipoGame {
-    constructor(piece_position, cas, title = "Risposta corretta:") {
+    constructor(piece_position, cas, title = "Risposta corretta:", name = "ImgGioco") {
         super(`<div style="padding: 10px; display: block;">
 	${title}
 </div>
-<div id="chessboard"></div>`);
+<div id="chessboard"></div>`, name);
         this.piece_position = piece_position;
         this.cas = cas;
         this.title = title;

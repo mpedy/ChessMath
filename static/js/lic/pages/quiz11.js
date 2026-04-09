@@ -4,8 +4,8 @@ import { PrototipoQuiz } from "../../common/PrototipoQuiz.js";
 
 /* global $ */
 class Quiz11 extends PrototipoQuiz {
-    constructor() {
-        super("quiz11", "title.question.chessboard.answers");
+    constructor(name = "quiz11") {
+        super(name, "title.question.chessboard.answers");
     }
     start() {
         var drawChessboard = new DrawChessboardClass($("#chessboard")[0])
@@ -31,5 +31,5 @@ class Quiz11 extends PrototipoQuiz {
     }
 }
 
-var quiz11 = new Quiz11();
+var quiz11 = new Quiz11("Q Alfiere quante caselle cfr 1");
 export { quiz11 };

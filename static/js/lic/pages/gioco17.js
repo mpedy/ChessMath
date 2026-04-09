@@ -3,7 +3,7 @@ import { pieceMove } from "../../Utility/MovePieces.js";
 import { PrototipoGame } from "../../common/PrototipoGame.js";
 
 class Gioco17 extends PrototipoGame {
-    constructor() {
+    constructor(name = "Gioco17") {
         super(`<span id="title" style="padding: 10px">Piazza 8 Regine sulla scacchiera in modo tale che non si guardino mai</span>
 <div id="chessboard"></div>
 <div class="timer_container">
@@ -12,7 +12,7 @@ class Gioco17 extends PrototipoGame {
 <div id="controls_container">
 	<button id="gobtn" onclick="procedi(this)">Conferma</button>
 	<button id="reset" onclick="reset()">Cancella tutto</button>
-</div>`);
+</div>`, name);
     }
     start() {
         var drawChessboard = new DrawChessboardClass(document.getElementById("chessboard"))
@@ -154,5 +154,5 @@ class Gioco17 extends PrototipoGame {
     }
 }
 
-var gioco17 = new Gioco17();
+var gioco17 = new Gioco17("8 Regine");
 export { gioco17 };

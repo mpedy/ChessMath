@@ -1,5 +1,7 @@
 class Endpage {
-    constructor() { }
+    constructor() { 
+        this.name = "Fine del gioco";
+    }
     mount() {
         $("#content_page").html(`<div>
 <script type="text/javascript">

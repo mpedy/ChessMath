@@ -4,6 +4,7 @@ import { PrototipoGame } from "../common/PrototipoGame.js";
 
 class DrawGame extends PrototipoGame {
     constructor({
+        name = "DrawGame",
         piece_position = {},
         caselle_corrette = [],
         with_timer = true,
@@ -20,7 +21,7 @@ class DrawGame extends PrototipoGame {
 <div id="controls_container">
 	<button id="gobtn" onclick="procedi(this)">Conferma</button>
 	<button id="reset" onclick="reset()">Cancella tutto</button>
-</div>`);
+</div>`, name);
         this.piece_position = piece_position;
         this.caselle_corrette = caselle_corrette;
         this.with_timer = with_timer;

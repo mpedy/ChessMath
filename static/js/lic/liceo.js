@@ -53,9 +53,9 @@ import { gioco_toro2 } from "./pages/gioco_toro2.js";
 import { gioco_toro3 } from "./pages/gioco_toro3.js";
 import { img_gioco_toro3 } from "./pages/img_gioco_toro3.js";
 
-var quiz1 = new LicQuiz("quiz1", "title.question.img.answers", "static/img/torre1.png");
-var quiz2 = new LicQuiz("quiz2", "title.question.img.answers", "static/img/torre2.png");
-var quiz7 = new LicQuiz("quiz7", "title.question.answers");
+var quiz1 = new LicQuiz("Q Percorso più breve", "title.question.img.answers", "static/img/torre1.png");
+var quiz2 = new LicQuiz("Q Quante caselle", "title.question.img.answers", "static/img/torre2.png");
+var quiz7 = new LicQuiz("Q Quante caselle cfr 1", "title.question.answers");
 
 var transition_torre = new Ascolta(`<div>
     <img src="static/img/torre.jpg" width="100%" class="transitioning-img transition-stopped" />
@@ -64,7 +64,7 @@ var transition_torre = new Ascolta(`<div>
     setTimeout(function () {
         document.getElementsByClassName("transitioning-img")[0].classList.toggle("transition-stopped");
     }, 100);
-</script>`);
+</script>`, "Transizione Torre");
 
 var transition_alfiere = new Ascolta(`<div>
     <img src="static/img/alfiere.jpg" width="100%" class="transitioning-img transition-stopped" />
@@ -73,7 +73,7 @@ var transition_alfiere = new Ascolta(`<div>
     setTimeout(function () {
         document.getElementsByClassName("transitioning-img")[0].classList.toggle("transition-stopped");
     }, 100);
-</script>`);
+</script>`, "Transizione Alfiere");
 
 var transition_cavallo = new Ascolta(`<div>
     <img src="static/img/cavallo.jpg" width="100%" class="transitioning-img transition-stopped" />
@@ -82,7 +82,7 @@ var transition_cavallo = new Ascolta(`<div>
     setTimeout(function () {
         document.getElementsByClassName("transitioning-img")[0].classList.toggle("transition-stopped");
     }, 100);
-</script>`);
+</script>`, "Transizione Cavallo");
 
 var transition_regina = new Ascolta(`<div>
     <img src="static/img/regina.jpg" width="100%" class="transitioning-img transition-stopped" />
@@ -91,7 +91,7 @@ var transition_regina = new Ascolta(`<div>
     setTimeout(function () {
         document.getElementsByClassName("transitioning-img")[0].classList.toggle("transition-stopped");
     }, 100);
-</script>`);
+</script>`, "Transizione Regina");
 
 class Liceo extends PrototipoStory {
     constructor() {

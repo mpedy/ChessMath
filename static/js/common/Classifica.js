@@ -1,5 +1,7 @@
 class Classifica {
-    constructor() {}
+    constructor() {
+		this.name = "Classifica";
+	}
     mount(){
         $("#content_page").html(`<table rules=rows border=2 id="classifica" style="color: white; margin: auto; width: 80%; text-align: center;">
 	<thead>

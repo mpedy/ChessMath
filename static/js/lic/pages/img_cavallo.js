@@ -3,11 +3,11 @@ import { PrototipoGame } from "../../common/PrototipoGame.js";
 
 /* global $ */
 class ImgCavallo extends PrototipoGame {
-    constructor() {
+    constructor(name) {
         super(`<div style="padding: 10px; display: block;">
 	Una mossa del Cavallo:
 </div>
-<div id="chessboard"></div>`);
+<div id="chessboard"></div>`, name);
     }
     start() {
 
@@ -50,5 +50,5 @@ class ImgCavallo extends PrototipoGame {
     }
 }
 
-var img_cavallo = new ImgCavallo();
+var img_cavallo = new ImgCavallo("IMG Mossa Cavallo");
 export { img_cavallo };

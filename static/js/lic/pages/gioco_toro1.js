@@ -26,6 +26,7 @@ var gioco_toro1 = new MovingGame({
     label_moves: "Mosse",
     f_dist: function (from, to) { return 1; },
     retry_message: (mvs) => `Hai effettuato ${mvs} moss${mvs>1?'e':'a'}. Vuoi riprovare?`,
+    name: "G Alfiere Toro"
 })
 
 export { gioco_toro1 };

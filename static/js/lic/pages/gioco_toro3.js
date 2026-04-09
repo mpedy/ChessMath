@@ -6,7 +6,8 @@ var gioco_toro3 = new DrawGame({
     },
     caselle_corrette: ["B3", "C2", "C8", "B7", "H7", "G8", "G2", "H3"],
     title: "Segna tutte le caselle in cui il Cavallo può andare con una mossa su una scacchiera toroidale",
-    time: 60
+    time: 60,
+    name: "G segna caselle cavallo toro 1 mossa"
 })
 
 export { gioco_toro3 };

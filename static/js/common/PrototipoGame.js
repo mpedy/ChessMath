@@ -2,9 +2,10 @@ import { MakeTimerClass } from "../Utility/Maketimer";
 
 /* global $ */
 class PrototipoGame {
-    constructor(html = undefined) {
+    constructor(html = undefined, name = "PrototipoGame") {
         this.maketimer = new MakeTimerClass();
         this.html = html;
+        this.name = name;
     }
     dismount() {
         this.maketimer.clearTimer();

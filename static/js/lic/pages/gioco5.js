@@ -6,7 +6,8 @@ var gioco5 = new DrawGame({
     },
     caselle_corrette: ["D6", "E5", "D4", "C5"],
     title: "Segna le caselle appartenenti alla circonferenza di raggio 1 con centro la Torre",
-    time: 30
+    time: 30,
+    name: "G Segna caselle cfr 1 Torre"
 })
 
 export { gioco5 };
