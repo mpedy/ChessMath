@@ -3,7 +3,7 @@ import { ImgGioco } from "./ImgGioco.js";
 
 /* global $ */
 class TorreHelp extends ImgGioco {
-    constructor() { super(); }
+    constructor() { super(); this.name = "IMG Mossa Torre" }
     start() {
         var drawChessboard = new DrawChessboardClass(document.getElementById("chessboard"))
         drawChessboard.drawChessboard()

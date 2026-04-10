@@ -108,7 +108,6 @@ async def setPage(request):
             opt.Answered = {}
             opt.Answered[opt.page] = []
         #arr = allpages[opt.percorso]
-        print("P_MANIFEST: ",P_MANIFEST)
         percorso = opt.percorso.split("_")[1]
         if percorso == "1":
             percorso = "elem"
