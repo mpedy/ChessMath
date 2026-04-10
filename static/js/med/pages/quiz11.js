@@ -5,7 +5,7 @@ import { getQuiz } from "../../Utility/MyUI.js"
 /* global $ */
 class Quiz11 extends PrototipoQuiz {
     constructor() {
-        super("quiz11", "title.question.chessboard.answers");
+        super("Q Alfiere caselle cfr 1", "title.question.chessboard.answers");
     }
     start() {
         var drawChessboard = new DrawChessboardClass($("#chessboard")[0])

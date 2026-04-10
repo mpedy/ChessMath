@@ -6,7 +6,8 @@ var gioco7 = new DrawGame({
     },
     caselle_corrette: ["A2", "A8", "B3", "B7", "C4", "C6", "E4", "E6", "F3", "F7", "G2", "G8", "H1"],
     title: "Segna tutte le caselle che può raggiungere l'Alfiere con una sola mossa",
-    time: 60
+    time: 60,
+    name: "G Alfiere 1 mossa"
 })
 
 export { gioco7 };
