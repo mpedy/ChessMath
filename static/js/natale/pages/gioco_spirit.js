@@ -6,7 +6,8 @@ var gioco_spirit = new DrawGame({
     },
     caselle_corrette: ["B4", "B6", "C3", "C7", "E3", "E7", "F4", "F6"],
     title: "Segna tutte le caselle in cui il Cavallo può andare con una mossa",
-    time: 60
+    time: 60,
+    name: "G Spirit"
 })
 
 export { gioco_spirit };

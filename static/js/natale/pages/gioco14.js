@@ -20,7 +20,8 @@ var gioco14 = new MovingGame({
     show_possible_moves: false,
     with_timer: true,
     title: "Muovi il Cavallo verso il punto evidenziato nel minor numero di mosse",
-    time: 90
+    time: 90,
+    name: "G Muovi Cavallo 3"
 })
 
 export { gioco14 };

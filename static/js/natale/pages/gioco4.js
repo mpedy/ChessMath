@@ -19,7 +19,8 @@ var gioco4 = new MovingGame({
     with_timer: true,
     title: "Muovi la Torre verso il punto evidenziato nel minor numero di caselle",
     time: 60,
-    label_moves: "Caselle"
+    label_moves: "Caselle",
+    name: "G Muovi Torre 2"
 })
 
 export { gioco4 };

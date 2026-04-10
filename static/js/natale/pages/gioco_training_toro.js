@@ -20,6 +20,7 @@ var gioco_training_toro = new MovingGame({
 <div id="controls_container">
 	<button id="ricomincia" onclick="window.ricomincia()">Ricomincia</button>
 </div>`,
+    name: "G Prova Torre Toro"
 
 }
 )

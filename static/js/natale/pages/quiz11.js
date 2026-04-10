@@ -5,7 +5,7 @@ import { PrototipoQuiz } from "../../common/PrototipoQuiz.js";
 /* global $ */
 class Quiz11 extends PrototipoQuiz {
     constructor() {
-        super("quiz11", "title.question.chessboard.answers");
+        super("Q Alfiere cfr 1", "title.question.chessboard.answers");
     }
     start() {
 

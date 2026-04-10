@@ -48,11 +48,11 @@ import { gioco_toro2 } from "./pages/gioco_toro2.js";
 var ascolta_torre = new Ascolta(`<div>
 	<h1 style="margin-top: 40%">E' NATALE - Ascolta l'animatore</h1>
 	<img src="static/img/tree.svg" style="width: 60%" />
-</div>`)
+</div>`, "Ascolta Torre NATALE")
 
-var quiz1 = new NatQuiz("quiz1","title.question.img.answers", "static/img/torre1.png");
-var quiz2 = new NatQuiz("quiz2","title.question.img.answers", "static/img/torre2.png");
-var quiz7 = new NatQuiz("quiz7","title.question.answers");
+var quiz1 = new NatQuiz("Q Percorso più breve","title.question.img.answers", "static/img/torre1.png");
+var quiz2 = new NatQuiz("Q Quante caselle è lungo","title.question.img.answers", "static/img/torre2.png");
+var quiz7 = new NatQuiz("Q Torre cfr 1","title.question.answers");
 
 
 class Natale extends PrototipoStory {

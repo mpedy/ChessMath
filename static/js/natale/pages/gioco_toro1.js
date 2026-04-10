@@ -22,7 +22,8 @@ var gioco_toro1 = new MovingGame({
     with_timer: true,
     toro: true,
     title: "Muovi l'Alfiere verso il punto evidenziato nel minor numero di mosse sulla scacchiera toroidale",
-    time: 120
+    time: 120,
+    name: "G Muovi Alfiere Toro"
 })
 
 export { gioco_toro1 };

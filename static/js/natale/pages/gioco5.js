@@ -6,7 +6,8 @@ var gioco5 = new DrawGame({
     },
     caselle_corrette: ["D6", "E5", "D4", "C5"],
     title: "Segna tutte le caselle a distanza 1 dalla casella in cui si trova la Torre",
-    time: 60
+    time: 60,
+    name: "G Torre cfr 1"
 })
 
 export { gioco5 };

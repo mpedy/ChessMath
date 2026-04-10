@@ -2,11 +2,11 @@ import { PrototipoGame } from "../../common/PrototipoGame.js";
 import { DrawChessboard as DrawChessboardClass } from "../../Utility/Drawchessboard.js";
 
 class ImgGioco15 extends PrototipoGame {
-    constructor() {
+    constructor(name) {
         super(`<div style="padding: 10px; display: block;">
 	Una possibile soluzione:
 </div>
-<div id="chessboard"></div>`);
+<div id="chessboard"></div>`, name);
     }
     start() {
 
@@ -41,5 +41,5 @@ class ImgGioco15 extends PrototipoGame {
     }
 }
 
-var img_gioco15 = new ImgGioco15();
+var img_gioco15 = new ImgGioco15("IMG Risposta");
 export { img_gioco15 };

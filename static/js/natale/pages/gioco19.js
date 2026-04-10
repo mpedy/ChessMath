@@ -5,7 +5,7 @@ import { PieceClass } from "../../Utility/PieceClass.js";
 
 /* global $ */
 class Gioco19 extends PrototipoGame {
-    constructor() {
+    constructor(name) {
         super(`<div id="title">Cattura il Re</div>
 <div id="chessboard"></div>
 <div>
@@ -13,7 +13,7 @@ class Gioco19 extends PrototipoGame {
 </div>
 <div id="controls_container">
 	<button id="ricomincia" onclick="window.ricomincia()">Ricomincia</button>
-</div>`);
+</div>`, name);
     }
     start() {
         var drawChessboard = new DrawChessboardClass(document.getElementById("chessboard"))
@@ -239,5 +239,5 @@ class Gioco19 extends PrototipoGame {
     }
 }
 
-var gioco19 = new Gioco19();
+var gioco19 = new Gioco19("G INT - Cattura il Re");
 export { gioco19 };
