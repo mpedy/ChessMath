@@ -3,11 +3,12 @@ import { DrawChessboard as DrawChessboardClass } from "../../Utility/Drawchessbo
 
 /* global $ */
 class ImgGioco10 extends ImgGioco {
-    constructor() {
+    constructor(name) {
         super(
             { "D5": "Bishop.svg" },
             ["C4", "C6", "E4", "E6"]
         );
+        this.name = name;
     }
     // start() {
     //     var drawChessboard = new DrawChessboardClass(document.getElementById("chessboard"))
@@ -34,5 +35,5 @@ class ImgGioco10 extends ImgGioco {
 
     // }
 }
-var img_gioco10 = new ImgGioco10();
+var img_gioco10 = new ImgGioco10("IMG Risposta");
 export { img_gioco10 };

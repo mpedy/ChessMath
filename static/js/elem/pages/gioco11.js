@@ -5,7 +5,8 @@ var gioco11 = new DrawGame({
     caselle_corrette: ["D7", "F7", "H7", "D5", "H5", "D3", "F3", "H3"],
     with_timer: true,
     title: "Disegna tutte le caselle a distanza 2 dall'Alfiere",
-    time: 60
+    time: 60,
+    name: "G Alfiere cfr 2"
 })
 
 export { gioco11 };

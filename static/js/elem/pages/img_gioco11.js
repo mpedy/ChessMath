@@ -3,11 +3,12 @@ import { DrawChessboard as DrawChessboardClass } from "../../Utility/Drawchessbo
 
 /* global $ */
 class ImgGioco11 extends ImgGioco {
-    constructor() {
+    constructor(name) {
         super(
             { "F5": "Bishop.svg" },
             ["D7", "F7", "H7", "D5", "H5", "D3", "F3", "H3"]
         );
+        this.name = name;
     }
     // start() {
     //     var drawChessboard = new DrawChessboardClass(document.getElementById("chessboard"))
@@ -33,5 +34,5 @@ class ImgGioco11 extends ImgGioco {
     //     drawChessboard.handleMouseDown_image = function () { }
     // }
 }
-var img_gioco11 = new ImgGioco11();
+var img_gioco11 = new ImgGioco11("IMG Risposta");
 export { img_gioco11 };
