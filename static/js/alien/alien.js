@@ -16,7 +16,7 @@ var transition1 = new Ascolta(`<div>
     setTimeout(function () {
         document.getElementsByClassName("transitioning-img")[0].classList.toggle("transition-stopped");
     }, 100);
-</script>`);
+</script>`, "Transizione Terra");
 
 var transition2 = new Ascolta(`<div>
     <img src="static/img/alien1.png" width="100%" class="transitioning-img transition-stopped" />
@@ -25,7 +25,7 @@ var transition2 = new Ascolta(`<div>
     setTimeout(function () {
         document.getElementsByClassName("transitioning-img")[0].classList.toggle("transition-stopped");
     }, 100);
-</script>`);
+</script>`, "Transizione Alien");
 
 var transition3 = new Ascolta(`<div>
     <img src="static/img/alien2.png" width="100%" class="transitioning-img transition-stopped" />
@@ -34,7 +34,7 @@ var transition3 = new Ascolta(`<div>
     setTimeout(function () {
         document.getElementsByClassName("transitioning-img")[0].classList.toggle("transition-stopped");
     }, 100);
-</script>`);
+</script>`, "Transizione Alien 2");
 
 class Alien extends PrototipoStory {
     constructor() {

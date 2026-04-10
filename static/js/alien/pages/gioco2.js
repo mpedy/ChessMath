@@ -17,7 +17,8 @@ var gioco2 = new DrawGame({
     ],
     chessboard_dim: 12,
     title: "Segna tutte le caselle in cui il Cavallo può andare con due mosse",
-    time: 120
+    time: 120,
+    name: "G Cavallo 2 mosse"
 })
 
 export { gioco2 };
