@@ -11,7 +11,8 @@ Benvenuti a **ChessMath**!
 
 ### Collaborazioni
 
-Questo progetto è testato con BrowserStack
+Questo progetto è testato con BrowserStack.<br>
+Questo progetto include il motore scacchistico [Stockfish](https://github.com/lichess-org/stockfish.js)
 
 
 ### English
@@ -22,4 +23,5 @@ Welcome to **ChessMath**!
 
 #### Collaboration
 
-This project is tested with BrowserStack
+This project is tested with BrowserStack.<br>
+This project include [Stockfish](https://github.com/lichess-org/stockfish.js) Chess Engine
