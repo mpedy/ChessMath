@@ -41,6 +41,14 @@ elif PROD == 2:
     middleware = [Middleware(CustomHeaderMiddleware)]
 
 REMOTE_DEBUG_WEINRE = int(os.getenv("REMOTE_DEBUG_WEINRE", "0"))
+if REMOTE_DEBUG_WEINRE == 1:
+    from rich import box
+    from rich.console import Console
+    from rich.panel import Panel
+    from rich.table import Table
+    console = Console()
+    body = "\nREMOTE DEBUG WEINRE MODE ENABLED\nRemember to start WeinRE with 'npx weinre --boundHost 0.0.0.0\n"
+    console.print(Panel.fit(body, title="WEINRE Module ACTIVATED", border_style="cyan", box=box.ROUNDED))
 
 opt = GameOptions()
 gameManager = GameManager(GameManagerOptions(percorso=Paths.LIC.value))
@@ -75,7 +83,7 @@ async def gotoPage(request):
             "X-PAGENAME": allpages[opt.percorso][opt.page]
         })
     except Exception as e:
-        return HTMLResponse(f"""<div> Errore: {e} """)
+        return HTMLResponse(f"""<div> Errore: {e}.<br>{allpages[opt.percorso]}</div> """)
 
 async def returnPage(request):
     global opt
@@ -310,6 +318,18 @@ async def refresh(request):
     manifest = json.load(open("static/dist/manifest.json","r", encoding="utf-8"))
     return PlainTextResponse("ok")
 
+async def polling(request):
+    global opt
+    global websockets
+    cod = request.path_params["cod"]
+    name = request.path_params["name"]
+    if cod != opt.codice:
+        return PlainTextResponse("Codice non valido", status_code=401)
+    codice = request.headers["X-Requested-From"]
+    if codice in opt.UUID_NAME or codice == "Animatore":
+        return JSONResponse({"pagina": opt.page, "path": opt.percorso.split("_")[1]})
+    return PlainTextResponse("Codice non valido", status_code=401)
+
 class MyWebSocket(WebSocketEndpoint):
     import typing
     websockets = []
@@ -365,7 +385,8 @@ class MyWebSocket(WebSocketEndpoint):
 routes=[
     Route("/", welcome), #ok
     Route("/game_{uuid:str}",mainRoute),#ok
-    Route("/getpage_{page:int}",gotoPage),#ok
+    # Non più necessario, ora la pagina viene gestita direttamente da JS con polling e WS
+    #Route("/getpage_{page:int}",gotoPage),#ok
     Route("/page_{cod:int}", returnPage), #deprecato
     Route("/setpage_{page:int}_{code:int}",setPage),#ok
     Route("/setpath_{path:int}",setPath),#ok
@@ -385,6 +406,7 @@ routes=[
     Route("/anim",anim),#ok
     Route("/refresh", refresh),
     Mount('/static', app=StaticFiles(directory='static'), name="static"),#ok
+    Route("/polling/{cod:int}_{name:str}", polling),#ok
 ]
 
 app = Starlette(routes=routes, on_startup=[startup_task], middleware=middleware, exception_handlers={405: onerror})

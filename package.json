@@ -10,6 +10,7 @@
     "eslint": "^9.39.2",
     "globals": "^17.3.0",
     "lightningcss": "^1.31.1",
+    "local-ssl-proxy": "^2.0.5",
     "webpack": "^5.96.1",
     "webpack-cli": "^5.1.4",
     "weinre": "^3.0.0"

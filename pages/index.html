@@ -27,12 +27,12 @@
 				console.error("Stack trace:", error.stack);
 			}
 		};
-		window.WeinreServerURL=`http://${window.location.hostname}:8080/`;
+		window.WeinreServerURL=`https://${window.location.hostname}:8043/`;
 		window.WeinreServerId='anonymous';
 		var s = document.createElement('script');
 		s.src = "static/js/weinre.dist.js";
 		s.onerror = function() { alert("Impossibile caricare Weinre! Controlla connessione/IP"); };
-		s.onload = function() { alert("Script Weinre caricato correttamente"); };
+		s.onload = function() { alert("Script Weinre caricato correttamente in index"); };
 		document.head.appendChild(s);
 	</script>
 	{% endif %}
@@ -55,53 +55,8 @@
 		var changepath = function(p){fetch(window.location.origin+"/setpath_"+p)}*/
 		var codice = {{ codice }}
 		var nome = "{{ nome }}"
-		var page = 0;
-		var socket = new WebSocket("ws" + window.location.protocol.replace("http", "") + "//" + window.location.host + "/ws/" + codice + "_" + nome);
-
-		socket.onopen = function (event) {
-			console.log("WebSocket connection opened: ", event);
-			socket.send("getpage")
-		};
-
-		socket.onmessage = function (event) {
-			console.log("WebSocket message received: ", event.data);
-			try {
-				var data = JSON.parse(event.data)
-				if (data.hasOwnProperty("pagina")) {
-					page = data["pagina"]
-					if (data.hasOwnProperty("path")) {
-						app.setPath(data["path"]);
-					}
-					$.ajax(
-						{
-							url: "getpage_" + page,
-							async: true,
-							success: function (result) {
-								clearInterval(window.myt);
-								$("#mydialog_opened").dialog("close").remove();
-								//$("#content_page").html(result)
-								app.currentGame.setPage.bind(app.currentGame)(parseInt(page))
-							}
-						})
-				} else if (data.hasOwnProperty("path")) {
-					app.setPath(data["path"]);
-				}
-			} catch (err) {
-
-			}
-		};
-
-		socket.onclose = function (event) {
-			console.log("WebSocket connection closed: ", event);
-			window.onbeforeunload = function () { }
-			window.location.href = "/"
-		};
-
-		socket.onerror = function (error) {
-			console.error("WebSocket error: ", error);
-			window.onbeforeunload = function () { }
-			window.location.href = "/"
-		};
+		app.initCommModule(nome, codice);
+		app.commModule.start();
 	</script>
 	<style>
 		img {

@@ -11,3 +11,4 @@ chiavi/
 node_modules/
 **/.env
 static/dist/*
+certs/*.pem
