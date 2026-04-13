@@ -69,7 +69,7 @@ class CommunicationModule {
                         this.elaborateResponse(data);
                     },
                     error: (err) => {
-                        console.error("Polling error: ", err);
+                        console.error("Polling error 1: ", err);
                         window.onbeforeunload = function () { };
                         window.location.href = "/";
                     }
@@ -88,7 +88,7 @@ class CommunicationModule {
                     this.elaborateResponse(data);
                 },
                 error: (err) => {
-                    console.error("Polling error: ", err);
+                    console.error("Polling error 2: ", err);
                     window.onbeforeunload = function () { };
                     window.location.href = "/";
                 }

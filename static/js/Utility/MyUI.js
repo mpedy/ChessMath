@@ -186,12 +186,12 @@ window.enwrite = function (casella, txt, txt_color, bck_color) {
 	}
 }
 
-export var getQuiz = function (maketimer) {
+export var getQuiz = function (maketimer, quizid) {
 	if (maketimer === undefined) {
 		maketimer = new MakeTimerClass();
 	}
 	$.ajax({
-		url: "getquiz", success: function (quiz) {
+		url: "getquiz?quizid=" + quizid, success: function (quiz) {
 			//$("#title").html("<span>Domanda da "+quiz["punteggio"]+" punti</span><br></br>");
 			$("#title").html("<div class=\"timer\" data-second=\"" + quiz['tempo'] + "\" data-height=\"20px\" data-width=\"80%\"></div>")
 			maketimer.maketimer($(".timer")[0])

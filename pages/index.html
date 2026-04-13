@@ -37,22 +37,10 @@
 	</script>
 	{% endif %}
 	<script>
-		/*
-		* DA SCOMMENTARE
-		*/
 		window.onbeforeunload = function () { return "Your work will be lost."; };
 		document.addEventListener("beforeunload", function (e) {
 			alert("Stai uscendo dal gioco! Perderai tutti i dati non salvati");
 		});
-		/**/
-		/**
-		* DA COMMENTARE!!
-		**/
-		/*var nxt = function(p){
-			fetch(window.location.origin+"/setpage_"+p+"_123111321").then(res => res.text().then(txt=>console.log(txt)))
-		}
-		var upt = function(){fetch(window.location.origin+"/updateQuest")}
-		var changepath = function(p){fetch(window.location.origin+"/setpath_"+p)}*/
 		var codice = {{ codice }}
 		var nome = "{{ nome }}"
 		app.initCommModule(nome, codice);

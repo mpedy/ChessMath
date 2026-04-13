@@ -1,22 +1,13 @@
-from random import seed, random
+from random import seed, randint
 from datetime import datetime
 import hashlib
 from src.Quiz import Quiz
 
 
 class GameOptions():
-    MyQuiz = []
-    Classifica = {}
-    Classifica_ordered = []
-    Answered = {}
-    allNames = []
-    UUID_NAME = {}
-    codice = -1
-    page = 0
-    percorso = "path_3"
-    setPageCode = 123111321
 
     def __init__(self):
+        self.all_path = ["elementari", "medie", "liceo", "natale", "alien"]
         self.MyQuiz = []
         self.Classifica = {}
         self.Classifica_ordered = []
@@ -24,10 +15,16 @@ class GameOptions():
         self.allNames = []
         self.UUID_NAME = {}
         seed(datetime.now().timestamp())
-        self.codice = int(random()*100000 % 990+1)
+        # Codice per accedere al lab
+        self.updateCodice()
         self.page = 0
-        self.percorso = "path_3"
-        self.setPageCode = 123111321
+        # Codice per autorizzare il cambio pagina
+        self.setPageCode = randint(100000000, 999999999)
+        self.changePath("liceo")
+
+    def updateCodice(self):
+        seed(datetime.now().timestamp())
+        self.codice = randint(10, 999)
 
     def reset(self):
         self.UUID_NAME = {}
@@ -36,25 +33,14 @@ class GameOptions():
         self.Classifica_ordered = []
         self.Answered = {}
 
-    def obtainNewQuiz(self, res):
-        self.MyQuiz = []
-        for q in res:
-            quiz = Quiz(q)
-            self.MyQuiz.append(quiz)
-        # for i in res:
-        #    q = False
-        #    nuovo = True
-        #    for qu in self.MyQuiz:
-        #        if qu.id == i[0]:
-        #            q = qu
-        #            nuovo = False
-        #            break
-        #    if q is False:
-        #        q = Quiz()
-        #        q.setId(i[0])
-        #    q.set(i[1],i[2])
-        #    if nuovo:
-        #        self.MyQuiz.append(q)
+    def fetchQuiz(self):
+        with open(f"src/Domande/{self.percorso}", "r", encoding="utf-8") as f:
+            import json
+            domande = json.load(f)
+        return domande
+
+    def loadNewQuiz(self):
+        self.MyQuiz = [Quiz(quiz) for quiz in self.fetchQuiz()]
 
     def generaUuid(self, nomeFinale):
         uuidGenerator = hashlib.sha512()
@@ -62,3 +48,14 @@ class GameOptions():
         uuid = uuidGenerator.hexdigest()
         self.UUID_NAME[uuid] = nomeFinale
         return uuid
+
+    def getNameFromUUID(self, uuid):
+        return self.UUID_NAME.get(uuid, None)
+
+    def changePath(self, path):
+        self.percorso = path
+        self.page = 0
+        self.loadNewQuiz()
+
+    def reloadPath(self):
+        self.changePath(self.percorso)

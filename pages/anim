@@ -23,7 +23,7 @@
 		if(p<0){
 			return
 		}
-		fetch(url+"/setpage_"+p+"_"+(123111321)).then(res => res.json()).then(
+		fetch(url+"/setpage_"+p+"_"+({{ codice_animatore_setpage }})).then(res => res.json()).then(
 			function(txt){
 				var current =  txt["current"] == null ? "" : txt["current"].substr(txt["current"].lastIndexOf("/")+1);
 				var prev = txt["prev"] == null ? "" : txt["prev"].substr(txt["prev"].lastIndexOf("/")+1);
@@ -33,19 +33,31 @@
 				$("#next_step").text(next)
 			})
 	}
-	nxt(0);
 	var upt = function(){fetch(url+"/updateQuest")}
-	var changepath = function(p){fetch(url+"/setpath_"+p)}
+	var changepath = function(p){
+		fetch(url+"/setpath_"+p).then(res => res.json()).then(
+			function(txt){
+				var current =  txt["current"] == null ? "" : txt["current"].substr(txt["current"].lastIndexOf("/")+1);
+				var prev = txt["prev"] == null ? "" : txt["prev"].substr(txt["prev"].lastIndexOf("/")+1);
+				var next = txt["next"] == null ? "" : txt["next"].substr(txt["next"].lastIndexOf("/")+1);
+				$("#step").text(current)
+				$("#before_step").text(prev)
+				$("#next_step").text(next)
+				page = 0;
+			}
+		)
+	}
 	var getpage = function(){fetch(url+"/page").then(res => res.json()).then(res=> console.log(res["page"]))}
 	setLevel = function(a){
 		changepath(a.value)
 	}
-	changepath(3);
+	changepath("liceo");
+	nxt(0);
 	newGame = function(){
 		fetch(url+"/reset").then(window.location.reload());
 	}
 	updateCode = function(){
-		fetch(url+"/getcodice").then(res => res.text()).then(res => $("#codice").text(res))
+		fetch(url+"/getcodice").then(res => res.text()).then(res => $("#codice").text(res), $("iframe")[0].contentWindow.location.reload())
 	}
 	updateQuest = function(){
 		fetch(url+"/updateQuest").then(res => res.text())
@@ -94,25 +106,6 @@
 			$("#knoberror").text(err);
 		}
 	}
-	
-/*	var percentuagePolling = setInterval(
-		function(){
-			$.ajax(
-				{
-					url: "getAnswered",
-					async: true,
-					success: function(res_page){
-						populateKnob(res_page);
-					}
-				})
-		},3000);*/
-	
-	/*var updateQuest = setInterval(function(){
-		$.ajax({
-			url: "updateQuest",
-			async: true
-		})
-	}, 5000);*/
 	</script>
 </head>
 <body>
@@ -135,11 +128,11 @@
 			</div>
 			<div style="display: flex; justify-content: center; align-items: center; margin-bottom: 30px;">
 				<select style="padding: 10px; border-radius: 10px; font-size: 22px;" onchange="setLevel(this)">
-					<option value=1>Livello A - Elementari</option>
-					<option value=2>Livello B - Medie</option>
-					<option value=3 selected>Livello C - Liceo</option>
-					<option value=4>Livello D - Natale</option>
-					<option value=5>Livello E - Alien</option>
+					<option value="elementari">Livello A - Elementari</option>
+					<option value="medie">Livello B - Medie</option>
+					<option value="liceo" selected>Livello C - Liceo</option>
+					<option value="natale">Livello D - Natale</option>
+					<option value="alien">Livello E - Alien</option>
 				</select>
 			</div>
 			<div style="display: flex; justify-content: center; align-items: center;">
