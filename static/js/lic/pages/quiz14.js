@@ -4,8 +4,9 @@ import { PrototipoQuiz } from "../../common/PrototipoQuiz.js";
 
 /* global $ */
 class Quiz14 extends PrototipoQuiz {
-    constructor(name = "quiz14") {
+    constructor(name = "quiz14", id = 14) {
         super(name, "title.question.chessboard.answers");
+        this.id = id;
     }
     start() {
         var drawChessboard = new DrawChessboardClass($("#chessboard")[0])
@@ -31,9 +32,9 @@ class Quiz14 extends PrototipoQuiz {
             window.can_answer = false
             $(".risposta").toggleClass("disabled")
         }
-        getQuiz(this.maketimer);
+        getQuiz(this.maketimer, this.id);
     }
 }
 
-var quiz14 = new Quiz14("Q ultima");
+var quiz14 = new Quiz14("Q ultima", 14);
 export { quiz14 };
