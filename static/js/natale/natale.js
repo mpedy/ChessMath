@@ -50,9 +50,9 @@ var ascolta_torre = new Ascolta(`<div>
 	<img src="static/img/tree.svg" style="width: 60%" />
 </div>`, "Ascolta Torre NATALE")
 
-var quiz1 = new NatQuiz("Q Percorso più breve","title.question.img.answers", "static/img/torre1.png");
-var quiz2 = new NatQuiz("Q Quante caselle è lungo","title.question.img.answers", "static/img/torre2.png");
-var quiz7 = new NatQuiz("Q Torre cfr 1","title.question.answers");
+var quiz1 = new NatQuiz("Q Percorso più breve","title.question.img.answers", "static/img/torre1.png", 1);
+var quiz2 = new NatQuiz("Q Quante caselle è lungo","title.question.img.answers", "static/img/torre2.png", 2);
+var quiz7 = new NatQuiz("Q Torre cfr 1","title.question.answers", undefined, 7);
 
 
 class Natale extends PrototipoStory {
