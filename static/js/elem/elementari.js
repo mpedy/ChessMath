@@ -36,18 +36,18 @@ import { img_gioco11 } from "./pages/img_gioco11.js";
 import { img_allsquares } from "../common/ImgAllSquares.js";
 import { img_1 } from "./pages/img_1.js";
 
-var quiz1 = new ElemQuiz("Q Quale percorso", "title.question.img.answers", "static/img/quiz1.png");
-var quiz2 = new ElemQuiz("Q Quale percorso 2", "title.question.img.answers", "static/img/quiz2.png");
-var quiz3 = new ElemQuiz("Q aula più grande", "title.question.answers");
-var quiz4 = new ElemQuiz("Q Torre Percorso possibile", "title.question.img.answers", "static/img/torre1.png");
-var quiz5 = new ElemQuiz("Q Torre Percorso più breve", "title.question.img.answers", "static/img/torre2.png");
-var quiz6 = new ElemQuiz("Q Torre Quante caselle è lungo", "title.question.img.answers", "static/img/torre3.png");
-var quiz7 = new ElemQuiz("Q scacchiera più grande?", "title.question.img.answers", "static/img/torre3.png");
-var quiz8 = new ElemQuiz("Q quale è cfr", "title.question.img.answers", "static/img/otto8.png");
-var quiz9 = new ElemQuiz("Q Alfiere percorso possibile", "title.question.img.answers", "static/img/alfiere1.png");
-var quiz10 = new ElemQuiz("Q Alfiere percorso più breve", "title.question.img.answers", "static/img/alfiere2.png");
-var quiz15 = new ElemQuiz("Q cambio geometria?", "title.question.answers");
-var quiz16 = new ElemQuiz("Q nuove pedine", "title.question.answers");
+var quiz1 = new ElemQuiz("Q Quale percorso", "title.question.img.answers", "static/img/quiz1.png", 1);
+var quiz2 = new ElemQuiz("Q Quale percorso 2", "title.question.img.answers", "static/img/quiz2.png", 2);
+var quiz3 = new ElemQuiz("Q aula più grande", "title.question.answers", undefined, 3);
+var quiz4 = new ElemQuiz("Q Torre Percorso possibile", "title.question.img.answers", "static/img/torre1.png", 4);
+var quiz5 = new ElemQuiz("Q Torre Percorso più breve", "title.question.img.answers", "static/img/torre2.png", 5);
+var quiz6 = new ElemQuiz("Q Torre Quante caselle è lungo", "title.question.img.answers", "static/img/torre3.png", 6);
+var quiz7 = new ElemQuiz("Q scacchiera più grande?", "title.question.img.answers", "static/img/torre3.png", 7);
+var quiz8 = new ElemQuiz("Q quale è cfr", "title.question.img.answers", "static/img/otto8.png", 8);
+var quiz9 = new ElemQuiz("Q Alfiere percorso possibile", "title.question.img.answers", "static/img/alfiere1.png", 9);
+var quiz10 = new ElemQuiz("Q Alfiere percorso più breve", "title.question.img.answers", "static/img/alfiere2.png", 10);
+var quiz15 = new ElemQuiz("Q cambio geometria?", "title.question.answers", undefined, 15);
+var quiz16 = new ElemQuiz("Q nuove pedine", "title.question.answers", undefined, 16);
 
 class Elementari extends PrototipoStory {
     constructor() {

@@ -3,8 +3,9 @@ import { getQuiz } from "../Utility/MyUI.js"
 
 /* global $ */
 class ElemQuiz extends PrototipoQuiz {
-    constructor(name, options, img_source = undefined) {
+    constructor(name, options, img_source = undefined, id = -1) {
         super(name, options, img_source);
+        this.id = id;
     }
     start() {
         window.can_answer = true
@@ -22,7 +23,7 @@ class ElemQuiz extends PrototipoQuiz {
             window.can_answer = false
             $(".risposta").toggleClass("disabled")
         }
-        getQuiz(this.maketimer);
+        getQuiz(this.maketimer, this.id);
     }
 }
 

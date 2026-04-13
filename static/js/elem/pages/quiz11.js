@@ -4,8 +4,9 @@ import { PrototipoQuiz } from "../../common/PrototipoQuiz.js";
 
 /* global $ */
 class Quiz11 extends PrototipoQuiz {
-    constructor() {
+    constructor(id = 11) {
         super("Q Alfiere quanta distanza", "title.question.chessboard.answers");
+        this.id = id;
     }
     start() {
         var drawChessboard = new DrawChessboardClass($("#chessboard")[0])
@@ -29,8 +30,8 @@ class Quiz11 extends PrototipoQuiz {
             window.can_answer = false
             $(".risposta").toggleClass("disabled")
         }
-        getQuiz(this.maketimer);
+        getQuiz(this.maketimer, this.id);
     }
 }
-var quiz11 = new Quiz11();
+var quiz11 = new Quiz11(11);
 export { quiz11 };
