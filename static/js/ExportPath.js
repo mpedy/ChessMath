@@ -11,9 +11,9 @@ async function run() {
 
     const pagesByPath = app.listAllPages();
 
-    fs.writeFileSync(path.join(outDir, "pages_1_elementari.json"), JSON.stringify(pagesByPath.elem, null, 2));
-    fs.writeFileSync(path.join(outDir, "pages_2_medie.json"), JSON.stringify(pagesByPath.med, null, 2));
-    fs.writeFileSync(path.join(outDir, "pages_3_liceo.json"), JSON.stringify(pagesByPath.lic, null, 2));
+    fs.writeFileSync(path.join(outDir, "pages_1_elementari.json"), JSON.stringify(pagesByPath.elementari, null, 2));
+    fs.writeFileSync(path.join(outDir, "pages_2_medie.json"), JSON.stringify(pagesByPath.medie, null, 2));
+    fs.writeFileSync(path.join(outDir, "pages_3_liceo.json"), JSON.stringify(pagesByPath.liceo, null, 2));
     fs.writeFileSync(path.join(outDir, "pages_4_natale.json"), JSON.stringify(pagesByPath.natale, null, 2));
     fs.writeFileSync(path.join(outDir, "pages_5_alien.json"), JSON.stringify(pagesByPath.alien, null, 2));
     fs.writeFileSync(path.join(outDir, "pages_manifest.json"), JSON.stringify(pagesByPath, null, 2));

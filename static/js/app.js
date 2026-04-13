@@ -57,9 +57,9 @@ class App {
     }
     listAllPages() {
         return {
-            elem: this.elementari.listAllPages(),
-            med: this.medie.listAllPages(),
-            lic: this.liceo.listAllPages(),
+            elementari: this.elementari.listAllPages(),
+            medie: this.medie.listAllPages(),
+            liceo: this.liceo.listAllPages(),
             natale: this.natale.listAllPages(),
             alien: this.alien.listAllPages()
         }
