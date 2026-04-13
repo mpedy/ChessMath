@@ -36,14 +36,14 @@ import { gioco12b_soluzione } from "./pages/gioco12b_soluzione.js";
 import { quiz14 } from "./pages/quiz14.js";
 import { img_1 } from "./pages/img_1.js";
 
-var quiz1 = new MedQuiz("Q Percorso più breve", "title.question.img.answers", "static/img/quiz1.png");
-var quiz2 = new MedQuiz("Q Quante caselle percorso più breve", "title.question.answers");
-var quiz3 = new MedQuiz("Q DA RIVEDEREEE", "title.question.img.answers", "static/img/torre1.png");
-var quiz4 = new MedQuiz("Q Quante caselle è distante", "title.question.img.answers", "static/img/torre2.png");
-var quiz5 = new MedQuiz("Q Quante caselle è distante", "title.question.img.answers", "static/img/torre3.png");
-var quiz6 = new MedQuiz("Q Quante caselle è distante", "title.question.answers");
-var quiz7 = new MedQuiz("Q Qunate caselle cfr 1", "title.question.answers");
-var quiz16 = new MedQuiz("Q Nuove pedine", "title.question.answers");
+var quiz1 = new MedQuiz("Q Percorso più breve", "title.question.img.answers", "static/img/quiz1.png", 1);
+var quiz2 = new MedQuiz("Q Quante caselle percorso più breve", "title.question.answers", undefined, 2);
+var quiz3 = new MedQuiz("Q DA RIVEDEREEE", "title.question.img.answers", "static/img/torre1.png", 3);
+var quiz4 = new MedQuiz("Q Quante caselle è distante", "title.question.img.answers", "static/img/torre2.png", 4);
+var quiz5 = new MedQuiz("Q Quante caselle è distante", "title.question.img.answers", "static/img/torre3.png", 5);
+var quiz6 = new MedQuiz("Q Quante caselle è distante", "title.question.answers", undefined, 6);
+var quiz7 = new MedQuiz("Q Qunate caselle cfr 1", "title.question.answers", undefined, 7);
+var quiz16 = new MedQuiz("Q Nuove pedine", "title.question.answers", undefined, 16);
 
 
 class Medie extends PrototipoStory {
