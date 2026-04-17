@@ -250,6 +250,7 @@ class MovingGame extends PrototipoGame {
                     $(this).remove();
                     window.myalert("Punti", "Il tuo punteggio è di " + window.punti + " punti!");
                     window.updatePoints(gamePoints);
+                    window.player.updateScore(gamePoints);
                     drawChessboard.handleMouseDown_casella = function () { }
                     drawChessboard.handleMouseDown_image = function () { }
                     $("#ricomincia").prop("disabled", true);

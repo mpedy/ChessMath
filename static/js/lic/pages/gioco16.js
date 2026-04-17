@@ -126,6 +126,7 @@ class Gioco16 extends PrototipoGame {
                 }
             }
             window.updatePoints(points);
+            window.player.updateScore(points);
             window.punti = window.getPoints();
             clearInterval(this.maketimer.myt);
             // maketimer.sec = 0;

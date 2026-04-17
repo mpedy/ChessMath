@@ -163,7 +163,7 @@ async def getanimpage(request):
     try:
         form = await request.form()
         if form["username"] == "anim" and form["password"] == "1324354321":
-            opt.updateCodice()
+            #opt.updateCodice()
             return templates.TemplateResponse("anim", {"request": request, "codice": opt.codice, "codice_animatore_setpage": opt.setPageCode})
         else:
             return templates.TemplateResponse("anim_key", {"request": request, "errore": """<div id="error_msg_anim">Codice Errato!</div>"""})
@@ -202,7 +202,8 @@ async def addNome(request):
                 await ws["ws"].send_json({"perc": 0, "error": "", "lista": (len(websockets)-2)})
                 break
     uuid = opt.generaUuid(nomeFinale)
-    return PlainTextResponse(uuid)
+    #return PlainTextResponse(uuid)
+    return JSONResponse({"uuid": uuid, "nome": nomeFinale})
 
 
 async def reset(request):

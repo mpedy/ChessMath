@@ -99,6 +99,7 @@ class DrawGame extends PrototipoGame {
             }
             window.myalert("Punti", "Hai guadagnato " + points + " punti.");
             window.updatePoints(points);
+            window.player.updateScore(points);
             window.punti = window.getPoints();
             clearInterval(this.maketimer.myt)
             this.maketimer.sec = 0;

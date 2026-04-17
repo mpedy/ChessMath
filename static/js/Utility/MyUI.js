@@ -90,8 +90,8 @@ window.myalert = function (title, text) {
 
 window.updatePoints = function (punti) {
 	$("#points").text(parseInt($("#points").text()) + punti)
-	var nome = $("#name").text()
-	var pt = parseInt($("#points").text())
+	var nome = (window.player && window.player.name) || $("#name").text()
+	var pt = window.player?.score ?? parseInt($("#points").text())
 	$.ajax({
 		url: "addPoints_" + nome + "_" + pt,
 		success: function (resp) {
@@ -216,10 +216,12 @@ export var getQuiz = function (maketimer, quizid) {
 							function () {
 								$(this).dialog("close");
 								window.updatePoints(parseInt(quiz['punteggio']) + maketimer.sec);
+								window.player.updateScore(parseInt(quiz['punteggio']) + maketimer.sec);
 							},
 							function () {
 								$(this).dialog("close");
 								window.updatePoints(parseInt(quiz['punteggio']) + maketimer.sec);
+								window.player.updateScore(parseInt(quiz['punteggio']) + maketimer.sec);
 							})
 					} else {
 						window.myalert("risposta sbagliata!", "Hai risposto sbagliato!");
@@ -234,30 +236,31 @@ export var getQuiz = function (maketimer, quizid) {
 }
 
 window.sendCodice = function () {
-    var code = $("#codice").val();
-    var nome = $("#nome").val();
-    if (nome.length < 3) {
-        window.myalert("Attenzione", "Inserire un nome di almeno 3 caratteri")
-        return;
-    }
-    $.ajax({
-        url: "verificacodice_" + code,
-        async: false,
-        success: function (res_page) {
-            console.log(res_page)
-            $.ajax(
-                {
-                    url: "inseriscinome_" + nome,
-                    async: false,
-                    success: function (result) {
-                        nome = result;
-                        window.location.href = "/game_" + nome;
-                    }
-                })
-        },
-        error: function (err) {
-            window.myalert("Attenzione!", "Il codice inserito non è corretto");
-            console.error(err)
-        }
-    })
+	var code = $("#codice").val();
+	var nome = $("#nome").val();
+	if (nome.length < 3) {
+		window.myalert("Attenzione", "Inserire un nome di almeno 3 caratteri")
+		return;
+	}
+	$.ajax({
+		url: "verificacodice_" + code,
+		async: false,
+		success: function (res_page) {
+			console.log(res_page)
+			$.ajax(
+				{
+					url: "inseriscinome_" + nome,
+					async: false,
+					success: function (result) {
+						nome = result.nome;
+						window.player.setName(nome);
+						window.location.href = "/game_" + result.uuid;
+					}
+				})
+		},
+		error: function (err) {
+			window.myalert("Attenzione!", "Il codice inserito non è corretto");
+			console.error(err)
+		}
+	})
 }

@@ -16,8 +16,9 @@ window.sendCodice = function () {
                     url: "inseriscinome_" + nome,
                     async: false,
                     success: function (result) {
-                        nome = result;
-                        window.location.href = "/game_" + nome;
+                        nome = result.nome;
+                        window.player.setName(nome);
+                        window.location.href = "/game_" + result.uuid;
                     }
                 })
         },

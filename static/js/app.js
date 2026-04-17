@@ -5,6 +5,7 @@ import { natale } from "./natale/natale.js";
 import { alien } from "./alien/alien.js";
 import { init as globalInit } from "./Utility/GlobalVars.js";
 import { CommunicationModule } from "./Utility/CommunicationModule.js";
+import { Player } from "./Utility/Player.js";
 
 class App {
     constructor() {
@@ -17,6 +18,7 @@ class App {
         this.currentGame = null;
         this.path = "";
         this.commModule = undefined;
+        this.player = new Player();
     }
     initCommModule(nome, codice, url_ws, url_polling) {
         this.commModule = new CommunicationModule(this, nome, codice, url_ws, url_polling);
