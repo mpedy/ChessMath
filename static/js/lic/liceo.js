@@ -52,6 +52,7 @@ import { gioco_toro1 } from "./pages/gioco_toro1.js";
 import { gioco_toro2 } from "./pages/gioco_toro2.js";
 import { gioco_toro3 } from "./pages/gioco_toro3.js";
 import { img_gioco_toro3 } from "./pages/img_gioco_toro3.js";
+import { GiocoStockfish } from "../common/Stockfish.js";
 
 var quiz1 = new LicQuiz("Q Percorso più breve", "title.question.img.answers", "static/img/torre1.png", 1);
 var quiz2 = new LicQuiz("Q Quante caselle", "title.question.img.answers", "static/img/torre2.png", 2);
@@ -92,6 +93,13 @@ var transition_regina = new Ascolta(`<div>
         document.getElementsByClassName("transitioning-img")[0].classList.toggle("transition-stopped");
     }, 100);
 </script>`, "Transizione Regina");
+
+var giocoStockfish = new GiocoStockfish("Stockfish - test1", {"party": "white", "pieces": [
+    {"type": "Rook", "house": "A1", "color": "white"},
+    {"type": "Rook", "house": "B1", "color": "white"},
+    {"type": "Bishop", "house": "H1", "color": "white"},
+    {"type": "King", "house": "E8", "color": "black"}
+]});
 
 class Liceo extends PrototipoStory {
     constructor() {

@@ -6,7 +6,7 @@ import { calculateFen } from "../Utility/CalculateFEN.js";
 
 /* global $ */
 class GiocoStockfish extends PrototipoGame {
-    constructor(name) {
+    constructor(name, pieces_positions) {
         super(`<div id="title">Batti Stockfish</div>
 <div id="chessboard"></div>
 <div>
@@ -15,27 +15,33 @@ class GiocoStockfish extends PrototipoGame {
 <div id="controls_container">
 	<button id="ricomincia" onclick="window.ricomincia()">Ricomincia</button>
 </div>`, name);
-            this.fen = "";
-            this.stockfish = null;
+        this.fen = "";
+        this.stockfish = null;
+        this.pieces_positions = pieces_positions;
+        this.pieces = null;
+        this.selected_casella = null;
     }
-    initStocksih(){
+    initStockfish() {
         this.stockfish = new Worker("static/js/stockfish_engine.js");
         window.stockfish = this.stockfish;
         this.stockfish.onmessage = (event) => {
             console.log("Stockfish says: " + event.data);
-            if(event.data.startsWith("bestmove")){
+            if (event.data.startsWith("bestmove")) {
                 var move = event.data.split(" ")[1];
                 var from = move.substring(0, 2);
                 var to = move.substring(2, 4);
                 var piece;
-                for(var p in this.drawChessboard.pieces){
-                    if(this.drawChessboard.pieces[p].casella.toUpperCase() == from.toUpperCase()){
+                for (var p in this.drawChessboard.pieces) {
+                    if (this.drawChessboard.pieces[p].casella.toUpperCase() == from.toUpperCase()) {
                         piece = this.drawChessboard.pieces[p];
                         break;
                     }
                 }
+                if(this.drawChessboard.has_piece(to.toUpperCase()) && this.drawChessboard.can_eat(to.toUpperCase(), piece)){
+                    this.drawChessboard.removePiece(to.toUpperCase())
+                }
                 window.move(piece, to.toUpperCase());
-            }else if(event.data.indexOf("score mate 0")>=0){
+            } else if (event.data.indexOf("score mate 0") >= 0) {
                 window.goal_reached();
             }
         }
@@ -45,21 +51,35 @@ class GiocoStockfish extends PrototipoGame {
     start() {
         this.drawChessboard = new DrawChessboardClass(document.getElementById("chessboard"))
         //var maketimer = new MakeTimerClass()
-        var ROOK1 = new PieceClass("Rook", "A1", "Rook.svg");
+        var Party = new Array();
+        this.pieces = new Array();
+        for (let _p in this.pieces_positions["pieces"]) {
+            var p = this.pieces_positions["pieces"][_p];
+            var piece = new PieceClass(p["type"], p["house"], p["color"] == "white" ? p["type"] + ".svg" : p["type"] + "_B.svg", p["color"]);
+            if (this.pieces_positions["party"] == p["color"]) {
+                Party.push(piece);
+            }
+            this.pieces.push(piece);
+        }
+        /*var ROOK1 = new PieceClass("Rook", "A1", "Rook.svg");
         var ROOK2 = new PieceClass("Rook", "H1", "Rook.svg");
-        var KINGB = new PieceClass("King", "E8", "King_B.svg");
-        this.drawChessboard.pieces = [ROOK1, ROOK2, KINGB]
-        var Party = [ROOK1, ROOK2]
-        this.initStocksih();
+        var KINGB = new PieceClass("King", "E8", "King_B.svg");*/
+        //this.drawChessboard.pieces = [ROOK1, ROOK2, KINGB]
+        this.drawChessboard.pieces = this.pieces;
+        //var Party = [ROOK1, ROOK2]
+        this.initStockfish();
         //var Enemies = [KINGB]
 
         this.drawChessboard.drawChessboard()
 
 
         this.drawChessboard.piece_position = {}
-        this.drawChessboard.piece_position[ROOK1.casella] = ROOK1.immagine
+        /*this.drawChessboard.piece_position[ROOK1.casella] = ROOK1.immagine
         this.drawChessboard.piece_position[ROOK2.casella] = ROOK2.immagine
-        this.drawChessboard.piece_position[KINGB.casella] = KINGB.immagine
+        this.drawChessboard.piece_position[KINGB.casella] = KINGB.immagine*/
+        for (var i in this.drawChessboard.pieces) {
+            this.drawChessboard.piece_position[this.drawChessboard.pieces[i].casella] = this.drawChessboard.pieces[i].immagine;
+        }
 
         this.drawChessboard.drawPieces()
 
@@ -82,13 +102,17 @@ class GiocoStockfish extends PrototipoGame {
         window.ricomincia = () => {
             $("#chessboard").html("")[0].style.cssText = ""
             this.drawChessboard.drawChessboard();
-            ROOK1.reset();
+            /*ROOK1.reset();
             ROOK2.reset();
-            KINGB.reset();
+            KINGB.reset();*/
             this.drawChessboard.piece_position = {}
-            this.drawChessboard.piece_position[ROOK1.casella] = ROOK1.immagine
+            /*this.drawChessboard.piece_position[ROOK1.casella] = ROOK1.immagine
             this.drawChessboard.piece_position[ROOK2.casella] = ROOK2.immagine
-            this.drawChessboard.piece_position[KINGB.casella] = KINGB.immagine
+            this.drawChessboard.piece_position[KINGB.casella] = KINGB.immagine*/
+            for (var i in this.drawChessboard.pieces) {
+                this.drawChessboard.pieces[i].reset();
+                this.drawChessboard.piece_position[this.drawChessboard.pieces[i].casella] = this.drawChessboard.pieces[i].immagine;
+            }
             this.drawChessboard.drawPieces();
             window.enlighted = "";
             number_of_moves = 0;
@@ -110,9 +134,13 @@ class GiocoStockfish extends PrototipoGame {
                     }
                 }
                 //move(moving_piece, elem.id);
+                if(this.drawChessboard.has_piece(casella) && this.drawChessboard.can_eat(casella, piece)){
+                    this.drawChessboard.removePiece(casella)
+                }
                 window.move(piece, casella)
                 number_of_moves += window.dist(piece.casella, casella)
                 $("#number_of_moves").html(number_of_moves);
+                window.enlighted = "";
                 // moving_piece = "";
                 possible_moves = new Array();
                 window.enemyTurn()
@@ -132,11 +160,7 @@ class GiocoStockfish extends PrototipoGame {
         }
 
         window.enemyTurn = () => {
-            console.log("Turno del nemico")
-            console.log("FEN PRIMA: ", this.fen)
-            console.log("STOCKFISH: ", this.stockfish)
             this.fen = calculateFen.calculateFen(this.drawChessboard);
-            console.log("FEN DOPO: ", this.fen)
             this.stockfish.postMessage("position fen " + this.fen);
             this.stockfish.postMessage("go movetime 1000");
             /*var pmoves = []
@@ -174,15 +198,29 @@ class GiocoStockfish extends PrototipoGame {
         }
 
         this.drawChessboard.handleMouseDown_image = (e) => {
-            //console.log(e.currentTarget);
             var elem = e.currentTarget;
             var casella = elem.getAttribute("data-casella");
+            console.log(window.enlighted)
+            /*debugger;
+            if(window.enlighted != null && window.enlighted != ""){
+                window.enlight(window.enlighted, "orange", true)
+                console.log(window.enlighted)
+            }else{
+                window.enlighted = casella;
+                console.log(window.enlighted)
+            }*/
             var type = elem.getAttribute("data-type")
             //console.log("Casella e tipo: " + casella+"-"+type)
             for (var p in this.drawChessboard.pieces) {
                 if (this.drawChessboard.pieces[p].casella == casella) {
                     this.drawChessboard.pieces[p].selected = true
+                    if(window.enlighted != null && window.enlighted != ""){
+                        var w_lighi = window.enlighted;
+                        window.enlighted = "";
+                        window.enlight(w_lighi, "orange")
+                    }
                     window.enlight(this.drawChessboard.pieces[p].casella, "orange")
+                    window.enlighted = this.drawChessboard.pieces[p].casella;
                     possible_moves = window.calculatePossibleMoves(casella, type);
                     this.drawChessboard.pieces[p].possible_moves = possible_moves;
                 } else {
@@ -202,6 +240,18 @@ class GiocoStockfish extends PrototipoGame {
                     break;
                 case "King": {
                     pmoves = pieceMove.moveKing(casella, x, y);
+                }
+                    break;
+                case "Bishop": {
+                    pmoves = pieceMove.moveBishop(casella, x, y);
+                }
+                    break;
+                case "Queen": {
+                    pmoves = pieceMove.moveQueen(casella, x, y);
+                }
+                    break;
+                case "Knight": {
+                    pmoves = pieceMove.moveKnight(casella, x, y);
                 }
                     break;
             }
@@ -277,5 +327,5 @@ class GiocoStockfish extends PrototipoGame {
     }
 }
 
-var giocoStockfish = new GiocoStockfish("Stockfish");
-export { giocoStockfish };
+//var giocoStockfish = new GiocoStockfish("Stockfish");
+export { GiocoStockfish };

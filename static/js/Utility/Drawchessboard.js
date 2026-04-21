@@ -154,4 +154,19 @@ export class DrawChessboard {
             elem.appendChild(div);
         }
     }
+    has_piece = function (cas){
+        var img = document.querySelector(`img[data-casella="${cas}"]`)
+        return img != null
+    }
+    can_eat = function (cas, piece){
+        var img = document.querySelector(`img[data-casella="${cas}"]`)
+        if(img == null) return false;
+        var type = img.getAttribute("data-type")
+        return type != piece.tipo
+    }
+    removePiece = function (cas){
+        var img = document.querySelector(`img[data-casella="${cas}"]`)
+        img.parentElement.removeChild(img)
+        this.pieces = this.pieces.filter(p => p.casella != cas)
+    }
 }
